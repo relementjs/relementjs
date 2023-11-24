@@ -7,7 +7,7 @@ export function render_api__use(render_api) {
 	bind_ = render_api?.bind_
 	tags = render_api?.tags
 	tagsNS = render_api?.tagsNS
-	html_ = render_api?.html_ || 'server-only'
+	html_ = render_api?.doc_html_ || 'server-only'
 	server__element__proto = render_api?.server__element__proto || 'server-only'
 	hydrate = render_api?.hydrate || 'browser-only'
 }

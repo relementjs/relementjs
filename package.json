@@ -23,11 +23,13 @@
 		"*.d.ts",
 		"*.js",
 		"*.json",
+		"./html",
 		"./render"
 	],
 	"types": "./index.d.ts",
 	"exports": {
 		".": "./index.js",
+		"./html": "./html/index.js",
 		"./render": "./render/index.js",
 		"./package.json": "./package.json"
 	},
