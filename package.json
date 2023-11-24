@@ -65,11 +65,11 @@
 	"sideEffects": false,
 	"size-limit": [
 		{
-			"name": "tags",
+			"name": "render_api__use _ attach bind tags tagsNS",
 			"import": {
-				"": "{ tags }"
+				"": "{ render_api__use, _, attach, bind_, tags, tagsNS }"
 			},
-			"limit": "513 B"
+			"limit": "108 B"
 		}
 	]
 }
