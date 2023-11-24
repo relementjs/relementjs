@@ -15,7 +15,7 @@ import type {
 	server__tags_T
 } from '@ctx-core/ui--server'
 export declare function render_api__use(
-	render_api:browser__render_api_T|server__render_api_T
+	render_api:browser__render_api_T|server__render_api_T|null|undefined
 ):void
 export type render__env_T = 'any'|'browser'|'server'
 export declare function _<T>(s:T|rmemo_T<T>):T
@@ -50,3 +50,5 @@ export type tag_T<env_T extends render__env_T, Tag> =
 export declare let doc_html_: server__doc_html__T
 export declare let server__element__proto:server__element__proto_T
 export declare function hydrate<T extends Node>(dom:T, f:(dom:T)=>T|null|undefined|render_primitive_T):void
+export declare function svg_tags_<env_T extends render__env_T>():tags_T<env_T, 'svg'>
+export declare function mathml_tags_<env_T extends render__env_T>():tags_T<env_T, 'mathml'>

@@ -1,5 +1,4 @@
 import { svg_tags } from '../render/index.js'
-export { svg_tags }
 export let a_ = (...arg_a)=>svg_tags.a(...arg_a)
 export let animate_ = (...arg_a)=>svg_tags.animate(...arg_a)
 export let animateMotion_ = (...arg_a)=>svg_tags.animateMotion(...arg_a)

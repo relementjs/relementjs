@@ -1,8 +1,7 @@
 /// <reference lib="dom" />
-import type { render__env_T, tag_T, tags_T } from '../render/index.js'
+import type { render__env_T, tag_T } from '../render/index.js'
 type arg_a_T<env_T extends render__env_T, tag_name_T> = Parameters<tag_T<env_T, HTMLElementTagNameMap[tag_name_T]>>
 type ret_T<env_T extends render__env_T, tag_name_T> = ReturnType<tag_T<env_T, HTMLElementTagNameMap[tag_name_T]>>
-export let tags:tags_T
 export declare function a_<env_T extends render__env_T>(...arg_a:arg_a_T<env_T, 'a'>):ret_T<env_T, 'a'>
 export declare function abbr_<env_T extends render__env_T>(...arg_a:arg_a_T<env_T, 'abbr'>):ret_T<env_T, 'abbr'>
 export declare function address_<env_T extends render__env_T>(...arg_a:arg_a_T<env_T, 'address'>):ret_T<env_T, 'address'>

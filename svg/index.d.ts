@@ -1,7 +1,6 @@
-import type { render__env_T, tag_T, tags_T } from '../render/index.js'
+import type { render__env_T, tag_T } from '../render/index.js'
 type arg_a_T<env_T extends render__env_T, tag_name_T> = Parameters<tag_T<env_T, SVGElementTagNameMap[tag_name_T]>>
 type ret_T<env_T extends render__env_T, tag_name_T> = ReturnType<tag_T<env_T, SVGElementTagNameMap[tag_name_T]>>
-export let svg_tags:tags_T<any, 'svg'>
 export declare function a_<env_T extends render__env_T>(...arg_a:arg_a_T<env_T, 'a'>):ret_T<env_T, 'a'>
 export declare function animate_<env_T extends render__env_T>(...arg_a:arg_a_T<env_T, 'animate'>):ret_T<env_T, 'animate'>
 export declare function animateMotion_<env_T extends render__env_T>(...arg_a:arg_a_T<env_T, 'animateMotion'>):ret_T<env_T, 'animateMotion'>

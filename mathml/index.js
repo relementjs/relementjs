@@ -1,5 +1,4 @@
 import { mathml_tags } from '../render/index.js'
-export { mathml_tags }
 export let annotation_ = (...arg_a)=>mathml_tags.annotation(...arg_a)
 export let annotation_xml_ = (...arg_a)=>mathml_tags['annotation-xml'](...arg_a)
 export let maction_ = (...arg_a)=>mathml_tags.maction(...arg_a)

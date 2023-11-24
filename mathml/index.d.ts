@@ -1,7 +1,6 @@
-import { mathml_tags, render__env_T, tag_T, tags_T } from '../render/index.js'
+import { render__env_T, tag_T } from '../render/index.js'
 type arg_a_T<env_T extends render__env_T, tag_name_T> = Parameters<tag_T<env_T, MathMLElementTagNameMap[tag_name_T]>>
 type ret_T<env_T extends render__env_T, tag_name_T> = ReturnType<tag_T<env_T, MathMLElementTagNameMap[tag_name_T]>>
-export let mathml_tags: tags_T<any, 'mathml'>
 export declare function annotation_<env_T extends render__env_T>(...arg_a:arg_a_T<env_T, 'annotation'>):ret_T<env_T, 'annotation'>
 export declare function annotation_xml_<env_T extends render__env_T>(...arg_a:arg_a_T<env_T, 'annotation_xml'>):ret_T<env_T, 'annotation_xml'>
 export declare function maction_<env_T extends render__env_T>(...arg_a:arg_a_T<env_T, 'maction'>):ret_T<env_T, 'maction'>
