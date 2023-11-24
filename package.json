@@ -1,6 +1,6 @@
 {
-	"name": "@ctx-core/ui--all",
-	"version": "0.1.1",
+	"name": "rrenjs",
+	"version": "0.2.0",
 	"description": "ui library targeting all environments",
 	"keywords": [
 		"ctx-core",
@@ -8,13 +8,13 @@
 		"browser",
 		"server"
 	],
-	"homepage": "https://github.com/ctx-core/ui--any#readme",
+	"homepage": "https://github.com/rrenjs/any#readme",
 	"bugs": {
-		"url": "https://github.com/ctx-core/ui--any/issues"
+		"url": "https://github.com/rrenjs/any/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ctx-core/ui--any.git"
+		"url": "https://github.com/rrenjs/any.git"
 	},
 	"license": "Apache-2.0",
 	"author": "Brian Takita",
@@ -50,9 +50,9 @@
 		"disable:test:coverage": "c8 pnpm test-unit"
 	},
 	"dependencies": {
-		"@ctx-core/ui--any": "^0.1.1",
-		"@ctx-core/ui--browser": "^0.1.1",
-		"@ctx-core/ui--server": "^0.2.1",
+		"@rrenjs/any": "^0.2.0",
+		"@rrenjs/browser": "^0.2.0",
+		"@rrenjs/server": "^0.3.0",
 		"ctx-core": "^4.4.0"
 	},
 	"devDependencies": {

@@ -1,5 +1,5 @@
-/** @typedef {import('@ctx-core/ui--browser').browser__render_api_T} */
-/** @typedef {import('@ctx-core/ui--server').server__render_api_T} */
+/** @typedef {import('@rrenjs/browser').browser__render_api_T} */
+/** @typedef {import('@rrenjs/server').server__render_api_T} */
 /** @type {browser__render_api_T|server__render_api_T} */
 export function render_api__use(render_api) {
 	_ = render_api?._

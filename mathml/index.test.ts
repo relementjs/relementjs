@@ -1,5 +1,5 @@
-import { browser__render_api } from '@ctx-core/ui--browser'
-import { server__render_api } from '@ctx-core/ui--server'
+import { browser__render_api } from '@rrenjs/browser'
+import { server__render_api } from '@rrenjs/server'
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'

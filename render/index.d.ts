@@ -1,11 +1,11 @@
-import type { bind__T, render__namespaceURI_T, render__tags_env_T, render_primitive_T } from '@ctx-core/ui--any'
+import type { bind__T, render__namespaceURI_T, render__tags_env_T, render_primitive_T } from '@rrenjs/any'
 import type {
 	browser__attach_T,
 	browser__render_api_T,
 	browser__tag_T,
 	browser__tags_T,
 	rmemo_T
-} from '@ctx-core/ui--browser'
+} from '@rrenjs/browser'
 import type {
 	server__attach_T,
 	server__element__proto_T,
@@ -13,7 +13,7 @@ import type {
 	server__render_api_T,
 	server__tag_T,
 	server__tags_T
-} from '@ctx-core/ui--server'
+} from '@rrenjs/server'
 export declare function render_api__use(
 	render_api:browser__render_api_T|server__render_api_T|null|undefined
 ):void

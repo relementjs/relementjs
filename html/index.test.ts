@@ -1,5 +1,5 @@
-import { browser__render_api } from '@ctx-core/ui--browser'
-import { server__render_api } from '@ctx-core/ui--server'
+import { browser__render_api } from '@rrenjs/browser'
+import { server__render_api } from '@rrenjs/server'
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
@@ -28,9 +28,9 @@ test('server|html_ head_ body_ div_ a_', ()=>{
 			head_(),
 			body_(
 				div_({ id: 'div-id' },
-					a_({ href: 'https://github.com/ctx-core/ui--all' }, '@ctx-core/ui--all'))
+					a_({ href: 'https://github.com/rrenjs/all' }, 'rrenjs'))
 			)).render(),
-		`<html><head></head><body><div id="div-id"><a href="https://github.com/ctx-core/ui--all">@ctx-core/ui--all</a></div></body></html>`
+		`<html><head></head><body><div id="div-id"><a href="https://github.com/rrenjs/all">rrenjs</a></div></body></html>`
 	)
 })
 test('browser|html_ head_ body_ div_ a_', ()=>{
@@ -46,9 +46,9 @@ test('browser|html_ head_ body_ div_ a_', ()=>{
 			head_(),
 			body_(
 				div_({ id: 'div-id' },
-					a_({ href: 'https://github.com/ctx-core/ui--all' }, '@ctx-core/ui--all'))
+					a_({ href: 'https://github.com/rrenjs/all' }, 'rrenjs'))
 			)).outerHTML,
-		`<html><head></head><body><div id="div-id"><a href="https://github.com/ctx-core/ui--all">@ctx-core/ui--all</a></div></body></html>`
+		`<html><head></head><body><div id="div-id"><a href="https://github.com/rrenjs/all">rrenjs</a></div></body></html>`
 	)
 })
 test.run()
