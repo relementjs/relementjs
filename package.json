@@ -1,6 +1,6 @@
 {
 	"name": "@ctx-core/ui--all",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "ui library targeting all environments",
 	"keywords": [
 		"ctx-core",
@@ -50,9 +50,9 @@
 		"disable:test:coverage": "c8 pnpm test-unit"
 	},
 	"dependencies": {
-		"@ctx-core/ui--any": "^0.1.0",
-		"@ctx-core/ui--browser": "^0.1.0",
-		"@ctx-core/ui--server": "^0.2.0",
+		"@ctx-core/ui--any": "^0.1.1",
+		"@ctx-core/ui--browser": "^0.1.1",
+		"@ctx-core/ui--server": "^0.2.1",
 		"ctx-core": "^4.4.0"
 	},
 	"devDependencies": {
@@ -62,7 +62,7 @@
 		"check-dts": "^0.7.2",
 		"jsdom": "^22.1.0",
 		"size-limit": "^11.0.0",
-		"tsx": "^4.3.0",
+		"tsx": "^4.4.0",
 		"typescript": "next",
 		"uvu": "^0.5.6"
 	},
