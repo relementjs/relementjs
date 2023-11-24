@@ -30,6 +30,8 @@ export type attach_T<env_T extends render__env_T> =
 			: browser__attach_T|server__attach_T
 export declare function bind_():bind__T
 export declare let tags:tags_T<'any'>
+export declare let svg_tags:tags_T<'any', 'svg'>
+export declare let mathml_tags:tags_T<'any', 'mathml'>
 export type tags_T<env_T extends render__env_T, tags_env_T extends render__tags_env_T = 'html'> =
 	env_T extends 'browser'
 		? browser__tags_T<tags_env_T>

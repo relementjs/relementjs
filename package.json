@@ -24,13 +24,17 @@
 		"*.js",
 		"*.json",
 		"./html",
-		"./render"
+		"./mathml",
+		"./render",
+		"./svg"
 	],
 	"types": "./index.d.ts",
 	"exports": {
 		".": "./index.js",
 		"./html": "./html/index.js",
+		"./mathml": "./mathml/index.js",
 		"./render": "./render/index.js",
+		"./svg": "./svg/index.js",
 		"./package.json": "./package.json"
 	},
 	"scripts": {
@@ -71,7 +75,28 @@
 			"import": {
 				"": "{ render_api__use, _, attach, bind_, tags, tagsNS }"
 			},
-			"limit": "108 B"
+			"limit": "161 B"
+		},
+		{
+			"name": "html html_",
+			"import": {
+				"./html": "{ html_ }"
+			},
+			"limit": "34 B"
+		},
+		{
+			"name": "mathml math_",
+			"import": {
+				"./mathml": "{ math_ }"
+			},
+			"limit": "34 B"
+		},
+		{
+			"name": "svg svg_",
+			"import": {
+				"./svg": "{ svg_ }"
+			},
+			"limit": "33 B"
 		}
 	]
 }
