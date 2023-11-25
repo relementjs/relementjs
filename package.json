@@ -79,7 +79,7 @@
 				"": "{ rel__use }",
 				"./browser": "{ browser__rel }"
 			},
-			"limit": "1005 B"
+			"limit": "1001 B"
 		},
 		{
 			"name": "isomorphic server",
@@ -101,28 +101,28 @@
 			"import": {
 				"./browser": "{ tags }"
 			},
-			"limit": "756 B"
+			"limit": "754 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, _, bind_ }"
 			},
-			"limit": "831 B"
+			"limit": "827 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, _, bind_, memo_, sig_ }"
 			},
-			"limit": "852 B"
+			"limit": "847 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo + ctx",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, _, bind_, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "1003 B"
+			"limit": "995 B"
 		},
 		{
 			"name": "isomorphic browser helpers + hydrate + helpers + rmemo + ctx",
@@ -130,7 +130,7 @@
 				"": "{ rel__use, _, bind_, tags, hydrate, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__rel }"
 			},
-			"limit": "1175 B"
+			"limit": "1173 B"
 		},
 		{
 			"name": "server-only minimal",

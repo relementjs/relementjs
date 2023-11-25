@@ -47,7 +47,7 @@ export function attach(dom, ...children) {
 	return dom
 }
 export function bind_(f) {
-	f._is_bind = 1
+	f.b = 1
 	return f
 }
 export let tagsNS = ns=>new Proxy((name, ...args)=>{
@@ -75,14 +75,14 @@ export let tagsNS = ns=>new Proxy((name, ...args)=>{
 		let v_ =
 			v?.rmr
 				? ()=>v()
-				: typeof v === 'function' && (!k.startsWith('on') || v._is_bind)
+				: typeof v === 'function' && (!k.startsWith('on') || v.b)
 					? v
 					: 0
 		let setter_rmemo =
 			v_
 				? memo_(()=>dom__run(()=>param__setter(v_(dom), dom)))
 				: 0
-		if (setter_rmemo) {
+		if (v_) {
 			(dom._rma ||= []).push(setter_rmemo)
 			setter_rmemo()
 		} else {

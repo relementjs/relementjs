@@ -9,13 +9,13 @@ reljs includes rmemo as a reactive core & ctx-core for contexts...
 
 | use case                                                     |   size    | imports                                                            |
 |--------------------------------------------------------------|:---------:|--------------------------------------------------------------------|
-| isomorphic browser                                           |  1005 B   | rel__use browser__rel                                              |
+| isomorphic browser                                           |  1001 B   | rel__use browser__rel                                              |
 | isomorphic server                                            |   765 B   | rel__use server__rel                                               |
-| browser-only minimal                                         |   756 B   | tags                                                               |
-| browser-only hydrate + helpers                               |   831 B   | tags hydrate _ bind_                                               |
-| **browser-only hydrate + helpers + rmemo**                   | **852 B** | **tags hydrate _ bind_ memo_ sig_**                                |
-| browser-only hydrate + helpers + rmemo + ctx                 |  1003 B   | tags hydrate use _ bind_ memo_ sig_ be_ ctx_                       |
-| isomorphic browser helpers + hydrate + helpers + rmemo + ctx |  1175 B   | rel__use browser__rel tags hydrate use _ bind_ memo_ sig_ be_ ctx_ |
+| browser-only minimal                                         |   754 B   | tags                                                               |
+| browser-only hydrate + helpers                               |   827 B   | tags hydrate _ bind_                                               |
+| **browser-only hydrate + helpers + rmemo**                   | **847 B** | **tags hydrate _ bind_ memo_ sig_**                                |
+| browser-only hydrate + helpers + rmemo + ctx                 |  995 B   | tags hydrate use _ bind_ memo_ sig_ be_ ctx_                       |
+| isomorphic browser helpers + hydrate + helpers + rmemo + ctx |  1173 B   | rel__use browser__rel tags hydrate use _ bind_ memo_ sig_ be_ ctx_ |
 | server-only minimal                                          |   511 B   | tags                                                               |
 | **server-only render doc + helpers**                         | **562 B** | **tags doc_html_ tagsNS _ bind_**                                  |
 | server-only render doc + helpers + rmemo                     |   897 B   | tags doc_html_ tagsNS _ bind_ memo_ sig_                           |
