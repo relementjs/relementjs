@@ -52,6 +52,7 @@ export function bind_(f) {
 }
 export let tagsNS = ns=>new Proxy((name, ...args)=>{
 	let [params, ...children] =
+		// DOM elements are objects with different prototypes
 		Object.getPrototypeOf(args[0] ?? 0) === obj__proto
 			? args
 			: [{}, ...args]
@@ -59,7 +60,8 @@ export let tagsNS = ns=>new Proxy((name, ...args)=>{
 		ns
 			? document.createElementNS(ns, name)
 			: document.createElement(name)
-	for (let [k, v] of Object.entries(params)) {
+	for (let k in params) {
+		let v = params[k]
 		let k__PropertyDescriptor_ = proto=>
 			proto
 				? Object.getOwnPropertyDescriptor(proto, k) ?? k__PropertyDescriptor_(Object.getPrototypeOf(proto))

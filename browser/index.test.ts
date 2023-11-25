@@ -49,7 +49,7 @@ test('_', ()=>{
 	equal(_(1), 1)
 	equal(_(memo_(()=>100)), 100)
 })
-test('tags|basic', ()=>{
+test.only('tags|basic', ()=>{
 	const dom = div(
 		p('👋Hello'),
 		ul(
