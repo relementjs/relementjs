@@ -1,5 +1,39 @@
 # @ctx-core/ui--all
 
+## 0.3.0
+
+### Minor Changes
+
+- minor:
+
+      pacakage name: reljs
+      consolidate packages:
+      	+ browser
+      		browser__render_api→browser__rel
+      		browser__render_api_T→browser__rel_T
+      	+ server
+      		server__render_api→server__rel
+      		server__render_api_T→server__rel_T
+      render→isomorphic:
+      	render_api__use→rel__use
+      rmemo read-only .() + ._ property update
+
+  patch:
+
+      README:
+      	+ (Reactive Element)
+      	+ size chart
+      	+ simple examples
+      bind_: f.b instead of f._is_bind
+      dom→memo reference optimization: ._m instead of ._rma
+      tagsNS: memos are functions so no need to check for .rmr
+      tagsNS: size optimization: for in loop instead of Object.entries
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@4.5.0
+
 ## 0.2.0
 
 ### Minor Changes

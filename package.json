@@ -1,6 +1,6 @@
 {
 	"name": "reljs",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"description": "ui library targeting all environments",
 	"keywords": [
 		"ctx-core",
@@ -54,7 +54,7 @@
 		"disable:test:coverage": "c8 pnpm test-unit"
 	},
 	"dependencies": {
-		"ctx-core": "^4.4.0"
+		"ctx-core": "^4.5.0"
 	},
 	"devDependencies": {
 		"@size-limit/preset-small-lib": "^11.0.0",
