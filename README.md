@@ -1,4 +1,4 @@
-# reljs
+# reljs (Reactive Element)
 
 Isomorphic reactive uis for the browser & server.
 The smallest reactive UI library on the browser & server.
