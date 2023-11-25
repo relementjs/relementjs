@@ -38,7 +38,7 @@ export function attach(dom, ...children) {
 		if (!child_val_rmemo) {
 			child = child_val
 		} else if (child) {
-			(child._rma ||= []).push(child_val_rmemo)
+			(child._m ||= []).push(child_val_rmemo)
 		}
 		if (child != _undefined) {
 			dom.append(child)
@@ -83,7 +83,7 @@ export let tagsNS = ns=>new Proxy((name, ...args)=>{
 				? memo_(()=>dom__run(()=>param__setter(v_(dom), dom)))
 				: 0
 		if (v_) {
-			(dom._rma ||= []).push(setter_rmemo)
+			(dom._m ||= []).push(setter_rmemo)
 			setter_rmemo()
 		} else {
 			param__setter(v)
@@ -100,7 +100,7 @@ export function hydrate(dom, f) {
 		} else if (dom !== _dom) {
 			dom.replaceWith(_dom)
 			dom = _dom
-			;(dom._rma ||= []).push(rmemo)
+			;(dom._m ||= []).push(rmemo)
 		}
 	})()
 }
