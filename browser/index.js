@@ -52,7 +52,7 @@ export function bind_(f) {
 }
 export let tagsNS = ns=>new Proxy((name, ...args)=>{
 	let [params, ...children] =
-		Object.getPrototypeOf(args[0] ?? 0) === obj__proto && !args[0].rmr
+		Object.getPrototypeOf(args[0] ?? 0) === obj__proto
 			? args
 			: [{}, ...args]
 	let dom =
