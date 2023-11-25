@@ -1,5 +1,5 @@
 import { sleep } from 'ctx-core/function'
-import { memo_, memosig_, psig_, psig_T, sig_, type sig_T } from 'ctx-core/rmemo'
+import { memo_, memosig_, sig_, type sig_T } from 'ctx-core/rmemo'
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal, ok } from 'uvu/assert'
@@ -49,7 +49,7 @@ test('_', ()=>{
 	equal(_(1), 1)
 	equal(_(memo_(()=>100)), 100)
 })
-test.only('tags|basic', ()=>{
+test('tags|basic', ()=>{
 	const dom = div(
 		p('👋Hello'),
 		ul(
@@ -103,7 +103,7 @@ test('tags|prop|rw_rmemo|connected', with_connected_dom(async connected_dom=>{
 	const dom = a({ href }, 'Test Link')
 	attach(connected_dom, dom)
 	equal(dom.href, 'http://example.com/')
-	href('https://github.com/ctx-core/rmemo/')
+	href._ = 'https://github.com/ctx-core/rmemo/'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.href, 'https://github.com/ctx-core/rmemo/')
 }))
@@ -111,10 +111,10 @@ test('tags|prop|rw_rmemo|disconnected', async ()=>{
 	const href = sig_('http://example.com/')
 	const dom = a({ href }, 'Test Link')
 	equal(dom.href, 'http://example.com/')
-	href.val = 'https://github.com/ctx-core/rmemo/'
+	href._ = 'https://github.com/ctx-core/rmemo/'
 	await sleep(waitMsOnDomUpdates)
 	// href won't change as dom is not connected to document
-	equal(dom.href, 'http://example.com/')
+	equal(dom.href, 'https://github.com/ctx-core/rmemo/')
 })
 test('tags|onclick|rw_rmemo|connected', with_connected_dom(async connected_dom=>{
 	const dom = div()
@@ -124,11 +124,11 @@ test('tags|onclick|rw_rmemo|connected', with_connected_dom(async connected_dom=>
 	attach(dom, button({ onclick }))
 	dom.querySelector('button')!.click()
 	equal(dom.outerHTML, '<div><button></button><p>Button clicked!</p></div>')
-	onclick(()=>attach(dom, div('Button clicked!')))
+	onclick._ = ()=>attach(dom, div('Button clicked!'))
 	await sleep(waitMsOnDomUpdates)
 	dom.querySelector('button')!.click()
 	equal(dom.outerHTML, '<div><button></button><p>Button clicked!</p><div>Button clicked!</div></div>')
-	onclick(null)
+	onclick._ = null
 	await sleep(waitMsOnDomUpdates)
 	dom.querySelector('button')!.click()
 	equal(dom.outerHTML, '<div><button></button><p>Button clicked!</p><div>Button clicked!</div></div>')
@@ -139,7 +139,7 @@ test('tags|onclick|rw_rmemo|disconnected', async ()=>{
 	attach(dom, button({ onclick: handler }))
 	dom.querySelector('button')!.click()
 	equal(dom.outerHTML, '<div><button></button><p>Button clicked!</p></div>')
-	handler(()=>attach(dom, div('Button clicked!')))
+	handler._ = ()=>attach(dom, div('Button clicked!'))
 	await sleep(waitMsOnDomUpdates)
 	dom.querySelector('button')!.click()
 	equal(dom.outerHTML, '<div><button></button><p>Button clicked!</p><div>Button clicked!</div></div>')
@@ -150,8 +150,8 @@ test('tags|prop|fn|rmemo deps|connected', with_connected_dom(async connected_dom
 	const dom = a({ href: ()=>`https://${host()}${path()}` }, 'Test Link')
 	attach(connected_dom, dom)
 	equal(dom.href, 'https://example.com/hello')
-	host('github.com/ctx-core/rmemo')
-	path('/start')
+	host._ = 'github.com/ctx-core/rmemo'
+	path._ = '/start'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.href, 'https://github.com/ctx-core/rmemo/start')
 }))
@@ -160,8 +160,8 @@ test('tags|prop|fn|rmemo deps|disconnected', async ()=>{
 	const path = sig_('/hello')
 	const dom = a({ href: ()=>`https://${host()}${path()}` }, 'Test Link')
 	equal(dom.href, 'https://example.com/hello')
-	host('github.com/ctx-core/rmemo')
-	path('/start')
+	host._ = 'github.com/ctx-core/rmemo'
+	path._ = '/start'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.href, 'https://github.com/ctx-core/rmemo/start')
 })
@@ -171,7 +171,7 @@ test('tags|prop|fn|non-rmemo deps|connected', with_connected_dom(async connected
 	const dom = a({ href: ()=>`https://${_(host)}${_(path)}` }, 'Test Link')
 	attach(connected_dom, dom)
 	equal(dom.href, 'https://example.com/hello')
-	host('github.com/ctx-core/rmemo')
+	host._ = 'github.com/ctx-core/rmemo'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.href, 'https://github.com/ctx-core/rmemo/hello')
 }))
@@ -181,7 +181,7 @@ test('tags|prop|fn|non-rmemo deps|disconnected', with_connected_dom(async connec
 	const dom = a({ href: ()=>`https://${_(host)}${_(path)}` }, 'Test Link')
 	attach(connected_dom, dom)
 	equal(dom.href, 'https://example.com/hello')
-	host('github.com/ctx-core/rmemo')
+	host._ = 'github.com/ctx-core/rmemo'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.href, 'https://github.com/ctx-core/rmemo/hello')
 }))
@@ -212,7 +212,7 @@ test('tags|prop|fn|rmemo deps|error|connected', with_connected_dom(async root_do
 	attach(root_dom, dom)
 	equal(dom.outerHTML,
 		'<div><div class="hello" data-name="hello">hello</div><div class="hello" data-name="hello">hello</div></div>')
-	text('fail')
+	text._ = 'fail'
 	await sleep(waitMsOnDomUpdates)
 	// The binding function for `class` property throws an error.
 	// We want to validate the `class` property won't be updated because of the error,
@@ -246,7 +246,7 @@ test('tags|prop|fn|rmemo deps|error|disconnected', async ()=>{
 	)
 	equal(dom.outerHTML,
 		'<div><div class="hello" data-name="hello">hello</div><div class="hello" data-name="hello">hello</div></div>')
-	text('fail')
+	text._ = 'fail'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML,
 		'<div><div class="hello" data-name="fail">fail</div><div class="hello" data-name="fail">fail</div></div>')
@@ -261,11 +261,11 @@ test('tags|onclick|rmemo deps|connected', with_connected_dom(async connected_dom
 	}))
 	connected_dom.querySelector('button')!.click()
 	equal(connected_dom.innerHTML, '<button></button><p>Button clicked!</p>')
-	elementName('div')
+	elementName._ = 'div'
 	await sleep(waitMsOnDomUpdates)
 	connected_dom.querySelector('button')!.click()
 	equal(connected_dom.innerHTML, '<button></button><p>Button clicked!</p><div>Button clicked!</div>')
-	elementName('')
+	elementName._ = ''
 	await sleep(waitMsOnDomUpdates)
 	connected_dom.querySelector('button')!.click()
 	equal(connected_dom.innerHTML, '<button></button><p>Button clicked!</p><div>Button clicked!</div>')
@@ -281,11 +281,11 @@ test('tags|onclick|rmemo deps|disconnected', async ()=>{
 	}))
 	dom.querySelector('button')!.click()
 	equal(dom.innerHTML, '<button></button><p>Button clicked!</p>')
-	elementName('div')
+	elementName._ = 'div'
 	await sleep(waitMsOnDomUpdates)
 	dom.querySelector('button')!.click()
 	equal(dom.innerHTML, '<button></button><p>Button clicked!</p><div>Button clicked!</div>')
-	elementName('')
+	elementName._ = ''
 	await sleep(waitMsOnDomUpdates)
 	dom.querySelector('button')!.click()
 	equal(dom.innerHTML, '<button></button><p>Button clicked!</p><div>Button clicked!</div>')
@@ -301,7 +301,7 @@ test('tags|attributes|data-|connected', with_connected_dom(async connected_dom=>
 	)
 	attach(connected_dom, dom)
 	equal(dom.outerHTML, '<div data-type="line" data-id="1" data-line="line=1">This is a test line</div>')
-	lineNum(3)
+	lineNum._ = 3
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div data-type="line" data-id="3" data-line="line=3">This is a test line</div>')
 }))
@@ -315,7 +315,7 @@ test('tags|attributes|data-|disconnected', async ()=>{
 	'This is a test line',
 	)
 	equal(dom.outerHTML, '<div data-type="line" data-id="1" data-line="line=1">This is a test line</div>')
-	lineNum(3)
+	lineNum._ = 3
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div data-type="line" data-id="3" data-line="line=3">This is a test line</div>')
 })
@@ -324,7 +324,7 @@ test('tags|props|read-only|connected', with_connected_dom(async connected_dom=>{
 	const dom = button({ form }, 'Button')
 	attach(connected_dom, dom)
 	equal(dom.outerHTML, '<button form="form1">Button</button>')
-	form('form2')
+	form._ = 'form2'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<button form="form2">Button</button>')
 	equal(input({ list: 'datalist1' }).outerHTML, '<input list="datalist1">')
@@ -333,7 +333,7 @@ test('tags|props|read-only|disconnected', async ()=>{
 	const form = sig_('form1')
 	const dom = button({ form }, 'Button')
 	equal(dom.outerHTML, '<button form="form1">Button</button>')
-	form('form2')
+	form._ = 'form2'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<button form="form2">Button</button>')
 	equal(input({ list: 'datalist1' }).outerHTML, '<input list="datalist1">')
@@ -347,14 +347,14 @@ test('tags|children|first argument|rmemo|connected', with_connected_dom(async co
 	)
 	attach(connected_dom, dom)
 	equal(dom.outerHTML, '<div><pre>Line 1</pre><pre>Line 2</pre><pre>Line 3</pre></div>')
-	line2('Line 2: Extra Stuff')
+	line2._ = 'Line 2: Extra Stuff'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><pre>Line 1</pre><pre>Line 2: Extra Stuff</pre><pre>Line 3</pre></div>')
 	// null to remove text DOM
-	line2(null)
+	line2._ = null
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><pre>Line 1</pre><pre></pre><pre>Line 3</pre></div>')
-	line2('Line 2')
+	line2._ = 'Line 2'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><pre>Line 1</pre><pre>Line 2</pre><pre>Line 3</pre></div>')
 }))
@@ -366,14 +366,14 @@ test('tags|children|first argument|rmemo|disconnected', async ()=>{
 		pre('Line 3')
 	)
 	equal(dom.outerHTML, '<div><pre>Line 1</pre><pre>Line 2</pre><pre>Line 3</pre></div>')
-	line2('Line 2: Extra Stuff')
+	line2._ = 'Line 2: Extra Stuff'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><pre>Line 1</pre><pre>Line 2: Extra Stuff</pre><pre>Line 3</pre></div>')
 	// null to remove text DOM
-	line2(null)
+	line2._ = null
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><pre>Line 1</pre><pre></pre><pre>Line 3</pre></div>')
-	line2('Line 2')
+	line2._ = 'Line 2'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><pre>Line 1</pre><pre>Line 2</pre><pre>Line 3</pre></div>')
 })
@@ -382,10 +382,10 @@ test('tags|children|rmemo|empty string|connected', with_connected_dom(async conn
 	const dom = p(text)
 	attach(connected_dom, dom)
 	equal(dom.outerHTML, '<p>Text</p>')
-	text('')
+	text._ = ''
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<p></p>')
-	text('Text')
+	text._ = 'Text'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<p>Text</p>')
 }))
@@ -458,15 +458,15 @@ test('attach|rmemo|connected', with_connected_dom(async connected_dom=>{
 		pre('Line 3')
 	), connected_dom)
 	equal(connected_dom.outerHTML, '<div class="hidden"><pre>Line 1</pre><pre>Line 2</pre><pre>Line 3</pre></div>')
-	line2('Line 2: Extra Stuff')
+	line2._ = 'Line 2: Extra Stuff'
 	await sleep(waitMsOnDomUpdates)
 	equal(connected_dom.outerHTML,
 		'<div class="hidden"><pre>Line 1</pre><pre>Line 2: Extra Stuff</pre><pre>Line 3</pre></div>')
 	// null to remove text DOM
-	line2(null)
+	line2._ = null
 	await sleep(waitMsOnDomUpdates)
 	equal(connected_dom.outerHTML, '<div class="hidden"><pre>Line 1</pre><pre></pre><pre>Line 3</pre></div>')
-	line2('Line 2')
+	line2._ = 'Line 2'
 	await sleep(waitMsOnDomUpdates)
 	equal(connected_dom.outerHTML, '<div class="hidden"><pre>Line 1</pre><pre>Line 2</pre><pre>Line 3</pre></div>')
 }))
@@ -479,25 +479,25 @@ test('attach|rmemo|disconnected', async ()=>{
 		pre('Line 3')
 	), dom)
 	equal(dom.outerHTML, '<div><pre>Line 1</pre><pre>Line 2</pre><pre>Line 3</pre></div>')
-	line2('Line 2: Extra Stuff')
+	line2._ = 'Line 2: Extra Stuff'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML,
 		'<div><pre>Line 1</pre><pre>Line 2: Extra Stuff</pre><pre>Line 3</pre></div>')
 	// null to remove text DOM
-	line2(null)
+	line2._ = null
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><pre>Line 1</pre><pre></pre><pre>Line 3</pre></div>')
-	line2('Line 2')
+	line2._ = 'Line 2'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><pre>Line 1</pre><pre>Line 2</pre><pre>Line 3</pre></div>')
 })
 test('attach|rmemo', with_connected_dom(async connected_dom=>{
 	const s = sig_('State Version 1')
 	equal(s(), 'State Version 1')
-	s('State Version 2')
+	s._ = 'State Version 2'
 	equal(s(), 'State Version 2')
 	attach(connected_dom, s)
-	s('State Version 3')
+	s._ = 'State Version 3'
 	equal(s(), 'State Version 3')
 	await sleep(waitMsOnDomUpdates)
 	equal(s(), 'State Version 3')
@@ -518,16 +518,16 @@ test('attach|fn|child|dynamic dom', with_connected_dom(async connected_dom=>{
 	equal(attach(connected_dom, dom_), connected_dom)
 	const dom = <Element>connected_dom.firstChild
 	equal(dom.outerHTML, '<div><button>Button 1</button><button>Button 2</button><button>Button 3</button></div>')
-	button2Text('Button 2: Extra')
+	button2Text._ = 'Button 2: Extra'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><button>Button 1</button><button>Button 2: Extra</button><button>Button 3</button></div>')
-	verticalPlacement(true)
+	verticalPlacement._ = true
 	await sleep(waitMsOnDomUpdates)
 	// dom is disconnected from the document thus it won't be updated
 	equal(dom.outerHTML, '<div><button>Button 1</button><button>Button 2: Extra</button><button>Button 3</button></div>')
 	equal((<Element>connected_dom.firstChild).outerHTML,
 		'<div><div><button>Button 1</button></div><div><button>Button 2: Extra</button></div><div><button>Button 3</button></div></div>')
-	button2Text('Button 2: Extra Extra')
+	button2Text._ = 'Button 2: Extra Extra'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML,
 		'<div><button>Button 1</button><button>Button 2: Extra Extra</button><button>Button 3</button></div>')
@@ -547,49 +547,49 @@ test('attach|fn|child|fn|conditional', with_connected_dom(async connected_dom=>{
 	equal(attach(connected_dom, domFunc), connected_dom)
 	equal((<Element>connected_dom.firstChild).outerHTML, '<div><button>Button 1</button><button>Button 2</button></div>')
 	equal(numFuncCalled, 1)
-	button1('Button 1-1')
+	button1._ = 'Button 1-1'
 	await sleep(waitMsOnDomUpdates)
 	equal((<Element>connected_dom.firstChild).outerHTML,
 		'<div><button>Button 1-1</button><button>Button 2</button></div>')
 	equal(numFuncCalled, 2)
-	button2('Button 2-1')
+	button2._ = 'Button 2-1'
 	await sleep(waitMsOnDomUpdates)
 	equal((<Element>connected_dom.firstChild).outerHTML,
 		'<div><button>Button 1-1</button><button>Button 2-1</button></div>')
 	equal(numFuncCalled, 3)
 	// Changing button3 or button4 won't triggered the effect as they're not its current dependencies
-	button3('Button 3-1')
+	button3._ = 'Button 3-1'
 	await sleep(waitMsOnDomUpdates)
 	equal((<Element>connected_dom.firstChild).outerHTML,
 		'<div><button>Button 1-1</button><button>Button 2-1</button></div>')
 	equal(numFuncCalled, 3)
-	button4('Button 4-1')
+	button4._ = 'Button 4-1'
 	await sleep(waitMsOnDomUpdates)
 	equal((<Element>connected_dom.firstChild).outerHTML,
 		'<div><button>Button 1-1</button><button>Button 2-1</button></div>')
 	equal(numFuncCalled, 3)
-	cond(false)
+	cond._ = false
 	await sleep(waitMsOnDomUpdates)
 	equal((<Element>connected_dom.firstChild).outerHTML,
 		'<div><button>Button 3-1</button><button>Button 4-1</button></div>')
 	equal(numFuncCalled, 4)
-	button3('Button 3-2')
+	button3._ = 'Button 3-2'
 	await sleep(waitMsOnDomUpdates)
 	equal((<Element>connected_dom.firstChild).outerHTML,
 		'<div><button>Button 3-2</button><button>Button 4-1</button></div>')
 	equal(numFuncCalled, 5)
-	button4('Button 4-2')
+	button4._ = 'Button 4-2'
 	await sleep(waitMsOnDomUpdates)
 	equal((<Element>connected_dom.firstChild).outerHTML,
 		'<div><button>Button 3-2</button><button>Button 4-2</button></div>')
 	equal(numFuncCalled, 6)
 	// Changing button1 or button2 won't triggered the effect as they're not its current dependencies
-	button1('Button 1-2')
+	button1._ = 'Button 1-2'
 	await sleep(waitMsOnDomUpdates)
 	equal((<Element>connected_dom.firstChild).outerHTML,
 		'<div><button>Button 3-2</button><button>Button 4-2</button></div>')
 	equal(numFuncCalled, 6)
-	button1('Button 2-2')
+	button1._ = 'Button 2-2'
 	await sleep(waitMsOnDomUpdates)
 	equal((<Element>connected_dom.firstChild).outerHTML,
 		'<div><button>Button 3-2</button><button>Button 4-2</button></div>')
@@ -624,18 +624,18 @@ test('derive|child|state|dynamic', with_connected_dom(async connected_dom=>{
 		return dom
 	}
 	attach(connected_dom, domFunc)
-	numItems$(3)
+	numItems$._ = 3
 	await sleep(waitMsOnDomUpdates)
 	equal((<Element>connected_dom.firstChild).outerHTML,
 		'<ul><li class="selected">Item 1</li><li class="">Item 2</li><li class="">Item 3</li></ul>')
 	const rootDom1stIteration = <Element>connected_dom.firstChild
-	selectedIndex$(1)
+	selectedIndex$._ = 1
 	await sleep(waitMsOnDomUpdates)
 	equal((<Element>connected_dom.firstChild).outerHTML,
 		'<ul><li class="">Item 1</li><li class="selected">Item 2</li><li class="">Item 3</li></ul>')
 	// Items aren't changed, thus we don't need to regenerate the dom
 	equal(connected_dom.firstChild!, rootDom1stIteration)
-	numItems$(5)
+	numItems$._ = 5
 	await sleep(waitMsOnDomUpdates)
 	// Items are changed, thus the dom for the list is regenerated
 	equal((<Element>connected_dom.firstChild).outerHTML,
@@ -645,7 +645,7 @@ test('derive|child|state|dynamic', with_connected_dom(async connected_dom=>{
 	equal(rootDom1stIteration.outerHTML,
 		'<ul><li class="">Item 1</li><li class="selected">Item 2</li><li class="">Item 3</li></ul>')
 	const rootDom2ndIteration = connected_dom.firstChild!
-	selectedIndex$(2)
+	selectedIndex$._ = 2
 	await sleep(waitMsOnDomUpdates)
 	equal((<Element>connected_dom.firstChild).outerHTML,
 		'<ul><li class="">Item 1</li><li class="">Item 2</li><li class="selected">Item 3</li><li class="">Item 4</li><li class="">Item 5</li></ul>')
@@ -674,19 +674,19 @@ test('tags|child|dom|null|removes child', with_connected_dom(async connected_dom
 	//last <p></p> is line 5
 	equal(dom.outerHTML, '<div><p>Line 1</p><p>Line 2</p><p>Line 3</p><p></p></div>')
 	// Delete Line 2
-	line2('')
+	line2._ = ''
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><p>Line 1</p><p>Line 3</p><p></p></div>')
 	// Bring back Line 2
-	line2('Line 2')
+	line2._ = 'Line 2'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><p>Line 1</p><p>Line 2</p><p>Line 3</p><p></p></div>')
 	// Delete Line 3
-	line3(null)
+	line3._ = null
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><p>Line 1</p><p>Line 2</p><p></p><p></p></div>')
 	// Deleted dom won't be brought back, even the underlying state is changed back
-	line3('Line 3')
+	line3._ = 'Line 3'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><p>Line 1</p><p>Line 2</p><p>Line 3</p><p></p></div>')
 }))
@@ -708,19 +708,19 @@ test('tags|child|dom|undefined|removes child', with_connected_dom(async connecte
 	attach(connected_dom, dom)
 	equal(dom.outerHTML, '<div><p>Line 1</p><p>Line 2</p><p>Line 3</p><p></p></div>')
 	// Delete Line 2
-	line2('')
+	line2._ = ''
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><p>Line 1</p><p>Line 3</p><p></p></div>')
 	// Deleted dom won't be brought back, even the underlying state is changed back
-	line2('Line 2')
+	line2._ = 'Line 2'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><p>Line 1</p><p>Line 2</p><p>Line 3</p><p></p></div>')
 	// Delete Line 3
-	line3(undefined)
+	line3._ = undefined
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><p>Line 1</p><p>Line 2</p><p></p><p></p></div>')
 	// Deleted dom won't be brought back, even the underlying state is changed back
-	line3('Line 3')
+	line3._ = 'Line 3'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div><p>Line 1</p><p>Line 2</p><p>Line 3</p><p></p></div>')
 }))
@@ -730,8 +730,8 @@ test('tags|child|dom|0|keeps child', with_connected_dom(async connected_dom=>{
 	const dom = div(state1, ()=>1 - state1(), state2, ()=>1 - state2())
 	attach(connected_dom, dom)
 	equal(dom.outerHTML, '<div>0110</div>')
-	state1(1)
-	state2(0)
+	state1._ = 1
+	state2._ = 0
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div>1001</div>')
 }))
@@ -742,16 +742,16 @@ test('tags|child|primitive|dynamic', with_connected_dom(async connected_dom=>{
 	const dom = div(()=>deleted() ? null : a() + b())
 	equal(dom.outerHTML, '<div>3</div>')
 	attach(connected_dom, dom)
-	a(6)
+	a._ = 6
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div>8</div>')
-	b(5)
+	b._ = 5
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div>11</div>')
-	deleted(true)
+	deleted._ = true
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div></div>')
-	deleted(false)
+	deleted._ = false
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.outerHTML, '<div>11</div>')
 }))
@@ -765,7 +765,7 @@ test('tags|child|non-state deps', with_connected_dom(async connected_dom=>{
 	const dom = <Element>connected_dom.firstChild
 	equal(dom.textContent!, '👋Hello 🗺️World')
 	equal(connected_dom.innerHTML, '👋Hello 🗺️World')
-	part2('🍦ctx-core')
+	part2._ = '🍦ctx-core'
 	await sleep(waitMsOnDomUpdates)
 	// dom is disconnected from the document thus it won't be updated
 	equal(dom.textContent!, '👋Hello 🗺️World')
@@ -782,7 +782,7 @@ test('tags|child|error', with_connected_dom(async connected_dom=>{
 		num
 	), connected_dom)
 	equal(connected_dom.innerHTML, '0<span>ok</span>0')
-	num(1)
+	num._ = 1
 	await sleep(waitMsOnDomUpdates)
 	// The binding function 2nd child of connected_dom throws an error.
 	// We want to validate the 2nd child won't be updated because of the error,
@@ -791,7 +791,7 @@ test('tags|child|error', with_connected_dom(async connected_dom=>{
 }))
 test('hydrate|normal', with_connected_dom(async connected_dom=>{
 	const Counter = (init:number)=>{
-		const counter = psig_(init)
+		const counter = sig_(init)
 		return button({ 'data-counter': counter, onclick: ()=>++counter._ },
 			()=>`Count: ${counter()}`,
 		)
@@ -820,7 +820,7 @@ test('hydrate|null|remove dom', with_connected_dom(async connected_dom=>{
 	hydrate(<HTMLElement>connected_dom.querySelector('div'),
 		()=>s() === 1 ? pre() : null)
 	equal(connected_dom.innerHTML, '<pre></pre>')
-	s(2)
+	s._ = 2
 	await sleep(waitMsOnDomUpdates)
 	equal(connected_dom.innerHTML, '')
 }))
@@ -834,7 +834,7 @@ test('hydrate|undefined|remove dom', with_connected_dom(async connected_dom=>{
 	const s = sig_(1)
 	hydrate(<HTMLElement>connected_dom.querySelector('div'), ()=>s() === 1 ? pre() : undefined)
 	equal(connected_dom.innerHTML, '<pre></pre>')
-	s(2)
+	s._ = 2
 	await sleep(waitMsOnDomUpdates)
 	equal(connected_dom.innerHTML, '')
 }))
@@ -845,12 +845,12 @@ test('hydrate|0|keep dom', with_connected_dom(async connected_dom=>{
 	hydrate(dom1, ()=>s())
 	hydrate(dom2, ()=>1 - s())
 	equal(connected_dom.innerHTML, '01')
-	s(1)
+	s._ = 1
 	await sleep(waitMsOnDomUpdates)
 	equal(connected_dom.innerHTML, '10')
 }))
 test('gc|binding|basic', with_connected_dom(async connected_dom=>{
-	const counter = psig_(0)
+	const counter = sig_(0)
 	attach(connected_dom, ()=>span(`Counter: ${counter()}`))
 	for (let i = 0; i < 100; ++i) ++counter._
 	await sleep(waitMsOnDomUpdates)
@@ -868,7 +868,7 @@ skip_long_test('gc|binding|nested|long', with_connected_dom(async connected_dom=
 	const dom = div(()=>(renderPre() ? pre : div)(()=>`--${text()}--`))
 	attach(connected_dom, dom)
 	for (let i = 0; i < 20; ++i) {
-		renderPre(!renderPre())
+		renderPre._ = !renderPre()
 		await sleep(waitMsOnDomUpdates)
 	}
 	// Wait until GC kicks in
@@ -882,17 +882,17 @@ skip_long_test('gc|binding|nested|long', with_connected_dom(async connected_dom=
 }))
 skip_long_test('gc|binding|conditional|long', with_connected_dom(async connected_dom=>{
 	const cond = sig_(true)
-	const a = psig_(0)
-	const b = psig_(0)
-	const c = psig_(0)
-	const d = psig_(0)
+	const a = sig_(0)
+	const b = sig_(0)
+	const c = sig_(0)
+	const d = sig_(0)
 	const dom = div(()=>cond() ? a() + b() : c() + d())
 	attach(connected_dom, dom)
 	const allStates = [cond, a, b, c, d]
 	for (let i = 0; i < 100; ++i) {
 		const randomState = allStates[Math.floor(Math.random() * allStates.length)]
-		if (randomState === cond) randomState(!randomState())
-		else ++(<psig_T<number>>randomState)._
+		if (randomState === cond) randomState._ = !randomState()
+		else ++(<sig_T<number>>randomState)._
 		await sleep(waitMsOnDomUpdates)
 	}
 	for (const s of allStates) {
@@ -916,7 +916,7 @@ skip_long_test('gc|binding|conditional|long', with_connected_dom(async connected
 }))
 test('gc|memo_|basic', ()=>{
 	const history:unknown[] = []
-	const a:psig_T<number> = psig_(0, ()=>history.push(a()))
+	const a:sig_T<number> = sig_(0, ()=>history.push(a()))
 	for (let i = 0; i < 100; ++i) a._++
 	equal(history.length, 101)
 	let count = 0
@@ -935,7 +935,7 @@ skip_long_test('gc|binding|derive inside|long', with_connected_dom(async connect
 	})
 	attach(connected_dom, dom)
 	for (let i = 0; i < 20; ++i) {
-		renderPre(!renderPre())
+		renderPre._ = !renderPre()
 		await sleep(waitMsOnDomUpdates)
 	}
 	// Wait until GC kicks in
@@ -957,8 +957,8 @@ skip_long_test('gc|derived|conditional|long', async ()=>{
 	const allStates = [cond, a, b, c, d]
 	for (let i = 0; i < 100; ++i) {
 		const randomState = allStates[Math.floor(Math.random() * allStates.length)]
-		if (randomState === cond) randomState(!randomState())
-		else (<sig_T<number>>randomState)((<sig_T<number>>randomState)()+1)
+		if (randomState === cond) randomState._ = !randomState()
+		else (<sig_T<number>>randomState)._ += 1
 	}
 	for (const s of allStates) {
 		let count = 0

@@ -6,13 +6,13 @@ export * from 'ctx-core/rmemo'
 let _undefined
 let prop_setter_cache = {}
 let obj__proto = Object.getPrototypeOf(prop_setter_cache)
-function dom__run(f, _dom) {
+function dom__run(f, dom) {
 	let val
 	try {
-		val = f(_dom)
+		val = f(dom)
 	} catch (e) {
 		console.error(e)
-		return _dom
+		return dom
 	}
 	return val?.nodeType ? val : new Text(val ?? '')
 }
@@ -20,25 +20,18 @@ export let _ = s=>s?.rmr ? s() : s
 export function attach(dom, ...children) {
 	for (let child_val of children.flat(Infinity)) {
 		let child
-		let child_val_ =
-			child_val?.rmr
-				? ()=>child_val()
-				: typeof child_val === 'function'
-					? child_val
-					: 0
-		let child_val_rmemo =
-			child_val_
-				? memo_(child_val_rmemo=>{
-					let _child = dom__run(child_val_, child)
-					if (child) child.replaceWith(_child)
-					child = _child
-					return child_val_rmemo
-				})()
-				: 0
-		if (!child_val_rmemo) {
+		let child_val_memo =
+			typeof child_val === 'function'
+			&& memo_(child_val_memo=>{
+				let _child = dom__run(child_val, child)
+				if (child) child.replaceWith(_child)
+				child = _child
+				return child_val_memo
+			})()
+		if (!child_val_memo) {
 			child = child_val
 		} else if (child) {
-			(child._m ||= []).push(child_val_rmemo)
+			(child._m ||= []).push(child_val_memo)
 		}
 		if (child != _undefined) {
 			dom.append(child)
@@ -74,19 +67,13 @@ export let tagsNS = ns=>new Proxy((name, ...args)=>{
 			prop_setter
 				? prop_setter.bind(dom) // prop setter
 				: dom.setAttribute.bind(dom, k) // attribute setter
-		let v_ =
-			v?.rmr
-				? ()=>v()
-				: typeof v === 'function' && (!k.startsWith('on') || v.b)
-					? v
-					: 0
-		let setter_rmemo =
-			v_
-				? memo_(()=>dom__run(()=>param__setter(v_(dom), dom)))
-				: 0
-		if (v_) {
-			(dom._m ||= []).push(setter_rmemo)
-			setter_rmemo()
+		let setter_memo =
+			typeof v === 'function'
+			&& (v.rmr || !k.startsWith('on') || v.b)
+			&& memo_(()=>dom__run(()=>param__setter(v(dom))))
+		if (setter_memo) {
+			(dom._m ||= []).push(setter_memo)
+			setter_memo()
 		} else {
 			param__setter(v)
 		}
@@ -95,14 +82,14 @@ export let tagsNS = ns=>new Proxy((name, ...args)=>{
 }, { get: (tag, name)=>tag.bind(_undefined, name) })
 export let tags = tagsNS()
 export function hydrate(dom, f) {
-	memo_(rmemo=>{
+	memo_(memo=>{
 		let _dom = dom__run(f, dom)
 		if (!_dom) {
 			dom.remove()
 		} else if (dom !== _dom) {
 			dom.replaceWith(_dom)
 			dom = _dom
-			;(dom._m ||= []).push(rmemo)
+			;(dom._m ||= []).push(memo)
 		}
 	})()
 }

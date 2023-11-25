@@ -9,18 +9,18 @@ reljs includes rmemo as a reactive core & ctx-core for contexts...
 
 | use case                                                     |   size    | imports                                                            |
 |--------------------------------------------------------------|:---------:|--------------------------------------------------------------------|
-| isomorphic browser                                           |  985 B   | rel__use browser__rel                                              |
+| isomorphic browser                                           |  968 B   | rel__use browser__rel                                              |
 | isomorphic server                                            |   765 B   | rel__use server__rel                                               |
-| browser-only minimal                                         |   746 B   | tags                                                               |
-| browser-only hydrate + helpers                               |   813 B   | tags hydrate _ bind_                                               |
-| **browser-only hydrate + helpers + rmemo**                   | **839 B** | **tags hydrate _ bind_ memo_ sig_**                                |
-| browser-only hydrate + helpers + rmemo + ctx                 |  990 B   | tags hydrate use _ bind_ memo_ sig_ be_ ctx_                       |
-| isomorphic browser helpers + hydrate + helpers + rmemo + ctx |  1163 B   | rel__use browser__rel tags hydrate use _ bind_ memo_ sig_ be_ ctx_ |
+| browser-only minimal                                         |   723 B   | tags                                                               |
+| browser-only hydrate + helpers                               |   788 B   | tags hydrate _ bind_                                               |
+| **browser-only hydrate + helpers + rmemo**                   | **818 B** | **tags hydrate _ bind_ memo_ sig_**                                |
+| browser-only hydrate + helpers + rmemo + ctx                 |  965 B   | tags hydrate use _ bind_ memo_ sig_ be_ ctx_                       |
+| isomorphic browser helpers + hydrate + helpers + rmemo + ctx |  1146 B   | rel__use browser__rel tags hydrate use _ bind_ memo_ sig_ be_ ctx_ |
 | server-only minimal                                          |   511 B   | tags                                                               |
 | **server-only render doc + helpers**                         | **562 B** | **tags doc_html_ tagsNS _ bind_**                                  |
-| server-only render doc + helpers + rmemo                     |   897 B   | tags doc_html_ tagsNS _ bind_ memo_ sig_                           |
-| server-only render doc + helpers + rmemo + ctx               |  1052 B   | tags doc_html_ tagsNS _ bind_ memo_ sig_ be_ ctx_                  |
-| isomorphic server helpers + hydrate + helpers + rmemo + ctx  |  1249 B   | rel__use server__rel tags hydrate use _ bind_ memo_ sig_ be_ ctx_  |
+| server-only render doc + helpers + rmemo                     |   898 B   | tags doc_html_ tagsNS _ bind_ memo_ sig_                           |
+| server-only render doc + helpers + rmemo + ctx               |  1056 B   | tags doc_html_ tagsNS _ bind_ memo_ sig_ be_ ctx_                  |
+| isomorphic server helpers + hydrate + helpers + rmemo + ctx  |  1259 B   | rel__use server__rel tags hydrate use _ bind_ memo_ sig_ be_ ctx_  |
 | isomorphic html tag                                          |   34 B    | html_                                                              |
 | isomorphic math tag                                          |   34 B    | math_                                                              |
 | isomorphic svg tag                                           |   33 B    | svg_                                                               |
