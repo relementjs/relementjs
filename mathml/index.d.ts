@@ -1,4 +1,4 @@
-import { render__env_T, tag_T } from '../render/index.js'
+import { render__env_T, tag_T } from '../isomorphic/index.js'
 type arg_a_T<env_T extends render__env_T, tag_name_T> = Parameters<tag_T<env_T, MathMLElementTagNameMap[tag_name_T]>>
 type ret_T<env_T extends render__env_T, tag_name_T> = ReturnType<tag_T<env_T, MathMLElementTagNameMap[tag_name_T]>>
 export declare function annotation_<env_T extends render__env_T>(...arg_a:arg_a_T<env_T, 'annotation'>):ret_T<env_T, 'annotation'>

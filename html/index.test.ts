@@ -1,11 +1,10 @@
-import { browser__render_api } from '@rrenjs/browser'
-import { server__render_api } from '@rrenjs/server'
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
-import { render_api__use } from '../render/index.js'
-import { a_ } from '../svg/index.js'
-import { body_, div_, head_, html_ } from './index.js'
+import { browser__rel } from '../browser/index.js'
+import { rel__use } from '../isomorphic/index.js'
+import { server__rel } from '../server/index.js'
+import { a_, body_, div_, head_, html_ } from './index.js'
 let jsdom:JSDOM, prev__window:Window, prev__document:Document, prev__Text:typeof Text, prev__Node:typeof Node
 test.before(()=>{
 	prev__window = globalThis.window
@@ -19,18 +18,18 @@ test.after(()=>{
 	globalThis.document = prev__document
 	globalThis.Text = prev__Text
 	globalThis.Node = prev__Node
-	render_api__use(undefined)
+	rel__use(undefined)
 })
 test('server|html_ head_ body_ div_ a_', ()=>{
-	render_api__use(server__render_api)
+	rel__use(server__rel)
 	equal(
 		html_<'server'>(
 			head_(),
 			body_(
 				div_({ id: 'div-id' },
-					a_({ href: 'https://github.com/rrenjs/all' }, 'rrenjs'))
+					a_({ href: 'https://github.com/reljs/all' }, 'reljs'))
 			)).render(),
-		`<html><head></head><body><div id="div-id"><a href="https://github.com/rrenjs/all">rrenjs</a></div></body></html>`
+		`<html><head></head><body><div id="div-id"><a href="https://github.com/reljs/all">reljs</a></div></body></html>`
 	)
 })
 test('browser|html_ head_ body_ div_ a_', ()=>{
@@ -40,15 +39,15 @@ test('browser|html_ head_ body_ div_ a_', ()=>{
 	globalThis.document = jsdom.window.document
 	globalThis.Text = jsdom.window.Text
 	globalThis.Node = jsdom.window.Node
-	render_api__use(browser__render_api)
+	rel__use(browser__rel)
 	equal(
 		html_<'browser'>(
 			head_(),
 			body_(
 				div_({ id: 'div-id' },
-					a_({ href: 'https://github.com/rrenjs/all' }, 'rrenjs'))
+					a_({ href: 'https://github.com/reljs/all' }, 'reljs'))
 			)).outerHTML,
-		`<html><head></head><body><div id="div-id"><a href="https://github.com/rrenjs/all">rrenjs</a></div></body></html>`
+		`<html><head></head><body><div id="div-id"><a href="https://github.com/reljs/all">reljs</a></div></body></html>`
 	)
 })
 test.run()

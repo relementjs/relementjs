@@ -1,7 +1,9 @@
-/** @typedef {import('@rrenjs/browser').browser__render_api_T} */
-/** @typedef {import('@rrenjs/server').server__render_api_T} */
+export * from 'ctx-core/be'
+export * from 'ctx-core/rmemo'
+/** @typedef {import('../browser/index.js').browser__render_api_T} */
+/** @typedef {import('../server/index.js').server__render_api_T} */
 /** @type {browser__render_api_T|server__render_api_T} */
-export function render_api__use(render_api) {
+export function rel__use(render_api) {
 	_ = render_api?._
 	attach = render_api?.attach
 	bind_ = render_api?.bind_

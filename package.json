@@ -1,5 +1,5 @@
 {
-	"name": "rrenjs",
+	"name": "reljs",
 	"version": "0.2.0",
 	"description": "ui library targeting all environments",
 	"keywords": [
@@ -8,13 +8,13 @@
 		"browser",
 		"server"
 	],
-	"homepage": "https://github.com/rrenjs/any#readme",
+	"homepage": "https://github.com/reljs/any#readme",
 	"bugs": {
-		"url": "https://github.com/rrenjs/any/issues"
+		"url": "https://github.com/reljs/any/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/rrenjs/any.git"
+		"url": "https://github.com/reljs/any.git"
 	},
 	"license": "Apache-2.0",
 	"author": "Brian Takita",
@@ -23,17 +23,21 @@
 		"*.d.ts",
 		"*.js",
 		"*.json",
+		"./browser",
 		"./html",
+		"./isomorphic",
 		"./mathml",
-		"./render",
+		"./server",
 		"./svg"
 	],
 	"types": "./index.d.ts",
 	"exports": {
 		".": "./index.js",
+		"./browser": "./browser/index.js",
 		"./html": "./html/index.js",
+		"./isomorphic": "./isomorphic/index.js",
 		"./mathml": "./mathml/index.js",
-		"./render": "./render/index.js",
+		"./server": "./server/index.js",
 		"./svg": "./svg/index.js",
 		"./package.json": "./package.json"
 	},
@@ -50,9 +54,6 @@
 		"disable:test:coverage": "c8 pnpm test-unit"
 	},
 	"dependencies": {
-		"@rrenjs/any": "^0.2.0",
-		"@rrenjs/browser": "^0.2.0",
-		"@rrenjs/server": "^0.3.0",
 		"ctx-core": "^4.4.0"
 	},
 	"devDependencies": {
@@ -73,28 +74,116 @@
 	"sideEffects": false,
 	"size-limit": [
 		{
-			"name": "render_api__use _ attach bind tags tagsNS",
+			"name": "isomorphic browser",
 			"import": {
-				"": "{ render_api__use, _, attach, bind_, tags, tagsNS }"
+				"": "{ rel__use }",
+				"./browser": "{ browser__rel }"
 			},
-			"limit": "168 B"
+			"limit": "1005 B"
 		},
 		{
-			"name": "html html_",
+			"name": "isomorphic server",
+			"import": {
+				"": "{ rel__use }",
+				"./server": "{ server__rel }"
+			},
+			"limit": "765 B"
+		},
+		{
+			"name": "isomorphic helpers",
+			"import": {
+				"": "{ rel__use, _, attach, bind_, tags, tagsNS }"
+			},
+			"limit": "170 B"
+		},
+		{
+			"name": "browser-only minimal",
+			"import": {
+				"./browser": "{ tags }"
+			},
+			"limit": "756 B"
+		},
+		{
+			"name": "browser-only hydrate + helpers",
+			"import": {
+				"./browser": "{ tags, tagsNS, hydrate, _, bind_ }"
+			},
+			"limit": "831 B"
+		},
+		{
+			"name": "browser-only hydrate + helpers + rmemo",
+			"import": {
+				"./browser": "{ tags, tagsNS, hydrate, _, bind_, memo_, sig_ }"
+			},
+			"limit": "852 B"
+		},
+		{
+			"name": "browser-only hydrate + helpers + rmemo + ctx",
+			"import": {
+				"./browser": "{ tags, tagsNS, hydrate, _, bind_, memo_, sig_, be_, ctx_ }"
+			},
+			"limit": "1003 B"
+		},
+		{
+			"name": "isomorphic browser helpers + hydrate + helpers + rmemo + ctx",
+			"import": {
+				"": "{ rel__use, _, bind_, tags, hydrate, memo_, sig_, be_, ctx_ }",
+				"./browser": "{ browser__rel }"
+			},
+			"limit": "1175 B"
+		},
+		{
+			"name": "server-only minimal",
+			"import": {
+				"./server": "{ tags }"
+			},
+			"limit": "511 B"
+		},
+		{
+			"name": "server-only render doc + helpers",
+			"import": {
+				"./server": "{ tags, tagsNS, doc_html_, _, bind_, }"
+			},
+			"limit": "562 B"
+		},
+		{
+			"name": "server-only render doc + helpers + rmemo",
+			"import": {
+				"./server": "{ tags, tagsNS, doc_html_, _, bind_, memo_, sig_ }"
+			},
+			"limit": "897 B"
+		},
+		{
+			"name": "server-only render doc + helpers + rmemo + ctx",
+			"import": {
+				"./server": "{ tags, tagsNS, doc_html_, _, bind_, memo_, sig_, be_, ctx_ }"
+			},
+			"limit": "1052 B"
+		},
+		{
+			"name": "isomorphic browser helpers + hydrate + helpers + rmemo + ctx",
+			"import": {
+				"": "{ rel__use, _, bind_, tags, hydrate, memo_, sig_, be_, ctx_ }",
+				"./server": "{ server__rel }"
+			},
+			"limit": "1249 B"
+		},
+		{
+			"name": "html: html_",
 			"import": {
 				"./html": "{ html_ }"
 			},
 			"limit": "34 B"
 		},
 		{
-			"name": "mathml math_",
+			"name": "mathml: math_",
 			"import": {
 				"./mathml": "{ math_ }"
 			},
 			"limit": "34 B"
 		},
 		{
-			"name": "svg svg_",
+			"name": "svg: svg_",
 			"import": {
 				"./svg": "{ svg_ }"
 			},

@@ -1,4 +1,4 @@
-import { tags } from '../render/index.js'
+import { tags } from '../isomorphic/index.js'
 export let a_ = (...arg_a)=>tags.a(...arg_a)
 export let abbr_ = (...arg_a)=>tags.abbr(...arg_a)
 export let address_ = (...arg_a)=>tags.address(...arg_a)

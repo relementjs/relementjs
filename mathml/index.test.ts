@@ -1,9 +1,9 @@
-import { browser__render_api } from '@rrenjs/browser'
-import { server__render_api } from '@rrenjs/server'
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
-import { render_api__use } from '../render/index.js'
+import { browser__rel } from '../browser/index.js'
+import { rel__use } from '../isomorphic/index.js'
+import { server__rel } from '../server/index.js'
 import { math_, mi_, mn_, mo_, mrow_, msup_ } from './index.js'
 let jsdom:JSDOM, prev__window:Window, prev__document:Document, prev__Text:typeof Text, prev__Node:typeof Node
 test.before(()=>{
@@ -18,10 +18,10 @@ test.after(()=>{
 	globalThis.document = prev__document
 	globalThis.Text = prev__Text
 	globalThis.Node = prev__Node
-	render_api__use(undefined)
+	rel__use(undefined)
 })
 test('server|mathml', ()=>{
-	render_api__use(server__render_api)
+	rel__use(server__rel)
 	equal(
 		math_<'server'>(
 			msup_(
@@ -43,7 +43,7 @@ test('browser|mathml', ()=>{
 	globalThis.document = jsdom.window.document
 	globalThis.Text = jsdom.window.Text
 	globalThis.Node = jsdom.window.Node
-	render_api__use(browser__render_api)
+	rel__use(browser__rel)
 	equal(
 		math_<'browser'>(
 			msup_(

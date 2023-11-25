@@ -1,9 +1,9 @@
-import { browser__render_api } from '@rrenjs/browser'
-import { server__render_api } from '@rrenjs/server'
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
-import { render_api__use } from '../render/index.js'
+import { browser__rel } from '../browser/index.js'
+import { rel__use } from '../isomorphic/index.js'
+import { server__rel } from '../server/index.js'
 import { circle_, path_, svg_ } from './index.js'
 let jsdom:JSDOM, prev__window:Window, prev__document:Document, prev__Text:typeof Text, prev__Node:typeof Node
 test.before(()=>{
@@ -18,10 +18,10 @@ test.after(()=>{
 	globalThis.document = prev__document
 	globalThis.Text = prev__Text
 	globalThis.Node = prev__Node
-	render_api__use(undefined)
+	rel__use(undefined)
 })
 test('server|svg ', ()=>{
-	render_api__use(server__render_api)
+	rel__use(server__rel)
 	equal(
 		svg_<'server'>({ width: '16px', viewBox: '0 0 50 50' },
 			circle_({ cx: '25', cy: '25', 'r': '20', stroke: 'black', 'stroke-width': '2', fill: 'yellow' }),
@@ -38,7 +38,7 @@ test('browser|svg ', ()=>{
 	globalThis.document = jsdom.window.document
 	globalThis.Text = jsdom.window.Text
 	globalThis.Node = jsdom.window.Node
-	render_api__use(browser__render_api)
+	rel__use(browser__rel)
 	equal(
 		svg_<'browser'>({ width: '16px', viewBox: '0 0 50 50' }).outerHTML,
 		'<svg width="16px" viewBox="0 0 50 50"></svg>')

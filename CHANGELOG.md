@@ -11,9 +11,9 @@
 - Updated dependencies
 - Updated dependencies
 - Updated dependencies
-  - @rren/browser@0.2.0
-  - @rren/server@0.3.0
-  - @rren/any@0.2.0
+  - @rrenjs/browser@0.2.0
+  - @rrenjs/server@0.3.0
+  - @rrenjs/any@0.2.0
 
 ## 0.1.1
 
