@@ -1,5 +1,11 @@
 # @ctx-core/ui--all
 
+## 0.3.1
+
+### Patch Changes
+
+- tsx: ^4.4.0 -> ^4.5.0
+
 ## 0.3.0
 
 ### Minor Changes
@@ -20,6 +26,7 @@
 
   patch:
 
+      performance optimizations
       README:
       	+ (Reactive Element)
       	+ size chart
