@@ -35,9 +35,9 @@ test('tags', ()=>{
 		p('👋Hello'),
 		ul(
 			li('🗺️World'),
-			li(a({ href: 'https://github.com/reljs/server/' }, '🍦ctx-core')),
+			li(a({ href: 'https://github.com/relementjs/server/' }, '🍦ctx-core')),
 		),
-	).render(), '<div><p>👋Hello</p><ul><li>🗺️World</li><li><a href="https://github.com/reljs/server/">🍦ctx-core</a></li></ul></div>')
+	).render(), '<div><p>👋Hello</p><ul><li>🗺️World</li><li><a href="https://github.com/relementjs/server/">🍦ctx-core</a></li></ul></div>')
 })
 test('elements without child', ()=>{
 	equal(br().render(), '<br>')
@@ -197,7 +197,7 @@ test('html_', ()=>{
 // Test cases for examples used in the documentation. Having the tests to ensure the examples
 // are always correct.
 test('example: van-plate-server', ()=>{
-	equal(a({ href: 'https://github.com/reljs/server/' }, '🍦ctx-core').render(), `<a href="https://github.com/reljs/server/">🍦ctx-core</a>`)
+	equal(a({ href: 'https://github.com/relementjs/server/' }, '🍦ctx-core').render(), `<a href="https://github.com/relementjs/server/">🍦ctx-core</a>`)
 	equal(button({ onclick: 'alert("Hello")' }, 'Click').render(),
 		`<button onclick="alert(&quot;Hello&quot;)">Click</button>`)
 	equal(input({ type: 'text', value: 'value' }).render(), `<input type="text" value="value">`)

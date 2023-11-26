@@ -1,11 +1,11 @@
-# reljs (Reactive Element)
+# relementjs (Reactive Element)
 
 Isomorphic reactive uis for the browser & server.
 The smallest reactive UI library on the browser & server.
 Tiny tree-shakable modules originally forked from VanJS.
 
-reljs scales large & small with tree-shakable modules & no-fluff implementation.
-reljs includes rmemo as a reactive core & ctx-core for contexts...
+relementjs scales large & small with tree-shakable modules & no-fluff implementation.
+relementjs includes rmemo as a reactive core & ctx-core for contexts...
 
 | use case                                                     |   size    | imports                                                            |
 |--------------------------------------------------------------|:---------:|--------------------------------------------------------------------|
@@ -32,33 +32,33 @@ does not provide server-side reactivity.
 ## isomorphic rendering
 
 ```ts
-import { rel__use } from 'reljs'
-import { browser__rel } from 'reljs/browser'
-import { a_, div_ } from 'reljs/html'
+import { rel__use } from 'relementjs'
+import { browser__rel } from 'relementjs/browser'
+import { a_, div_ } from 'relementjs/html'
 rel__use(browser__rel)
-// import { server__rel } from 'reljs/server'
+// import { server__rel } from 'relementjs/server'
 // rel__use(server__rel)
 div_(
-	a_({ href: 'https://github.com/reljs/reljs' }, 'reljs github page')
+	a_({ href: 'https://github.com/relementjs/relementjs' }, 'relementjs github page')
 )
 ```
 
 ## browser rendering
 
 ```ts
-import { tags } from 'reljs/browser'
+import { tags } from 'relementjs/browser'
 const { a, div } = tags
 div(
-	a({ href: 'https://github.com/reljs/reljs' }, 'reljs github page')
+	a({ href: 'https://github.com/relementjs/relementjs' }, 'relementjs github page')
 )
 ```
 
 ## server rendering
 
 ```ts
-import { tags } from 'reljs/server'
+import { tags } from 'relementjs/server'
 const { a, div } = tags
 div(
-	a({ href: 'https://github.com/reljs/reljs' }, 'reljs github page')
+	a({ href: 'https://github.com/relementjs/relementjs' }, 'relementjs github page')
 )
 ```

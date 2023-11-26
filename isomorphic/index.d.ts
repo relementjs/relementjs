@@ -1,4 +1,4 @@
-import type { bind__T, render__namespaceURI_T, render__tags_env_T, render_primitive_T } from '@reljs/any'
+import type { bind__T, render__namespaceURI_T, render__tags_env_T, render_primitive_T } from '@relementjs/any'
 import type {
 	browser__attach_T,
 	browser__rel_T,

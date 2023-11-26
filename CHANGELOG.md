@@ -1,5 +1,11 @@
 # @ctx-core/ui--all
 
+## 0.4.0
+
+### Minor Changes
+
+- package name: relementjs
+
 ## 0.3.1
 
 ### Patch Changes

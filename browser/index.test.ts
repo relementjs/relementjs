@@ -54,11 +54,11 @@ test('tags|basic', ()=>{
 		p('👋Hello'),
 		ul(
 			li('🗺️World'),
-			li(a({ href: 'https://github.com/reljs/browser' }, '🍦ctx-core/ui--browser')),
+			li(a({ href: 'https://github.com/relementjs/browser' }, '🍦ctx-core/ui--browser')),
 		),
 	)
 	equal(dom.outerHTML,
-		'<div><p>👋Hello</p><ul><li>🗺️World</li><li><a href="https://github.com/reljs/browser">🍦ctx-core/ui--browser</a></li></ul></div>')
+		'<div><p>👋Hello</p><ul><li>🗺️World</li><li><a href="https://github.com/relementjs/browser">🍦ctx-core/ui--browser</a></li></ul></div>')
 })
 test('tags|onclick', ()=>{
 	{

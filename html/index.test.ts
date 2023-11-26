@@ -27,9 +27,9 @@ test('server|html_ head_ body_ div_ a_', ()=>{
 			head_(),
 			body_(
 				div_({ id: 'div-id' },
-					a_({ href: 'https://github.com/reljs/all' }, 'reljs'))
+					a_({ href: 'https://github.com/relementjs/all' }, 'relementjs'))
 			)).render(),
-		`<html><head></head><body><div id="div-id"><a href="https://github.com/reljs/all">reljs</a></div></body></html>`
+		`<html><head></head><body><div id="div-id"><a href="https://github.com/relementjs/all">relementjs</a></div></body></html>`
 	)
 })
 test('browser|html_ head_ body_ div_ a_', ()=>{
@@ -45,9 +45,9 @@ test('browser|html_ head_ body_ div_ a_', ()=>{
 			head_(),
 			body_(
 				div_({ id: 'div-id' },
-					a_({ href: 'https://github.com/reljs/all' }, 'reljs'))
+					a_({ href: 'https://github.com/relementjs/all' }, 'relementjs'))
 			)).outerHTML,
-		`<html><head></head><body><div id="div-id"><a href="https://github.com/reljs/all">reljs</a></div></body></html>`
+		`<html><head></head><body><div id="div-id"><a href="https://github.com/relementjs/all">relementjs</a></div></body></html>`
 	)
 })
 test.run()

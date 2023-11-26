@@ -1,20 +1,23 @@
 {
-	"name": "reljs",
-	"version": "0.3.1",
-	"description": "ui library targeting all environments",
+	"name": "relementjs",
+	"version": "0.4.0",
+	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
-		"ctx-core",
+		"reactive",
 		"ui",
-		"browser",
-		"server"
+		"ui",
+		"memos",
+		"signals",
+		"rmemo",
+		"ctx-core"
 	],
-	"homepage": "https://github.com/reljs/any#readme",
+	"homepage": "https://github.com/relementjs/any#readme",
 	"bugs": {
-		"url": "https://github.com/reljs/any/issues"
+		"url": "https://github.com/relementjs/any/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/reljs/any.git"
+		"url": "https://github.com/relementjs/any.git"
 	},
 	"license": "Apache-2.0",
 	"author": "Brian Takita",
