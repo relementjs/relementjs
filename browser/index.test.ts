@@ -849,7 +849,7 @@ test('gc|binding|basic', with_connected_dom(async connected_dom=>{
 	await sleep(waitMsOnDomUpdates)
 	equal(connected_dom.innerHTML, '<span>Counter: 100</span>')
 	let count = 0
-	for (const rmr of counter.rmrs) {
+	for (const rmr of counter.memor) {
 		if (rmr.deref()) count++
 	}
 	ok(count >= 1)
@@ -867,7 +867,7 @@ skip_long_test('gc|binding|nested|long', with_connected_dom(async connected_dom=
 	// Wait until GC kicks in
 	await sleep(1000)
 	let count = 0
-	for (const rmr of renderPre.rmrs) {
+	for (const rmr of renderPre.memor) {
 		if (rmr.deref()) count++
 	}
 	ok(count >= 1)
@@ -890,7 +890,7 @@ skip_long_test('gc|binding|conditional|long', with_connected_dom(async connected
 	}
 	for (const s of allStates) {
 		let count = 0
-		for (const rmr of s.rmrs) {
+		for (const rmr of s.memor) {
 			if (rmr.deref()) count++
 		}
 		ok(count >= 1)
@@ -900,7 +900,7 @@ skip_long_test('gc|binding|conditional|long', with_connected_dom(async connected
 	await sleep(1000)
 	for (const s of allStates) {
 		let count = 0
-		for (const rmr of s.rmrs) {
+		for (const rmr of s.memor) {
 			if (rmr.deref()) count++
 		}
 		ok(count >= 1)
@@ -913,7 +913,7 @@ test('gc|memo_|basic', ()=>{
 	for (let i = 0; i < 100; ++i) a._++
 	equal(history.length, 101)
 	let count = 0
-	for (const rmr of a.rmrs) {
+	for (const rmr of a.memor) {
 		if (rmr.deref()) count++
 	}
 	ok(count >= 1)
@@ -934,7 +934,7 @@ skip_long_test('gc|binding|derive inside|long', with_connected_dom(async connect
 	// Wait until GC kicks in
 	await sleep(1000)
 	let count = 0
-	for (const rmr of renderPre.rmrs) {
+	for (const rmr of renderPre.memor) {
 		if (rmr.deref()) count++
 	}
 	ok(count >= 1)
@@ -955,7 +955,7 @@ skip_long_test('gc|derived|conditional|long', async ()=>{
 	}
 	for (const s of allStates) {
 		let count = 0
-		for (const rmr of s.rmrs) {
+		for (const rmr of s.memor) {
 			if (rmr.deref()) count++
 		}
 		ok(count >= 1)
@@ -965,7 +965,7 @@ skip_long_test('gc|derived|conditional|long', async ()=>{
 	await sleep(1000)
 	for (const s of allStates) {
 		let count = 0
-		for (const rmr of s.rmrs) {
+		for (const rmr of s.memor) {
 			if (rmr.deref()) count++
 		}
 		ok(count >= 1)

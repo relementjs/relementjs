@@ -68,7 +68,7 @@ export let tagsNS = ns=>new Proxy((name, ...args)=>{
 				: dom.setAttribute.bind(dom, k) // attribute setter
 		let setter_memo =
 			typeof v === 'function'
-			&& (v.rmrs || !k.startsWith('on') || v.b)
+			&& (v.memor || !k.startsWith('on') || v.b)
 			&& memo_(()=>dom__run(()=>param__setter(v(dom))))
 		if (setter_memo) {
 			(dom._m ||= []).push(setter_memo)
