@@ -1,10 +1,9 @@
-import { browser__rel } from '../browser/index.js'
-import { server__rel } from '../server/index.js'
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
+import { browser__rel } from '../browser/index.js'
+import { server__rel } from '../server/index.js'
 import {
-	_,
 	attach,
 	bind_,
 	doc_html_,
@@ -41,7 +40,6 @@ test.after(()=>{
 	rel__use(undefined)
 })
 test('rel__use', ()=>{
-	equal(_, undefined)
 	equal(attach, undefined)
 	equal(bind_, undefined)
 	equal(tagsNS, undefined)
@@ -52,7 +50,6 @@ test('rel__use', ()=>{
 	equal(server__element__proto, 'server-only')
 	equal(hydrate, 'browser-only')
 	rel__use(browser__rel)
-	equal(_, browser__rel._)
 	equal(attach, browser__rel.attach)
 	equal(bind_, browser__rel.bind_)
 	equal(tagsNS, browser__rel.tagsNS)
@@ -65,7 +62,6 @@ test('rel__use', ()=>{
 	equal(server__element__proto, 'server-only')
 	equal(hydrate, browser__rel.hydrate)
 	rel__use(server__rel)
-	equal(_, server__rel._)
 	equal(attach, server__rel.attach)
 	equal(bind_, server__rel.bind_)
 	equal(tagsNS, server__rel.tagsNS)

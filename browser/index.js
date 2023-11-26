@@ -16,7 +16,6 @@ function dom__run(f, dom) {
 	}
 	return val?.nodeType ? val : new Text(val ?? '')
 }
-export let _ = s=>s?.rmr ? s() : s
 export function attach(dom, ...children) {
 	for (let child_val of children.flat(Infinity)) {
 		let child
@@ -69,7 +68,7 @@ export let tagsNS = ns=>new Proxy((name, ...args)=>{
 				: dom.setAttribute.bind(dom, k) // attribute setter
 		let setter_memo =
 			typeof v === 'function'
-			&& (v.rmr || !k.startsWith('on') || v.b)
+			&& (v.rmrs || !k.startsWith('on') || v.b)
 			&& memo_(()=>dom__run(()=>param__setter(v(dom))))
 		if (setter_memo) {
 			(dom._m ||= []).push(setter_memo)
@@ -93,4 +92,4 @@ export function hydrate(dom, f) {
 		}
 	})()
 }
-export let browser__rel = { _, attach, bind_, tags, tagsNS, hydrate, }
+export let browser__rel = { attach, bind_, tags, tagsNS, hydrate, }

@@ -46,7 +46,6 @@ export const server__element__proto = {
 		return buf.join('')
 	},
 }
-export const _ = s=>s?.rmr ? s() : s
 const plain_val_ = (v, k)=>{
 	return (
 		v?.rmr
@@ -89,4 +88,4 @@ export const doc_html_ = (...args)=>{
 	tags.html(...args).buf__render(buf)
 	return buf.join('')
 }
-export let server__rel = { _, attach, bind_, tags, tagsNS, doc_html_, server__element__proto }
+export let server__rel = { attach, bind_, tags, tagsNS, doc_html_, server__element__proto }

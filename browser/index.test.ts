@@ -3,8 +3,7 @@ import { memo_, memosig_, sig_, type sig_T } from 'ctx-core/rmemo'
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal, ok } from 'uvu/assert'
-import type { render____T } from '../any/index.js'
-import { _, attach, bind_, browser__rel, hydrate, tags, tagsNS } from './index.js'
+import { attach, bind_, browser__rel, hydrate, tags, tagsNS } from './index.js'
 const skip_long = process.env.SKIP_LONG ? parseInt(process.env.SKIP_LONG) : false
 const skip_long_test = skip_long ? test.skip : test
 let jsdom:JSDOM, prev__window:Window, prev__document:Document, prev__Text:typeof Text, prev__Node:typeof Node
@@ -41,13 +40,7 @@ test.after(()=>{
 	globalThis.Node = prev__Node
 })
 test('browser__rel', ()=>{
-	equal(browser__rel, { _, attach, bind_, tags, tagsNS, hydrate, })
-})
-test('_', ()=>{
-	const typed_:render____T<number> = _ // test type
-	equal(typed_(1), 1)
-	equal(_(1), 1)
-	equal(_(memo_(()=>100)), 100)
+	equal(browser__rel, { attach, bind_, tags, tagsNS, hydrate, })
 })
 test('tags|basic', ()=>{
 	const dom = div(
@@ -98,7 +91,7 @@ test('tags|null prop value', ()=>{
 	const dom = button({ onclick: null })
 	ok(dom.onclick === null)
 })
-test('tags|prop|rw_rmemo|connected', with_connected_dom(async connected_dom=>{
+test('tags|prop|sig|connected', with_connected_dom(async connected_dom=>{
 	const href = sig_('http://example.com/')
 	const dom = a({ href }, 'Test Link')
 	attach(connected_dom, dom)
@@ -107,7 +100,7 @@ test('tags|prop|rw_rmemo|connected', with_connected_dom(async connected_dom=>{
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.href, 'https://github.com/ctx-core/rmemo/')
 }))
-test('tags|prop|rw_rmemo|disconnected', async ()=>{
+test('tags|prop|sig|disconnected', async ()=>{
 	const href = sig_('http://example.com/')
 	const dom = a({ href }, 'Test Link')
 	equal(dom.href, 'http://example.com/')
@@ -116,7 +109,7 @@ test('tags|prop|rw_rmemo|disconnected', async ()=>{
 	// href won't change as dom is not connected to document
 	equal(dom.href, 'https://github.com/ctx-core/rmemo/')
 })
-test('tags|onclick|rw_rmemo|connected', with_connected_dom(async connected_dom=>{
+test('tags|onclick|sig|connected', with_connected_dom(async connected_dom=>{
 	const dom = div()
 	attach(connected_dom, dom)
 	const onclick = sig_<(()=>Element)|null>(()=>
@@ -133,7 +126,7 @@ test('tags|onclick|rw_rmemo|connected', with_connected_dom(async connected_dom=>
 	dom.querySelector('button')!.click()
 	equal(dom.outerHTML, '<div><button></button><p>Button clicked!</p><div>Button clicked!</div></div>')
 }))
-test('tags|onclick|rw_rmemo|disconnected', async ()=>{
+test('tags|onclick|sig|disconnected', async ()=>{
 	const dom = div()
 	const handler = sig_(()=>attach(dom, p('Button clicked!')))
 	attach(dom, button({ onclick: handler }))
@@ -168,7 +161,7 @@ test('tags|prop|fn|rmemo deps|disconnected', async ()=>{
 test('tags|prop|fn|non-rmemo deps|connected', with_connected_dom(async connected_dom=>{
 	const host = sig_('example.com')
 	const path = '/hello'
-	const dom = a({ href: ()=>`https://${_(host)}${_(path)}` }, 'Test Link')
+	const dom = a({ href: ()=>`https://${host()}${path}` }, 'Test Link')
 	attach(connected_dom, dom)
 	equal(dom.href, 'https://example.com/hello')
 	host._ = 'github.com/ctx-core/rmemo'
@@ -178,7 +171,7 @@ test('tags|prop|fn|non-rmemo deps|connected', with_connected_dom(async connected
 test('tags|prop|fn|non-rmemo deps|disconnected', with_connected_dom(async connected_dom=>{
 	const host = sig_('example.com')
 	const path = '/hello'
-	const dom = a({ href: ()=>`https://${_(host)}${_(path)}` }, 'Test Link')
+	const dom = a({ href: ()=>`https://${host()}${path}` }, 'Test Link')
 	attach(connected_dom, dom)
 	equal(dom.href, 'https://example.com/hello')
 	host._ = 'github.com/ctx-core/rmemo'
@@ -760,7 +753,7 @@ test('tags|child|non-state deps', with_connected_dom(async connected_dom=>{
 	const part2 = sig_('🗺️World')
 	equal(
 		attach(connected_dom,
-			()=>`${_(part1)}${_(part2)}`),
+			()=>`${part1}${part2()}`),
 		connected_dom)
 	const dom = <Element>connected_dom.firstChild
 	equal(dom.textContent!, '👋Hello 🗺️World')

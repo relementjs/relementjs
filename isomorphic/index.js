@@ -4,7 +4,6 @@ export * from 'ctx-core/rmemo'
 /** @typedef {import('../server/index.js').server__render_api_T} */
 /** @type {browser__render_api_T|server__render_api_T} */
 export function rel__use(render_api) {
-	_ = render_api?._
 	attach = render_api?.attach
 	bind_ = render_api?.bind_
 	tagsNS = render_api?.tagsNS
@@ -15,7 +14,6 @@ export function rel__use(render_api) {
 	server__element__proto = render_api?.server__element__proto || 'server-only'
 	hydrate = render_api?.hydrate || 'browser-only'
 }
-export let _
 export let attach
 export let bind_
 export let tagsNS

@@ -12,7 +12,6 @@ import type {
 } from '../any/index.js'
 export * from 'ctx-core/rmemo'
 export { render_props_T, render_props_val_OR_rmemo_T_OR_Fn, render_props_val_T, render_primitive_T }
-export declare function _<T>(s:T|rmemo_T<T>):T
 export const attach:server__attach_T
 export type server__attach_T = (dom:server__Node_T, ...children:readonly server__tag__dom_T[])=>server__Node_T
 export const bind_:bind__T
@@ -60,7 +59,6 @@ export type server__Node_T = {
 }
 export declare const server__rel:server__rel_T
 export type server__rel_T = {
-	_<T>(s:T|rmemo_T<T>):T
 	attach:server__attach_T
 	bind_:bind__T
 	tags:server__tags_T<'html'>

@@ -12,7 +12,6 @@ import type {
 } from '../any/index.js'
 export * from 'ctx-core/rmemo'
 export { render_props_T, render_props_val_OR_rmemo_T_OR_Fn, render_props_val_T, render_primitive_T }
-export declare function _<T>(s:T|rmemo_T<T>):T
 export declare const attach:browser__attach_T
 export type browser__attach_T = (dom:Element, ...children:readonly browser__tag__dom_T[])=>Element
 export const bind_:bind__T
@@ -49,7 +48,6 @@ export declare function hydrate<T extends Node>(dom:T, f:(dom:T)=>T|null|undefin
 export type browser__hydrate_T<T extends Node> = (dom:T, f:(dom:T)=>T|null|undefined|render_primitive_T)=>void
 export declare const browser__rel: browser__rel_T
 export type browser__rel_T = {
-	_<T>(s:T|rmemo_T<T>):T
 	attach:browser__attach_T
 	bind_:bind__T
 	tags:browser__tags_T<'html'>

@@ -1,8 +1,7 @@
 import { memo_, sig_ } from 'ctx-core/rmemo'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
-import type { render____T } from '../any/index.js'
-import { _, attach, bind_, doc_html_, server__element__proto, server__rel, tags, tagsNS } from './index.js'
+import { attach, bind_, doc_html_, server__element__proto, server__rel, tags, tagsNS } from './index.js'
 const {
 	a,
 	body,
@@ -20,15 +19,7 @@ const {
 	ul
 } = tags
 test('server__rel', ()=>{
-	equal(server__rel, {
-		_, attach, bind_, tags, tagsNS, doc_html_, server__element__proto
-	})
-})
-test('_', ()=>{
-	const typed_:render____T<number> = _ // test type
-	equal(typed_(1), 1)
-	equal(_(1), 1)
-	equal(_(memo_(()=>100)), 100)
+	equal(server__rel, { attach, bind_, tags, tagsNS, doc_html_, server__element__proto })
 })
 test('tags', ()=>{
 	equal(div(
@@ -168,8 +159,8 @@ test('dummy reactive', ()=>{
 			'data-index': state1,
 			'data-id': ()=>state2() + 2,
 			'data-title': state3,
-			'data-text': ()=>`${_('Prefix')} - ${'Suffix'}`,
-		}, ()=>state1(), ()=>_(state3), ()=>_(state4)),
+			'data-text': ()=>`${'Prefix'} - ${'Suffix'}`,
+		}, state1, state3, state4),
 		button({ onclick: bind_(()=>state5() ? 'console.log("Hello")' : 'alert("Hello")') },
 			'Button1'
 		),

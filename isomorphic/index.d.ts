@@ -1,15 +1,9 @@
 import type { bind__T, render__namespaceURI_T, render__tags_env_T, render_primitive_T } from '@relementjs/any'
-import type {
-	browser__attach_T,
-	browser__rel_T,
-	browser__tag_T,
-	browser__tags_T,
-	rmemo_T
-} from '../browser/index.js'
+import type { browser__attach_T, browser__rel_T, browser__tag_T, browser__tags_T } from '../browser/index.js'
 import type {
 	server__attach_T,
-	server__element__proto_T,
 	server__doc_html__T,
+	server__element__proto_T,
 	server__rel_T,
 	server__tag_T,
 	server__tags_T
@@ -20,7 +14,6 @@ export declare function rel__use(
 	render_api:browser__rel_T|server__rel_T|null|undefined
 ):void
 export type render__env_T = 'any'|'browser'|'server'
-export declare function _<T>(s:T|rmemo_T<T>):T
 export declare function attach<env_T extends render__env_T>(
 	...arg_a:Parameters<attach_T<env_T>>
 ):ReturnType<attach_T<env_T>>
