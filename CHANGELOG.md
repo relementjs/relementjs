@@ -1,5 +1,43 @@
 # @ctx-core/ui--all
 
+## 0.5.0
+
+### Minor Changes
+
+- minor:
+
+      browser,server,isomorphic: - _ module function: superfluous
+
+  patch:
+
+      README: readability:
+      	remove some rows from bundle size table
+      	format code examples
+      rmemo lazy loading WeakRef update
+      rmemo updates: .rmrs→.memor
+      rmemo update: memo_ with undefined value is cached
+
+  size-limit:
+
+      isomorphic browser: - 19 B
+      isomorphic server: - 17 B
+      isomorphic helpers: - 7 B
+      browser-only minimal: + 11 B
+      browser-only hydrate + helpers: - 7 B
+      browser-only hydrate + helpers + rmemo: - 19 B
+      browser-only hydrate + helpers + rmemo + ctx: - 6 B
+      isomorphic browser helpers + hydrate + helpers + rmemo + ctx: - 23 B
+      server-only minimal: + 4 B
+      server-only render doc + helpers: - 7 B
+      server-only render doc + helpers + rmemo: - 7 B
+      server-only render doc + helpers + rmemo + ctx: - 4 B
+      isomorphic browser helpers + hydrate + helpers + rmemo + ctx: - 17 B
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@4.6.0
+
 ## 0.4.0
 
 ### Minor Changes
