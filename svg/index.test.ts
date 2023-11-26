@@ -1,9 +1,9 @@
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
-import { browser__relement } from '../browser/index.js'
+import { browser__full__relement } from '../browser/index.js'
 import { relement__use } from '../isomorphic/index.js'
-import { server__relement } from '../server/index.js'
+import { server__full__relement } from '../server/index.js'
 import { circle_, path_, svg_ } from './index.js'
 let jsdom:JSDOM, prev__window:Window, prev__document:Document, prev__Text:typeof Text, prev__Node:typeof Node
 test.before(()=>{
@@ -21,7 +21,7 @@ test.after(()=>{
 	relement__use(undefined)
 })
 test('server|svg ', ()=>{
-	relement__use(server__relement)
+	relement__use(server__full__relement)
 	equal(
 		svg_<'server'>({ width: '16px', viewBox: '0 0 50 50' },
 			circle_({ cx: '25', cy: '25', 'r': '20', stroke: 'black', 'stroke-width': '2', fill: 'yellow' }),
@@ -38,7 +38,7 @@ test('browser|svg ', ()=>{
 	globalThis.document = jsdom.window.document
 	globalThis.Text = jsdom.window.Text
 	globalThis.Node = jsdom.window.Node
-	relement__use(browser__relement)
+	relement__use(browser__full__relement)
 	equal(
 		svg_<'browser'>({ width: '16px', viewBox: '0 0 50 50' }).outerHTML,
 		'<svg width="16px" viewBox="0 0 50 50"></svg>')

@@ -44,6 +44,10 @@ export type server__tag__dom_T =
 	|server__tag__dom__bind_T
 	|readonly server__tag__dom_T[]
 	|unknown // This is necessary for isomorphic compatability. TODO: is there a narrower type solution?
+export declare const fragment_:server__fragment__T
+export type server__fragment__T = (...children:readonly server__tag__dom_T[])=>server__Node_T
+export declare const raw_:server__raw__T
+export type server__raw__T = (html:string)=>server__Node_T
 export const doc_html_:server__doc_html__T
 export type server__doc_html__T = (first?:render_props_T|server__tag__dom_T, ...rest:readonly server__tag__dom_T[])=>string
 export type server__tag__dom__bind_T = (dom:server__tag__dom__val_T)=>server__tag__dom__val_T
@@ -57,14 +61,24 @@ export type server__Node_T = {
 	render():string
 	addEventListener:unknown
 }
-export declare const server__relement:server__relement_T
-export type server__relement_T = {
+export declare const server__base__relement:server__base__relement_T
+export type server__base__relement_T = {
 	attach:server__attach_T
 	bind_:bind__T
 	tags:server__tags_T<'html'>
 	tagsNS<tags_env_T extends render__tags_env_T>(
 		namespaceURI:render__namespaceURI_T<tags_env_T>
 	):server__tags_T<tags_env_T>
+}
+export declare const server__fragment__relement:server__fragment__relement_T
+export type server__fragment__relement_T = server__base__relement_T&{
+	fragment_:server__fragment__T
+	raw_:server__raw__T
+}
+export declare const server__full__relement:server__full__relement_T
+export type server__full__relement_T = server__fragment__relement_T&{
+	attach:server__attach_T
 	doc_html_:server__doc_html__T
 	server__element__proto:server__element__proto_T
 }
+export type server__relement_T = server__base__relement_T&Partial<server__full__relement_T>

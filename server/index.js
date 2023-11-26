@@ -55,7 +55,7 @@ const plain_val_ = (v, k)=>{
 				: v
 	)
 }
-export function attach (dom, ...children){
+export function attach(dom, ...children) {
 	dom.children.push(...children.flat(Infinity).filter(c=>c != null))
 	return dom
 }
@@ -83,9 +83,28 @@ export const tags = new Proxy((name, ...args)=>{
 	}
 }, { get: (tag, name)=>tag.bind(null, name) })
 export const tagsNS = ()=>tags
+export const fragment_ = (...children)=>({
+	__proto__: server__element__proto,
+	buf__render(buf) {
+		for (let c of children) {
+			let plain_c = plain_val_(c)
+			proto_(plain_c) === server__element__proto
+				? plain_c.buf__render(buf)
+				: buf.push(escape(plain_c.toString()))
+		}
+	},
+})
+export const raw_ = html=>({
+	__proto__: server__element__proto,
+	buf__render(buf) {
+		buf.push(html)
+	},
+})
 export const doc_html_ = (...args)=>{
 	const buf = ['<!DOCTYPE html>']
 	tags.html(...args).buf__render(buf)
 	return buf.join('')
 }
-export let server__relement = { attach, bind_, tags, tagsNS, doc_html_, server__element__proto }
+export let server__base__relement = { attach, bind_, tags, tagsNS }
+export let server__fragment__relement = { attach, bind_, tags, tagsNS, fragment_, raw_ }
+export let server__full__relement = { attach, bind_, tags, tagsNS, fragment_, raw_, doc_html_, server__element__proto }

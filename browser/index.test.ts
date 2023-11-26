@@ -3,7 +3,17 @@ import { memo_, memosig_, sig_, type sig_T } from 'ctx-core/rmemo'
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal, ok } from 'uvu/assert'
-import { attach, bind_, browser__relement, hydrate, tags, tagsNS } from './index.js'
+import {
+	attach,
+	bind_,
+	browser__base__relement, browser__fragment__relement,
+	browser__full__relement,
+	fragment_,
+	hydrate,
+	raw_,
+	tags,
+	tagsNS
+} from './index.js'
 const skip_long = process.env.SKIP_LONG ? parseInt(process.env.SKIP_LONG) : false
 const skip_long_test = skip_long ? test.skip : test
 let jsdom:JSDOM, prev__window:Window, prev__document:Document, prev__Text:typeof Text, prev__Node:typeof Node
@@ -39,8 +49,14 @@ test.after(()=>{
 	globalThis.Text = prev__Text
 	globalThis.Node = prev__Node
 })
-test('browser__relement', ()=>{
-	equal(browser__relement, { attach, bind_, tags, tagsNS, hydrate, })
+test('browser__base__relement', ()=>{
+	equal(browser__base__relement, { attach, bind_, tags, tagsNS, })
+})
+test('browser__fragment__relement', ()=>{
+	equal(browser__fragment__relement, { attach, bind_, tags, tagsNS, fragment_, raw_, })
+})
+test('browser__full__relement', ()=>{
+	equal(browser__full__relement, { attach, bind_, tags, tagsNS, fragment_, raw_, hydrate, })
 })
 test('tags|basic', ()=>{
 	const dom = div(
@@ -409,6 +425,23 @@ test('tagsNS|math', ()=>{
 	const dom = math(msup(mi('e'), mrow(mi('i'), mi('π'))), mo('+'), mn('1'), mo('='), mn('0'))
 	equal(dom.outerHTML,
 		'<math><msup><mi>e</mi><mrow><mi>i</mi><mi>π</mi></mrow></msup><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></math>')
+})
+test('fragment_', ()=>{
+	const root = tags.div(
+		fragment_(
+			'<div>Yo!</div>',
+			div(
+				p('👋Hello'),
+				ul(
+					li('🗺️World'),
+					li(a({ href: 'https://github.com/relementjs/server/' }, '🍦relement')),
+				),)))
+	equal(root.innerHTML,
+		'&lt;div&gt;Yo!&lt;/div&gt;<div><p>👋Hello</p><ul><li>🗺️World</li><li><a href="https://github.com/relementjs/server/">🍦relement</a></li></ul></div>')
+})
+test('raw_', ()=>{
+	const root = tags.div(raw_('<div>row 0</div><div>row 1</div><div>row 2</div>'))
+	equal(root.innerHTML, '<div>row 0</div><div>row 1</div><div>row 2</div>')
 })
 test('attach|basic', ()=>{
 	const dom = ul()

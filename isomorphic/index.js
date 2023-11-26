@@ -2,16 +2,18 @@
 export * from 'ctx-core/be'
 export * from 'ctx-core/rmemo'
 /** @type {browser__relement_T|server__relement_T} */
-export function relement__use(render_api) {
-	attach = render_api?.attach
-	bind_ = render_api?.bind_
-	tagsNS = render_api?.tagsNS
-	tags = render_api?.tags
+export function relement__use(relement) {
+	attach = relement?.attach
+	bind_ = relement?.bind_
+	tagsNS = relement?.tagsNS
+	tags = relement?.tags
 	svg_tags = tagsNS?.('http://www.w3.org/2000/svg')
 	mathml_tags = tagsNS?.('http://www.w3.org/1998/Math/MathML')
-	doc_html_ = render_api?.doc_html_ || 'server-only'
-	server__element__proto = render_api?.server__element__proto || 'server-only'
-	hydrate = render_api?.hydrate || 'browser-only'
+	fragment_ = relement?.fragment_ || '*__fragment__relement'
+	raw_ = relement?.raw_ || '*__fragment__relement'
+	doc_html_ = relement?.doc_html_ || 'server__full__relement'
+	server__element__proto = relement?.server__element__proto || 'server__full__relement'
+	hydrate = relement?.hydrate || 'browser__full__relement'
 }
 export let attach
 export let bind_
@@ -19,9 +21,11 @@ export let tagsNS
 export let tags
 export let svg_tags
 export let mathml_tags
-export let doc_html_ = 'server-only'
-export let server__element__proto = 'server-only'
-export let hydrate = 'browser-only'
+export let fragment_ = '*__fragment__relement'
+export let raw_ = '*__fragment__relement'
+export let doc_html_ = 'server__full__relement'
+export let server__element__proto = 'server__full__relement'
+export let hydrate = 'browser__full__relement'
 export function svg_tags_() {
 	return svg_tags
 }

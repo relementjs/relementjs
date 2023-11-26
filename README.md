@@ -9,14 +9,14 @@ relementjs includes rmemo as a reactive core & ctx-core for contexts...
 
 | use case                                   |   size    | imports                                  |
 |--------------------------------------------|:---------:|------------------------------------------|
-| isomorphic browser                         |   953 B   | relement__use browser__relement                    |
-| isomorphic server                          |   743 B   | relement__use server__relement                     |
-| browser-only minimal                       |   732 B   | tags                                     |
-| browser-only hydrate + helpers             |   778 B   | tags hydrate _ bind_                     |
-| **browser-only hydrate + helpers + rmemo** | **799 B** | **tags hydrate _ bind_ memo_ sig_**      |
+| isomorphic browser (base api)              |   937 B   | relement__use browser__base__relement    |
+| isomorphic server (base api)               |   733 B   | relement__use server__base__relement     |
+| browser-only minimal                       |   724 B   | tags                                     |
+| browser-only hydrate + helpers             |   779 B   | tags hydrate _ bind_                     |
+| **browser-only hydrate + helpers + rmemo** | **809 B** | **tags hydrate _ bind_ memo_ sig_**      |
 | server-only minimal                        |   509 B   | tags                                     |
-| **server-only render doc + helpers**       | **552 B** | **tags doc_html_ tagsNS _ bind_**        |
-| server-only render doc + helpers + rmemo   |   884 B   | tags doc_html_ tagsNS _ bind_ memo_ sig_ |
+| **server-only render doc + helpers**       | **557 B** | **tags doc_html_ tagsNS _ bind_**        |
+| server-only render doc + helpers + rmemo   |   889 B   | tags doc_html_ tagsNS _ bind_ memo_ sig_ |
 | isomorphic html tag                        |   34 B    | html_                                    |
 
 Note that the bold use cases are roughly equivalent to what VanJS provides. The browser-only library is smaller than
@@ -27,14 +27,14 @@ does not provide server-side reactivity.
 
 ```ts
 import { relement__use } from 'relementjs'
-import { browser__relement } from 'relementjs/browser'
+import { browser__full__relement } from 'relementjs/browser'
 import { a_, div_ } from 'relementjs/html'
-relement__use(browser__relement)
-// import { server__relement } from 'relementjs/server'
-// relement__use(server__relement)
+relement__use(browser__full__relement)
+// import { server__full__relement } from 'relementjs/server'
+// relement__use(server__full__relement)
 div_(
 	a_({ href: 'https://github.com/relementjs/relementjs' },
-    'relementjs github page'))
+		'relementjs github page'))
 ```
 
 ## browser rendering
@@ -44,7 +44,7 @@ import { tags } from 'relementjs/browser'
 const { a, div } = tags
 div(
 	a({ href: 'https://github.com/relementjs/relementjs' },
-    'relementjs github page'))
+		'relementjs github page'))
 ```
 
 ## server rendering
@@ -54,5 +54,5 @@ import { tags } from 'relementjs/server'
 const { a, div } = tags
 div(
 	a({ href: 'https://github.com/relementjs/relementjs' },
-    'relementjs github page'))
+		'relementjs github page'))
 ```

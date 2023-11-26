@@ -1,14 +1,29 @@
 # @ctx-core/ui--all
 
+## 0.7.0
+
+### Minor Changes
+
+- minor:
+
+      + fragment_
+      + raw_
+      browser__relement→browser__full__relement
+      + browser__base__relement
+      + browser__fragment__relement
+      server__relement→browser__full__relement
+      + server__base__relement
+      + server__fragment__relement
+
 ## 0.6.0
 
 ### Minor Changes
 
 - renames to match relement project name:
 
-    rel__use→relement__use    
-    browser__rel→browser__relement    
-    server__rel→server__relement    
+  rel**use→relement**use  
+   browser**rel→browser**relement  
+   server**rel→server**relement
 
   size-limit:
 

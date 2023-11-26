@@ -1,10 +1,16 @@
 import type { bind__T, render__namespaceURI_T, render__tags_env_T, render_primitive_T } from '@relementjs/any'
-import type { browser__attach_T, browser__relement_T, browser__tag_T, browser__tags_T } from '../browser/index.js'
+import type {
+	browser__attach_T,
+	browser__fragment__T, browser__raw__T,
+	browser__relement_T, browser__tag__dom_T,
+	browser__tag_T,
+	browser__tags_T
+} from '../browser/index.js'
 import type {
 	server__attach_T,
 	server__doc_html__T,
-	server__element__proto_T,
-	server__relement_T,
+	server__element__proto_T, server__fragment__T, server__raw__T,
+	server__relement_T, server__tag__dom_T,
 	server__tag_T,
 	server__tags_T
 } from '../server/index.js'
@@ -42,7 +48,25 @@ export type tag_T<env_T extends render__env_T, Tag> =
 		: env_T extends 'server'
 			? server__tag_T<Tag>
 			: browser__tag_T<Tag>|server__tag_T<Tag>
-export declare let doc_html_: server__doc_html__T
+export declare function fragment_<env_T extends render__env_T>(...children:tag__dom_T<env_T>[]):
+	env_T extends 'browser'
+		? ReturnType<browser__fragment__T>
+		: env_T extends 'server'
+			? ReturnType<server__fragment__T>
+			: ReturnType<browser__fragment__T>|ReturnType<server__fragment__T>
+export declare function raw_<env_T extends render__env_T>(...children:tag__dom_T<env_T>[]):
+	env_T extends 'browser'
+		? ReturnType<browser__raw__T>
+		: env_T extends 'server'
+			? ReturnType<server__raw__T>
+			: ReturnType<browser__raw__T>|ReturnType<server__raw__T>
+export type tag__dom_T<env_T extends render__env_T> =
+	env_T extends 'browser'
+		? browser__tag__dom_T
+		: env_T extends 'server'
+			? server__tag__dom_T
+			: browser__tag__dom_T|server__tag__dom_T
+export declare let doc_html_:server__doc_html__T
 export declare let server__element__proto:server__element__proto_T
 export declare function hydrate<T extends Node>(dom:T, f:(dom:T)=>T|null|undefined|render_primitive_T):void
 export declare function svg_tags_<env_T extends render__env_T>():tags_T<env_T, 'svg'>

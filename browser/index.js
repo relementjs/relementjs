@@ -80,6 +80,16 @@ export let tagsNS = ns=>new Proxy((name, ...args)=>{
 	return attach(dom, ...children)
 }, { get: (tag, name)=>tag.bind(_undefined, name) })
 export let tags = tagsNS()
+export let fragment_ = (...children)=>attach(document.createDocumentFragment(), ...children)
+export let raw_ = html=>{
+	let div = tags.div()
+	div.innerHTML = html
+	let fragment = document.createDocumentFragment()
+	while (div.firstChild) {
+		fragment.appendChild(div.firstChild)
+	}
+	return fragment
+}
 export function hydrate(dom, f) {
 	memo_(memo=>{
 		let _dom = dom__run(f, dom)
@@ -92,4 +102,6 @@ export function hydrate(dom, f) {
 		}
 	})()
 }
-export let browser__relement = { attach, bind_, tags, tagsNS, hydrate, }
+export let browser__base__relement = { attach, bind_, tags, tagsNS, }
+export let browser__fragment__relement = { attach, bind_, tags, tagsNS, fragment_, raw_, }
+export let browser__full__relement = { attach, bind_, tags, tagsNS, fragment_, raw_, hydrate, }

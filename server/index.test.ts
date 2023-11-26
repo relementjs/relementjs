@@ -1,7 +1,17 @@
 import { memo_, sig_ } from 'ctx-core/rmemo'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
-import { attach, bind_, doc_html_, server__element__proto, server__relement, tags, tagsNS } from './index.js'
+import {
+	attach,
+	bind_,
+	doc_html_,
+	fragment_,
+	raw_, server__base__relement,
+	server__element__proto, server__fragment__relement,
+	server__full__relement,
+	tags,
+	tagsNS
+} from './index.js'
 const {
 	a,
 	body,
@@ -18,17 +28,24 @@ const {
 	title,
 	ul
 } = tags
-test('server__relement', ()=>{
-	equal(server__relement, { attach, bind_, tags, tagsNS, doc_html_, server__element__proto })
+test('server__base__relement', ()=>{
+	equal(server__base__relement, { attach, bind_, tags, tagsNS, })
+})
+test('server__fragment__relement', ()=>{
+	equal(server__fragment__relement, { attach, bind_, tags, tagsNS, fragment_, raw_ })
+})
+test('server__full__relement', ()=>{
+	equal(server__full__relement, { attach, bind_, tags, tagsNS, fragment_, raw_, doc_html_, server__element__proto })
 })
 test('tags', ()=>{
 	equal(div(
 		p('👋Hello'),
 		ul(
 			li('🗺️World'),
-			li(a({ href: 'https://github.com/relementjs/server/' }, '🍦ctx-core')),
+			li(a({ href: 'https://github.com/relementjs/server/' }, '🍦relement')),
 		),
-	).render(), '<div><p>👋Hello</p><ul><li>🗺️World</li><li><a href="https://github.com/relementjs/server/">🍦ctx-core</a></li></ul></div>')
+	).render(),
+	'<div><p>👋Hello</p><ul><li>🗺️World</li><li><a href="https://github.com/relementjs/server/">🍦relement</a></li></ul></div>')
 })
 test('elements without child', ()=>{
 	equal(br().render(), '<br>')
@@ -65,6 +82,21 @@ test('null or undefined are ignored', ()=>{
 	// Deeply nested
 	equal(ul([[undefined, li('Item 1'), null, [li('Item 2')]], null, li('Item 3'), undefined]).render(),
 		'<ul><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul>')
+})
+test('fragment_', ()=>{
+	equal(fragment_(
+		'<div>Yo!</div>',
+		div(
+			p('👋Hello'),
+			ul(
+				li('🗺️World'),
+				li(a({ href: 'https://github.com/relementjs/server/' }, '🍦relement')),
+			),)).render(),
+	'&lt;div&gt;Yo!&lt;/div&gt;<div><p>👋Hello</p><ul><li>🗺️World</li><li><a href="https://github.com/relementjs/server/">🍦relement</a></li></ul></div>')
+})
+test('raw_', ()=>{
+	equal(raw_('<div>row 0</div><div>row 1</div><div>row 2</div>').render(),
+		'<div>row 0</div><div>row 1</div><div>row 2</div>')
 })
 test('attach|basic', ()=>{
 	const dom = ul()
@@ -146,7 +178,7 @@ test('tagsNS: math', ()=>{
 	equal(dom.render(),
 		'<math><msup><mi>e</mi><mrow><mi>i</mi><mi>π</mi></mrow></msup><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></math>')
 })
-test('dummy reactive', ()=>{
+test('reactive', ()=>{
 	const state1 = sig_(1)
 	const state2 = memo_(()=>state1() * 2)
 	const state3 = sig_('abc')
@@ -188,7 +220,8 @@ test('html_', ()=>{
 // Test cases for examples used in the documentation. Having the tests to ensure the examples
 // are always correct.
 test('example: van-plate-server', ()=>{
-	equal(a({ href: 'https://github.com/relementjs/server/' }, '🍦ctx-core').render(), `<a href="https://github.com/relementjs/server/">🍦ctx-core</a>`)
+	equal(a({ href: 'https://github.com/relementjs/server/' }, '🍦relement').render(),
+		`<a href="https://github.com/relementjs/server/">🍦relement</a>`)
 	equal(button({ onclick: 'alert("Hello")' }, 'Click').render(),
 		`<button onclick="alert(&quot;Hello&quot;)">Click</button>`)
 	equal(input({ type: 'text', value: 'value' }).render(), `<input type="text" value="value">`)

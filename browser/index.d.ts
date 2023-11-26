@@ -45,15 +45,28 @@ export type browser__tag__dom_T =
 	|readonly browser__tag__dom_T[]
 	|unknown // This is necessary for isomorphic compatability. TODO: is there a narrower type solution?
 export type browser__tag__dom__bind_T = ((dom?:Node)=>browser__tag__dom__val_T)|((dom?:Element)=>Element)
+export declare const fragment_:browser__fragment__T
+export type browser__fragment__T = (...children:readonly browser__tag__dom_T[])=>DocumentFragment
+export declare const raw_:browser__raw__T
+export type browser__raw__T = (html:string)=>DocumentFragment
 export declare function hydrate<T extends Node>(dom:T, f:(dom:T)=>T|null|undefined|render_primitive_T):void
 export type browser__hydrate_T<T extends Node> = (dom:T, f:(dom:T)=>T|null|undefined|render_primitive_T)=>void
-export declare const browser__relement: browser__relement_T
-export type browser__relement_T = {
+export declare const browser__base__relement:browser__base__relement_T
+export type browser__base__relement_T = {
 	attach:browser__attach_T
 	bind_:bind__T
 	tags:browser__tags_T<'html'>
 	tagsNS:<tags_env_T extends render__tags_env_T>(
 		namespaceURI:render__namespaceURI_T<tags_env_T>
 	)=>browser__tags_T<tags_env_T>
+}
+export declare const browser__fragment__relement:browser__fragment__relement_T
+export type browser__fragment__relement_T = browser__base__relement_T&{
+	fragment_:browser__fragment__T
+	raw_:browser__raw__T
+}
+export declare const browser__full__relement:Full<browser__relement_T>
+export type browser__full__relement_T = browser__fragment__relement_T&{
 	hydrate<T extends Node>(dom:T, f:(dom:T)=>T|null|undefined|render_primitive_T):void
 }
+export type browser__relement_T = browser__base__relement_T&Partial<browser__full__relement_T>
