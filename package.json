@@ -1,11 +1,21 @@
 {
 	"name": "relementjs",
-	"version": "0.8.1",
+	"version": "0.9.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
+		"ui",
+		"ui",
+		"template",
+		"rendering",
+		"server-side rendering",
+		"dom",
+		"dom Generation",
+		"dom Manipulation",
+		"vanilla",
+		"ultra-lightweight",
+		"minimalist",
+		"scalable",
 		"reactive",
-		"ui",
-		"ui",
 		"memos",
 		"signals",
 		"rmemo",
@@ -57,14 +67,14 @@
 		"disable:test:coverage": "c8 pnpm test-unit"
 	},
 	"dependencies": {
-		"ctx-core": "^4.6.1"
+		"ctx-core": "^4.6.2"
 	},
 	"devDependencies": {
 		"@size-limit/preset-small-lib": "^11.0.0",
 		"@types/jsdom": "^21.1.6",
 		"c8": "^8.0.1",
 		"check-dts": "^0.7.2",
-		"jsdom": "^22.1.0",
+		"jsdom": "^23.0.0",
 		"size-limit": "^11.0.0",
 		"tsx": "^4.5.0",
 		"typescript": "next",
@@ -120,14 +130,14 @@
 			"import": {
 				"./browser": "{ tags }"
 			},
-			"limit": "728 B"
+			"limit": "732 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, bind_ }"
 			},
-			"limit": "786 B"
+			"limit": "781 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo",
@@ -193,7 +203,7 @@
 				"": "{ relement__use, bind_, tags, memo_, sig_, be_, ctx_ }",
 				"./server": "{ server__base__relement, doc_html_ }"
 			},
-			"limit": "1215 B"
+			"limit": "1217 B"
 		},
 		{
 			"name": "isomorphic (fragment) browser helpers + doc_html_ + helpers + rmemo + ctx",
@@ -201,7 +211,7 @@
 				"": "{ relement__use, bind_, tags, memo_, sig_, be_, ctx_ }",
 				"./server": "{ server__fragment__relement, doc_html_ }"
 			},
-			"limit": "1270 B"
+			"limit": "1269 B"
 		},
 		{
 			"name": "html: html_",

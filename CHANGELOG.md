@@ -1,5 +1,26 @@
 # @ctx-core/ui--all
 
+## 0.9.0
+
+### Minor Changes
+
+- minor: be*memo_pair*,be*sig_triple*: subscriber functions have get a ctx passed in:
+
+      be_memo_pair_: (ctx:Ctx, memo:memo_T)
+      be_sig_pair_: (ctx:Ctx, memo:sig_T)
+
+  size-limit:
+
+      browser-only minimal: + 4 B
+      browser-only hydrate + helpers: - 5 B
+      isomorphic (base) browser helpers + doc_html_ + helpers + rmemo + ctx: + 2 B
+      isomorphic (fragment) browser helpers + doc_html_ + helpers + rmemo + ctx: - 1 B
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@4.6.2
+
 ## 0.8.1
 
 ### Patch Changes
