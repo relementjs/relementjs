@@ -62,7 +62,7 @@ export function attach (dom, ...children){
 export const bind_ = f=>(f._is_bind = 1, f)
 export const tags = new Proxy((name, ...args)=>{
 	const [props, ...children] =
-		Object.getPrototypeOf(args[0] ?? 0) === obj__proto && !args[0].rmr
+		Object.getPrototypeOf(args[0] ?? 0) === obj__proto
 			? args
 			: [{}, ...args]
 	const props_str = Object.entries(props).map(([k, v])=>{

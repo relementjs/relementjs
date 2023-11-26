@@ -1,5 +1,20 @@
 # @ctx-core/ui--all
 
+## 0.5.1
+
+### Patch Changes
+
+- tagsNS: remove superfluous && !args[0].rmr check
+
+  size-limit:
+
+      isomorphic server: - 5 B
+      server-only minimal: - 6 B
+      server-only render doc + helpers: - 3 B
+      server-only render doc + helpers + rmemo: - 7 B
+      server-only render doc + helpers + rmemo + ctx: - 5 B
+      isomorphic browser helpers + hydrate + helpers + rmemo + ctx: - 1 B
+
 ## 0.5.0
 
 ### Minor Changes
