@@ -1,9 +1,9 @@
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
-import { browser__full__relement } from '../browser/index.js'
+import { browser__base__relement } from '../browser/index.js'
 import { relement__use } from '../isomorphic/index.js'
-import { server__full__relement } from '../server/index.js'
+import { server__base__relement } from '../server/index.js'
 import { a_, body_, div_, head_, html_ } from './index.js'
 let jsdom:JSDOM, prev__window:Window, prev__document:Document, prev__Text:typeof Text, prev__Node:typeof Node
 test.before(()=>{
@@ -21,7 +21,7 @@ test.after(()=>{
 	relement__use(undefined)
 })
 test('server|html_ head_ body_ div_ a_', ()=>{
-	relement__use(server__full__relement)
+	relement__use(server__base__relement)
 	equal(
 		html_<'server'>(
 			head_(),
@@ -39,7 +39,7 @@ test('browser|html_ head_ body_ div_ a_', ()=>{
 	globalThis.document = jsdom.window.document
 	globalThis.Text = jsdom.window.Text
 	globalThis.Node = jsdom.window.Node
-	relement__use(browser__full__relement)
+	relement__use(browser__base__relement)
 	equal(
 		html_<'browser'>(
 			head_(),

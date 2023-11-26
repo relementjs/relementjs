@@ -75,10 +75,4 @@ export type server__fragment__relement_T = server__base__relement_T&{
 	fragment_:server__fragment__T
 	raw_:server__raw__T
 }
-export declare const server__full__relement:server__full__relement_T
-export type server__full__relement_T = server__fragment__relement_T&{
-	attach:server__attach_T
-	doc_html_:server__doc_html__T
-	server__element__proto:server__element__proto_T
-}
-export type server__relement_T = server__base__relement_T&Partial<server__full__relement_T>
+export type server__relement_T = server__base__relement_T&Partial<server__fragment__relement_T>

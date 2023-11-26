@@ -6,8 +6,8 @@ import { equal, ok } from 'uvu/assert'
 import {
 	attach,
 	bind_,
-	browser__base__relement, browser__fragment__relement,
-	browser__full__relement,
+	browser__base__relement,
+	browser__fragment__relement,
 	fragment_,
 	hydrate,
 	raw_,
@@ -54,9 +54,6 @@ test('browser__base__relement', ()=>{
 })
 test('browser__fragment__relement', ()=>{
 	equal(browser__fragment__relement, { attach, bind_, tags, tagsNS, fragment_, raw_, })
-})
-test('browser__full__relement', ()=>{
-	equal(browser__full__relement, { attach, bind_, tags, tagsNS, fragment_, raw_, hydrate, })
 })
 test('tags|basic', ()=>{
 	const dom = div(

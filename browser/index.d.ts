@@ -65,8 +65,4 @@ export type browser__fragment__relement_T = browser__base__relement_T&{
 	fragment_:browser__fragment__T
 	raw_:browser__raw__T
 }
-export declare const browser__full__relement:Full<browser__relement_T>
-export type browser__full__relement_T = browser__fragment__relement_T&{
-	hydrate<T extends Node>(dom:T, f:(dom:T)=>T|null|undefined|render_primitive_T):void
-}
-export type browser__relement_T = browser__base__relement_T&Partial<browser__full__relement_T>
+export type browser__relement_T = browser__base__relement_T&Partial<browser__fragment__relement_T>

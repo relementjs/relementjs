@@ -107,4 +107,3 @@ export const doc_html_ = (...args)=>{
 }
 export let server__base__relement = { attach, bind_, tags, tagsNS }
 export let server__fragment__relement = { attach, bind_, tags, tagsNS, fragment_, raw_ }
-export let server__full__relement = { attach, bind_, tags, tagsNS, fragment_, raw_, doc_html_, server__element__proto }

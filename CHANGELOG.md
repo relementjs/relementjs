@@ -1,5 +1,35 @@
 # @ctx-core/ui--all
 
+## 0.8.0
+
+### Minor Changes
+
+- minor: isomorphic api on common browser/server api only: remove unique exports from browser or server:
+
+      - browser__full__relement_T
+      - server__full__relement_T
+      isomorphic:
+      	- doc_html_
+      	- server__element__proto
+      	- hydrate
+
+  size-limit:
+
+      isomorphic browser: base: - 53 B
+      isomorphic browser: fragment: - 53 B
+      isomorphic server: base: - 50 B
+      isomorphic server: fragment: - 54 B
+      isomorphic helpers: - 44 B
+      browser-only minimal: + 4 B
+      browser-only hydrate + helpers: + 7 B
+      browser-only hydrate + helpers + rmemo: - 5 B
+      browser-only hydrate + helpers + rmemo + ctx: + 5 B
+      isomorphic (base) browser helpers + hydrate + helpers + rmemo + ctx: - 17 B
+      isomorphic (fragment) browser helpers + hydrate + helpers + rmemo + ctx: - 11 B
+      server-only render doc + helpers + rmemo + ctx: - 2 B
+      isomorphic (base) browser helpers + doc_html_ + helpers + rmemo + ctx: - 13 B
+      isomorphic (fragment) browser helpers + doc_html_ + helpers + rmemo + ctx: - 19 B
+
 ## 0.7.0
 
 ### Minor Changes

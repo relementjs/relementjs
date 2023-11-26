@@ -6,9 +6,9 @@ import {
 	bind_,
 	doc_html_,
 	fragment_,
-	raw_, server__base__relement,
-	server__element__proto, server__fragment__relement,
-	server__full__relement,
+	raw_,
+	server__base__relement,
+	server__fragment__relement,
 	tags,
 	tagsNS
 } from './index.js'
@@ -33,9 +33,6 @@ test('server__base__relement', ()=>{
 })
 test('server__fragment__relement', ()=>{
 	equal(server__fragment__relement, { attach, bind_, tags, tagsNS, fragment_, raw_ })
-})
-test('server__full__relement', ()=>{
-	equal(server__full__relement, { attach, bind_, tags, tagsNS, fragment_, raw_, doc_html_, server__element__proto })
 })
 test('tags', ()=>{
 	equal(div(

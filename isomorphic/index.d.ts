@@ -48,6 +48,8 @@ export type tag_T<env_T extends render__env_T, Tag> =
 		: env_T extends 'server'
 			? server__tag_T<Tag>
 			: browser__tag_T<Tag>|server__tag_T<Tag>
+export declare function svg_tags_<env_T extends render__env_T>():tags_T<env_T, 'svg'>
+export declare function mathml_tags_<env_T extends render__env_T>():tags_T<env_T, 'mathml'>
 export declare function fragment_<env_T extends render__env_T>(...children:tag__dom_T<env_T>[]):
 	env_T extends 'browser'
 		? ReturnType<browser__fragment__T>
@@ -66,8 +68,3 @@ export type tag__dom_T<env_T extends render__env_T> =
 		: env_T extends 'server'
 			? server__tag__dom_T
 			: browser__tag__dom_T|server__tag__dom_T
-export declare let doc_html_:server__doc_html__T
-export declare let server__element__proto:server__element__proto_T
-export declare function hydrate<T extends Node>(dom:T, f:(dom:T)=>T|null|undefined|render_primitive_T):void
-export declare function svg_tags_<env_T extends render__env_T>():tags_T<env_T, 'svg'>
-export declare function mathml_tags_<env_T extends render__env_T>():tags_T<env_T, 'mathml'>

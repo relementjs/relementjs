@@ -104,4 +104,3 @@ export function hydrate(dom, f) {
 }
 export let browser__base__relement = { attach, bind_, tags, tagsNS, }
 export let browser__fragment__relement = { attach, bind_, tags, tagsNS, fragment_, raw_, }
-export let browser__full__relement = { attach, bind_, tags, tagsNS, fragment_, raw_, hydrate, }

@@ -1,18 +1,17 @@
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
-import { browser__base__relement, browser__fragment__relement, browser__full__relement } from '../browser/index.js'
+import { browser__base__relement, browser__fragment__relement } from '../browser/index.js'
 import { div_ } from '../html/index.js'
-import { server__base__relement, server__fragment__relement, server__full__relement } from '../server/index.js'
+import { server__base__relement, server__fragment__relement } from '../server/index.js'
 import {
 	attach,
 	bind_,
-	doc_html_, fragment_,
-	hydrate,
+	fragment_,
 	mathml_tags,
-	mathml_tags_, raw_,
+	mathml_tags_,
+	raw_,
 	relement__use,
-	server__element__proto,
 	svg_tags,
 	svg_tags_,
 	tags,
@@ -40,52 +39,6 @@ test.after(()=>{
 	globalThis.Node = prev__Node
 	relement__use(undefined)
 })
-test('relement__use|full__relement', ()=>{
-	relement__use(undefined)
-	equal(attach, undefined)
-	equal(bind_, undefined)
-	equal(tagsNS, undefined)
-	equal(tags, undefined)
-	equal(svg_tags, undefined)
-	equal(mathml_tags, undefined)
-	equal(doc_html_, 'server__full__relement')
-	equal(server__element__proto, 'server__full__relement')
-	equal(hydrate, 'browser__full__relement')
-	relement__use(browser__full__relement)
-	equal(attach, browser__full__relement.attach)
-	equal(bind_, browser__full__relement.bind_)
-	equal(tagsNS, browser__full__relement.tagsNS)
-	equal(tags, browser__full__relement.tags)
-	equal((<tags_T<'browser', 'svg'>>svg_tags).svg().outerHTML, '<svg></svg>')
-	equal(svg_tags_<'browser'>().svg().outerHTML, '<svg></svg>')
-	equal((<tags_T<'browser', 'mathml'>>mathml_tags).math().outerHTML, '<math></math>')
-	equal(mathml_tags_<'browser'>().math().outerHTML, '<math></math>')
-	equal(
-		div_<'browser'>(fragment_(div_('row0'), div_('row1'), div_('row2'))).innerHTML,
-		'<div>row0</div><div>row1</div><div>row2</div>')
-	equal(
-		div_<'browser'>(raw_('<div>row0</div><div>row1</div><div>row2</div>')).innerHTML,
-		'<div>row0</div><div>row1</div><div>row2</div>')
-	equal(doc_html_, 'server__full__relement')
-	equal(server__element__proto, 'server__full__relement')
-	equal(hydrate, browser__full__relement.hydrate)
-	relement__use(server__full__relement)
-	equal(attach, server__full__relement.attach)
-	equal(bind_, server__full__relement.bind_)
-	equal(tagsNS, server__full__relement.tagsNS)
-	equal(tags, server__full__relement.tags)
-	equal(svg_tags, server__full__relement.tagsNS('http://www.w3.org/2000/svg'))
-	equal(mathml_tags, server__full__relement.tagsNS('http://www.w3.org/1998/Math/MathML'))
-	equal(
-		fragment_<'server'>(div_('row0'), div_('row1'), div_('row2')).render(),
-		'<div>row0</div><div>row1</div><div>row2</div>')
-	equal(
-		raw_<'server'>('<div>row0</div><div>row1</div><div>row2</div>').render(),
-		'<div>row0</div><div>row1</div><div>row2</div>')
-	equal(doc_html_, server__full__relement.doc_html_)
-	equal(server__element__proto, server__full__relement.server__element__proto)
-	equal(hydrate, 'browser__full__relement')
-})
 test('relement__use|fragment__relement', ()=>{
 	relement__use(undefined)
 	equal(attach, undefined)
@@ -94,9 +47,6 @@ test('relement__use|fragment__relement', ()=>{
 	equal(tags, undefined)
 	equal(svg_tags, undefined)
 	equal(mathml_tags, undefined)
-	equal(doc_html_, 'server__full__relement')
-	equal(server__element__proto, 'server__full__relement')
-	equal(hydrate, 'browser__full__relement')
 	relement__use(browser__fragment__relement)
 	equal(attach, browser__fragment__relement.attach)
 	equal(bind_, browser__fragment__relement.bind_)
@@ -112,9 +62,6 @@ test('relement__use|fragment__relement', ()=>{
 	equal(
 		div_<'browser'>(raw_('<div>row0</div><div>row1</div><div>row2</div>')).innerHTML,
 		'<div>row0</div><div>row1</div><div>row2</div>')
-	equal(doc_html_, 'server__full__relement')
-	equal(server__element__proto, 'server__full__relement')
-	equal(hydrate, 'browser__full__relement')
 	relement__use(server__fragment__relement)
 	equal(attach, server__fragment__relement.attach)
 	equal(bind_, server__fragment__relement.bind_)
@@ -128,9 +75,6 @@ test('relement__use|fragment__relement', ()=>{
 	equal(
 		raw_<'server'>('<div>row0</div><div>row1</div><div>row2</div>').render(),
 		'<div>row0</div><div>row1</div><div>row2</div>')
-	equal(doc_html_, 'server__full__relement')
-	equal(server__element__proto, 'server__full__relement')
-	equal(hydrate, 'browser__full__relement')
 })
 test('relement__use|base__relement', ()=>{
 	relement__use(undefined)
@@ -140,9 +84,6 @@ test('relement__use|base__relement', ()=>{
 	equal(tags, undefined)
 	equal(svg_tags, undefined)
 	equal(mathml_tags, undefined)
-	equal(doc_html_, 'server__full__relement')
-	equal(server__element__proto, 'server__full__relement')
-	equal(hydrate, 'browser__full__relement')
 	relement__use(browser__base__relement)
 	equal(attach, browser__base__relement.attach)
 	equal(bind_, browser__base__relement.bind_)
@@ -154,9 +95,6 @@ test('relement__use|base__relement', ()=>{
 	equal(mathml_tags_<'browser'>().math().outerHTML, '<math></math>')
 	equal(fragment_, '*__fragment__relement')
 	equal(raw_, '*__fragment__relement')
-	equal(doc_html_, 'server__full__relement')
-	equal(server__element__proto, 'server__full__relement')
-	equal(hydrate, 'browser__full__relement')
 	relement__use(server__base__relement)
 	equal(attach, server__base__relement.attach)
 	equal(bind_, server__base__relement.bind_)
@@ -166,8 +104,5 @@ test('relement__use|base__relement', ()=>{
 	equal(mathml_tags, server__base__relement.tagsNS('http://www.w3.org/1998/Math/MathML'))
 	equal(fragment_, '*__fragment__relement')
 	equal(raw_, '*__fragment__relement')
-	equal(doc_html_, 'server__full__relement')
-	equal(server__element__proto, 'server__full__relement')
-	equal(hydrate, 'browser__full__relement')
 })
 test.run()
