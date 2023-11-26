@@ -1,5 +1,11 @@
 # @ctx-core/ui--all
 
+## 0.8.1
+
+### Patch Changes
+
+- ctx-core: ^4.6.0 -> ^4.6.1
+
 ## 0.8.0
 
 ### Minor Changes
