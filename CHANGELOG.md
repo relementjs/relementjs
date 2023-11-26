@@ -1,5 +1,13 @@
 # @ctx-core/ui--all
 
+## 0.9.1
+
+### Patch Changes
+
+- be*memo_pair*: subscriber receives a memosig argument: allows memosig.\_ = val in subscriber
+- Updated dependencies
+  - ctx-core@4.6.3
+
 ## 0.9.0
 
 ### Minor Changes
