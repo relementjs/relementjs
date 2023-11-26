@@ -1,9 +1,8 @@
+/// <reference types="./index.d.ts" />
 export * from 'ctx-core/be'
 export * from 'ctx-core/rmemo'
-/** @typedef {import('../browser/index.js').browser__render_api_T} */
-/** @typedef {import('../server/index.js').server__render_api_T} */
-/** @type {browser__render_api_T|server__render_api_T} */
-export function rel__use(render_api) {
+/** @type {browser__relement_T|server__relement_T} */
+export function relement__use(render_api) {
 	attach = render_api?.attach
 	bind_ = render_api?.bind_
 	tagsNS = render_api?.tagsNS

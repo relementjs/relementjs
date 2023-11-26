@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.5.1",
+	"version": "0.6.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"reactive",
@@ -79,23 +79,23 @@
 		{
 			"name": "isomorphic browser",
 			"import": {
-				"": "{ rel__use }",
-				"./browser": "{ browser__rel }"
+				"": "{ relement__use }",
+				"./browser": "{ browser__relement }"
 			},
-			"limit": "949 B"
+			"limit": "953 B"
 		},
 		{
 			"name": "isomorphic server",
 			"import": {
-				"": "{ rel__use }",
-				"./server": "{ server__rel }"
+				"": "{ relement__use }",
+				"./server": "{ server__relement }"
 			},
 			"limit": "743 B"
 		},
 		{
 			"name": "isomorphic helpers",
 			"import": {
-				"": "{ rel__use, attach, bind_, tags, tagsNS }"
+				"": "{ relement__use, attach, bind_, tags, tagsNS }"
 			},
 			"limit": "163 B"
 		},
@@ -104,14 +104,14 @@
 			"import": {
 				"./browser": "{ tags }"
 			},
-			"limit": "734 B"
+			"limit": "732 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, bind_ }"
 			},
-			"limit": "781 B"
+			"limit": "778 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo",
@@ -130,10 +130,10 @@
 		{
 			"name": "isomorphic browser helpers + hydrate + helpers + rmemo + ctx",
 			"import": {
-				"": "{ rel__use, bind_, tags, hydrate, memo_, sig_, be_, ctx_ }",
-				"./browser": "{ browser__rel }"
+				"": "{ relement__use, bind_, tags, hydrate, memo_, sig_, be_, ctx_ }",
+				"./browser": "{ browser__relement }"
 			},
-			"limit": "1123 B"
+			"limit": "1120 B"
 		},
 		{
 			"name": "server-only minimal",
@@ -166,8 +166,8 @@
 		{
 			"name": "isomorphic browser helpers + hydrate + helpers + rmemo + ctx",
 			"import": {
-				"": "{ rel__use, bind_, tags, hydrate, memo_, sig_, be_, ctx_ }",
-				"./server": "{ server__rel }"
+				"": "{ relement__use, bind_, tags, hydrate, memo_, sig_, be_, ctx_ }",
+				"./server": "{ server__relement }"
 			},
 			"limit": "1241 B"
 		},

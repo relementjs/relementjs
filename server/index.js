@@ -1,5 +1,5 @@
+/// <reference types="./index.d.ts" />
 // originally forked from https://github.com/vanjs-org/mini-van/blob/main/src/van-plate.js
-/// <reference types="./van-plate.d.ts" />
 export * from 'ctx-core/rmemo'
 const tag_R_no_child = {
 	input: 1,
@@ -88,4 +88,4 @@ export const doc_html_ = (...args)=>{
 	tags.html(...args).buf__render(buf)
 	return buf.join('')
 }
-export let server__rel = { attach, bind_, tags, tagsNS, doc_html_, server__element__proto }
+export let server__relement = { attach, bind_, tags, tagsNS, doc_html_, server__element__proto }

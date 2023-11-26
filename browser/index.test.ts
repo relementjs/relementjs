@@ -3,7 +3,7 @@ import { memo_, memosig_, sig_, type sig_T } from 'ctx-core/rmemo'
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal, ok } from 'uvu/assert'
-import { attach, bind_, browser__rel, hydrate, tags, tagsNS } from './index.js'
+import { attach, bind_, browser__relement, hydrate, tags, tagsNS } from './index.js'
 const skip_long = process.env.SKIP_LONG ? parseInt(process.env.SKIP_LONG) : false
 const skip_long_test = skip_long ? test.skip : test
 let jsdom:JSDOM, prev__window:Window, prev__document:Document, prev__Text:typeof Text, prev__Node:typeof Node
@@ -39,8 +39,8 @@ test.after(()=>{
 	globalThis.Text = prev__Text
 	globalThis.Node = prev__Node
 })
-test('browser__rel', ()=>{
-	equal(browser__rel, { attach, bind_, tags, tagsNS, hydrate, })
+test('browser__relement', ()=>{
+	equal(browser__relement, { attach, bind_, tags, tagsNS, hydrate, })
 })
 test('tags|basic', ()=>{
 	const dom = div(

@@ -1,5 +1,22 @@
 # @ctx-core/ui--all
 
+## 0.6.0
+
+### Minor Changes
+
+- renames to match relement project name:
+
+    rel__use→relement__use    
+    browser__rel→browser__relement    
+    server__rel→server__relement    
+
+  size-limit:
+
+      isomorphic browser: + 4 B
+      browser-only minimal: - 2 B
+      browser-only hydrate + helpers: - 3 B
+      isomorphic browser helpers + hydrate + helpers + rmemo + ctx: - 3 B
+
 ## 0.5.1
 
 ### Patch Changes

@@ -1,7 +1,7 @@
 import { memo_, sig_ } from 'ctx-core/rmemo'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
-import { attach, bind_, doc_html_, server__element__proto, server__rel, tags, tagsNS } from './index.js'
+import { attach, bind_, doc_html_, server__element__proto, server__relement, tags, tagsNS } from './index.js'
 const {
 	a,
 	body,
@@ -18,8 +18,8 @@ const {
 	title,
 	ul
 } = tags
-test('server__rel', ()=>{
-	equal(server__rel, { attach, bind_, tags, tagsNS, doc_html_, server__element__proto })
+test('server__relement', ()=>{
+	equal(server__relement, { attach, bind_, tags, tagsNS, doc_html_, server__element__proto })
 })
 test('tags', ()=>{
 	equal(div(

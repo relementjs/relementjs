@@ -92,4 +92,4 @@ export function hydrate(dom, f) {
 		}
 	})()
 }
-export let browser__rel = { attach, bind_, tags, tagsNS, hydrate, }
+export let browser__relement = { attach, bind_, tags, tagsNS, hydrate, }

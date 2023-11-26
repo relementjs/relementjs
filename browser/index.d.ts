@@ -1,3 +1,4 @@
+/// <reference types="./index.d.ts" />
 // originally forked from https://github.com/vanjs-org/van/blob/main/src/van.d.ts
 import type { rmemo_T } from 'ctx-core/rmemo'
 import type {
@@ -46,8 +47,8 @@ export type browser__tag__dom_T =
 export type browser__tag__dom__bind_T = ((dom?:Node)=>browser__tag__dom__val_T)|((dom?:Element)=>Element)
 export declare function hydrate<T extends Node>(dom:T, f:(dom:T)=>T|null|undefined|render_primitive_T):void
 export type browser__hydrate_T<T extends Node> = (dom:T, f:(dom:T)=>T|null|undefined|render_primitive_T)=>void
-export declare const browser__rel: browser__rel_T
-export type browser__rel_T = {
+export declare const browser__relement: browser__relement_T
+export type browser__relement_T = {
 	attach:browser__attach_T
 	bind_:bind__T
 	tags:browser__tags_T<'html'>

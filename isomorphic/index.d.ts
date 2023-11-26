@@ -1,17 +1,17 @@
 import type { bind__T, render__namespaceURI_T, render__tags_env_T, render_primitive_T } from '@relementjs/any'
-import type { browser__attach_T, browser__rel_T, browser__tag_T, browser__tags_T } from '../browser/index.js'
+import type { browser__attach_T, browser__relement_T, browser__tag_T, browser__tags_T } from '../browser/index.js'
 import type {
 	server__attach_T,
 	server__doc_html__T,
 	server__element__proto_T,
-	server__rel_T,
+	server__relement_T,
 	server__tag_T,
 	server__tags_T
 } from '../server/index.js'
 export * from 'ctx-core/be'
 export * from 'ctx-core/rmemo'
-export declare function rel__use(
-	render_api:browser__rel_T|server__rel_T|null|undefined
+export declare function relement__use(
+	render_api:browser__relement_T|server__relement_T|null|undefined
 ):void
 export type render__env_T = 'any'|'browser'|'server'
 export declare function attach<env_T extends render__env_T>(

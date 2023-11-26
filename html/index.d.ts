@@ -1,4 +1,5 @@
 /// <reference lib="dom" />
+/// <reference types="./index.d.ts" />
 import type { render__env_T, tag_T } from '../isomorphic/index.js'
 type arg_a_T<env_T extends render__env_T, tag_name_T> = Parameters<tag_T<env_T, HTMLElementTagNameMap[tag_name_T]>>
 type ret_T<env_T extends render__env_T, tag_name_T> = ReturnType<tag_T<env_T, HTMLElementTagNameMap[tag_name_T]>>

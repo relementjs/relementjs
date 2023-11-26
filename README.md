@@ -9,10 +9,10 @@ relementjs includes rmemo as a reactive core & ctx-core for contexts...
 
 | use case                                   |   size    | imports                                  |
 |--------------------------------------------|:---------:|------------------------------------------|
-| isomorphic browser                         |   949 B   | rel__use browser__rel                    |
-| isomorphic server                          |   743 B   | rel__use server__rel                     |
-| browser-only minimal                       |   734 B   | tags                                     |
-| browser-only hydrate + helpers             |   781 B   | tags hydrate _ bind_                     |
+| isomorphic browser                         |   953 B   | relement__use browser__relement                    |
+| isomorphic server                          |   743 B   | relement__use server__relement                     |
+| browser-only minimal                       |   732 B   | tags                                     |
+| browser-only hydrate + helpers             |   778 B   | tags hydrate _ bind_                     |
 | **browser-only hydrate + helpers + rmemo** | **799 B** | **tags hydrate _ bind_ memo_ sig_**      |
 | server-only minimal                        |   509 B   | tags                                     |
 | **server-only render doc + helpers**       | **552 B** | **tags doc_html_ tagsNS _ bind_**        |
@@ -26,12 +26,12 @@ does not provide server-side reactivity.
 ## isomorphic rendering
 
 ```ts
-import { rel__use } from 'relementjs'
-import { browser__rel } from 'relementjs/browser'
+import { relement__use } from 'relementjs'
+import { browser__relement } from 'relementjs/browser'
 import { a_, div_ } from 'relementjs/html'
-rel__use(browser__rel)
-// import { server__rel } from 'relementjs/server'
-// rel__use(server__rel)
+relement__use(browser__relement)
+// import { server__relement } from 'relementjs/server'
+// relement__use(server__relement)
 div_(
 	a_({ href: 'https://github.com/relementjs/relementjs' },
     'relementjs github page'))

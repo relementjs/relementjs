@@ -57,8 +57,8 @@ export type server__Node_T = {
 	render():string
 	addEventListener:unknown
 }
-export declare const server__rel:server__rel_T
-export type server__rel_T = {
+export declare const server__relement:server__relement_T
+export type server__relement_T = {
 	attach:server__attach_T
 	bind_:bind__T
 	tags:server__tags_T<'html'>
