@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.13.1",
+	"version": "0.14.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -67,7 +67,7 @@
 		"disable:test:coverage": "c8 pnpm test-unit"
 	},
 	"dependencies": {
-		"ctx-core": "^4.7.0"
+		"ctx-core": "^4.8.0"
 	},
 	"devDependencies": {
 		"@size-limit/preset-small-lib": "^11.0.0",
@@ -92,7 +92,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__base__relement }"
 			},
-			"limit": "884 B"
+			"limit": "894 B"
 		},
 		{
 			"name": "isomorphic browser: fragment",
@@ -100,7 +100,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__fragment__relement }"
 			},
-			"limit": "957 B"
+			"limit": "972 B"
 		},
 		{
 			"name": "isomorphic server: base",
@@ -108,7 +108,7 @@
 				"": "{ relement__use }",
 				"./server": "{ server__base__relement }"
 			},
-			"limit": "683 B"
+			"limit": "686 B"
 		},
 		{
 			"name": "isomorphic server: fragment",
@@ -116,7 +116,7 @@
 				"": "{ relement__use }",
 				"./server": "{ server__fragment__relement }"
 			},
-			"limit": "740 B"
+			"limit": "743 B"
 		},
 		{
 			"name": "isomorphic helpers",
@@ -130,28 +130,28 @@
 			"import": {
 				"./browser": "{ tags }"
 			},
-			"limit": "732 B"
+			"limit": "733 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, bind_ }"
 			},
-			"limit": "781 B"
+			"limit": "793 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, bind_, memo_, sig_ }"
 			},
-			"limit": "804 B"
+			"limit": "812 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo + ctx",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, bind_, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "965 B"
+			"limit": "968 B"
 		},
 		{
 			"name": "isomorphic (base) browser helpers + hydrate + helpers + rmemo + ctx",
@@ -159,7 +159,7 @@
 				"": "{ relement__use, bind_, tags, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__base__relement, hydrate }"
 			},
-			"limit": "1101 B"
+			"limit": "1112 B"
 		},
 		{
 			"name": "isomorphic (fragment) browser helpers + hydrate + helpers + rmemo + ctx",
@@ -167,35 +167,35 @@
 				"": "{ relement__use, bind_, tags, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__fragment__relement, hydrate }"
 			},
-			"limit": "1173 B"
+			"limit": "1183 B"
 		},
 		{
 			"name": "server-only minimal",
 			"import": {
 				"./server": "{ tags }"
 			},
-			"limit": "509 B"
+			"limit": "507 B"
 		},
 		{
 			"name": "server-only render doc + helpers",
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, bind_, }"
 			},
-			"limit": "557 B"
+			"limit": "554 B"
 		},
 		{
 			"name": "server-only render doc + helpers + rmemo",
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, bind_, memo_, sig_ }"
 			},
-			"limit": "889 B"
+			"limit": "890 B"
 		},
 		{
 			"name": "server-only render doc + helpers + rmemo + ctx",
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, bind_, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "1044 B"
+			"limit": "1042 B"
 		},
 		{
 			"name": "isomorphic (base) browser helpers + doc_html_ + helpers + rmemo + ctx",
@@ -203,7 +203,7 @@
 				"": "{ relement__use, bind_, tags, memo_, sig_, be_, ctx_ }",
 				"./server": "{ server__base__relement, doc_html_ }"
 			},
-			"limit": "1217 B"
+			"limit": "1219 B"
 		},
 		{
 			"name": "isomorphic (fragment) browser helpers + doc_html_ + helpers + rmemo + ctx",
@@ -211,7 +211,7 @@
 				"": "{ relement__use, bind_, tags, memo_, sig_, be_, ctx_ }",
 				"./server": "{ server__fragment__relement, doc_html_ }"
 			},
-			"limit": "1269 B"
+			"limit": "1275 B"
 		},
 		{
 			"name": "html: html_",

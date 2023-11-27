@@ -66,14 +66,15 @@ export const tags = new Proxy((name, ...args)=>{
 			? args
 			: [{}, ...args]
 	const props_str = Object.entries(props).map(([k, v])=>{
-		const plain_v = plain_val_(v, k), lowerK = k.toLowerCase()
-		return typeof plain_v === 'boolean'
-			? (plain_v ? ' ' + lowerK : '')
-			// Disable setting attribute for function-valued properties (mostly event handlers),
-			// as they're usually not useful for SSR (server-side rendering).
-			: typeof plain_v !== 'function'
-				? ` ${lowerK}=${JSON.stringify(attr__escape(plain_v.toString()))}`
-				: ''
+		const plain_v = plain_val_(v, k), lower_k = k.toLowerCase()
+		return (
+			typeof plain_v === 'boolean'
+				? (plain_v ? ' ' + lower_k : '')
+				// Disable setting attribute for function-valued properties (mostly event handlers),
+				// as they're usually not useful for SSR (server-side rendering).
+				: typeof plain_v !== 'function' && plain_v != null
+					? ` ${lower_k}=${JSON.stringify(attr__escape(plain_v.toString()))}`
+					: '')
 	}).join('')
 	return {
 		__proto__: server__element__proto,

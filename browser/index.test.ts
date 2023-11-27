@@ -66,6 +66,12 @@ test('tags|basic', ()=>{
 	equal(dom.outerHTML,
 		'<div><p>👋Hello</p><ul><li>🗺️World</li><li><a href="https://github.com/relementjs/browser">🍦ctx-core/ui--browser</a></li></ul></div>')
 })
+test('tags|undefined & null prop', ()=>{
+	equal(div({ id: undefined }).outerHTML, '<div id=""></div>')
+	equal(div({ id: null }).outerHTML, '<div id=""></div>')
+	equal(div({ custom: undefined }).outerHTML, '<div></div>')
+	equal(div({ custom: null }).outerHTML, '<div></div>')
+})
 test('tags|onclick', ()=>{
 	{
 		const dom = div(

@@ -4,8 +4,8 @@ import { memo_ } from 'ctx-core/rmemo'
 export * from 'ctx-core/rmemo'
 // Global variables - aliasing some builtin symbols to reduce the bundle size.
 let _undefined
-let prop_setter_cache = {}
-let obj__proto = Object.getPrototypeOf(prop_setter_cache)
+let obj__cache = {}
+let obj__proto = Object.getPrototypeOf(obj__cache)
 function dom__run(f, dom) {
 	let val
 	try {
@@ -59,13 +59,17 @@ export let tagsNS = ns=>new Proxy((name, ...args)=>{
 				? Object.getOwnPropertyDescriptor(proto, k) ?? k__PropertyDescriptor_(Object.getPrototypeOf(proto))
 				: _undefined
 		let cache_key = name + ',' + k
-		let prop_setter =
-			prop_setter_cache[cache_key]
-			?? (prop_setter_cache[cache_key] = k__PropertyDescriptor_(Object.getPrototypeOf(dom))?.set ?? 0)
+		// TODO: why do private variable names affect bundle size?
+		let is_attr = // is_attr name size optimization
+			obj__cache[cache_key] // obj__cache name size optimization
+			?? (obj__cache[cache_key] = !k__PropertyDescriptor_(Object.getPrototypeOf(dom))?.set)
 		let param__setter =
-			prop_setter
-				? prop_setter.bind(dom) // prop setter
-				: dom.setAttribute.bind(dom, k) // attribute setter
+			val=>
+				is_attr
+					? val != null // != ternary is a size optimization
+						? dom.setAttribute(k, val)
+						: dom.removeAttribute(k, val) // unused 2nd argument is a size optimization
+					: dom[k] = val ?? '' // prop setter
 		let setter_memo =
 			typeof v === 'function'
 			&& (v.memor || !k.startsWith('on') || v.b)

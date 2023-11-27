@@ -44,6 +44,10 @@ test('tags', ()=>{
 	).render(),
 	'<div><p>👋Hello</p><ul><li>🗺️World</li><li><a href="https://github.com/relementjs/server/">🍦relement</a></li></ul></div>')
 })
+test('tags|undefined & null prop', ()=>{
+	equal(div({ id: undefined }).render(), '<div></div>')
+	equal(div({ id: null }).render(), '<div></div>')
+})
 test('elements without child', ()=>{
 	equal(br().render(), '<br>')
 	equal(hr({ class: 'large' }).render(), '<hr class="large">')
