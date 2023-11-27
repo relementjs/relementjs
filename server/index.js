@@ -48,12 +48,9 @@ export const server__element__proto = {
 }
 const plain_val_ = (v, k)=>{
 	return (
-		v?.rmr
-			? v() :
-			typeof v === 'function' && (!k?.startsWith('on') || v._is_bind)
-				? v()
-				: v
-	)
+		typeof v === 'function' && (v.memor || !k?.startsWith('on') || v._is_bind)
+			? v()
+			: v)
 }
 export function attach(dom, ...children) {
 	dom.children.push(...children.flat(Infinity).filter(c=>c != null))
@@ -89,9 +86,9 @@ export const fragment_ = (...children)=>({
 	buf__render(buf) {
 		for (let c of children) {
 			let plain_c = plain_val_(c)
-			proto_(plain_c) === server__element__proto
+			proto_(plain_c ?? 0) === server__element__proto
 				? plain_c.buf__render(buf)
-				: buf.push(escape(plain_c.toString()))
+				: buf.push(escape((plain_c ?? '').toString()))
 		}
 	},
 })

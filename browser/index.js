@@ -87,7 +87,7 @@ export let tags = tagsNS()
 export let fragment_ = (...children)=>attach(document.createDocumentFragment(), ...children)
 export let raw_ = html=>{
 	let div = tags.div()
-	div.innerHTML = html
+	div.innerHTML = html ?? ''
 	let fragment = document.createDocumentFragment()
 	while (div.firstChild) {
 		fragment.appendChild(div.firstChild)

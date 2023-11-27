@@ -47,7 +47,7 @@ export type server__tag__dom_T =
 export declare const fragment_:server__fragment__T
 export type server__fragment__T = (...children:readonly server__tag__dom_T[])=>server__Node_T
 export declare const raw_:server__raw__T
-export type server__raw__T = (html:string)=>server__Node_T
+export type server__raw__T = (html:string|null|undefined)=>server__Node_T
 export const doc_html_:server__doc_html__T
 export type server__doc_html__T = (first?:render_props_T|server__tag__dom_T, ...rest:readonly server__tag__dom_T[])=>string
 export type server__tag__dom__bind_T = (dom:server__tag__dom__val_T)=>server__tag__dom__val_T

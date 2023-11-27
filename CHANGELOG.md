@@ -1,5 +1,24 @@
 # relementjs
 
+## 0.15.0
+
+### Minor Changes
+
+- fragment*,raw*: nullish values are rendered as an empty string
+
+  size-limit:
+
+    isomorphic browser: fragment: + 9 B
+    isomorphic server: base: + 1 B
+    isomorphic server: fragment: + 12 B
+    isomorphic (fragment) browser helpers + hydrate + helpers + rmemo + ctx: + 3 B
+    server-only minimal: + 1 B
+    server-only render doc + helpers: + 4 B
+    server-only render doc + helpers + rmemo: + 1 B
+    server-only render doc + helpers + rmemo + ctx: + 6 B
+    isomorphic (base) browser helpers + doc_html_ + helpers + rmemo + ctx: + 1 B
+    isomorphic (fragment) browser helpers + doc_html_ + helpers + rmemo + ctx: + 3 B
+
 ## 0.14.1
 
 ### Patch Changes

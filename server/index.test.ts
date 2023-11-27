@@ -87,6 +87,8 @@ test('null or undefined are ignored', ()=>{
 test('fragment_', ()=>{
 	equal(fragment_(
 		'<div>Yo!</div>',
+		undefined,
+		null,
 		div(
 			p('👋Hello'),
 			ul(
@@ -98,6 +100,8 @@ test('fragment_', ()=>{
 test('raw_', ()=>{
 	equal(raw_('<div>row 0</div><div>row 1</div><div>row 2</div>').render(),
 		'<div>row 0</div><div>row 1</div><div>row 2</div>')
+	equal(raw_(undefined).render(), '')
+	equal(raw_(null).render(), '')
 })
 test('attach|basic', ()=>{
 	const dom = ul()
@@ -199,7 +203,8 @@ test('reactive', ()=>{
 		),
 		button({
 			onclick: bind_(
-				()=>state6() ? ()=>console.log('Hello') : ()=>alert('Hello'))
+				()=>state6() ? ()=>console.log('Hello') : ()=>alert('Hello')),
+			onhover: memo_(()=>(alert('Hover'), false)),
 		},
 		'Button2'
 		),

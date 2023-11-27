@@ -433,6 +433,8 @@ test('fragment_', ()=>{
 	const root = tags.div(
 		fragment_(
 			'<div>Yo!</div>',
+			undefined,
+			null,
 			div(
 				p('👋Hello'),
 				ul(
@@ -445,6 +447,8 @@ test('fragment_', ()=>{
 test('raw_', ()=>{
 	const root = tags.div(raw_('<div>row 0</div><div>row 1</div><div>row 2</div>'))
 	equal(root.innerHTML, '<div>row 0</div><div>row 1</div><div>row 2</div>')
+	equal(div(raw_(undefined)).innerHTML, '')
+	equal(div(raw_(null)).innerHTML, '')
 })
 test('attach|basic', ()=>{
 	const dom = ul()

@@ -48,7 +48,7 @@ export type browser__tag__dom__bind_T = ((dom?:Node)=>browser__tag__dom__val_T)|
 export declare const fragment_:browser__fragment__T
 export type browser__fragment__T = (...children:readonly browser__tag__dom_T[])=>DocumentFragment
 export declare const raw_:browser__raw__T
-export type browser__raw__T = (html:string)=>DocumentFragment
+export type browser__raw__T = (html:string|null|undefined)=>DocumentFragment
 export declare function hydrate<T extends Node>(dom:T, f:(dom:T)=>T|null|undefined|render_primitive_T):void
 export type browser__hydrate_T<T extends Node> = (dom:T, f:(dom:T)=>T|null|undefined|render_primitive_T)=>void
 export declare const browser__base__relement:browser__base__relement_T
