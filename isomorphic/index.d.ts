@@ -79,8 +79,11 @@ export type fragment_T<env_T extends relement_env_T> =
 			? server__Node_T
 			: DocumentFragment|server__Node_T
 export type tag__dom_T<env_T extends relement_env_T> =
+	(browser__tag__dom_T|server__tag__dom_T)
+	&(
 	env_T extends 'browser'
 		? browser__tag__dom_T
 		: env_T extends 'server'
 			? server__tag__dom_T
 			: browser__tag__dom_T|server__tag__dom_T
+	)
