@@ -32,12 +32,12 @@ export type browser__tags_T<tags_env_T extends render__tags_env_T = 'html'> =
 export type browser__tagsNS_T = <tags_env_T extends render__tags_env_T>(
 	namespaceURI:string
 )=>browser__tags_T<tags_env_T>
-export type browser__tag_T<Tag> = (
+export type browser__tag_T<Node> = (
 	first?:
-		|render_props_T&known_keys__render_props_T<Tag>
+		|render_props_T&known_keys__render_props_T<Node>
 		|browser__tag__dom_T,
 	...rest:readonly browser__tag__dom_T[]
-)=>Tag
+)=>Node
 export type browser__tag__dom_T =
 	|browser__tag__dom__val_T
 	|rmemo_T<browser__tag__dom__val_T>

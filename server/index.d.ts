@@ -30,11 +30,11 @@ export type server__tags_T<tags_env_T extends render__tags_env_T = 'html'> =
 export type server__tagsNS_T<
 	tags_env_T extends render__tags_env_T = 'svg'
 > = (namespaceURI:render__namespaceURI_T<tags_env_T>)=>server__tags_T<tags_env_T>
-export type server__tag_T<Tag> = (
+export type server__tag_T<Node> = (
 	// TODO: Can we narrow first argument?
 	// first?:(known_keys__render_props_T<Result>)|server__tags_dom_T,
 	first?:
-		|(known_keys__render_props_T<Tag>&Record<string, render_props_val_OR_rmemo_T_OR_Fn>)
+		|(known_keys__render_props_T<Node>&Record<string, render_props_val_OR_rmemo_T_OR_Fn>)
 		|server__tag__dom_T,
 	...rest:readonly server__tag__dom_T[]
 )=>server__Node_T
