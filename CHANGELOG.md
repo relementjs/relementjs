@@ -1,5 +1,16 @@
 # @ctx-core/ui--all
 
+## 0.10.0
+
+### Minor Changes
+
+- - rmemo\_\_wait
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@4.7.0
+
 ## 0.9.1
 
 ### Patch Changes
