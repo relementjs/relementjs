@@ -72,6 +72,12 @@ export declare function raw_<env_T extends relement_env_T>(...children:tag__dom_
 		: env_T extends 'server'
 			? ReturnType<server__raw__T>
 			: ReturnType<browser__raw__T>|ReturnType<server__raw__T>
+export type fragment_T<env_T extends relement_env_T> =
+	env_T extends 'browser'
+		? DocumentFragment
+		: env_T extends 'server'
+			? server__Node_T
+			: DocumentFragment|server__Node_T
 export type tag__dom_T<env_T extends relement_env_T> =
 	env_T extends 'browser'
 		? browser__tag__dom_T
