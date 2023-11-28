@@ -1,5 +1,25 @@
 # relementjs
 
+## 0.15.1
+
+### Patch Changes
+
+- memo\_: fix: run all listeners when a listener is garbage collected
+
+  size-limit:
+
+      isomorphic browser: base: - 2 B
+      isomorphic browser: fragment: - 17 B
+      browser-only hydrate + helpers: - 4 B
+      browser-only hydrate + helpers + rmemo: - 6 B
+      browser-only hydrate + helpers + rmemo + ctx: - 23 B
+      isomorphic (base) browser helpers + hydrate + helpers + rmemo + ctx: - 4 B
+      isomorphic (fragment) browser helpers + hydrate + helpers + rmemo + ctx: - 3 B
+      server-only render doc + helpers + rmemo: - 11 B
+      server-only render doc + helpers + rmemo + ctx: - 14 B
+      isomorphic (base) browser helpers + doc_html_ + helpers + rmemo + ctx: - 12 B
+      isomorphic (fragment) browser helpers + doc_html_ + helpers + rmemo + ctx: - 12 B
+
 ## 0.15.0
 
 ### Minor Changes
@@ -8,16 +28,16 @@
 
   size-limit:
 
-    isomorphic browser: fragment: + 9 B
-    isomorphic server: base: + 1 B
-    isomorphic server: fragment: + 12 B
-    isomorphic (fragment) browser helpers + hydrate + helpers + rmemo + ctx: + 3 B
-    server-only minimal: + 1 B
-    server-only render doc + helpers: + 4 B
-    server-only render doc + helpers + rmemo: + 1 B
-    server-only render doc + helpers + rmemo + ctx: + 6 B
-    isomorphic (base) browser helpers + doc_html_ + helpers + rmemo + ctx: + 1 B
-    isomorphic (fragment) browser helpers + doc_html_ + helpers + rmemo + ctx: + 3 B
+  isomorphic browser: fragment: + 9 B
+  isomorphic server: base: + 1 B
+  isomorphic server: fragment: + 12 B
+  isomorphic (fragment) browser helpers + hydrate + helpers + rmemo + ctx: + 3 B
+  server-only minimal: + 1 B
+  server-only render doc + helpers: + 4 B
+  server-only render doc + helpers + rmemo: + 1 B
+  server-only render doc + helpers + rmemo + ctx: + 6 B
+  isomorphic (base) browser helpers + doc*html* + helpers + rmemo + ctx: + 1 B
+  isomorphic (fragment) browser helpers + doc*html* + helpers + rmemo + ctx: + 3 B
 
 ## 0.14.1
 
