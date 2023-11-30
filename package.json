@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.15.2",
+	"version": "0.16.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -36,6 +36,7 @@
 		"*.d.ts",
 		"*.js",
 		"*.json",
+		"./astro",
 		"./browser",
 		"./html",
 		"./isomorphic",
@@ -46,6 +47,7 @@
 	"types": "./index.d.ts",
 	"exports": {
 		".": "./index.js",
+		"./astro": "./astro/Relement.astro",
 		"./browser": "./browser/index.js",
 		"./html": "./html/index.js",
 		"./isomorphic": "./isomorphic/index.js",

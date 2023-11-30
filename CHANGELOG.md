@@ -1,5 +1,11 @@
 # relementjs
 
+## 0.16.0
+
+### Minor Changes
+
+- - relement/astro: astro component to render relement dom
+
 ## 0.15.2
 
 ### Patch Changes
