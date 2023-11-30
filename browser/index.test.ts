@@ -3,6 +3,7 @@ import { memo_, memosig_, sig_, type sig_T } from 'ctx-core/rmemo'
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal, ok } from 'uvu/assert'
+import { prop_data__div_html, prop_data__div_o } from '../_test/index.js'
 import {
 	attach,
 	bind_,
@@ -109,6 +110,11 @@ test('tags|null or undefined are ignored', ()=>{
 test('tags|null prop value', ()=>{
 	const dom = button({ onclick: null })
 	ok(dom.onclick === null)
+})
+test('tags|prop|data-', ()=>{
+	const dom = tags.section()
+	dom.innerHTML = prop_data__div_html
+	equal(JSON.parse((dom.firstChild! as HTMLDivElement).dataset.foo!), prop_data__div_o)
 })
 test('tags|prop|sig|connected', with_connected_dom(async connected_dom=>{
 	const href = sig_('http://example.com/')

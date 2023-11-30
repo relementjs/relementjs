@@ -1,5 +1,22 @@
 # relementjs
 
+## 0.16.1
+
+### Patch Changes
+
+- server: tags: props: fix: escaping
+
+  size-limit:
+
+      isomorphic server: base: - 9 B
+      isomorphic server: fragment: - 11 B
+      server-only minimal: - 4 B
+      server-only render doc + helpers: - 8 B
+      server-only render doc + helpers + rmemo: - 6 B
+      server-only render doc + helpers + rmemo + ctx: - 9 B
+      isomorphic (base) browser helpers + doc_html_ + helpers + rmemo + ctx: - 8 B
+      isomorphic (fragment) browser helpers + doc_html_ + helpers + rmemo + ctx: - 13 B
+
 ## 0.16.0
 
 ### Minor Changes

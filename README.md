@@ -10,13 +10,13 @@ relementjs includes rmemo as a reactive core & ctx-core for contexts...
 | use case                                   |   size    | imports                                  |
 |--------------------------------------------|:---------:|------------------------------------------|
 | isomorphic browser (base api)              |   892 B   | relement__use browser__base__relement    |
-| isomorphic server (base api)               |   687 B   | relement__use server__base__relement     |
+| isomorphic server (base api)               |   678 B   | relement__use server__base__relement     |
 | browser-only minimal                       |   733 B   | tags                                     |
 | browser-only hydrate + helpers             |   789 B   | tags hydrate _ bind_                     |
 | **browser-only hydrate + helpers + rmemo** | **806 B** | **tags hydrate _ bind_ memo_ sig_**      |
-| server-only minimal                        |   508 B   | tags                                     |
-| **server-only render doc + helpers**       | **558 B** | **tags doc_html_ tagsNS _ bind_**        |
-| server-only render doc + helpers + rmemo   |   880 B   | tags doc_html_ tagsNS _ bind_ memo_ sig_ |
+| server-only minimal                        |   504 B   | tags                                     |
+| **server-only render doc + helpers**       | **550 B** | **tags doc_html_ tagsNS _ bind_**        |
+| server-only render doc + helpers + rmemo   |   874 B   | tags doc_html_ tagsNS _ bind_ memo_ sig_ |
 | isomorphic html tag                        |   34 B    | html_                                    |
 
 Note that the bold use cases are roughly equivalent to what VanJS provides. The browser-only library is smaller than

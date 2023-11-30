@@ -25,7 +25,6 @@ const char_R_escape_char = {
 	'>': '&gt;',
 }
 const escape = s=>s.replace(/[&<>]/g, tag=>char_R_escape_char[tag] || tag)
-const attr__escape = v=>v.replace(/"/g, '&quot;')
 const proto_ = Object.getPrototypeOf
 const obj__proto = proto_(tag_R_no_child)
 export const server__element__proto = {
@@ -70,7 +69,7 @@ export const tags = new Proxy((name, ...args)=>{
 				// Disable setting attribute for function-valued properties (mostly event handlers),
 				// as they're usually not useful for SSR (server-side rendering).
 				: typeof plain_v !== 'function' && plain_v != null
-					? ` ${lower_k}=${JSON.stringify(attr__escape(plain_v.toString()))}`
+					? ` ${lower_k}="${plain_v.toString().replace(/"/g, '&quot;')}"`
 					: '')
 	}).join('')
 	return {

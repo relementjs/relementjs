@@ -1,6 +1,7 @@
 import { memo_, sig_ } from 'ctx-core/rmemo'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
+import { prop_data__div_html, prop_data__div_o } from '../_test/index.js'
 import {
 	attach,
 	bind_,
@@ -47,6 +48,9 @@ test('tags', ()=>{
 test('tags|undefined & null prop', ()=>{
 	equal(div({ id: undefined }).render(), '<div></div>')
 	equal(div({ id: null }).render(), '<div></div>')
+})
+test('tags|prop|data- props', ()=>{
+	equal(div({ 'data-foo': JSON.stringify(prop_data__div_o) }).render(), prop_data__div_html)
 })
 test('elements without child', ()=>{
 	equal(br().render(), '<br>')
