@@ -1,5 +1,11 @@
 # relementjs
 
+## 0.17.1
+
+### Patch Changes
+
+- jsdom: ^23.0.0 -> ^23.0.1
+
 ## 0.17.0
 
 ### Minor Changes

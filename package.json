@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.17.0",
+	"version": "0.17.1",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -76,7 +76,7 @@
 		"@types/jsdom": "^21.1.6",
 		"c8": "^8.0.1",
 		"check-dts": "^0.7.2",
-		"jsdom": "^23.0.0",
+		"jsdom": "^23.0.1",
 		"size-limit": "^11.0.0",
 		"tsx": "^4.6.1",
 		"typescript": "next",
