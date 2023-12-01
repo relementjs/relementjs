@@ -1,5 +1,25 @@
 # relementjs
 
+## 0.17.0
+
+### Minor Changes
+
+- server: tags: converts to string when called within a template string:
+
+      server__Node_T:
+      	render→toString
+      	buf__render→buf__push
+
+  size-limit:
+
+      isomorphic server: base: - 1 B
+      isomorphic server: fragment: - 4 B
+      server-only minimal: - 3 B
+      server-only render doc + helpers: + 2 B
+      server-only render doc + helpers + rmemo + ctx: - 1 B
+      isomorphic (base) browser helpers + doc_html_ + helpers + rmemo + ctx: - 2 B
+      isomorphic (fragment) browser helpers + doc_html_ + helpers + rmemo + ctx: - 4 B
+
 ## 0.16.1
 
 ### Patch Changes

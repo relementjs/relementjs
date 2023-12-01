@@ -28,20 +28,20 @@ const escape = s=>s.replace(/[&<>]/g, tag=>char_R_escape_char[tag] || tag)
 const proto_ = Object.getPrototypeOf
 const obj__proto = proto_(tag_R_no_child)
 export const server__element__proto = {
-	buf__render(buf) {
+	buf__push(buf) {
 		buf.push(`<${this.name}${this.props_str}>`)
 		if (tag_R_no_child[this.name]) return
 		for (const c of this.children) {
 			const plain_c = plain_val_(c)
 			proto_(plain_c) === server__element__proto
-				? plain_c.buf__render(buf)
+				? plain_c.buf__push(buf)
 				: buf.push(escape(plain_c.toString()))
 		}
 		buf.push(`</${this.name}>`)
 	},
-	render() {
+	toString() {
 		const buf = []
-		this.buf__render(buf)
+		this.buf__push(buf)
 		return buf.join('')
 	},
 }
@@ -82,24 +82,24 @@ export const tags = new Proxy((name, ...args)=>{
 export const tagsNS = ()=>tags
 export const fragment_ = (...children)=>({
 	__proto__: server__element__proto,
-	buf__render(buf) {
+	buf__push(buf) {
 		for (let c of children) {
 			let plain_c = plain_val_(c)
 			proto_(plain_c ?? 0) === server__element__proto
-				? plain_c.buf__render(buf)
+				? plain_c.buf__push(buf)
 				: buf.push(escape((plain_c ?? '').toString()))
 		}
 	},
 })
 export const raw_ = html=>({
 	__proto__: server__element__proto,
-	buf__render(buf) {
+	buf__push(buf) {
 		buf.push(html)
 	},
 })
 export const doc_html_ = (...args)=>{
 	const buf = ['<!DOCTYPE html>']
-	tags.html(...args).buf__render(buf)
+	tags.html(...args).buf__push(buf)
 	return buf.join('')
 }
 export let server__base__relement = { attach, bind_, tags, tagsNS }

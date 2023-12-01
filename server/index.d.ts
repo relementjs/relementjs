@@ -1,5 +1,5 @@
 // originally forked from https://github.com/vanjs-org/mini-van/blob/main/src/van-plate.d.ts
-import type { memo_T, rmemo_T } from 'ctx-core/rmemo'
+import type { memo_T } from 'ctx-core/rmemo'
 import type {
 	bind__T,
 	known_keys__render_props_T,
@@ -58,7 +58,7 @@ export type server__element__proto_T = {
 	render:string
 }
 export type server__Node_T = {
-	render():string
+	toString():string
 	addEventListener:unknown
 }
 export declare const server__base__relement:server__base__relement_T

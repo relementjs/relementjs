@@ -33,7 +33,7 @@ test('server|mathml', ()=>{
 			mn_('1'),
 			mo_('='),
 			mn_('0')
-		).render(),
+		).toString(),
 		'<math><msup><mi>e</mi><mrow><mi>i</mi><mi>π</mi></mrow></msup><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></math>')
 })
 test('browser|mathml', ()=>{

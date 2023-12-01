@@ -6,4 +6,4 @@ export interface Props {
 const { dom } = Astro.props
 ---
 
-<Fragment set:html={dom.render()}/>
+<Fragment set:html={dom.toString()}/>

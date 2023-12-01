@@ -70,10 +70,10 @@ test('relement__use|fragment__relement', ()=>{
 	equal(svg_tags, server__fragment__relement.tagsNS('http://www.w3.org/2000/svg'))
 	equal(mathml_tags, server__fragment__relement.tagsNS('http://www.w3.org/1998/Math/MathML'))
 	equal(
-		fragment_<'server'>(div_('row0'), div_('row1'), div_('row2')).render(),
+		fragment_<'server'>(div_('row0'), div_('row1'), div_('row2')).toString(),
 		'<div>row0</div><div>row1</div><div>row2</div>')
 	equal(
-		raw_<'server'>('<div>row0</div><div>row1</div><div>row2</div>').render(),
+		raw_<'server'>('<div>row0</div><div>row1</div><div>row2</div>').toString(),
 		'<div>row0</div><div>row1</div><div>row2</div>')
 })
 test('relement__use|base__relement', ()=>{
