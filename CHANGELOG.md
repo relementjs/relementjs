@@ -1,5 +1,29 @@
 # relementjs
 
+## 0.20.1
+
+### Patch Changes
+
+- fix: sig*,memosi*\*: subscribers are notified if sig is set before read
+
+  size-limit:
+
+      isomorphic browser: base: - 3 B
+      isomorphic browser: fragment: + 2 B
+      browser-only minimal: - 4 B
+      browser-only hydrate + helpers: - 3 B
+      browser-only hydrate + helpers + rmemo: + 2 B
+      browser-only hydrate + helpers + rmemo + ctx: + 3 B
+      isomorphic (base) browser helpers + hydrate + helpers + rmemo + ctx: - 9 B
+      isomorphic (fragment) browser helpers + hydrate + helpers + rmemo + ctx: - 8 B
+      server-only render doc + helpers + rmemo: - 1 B
+      server-only render doc + helpers + rmemo + ctx: + 3 B
+      isomorphic (base) server helpers + doc_html_ + helpers + rmemo + ctx: - 1 B
+      isomorphic (fragment) server helpers + doc_html_ + helpers + rmemo + ctx: + 9 B
+
+- Updated dependencies
+  - ctx-core@4.9.1
+
 ## 0.20.0
 
 ### Minor Changes
