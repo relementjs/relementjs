@@ -1,5 +1,25 @@
 # relementjs
 
+## 0.19.2
+
+### Patch Changes
+
+- minor: server:
+
+      fix: detect relements when using a different copy of relementjs:
+      	use ._rele prop to determine if the object has a prototype of server__element__proto
+
+  size-limit:
+
+      isomorphic server: base: - 7 B
+      isomorphic server: fragment: - 13 B
+      server-only minimal: - 3 B
+      server-only render doc + helpers: - 6 B
+      server-only render doc + helpers + rmemo: - 12 B
+      server-only render doc + helpers + rmemo + ctx: - 5 B
+      isomorphic (base) browser helpers + doc_html_ + helpers + rmemo + ctx: - 2 B
+      isomorphic (fragment) browser helpers + doc_html_ + helpers + rmemo + ctx: - 6 B
+
 ## 0.19.1
 
 ### Patch Changes

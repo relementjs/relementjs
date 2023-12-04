@@ -25,15 +25,14 @@ const char_R_escape_char = {
 	'>': '&gt;',
 }
 const escape = s=>s.replace(/[&<>]/g, tag=>char_R_escape_char[tag] || tag)
-const proto_ = Object.getPrototypeOf
-const obj__proto = proto_(tag_R_no_child)
 export const server__element__proto = {
+	_rele: 1,
 	buf__push(buf) {
 		buf.push(`<${this.name}${this.props_str}>`)
 		if (tag_R_no_child[this.name]) return
 		for (const c of this.children) {
 			const plain_c = plain_val_(c)
-			proto_(plain_c) === server__element__proto
+			plain_c?._rele
 				? plain_c.buf__push(buf)
 				: buf.push(escape(plain_c.toString()))
 		}
@@ -58,7 +57,7 @@ export function attach(dom, ...children) {
 export const bind_ = f=>(f._is_bind = 1, f)
 export const tags = new Proxy((name, ...args)=>{
 	const [props, ...children] =
-		Object.getPrototypeOf(args[0] ?? 0) === obj__proto
+		Object.getPrototypeOf(args[0] ?? 0) === Object.prototype
 			? args
 			: [{}, ...args]
 	const props_str = Object.entries(props).map(([k, v])=>{
@@ -85,7 +84,7 @@ export const fragment_ = (...children)=>({
 	buf__push(buf) {
 		for (let c of children.flat(Infinity)) {
 			let plain_c = plain_val_(c)
-			proto_(plain_c ?? 0) === server__element__proto
+			plain_c?._rele
 				? plain_c.buf__push(buf)
 				: buf.push(escape((plain_c ?? '').toString()))
 		}
