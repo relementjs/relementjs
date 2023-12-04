@@ -1,5 +1,11 @@
 # relementjs
 
+## 0.20.0
+
+### Minor Changes
+
+- astro: props: $ instead of \_
+
 ## 0.19.2
 
 ### Patch Changes

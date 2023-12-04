@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.19.2",
+	"version": "0.20.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",

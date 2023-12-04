@@ -4,7 +4,7 @@ import { fragment_ } from '../server/index.js'
 export interface Props {
 	dom:tag__dom_T<'server'>
 }
-const { _, dom } = Astro.props
+const { $, dom } = Astro.props
 ---
 
-<Fragment set:html={fragment_(...[_ ?? dom].flat(Infinity)).toString()}/>
+<Fragment set:html={fragment_(...[$ ?? dom].flat(Infinity)).toString()}/>
