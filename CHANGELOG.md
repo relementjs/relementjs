@@ -1,5 +1,11 @@
 # relementjs
 
+## 0.18.0
+
+### Minor Changes
+
+- astro: <Relement>: + \_: aliased by dom
+
 ## 0.17.3
 
 ### Patch Changes
