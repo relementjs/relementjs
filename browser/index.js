@@ -5,7 +5,6 @@ export * from 'ctx-core/rmemo'
 // Global variables - aliasing some builtin symbols to reduce the bundle size.
 let _undefined
 let obj__cache = {}
-let obj__proto = Object.getPrototypeOf(obj__cache)
 function dom__run(f, dom) {
 	let val
 	try {
@@ -45,24 +44,27 @@ export function bind_(f) {
 export let tagsNS = ns=>new Proxy((name, ...args)=>{
 	let [params, ...children] =
 		// DOM elements are objects with different prototypes
-		Object.getPrototypeOf(args[0] ?? 0) === obj__proto
+		Object.getPrototypeOf(args[0] ?? 0) === Object.prototype
 			? args
 			: [{}, ...args]
-	let dom =
+	let el_ckey = (ns ?? '') + ',' + name
+	let proto_dom = obj__cache[el_ckey] ??=
 		ns
 			? document.createElementNS(ns, name)
 			: document.createElement(name)
+	let dom = proto_dom.cloneNode()
 	for (let k in params) {
 		let v = params[k]
 		let k__PropertyDescriptor_ = proto=>
 			proto
 				? Object.getOwnPropertyDescriptor(proto, k) ?? k__PropertyDescriptor_(Object.getPrototypeOf(proto))
 				: _undefined
-		let cache_key = name + ',' + k
+		let prop_ckey = el_ckey + ',' + k
 		// TODO: why do private variable names affect bundle size?
-		let is_attr = // is_attr name size optimization
-			obj__cache[cache_key] // obj__cache name size optimization
-			?? (obj__cache[cache_key] = !k__PropertyDescriptor_(Object.getPrototypeOf(dom))?.set)
+		// is_attr name size optimization
+		// obj__cache name size optimization
+		let is_attr = obj__cache[prop_ckey] ??=
+			!k__PropertyDescriptor_(Object.getPrototypeOf(dom))?.set
 		let param__setter =
 			val=>
 				is_attr

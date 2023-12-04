@@ -1,5 +1,26 @@
 # relementjs
 
+## 0.20.2
+
+### Patch Changes
+
+- patch:
+
+      fix: prop cache collision between elements with the same name in different namespaces
+      use cloneNode for render performance optimization
+      use Object.prototype for size optimization
+
+  size-limit:
+
+      isomorphic browser: base: + 20 B
+      isomorphic browser: fragment: + 30 B
+      browser-only minimal: + 13 B
+      browser-only hydrate + helpers: + 9 B
+      browser-only hydrate + helpers + rmemo: + 6 B
+      browser-only hydrate + helpers + rmemo + ctx: + 26 B
+      isomorphic (base) browser helpers + hydrate + helpers + rmemo + ctx: + 14 B
+      isomorphic (fragment) browser helpers + hydrate + helpers + rmemo + ctx: + 18 B
+
 ## 0.20.1
 
 ### Patch Changes

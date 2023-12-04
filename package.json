@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.20.1",
+	"version": "0.20.2",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -94,7 +94,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__base__relement }"
 			},
-			"limit": "889 B"
+			"limit": "909 B"
 		},
 		{
 			"name": "isomorphic browser: fragment",
@@ -102,7 +102,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__fragment__relement }"
 			},
-			"limit": "966 B"
+			"limit": "996 B"
 		},
 		{
 			"name": "isomorphic server: base",
@@ -132,28 +132,28 @@
 			"import": {
 				"./browser": "{ tags }"
 			},
-			"limit": "729 B"
+			"limit": "742 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, bind_ }"
 			},
-			"limit": "786 B"
+			"limit": "795 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, bind_, memo_, sig_ }"
 			},
-			"limit": "808 B"
+			"limit": "814 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo + ctx",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, bind_, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "948 B"
+			"limit": "974 B"
 		},
 		{
 			"name": "isomorphic (base) browser helpers + hydrate + helpers + rmemo + ctx",
@@ -161,7 +161,7 @@
 				"": "{ relement__use, bind_, tags, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__base__relement, hydrate }"
 			},
-			"limit": "1099 B"
+			"limit": "1113 B"
 		},
 		{
 			"name": "isomorphic (fragment) browser helpers + hydrate + helpers + rmemo + ctx",
@@ -169,7 +169,7 @@
 				"": "{ relement__use, bind_, tags, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__fragment__relement, hydrate }"
 			},
-			"limit": "1175 B"
+			"limit": "1193 B"
 		},
 		{
 			"name": "server-only minimal",
