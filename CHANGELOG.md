@@ -1,5 +1,17 @@
 # relementjs
 
+## 0.20.4
+
+### Patch Changes
+
+- internal: tags: args→a,children->c
+
+  size-limit:
+
+      isomorphic browser: base: + 5 B
+      browser-only minimal: - 3 B
+      browser-only hydrate + helpers + rmemo + ctx: - 4 B
+
 ## 0.20.3
 
 ### Patch Changes

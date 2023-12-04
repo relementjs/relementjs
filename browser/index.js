@@ -41,12 +41,12 @@ export function bind_(f) {
 	f.b = 1
 	return f
 }
-export let tagsNS = ns=>new Proxy((name, ...args)=>{
-	let [params, ...children] =
+export let tagsNS = ns=>new Proxy((name, ...a)=>{
+	let [params, ...c] =
 		// DOM elements are objects with different prototypes
-		Object.getPrototypeOf(args[0] ?? 0) === Object.prototype
-			? args
-			: [{}, ...args]
+		Object.getPrototypeOf(a[0] ?? 0) === Object.prototype
+			? a
+			: [{}, ...a]
 	let el_ckey = (ns ?? '') + ',' + name
 	let proto_dom = obj__cache[el_ckey] ??=
 		ns
@@ -83,7 +83,7 @@ export let tagsNS = ns=>new Proxy((name, ...args)=>{
 			param__setter(v)
 		}
 	}
-	return attach(dom, ...children)
+	return attach(dom, ...c)
 }, { get: (tag, name)=>tag.bind(_undefined, name) })
 export let tags = tagsNS()
 export let fragment_ = (...children)=>attach(document.createDocumentFragment(), ...children)
