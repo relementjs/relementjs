@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.20.2",
+	"version": "0.20.3",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -102,7 +102,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__fragment__relement }"
 			},
-			"limit": "996 B"
+			"limit": "990 B"
 		},
 		{
 			"name": "isomorphic server: base",

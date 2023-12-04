@@ -59,11 +59,11 @@ export let tagsNS = ns=>new Proxy((name, ...args)=>{
 			proto
 				? Object.getOwnPropertyDescriptor(proto, k) ?? k__PropertyDescriptor_(Object.getPrototypeOf(proto))
 				: _undefined
-		let prop_ckey = el_ckey + ',' + k
+		let attr_ckey = el_ckey + ',' + k
 		// TODO: why do private variable names affect bundle size?
 		// is_attr name size optimization
 		// obj__cache name size optimization
-		let is_attr = obj__cache[prop_ckey] ??=
+		let is_attr = obj__cache[attr_ckey] ??=
 			!k__PropertyDescriptor_(Object.getPrototypeOf(dom))?.set
 		let param__setter =
 			val=>
