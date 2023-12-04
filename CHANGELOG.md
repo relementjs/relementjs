@@ -1,5 +1,21 @@
 # relementjs
 
+## 0.19.0
+
+### Minor Changes
+
+- minor:
+
+      astro: accepts array of relements
+      fragment_: accepts array of relements
+
+  size-limit:
+
+      isomorphic server: fragment: + 1 B
+      server-only render doc + helpers + rmemo + ctx: + 2 B
+      isomorphic (base) browser helpers + doc_html_ + helpers + rmemo + ctx: - 2 B
+      isomorphic (fragment) browser helpers + doc_html_ + helpers + rmemo + ctx: - 1 B
+
 ## 0.18.0
 
 ### Minor Changes

@@ -1,4 +1,5 @@
 ---
+import { fragment_ } from '../isomorphic/index.js'
 import type { tag__dom_T } from '../isomorphic/index.js'
 export interface Props {
 	dom:tag__dom_T<'server'>
@@ -6,4 +7,4 @@ export interface Props {
 const { _, dom } = Astro.props
 ---
 
-<Fragment set:html={(_ ?? dom).toString()}/>
+<Fragment set:html={fragment_(...[_ ?? dom].flat(Infinity)).toString()}/>

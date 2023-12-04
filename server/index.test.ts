@@ -101,16 +101,17 @@ test('inside template strings', ()=>{
 	'<div><p>👋Hello</p><ul><li>🗺️World</li><li><a href="https://github.com/relementjs/server/">🍦relement</a></li></ul></div>')
 })
 test('fragment_', ()=>{
-	equal('' + fragment_(
+	equal('' + fragment_([
 		'<div>Yo!</div>',
 		undefined,
 		null,
-		div(
-			p('👋Hello'),
-			ul(
-				li('🗺️World'),
-				li(a({ href: 'https://github.com/relementjs/server/' }, '🍦relement')),
-			))),
+	],
+	div(
+		p('👋Hello'),
+		ul(
+			li('🗺️World'),
+			li(a({ href: 'https://github.com/relementjs/server/' }, '🍦relement'))))
+	),
 	'&lt;div&gt;Yo!&lt;/div&gt;<div><p>👋Hello</p><ul><li>🗺️World</li><li><a href="https://github.com/relementjs/server/">🍦relement</a></li></ul></div>')
 })
 test('raw_', ()=>{

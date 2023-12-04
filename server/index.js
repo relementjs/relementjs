@@ -83,7 +83,7 @@ export const tagsNS = ()=>tags
 export const fragment_ = (...children)=>({
 	__proto__: server__element__proto,
 	buf__push(buf) {
-		for (let c of children) {
+		for (let c of children.flat(Infinity)) {
 			let plain_c = plain_val_(c)
 			proto_(plain_c ?? 0) === server__element__proto
 				? plain_c.buf__push(buf)
