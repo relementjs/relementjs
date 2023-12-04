@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- minor: server:
+- patch: server:
 
       fix: detect relements when using a different copy of relementjs:
       	use ._rele prop to determine if the object has a prototype of server__element__proto
