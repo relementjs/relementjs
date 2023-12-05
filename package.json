@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.20.4",
+	"version": "0.21.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -94,7 +94,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__base__relement }"
 			},
-			"limit": "914 B"
+			"limit": "908 B"
 		},
 		{
 			"name": "isomorphic browser: fragment",
@@ -102,7 +102,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__fragment__relement }"
 			},
-			"limit": "990 B"
+			"limit": "984 B"
 		},
 		{
 			"name": "isomorphic server: base",
@@ -132,28 +132,28 @@
 			"import": {
 				"./browser": "{ tags }"
 			},
-			"limit": "739 B"
+			"limit": "743 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, bind_ }"
 			},
-			"limit": "795 B"
+			"limit": "802 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, bind_, memo_, sig_ }"
 			},
-			"limit": "814 B"
+			"limit": "822 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo + ctx",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, bind_, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "970 B"
+			"limit": "972 B"
 		},
 		{
 			"name": "isomorphic (base) browser helpers + hydrate + helpers + rmemo + ctx",
@@ -161,7 +161,7 @@
 				"": "{ relement__use, bind_, tags, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__base__relement, hydrate }"
 			},
-			"limit": "1113 B"
+			"limit": "1121 B"
 		},
 		{
 			"name": "isomorphic (fragment) browser helpers + hydrate + helpers + rmemo + ctx",
@@ -190,7 +190,7 @@
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, bind_, memo_, sig_ }"
 			},
-			"limit": "861 B"
+			"limit": "864 B"
 		},
 		{
 			"name": "server-only render doc + helpers + rmemo + ctx",
@@ -205,7 +205,7 @@
 				"": "{ relement__use, bind_, tags, memo_, sig_, be_, ctx_ }",
 				"./server": "{ server__base__relement, doc_html_ }"
 			},
-			"limit": "1193 B"
+			"limit": "1185 B"
 		},
 		{
 			"name": "isomorphic (fragment) server helpers + doc_html_ + helpers + rmemo + ctx",
@@ -213,7 +213,7 @@
 				"": "{ relement__use, bind_, tags, memo_, sig_, be_, ctx_ }",
 				"./server": "{ server__fragment__relement, doc_html_ }"
 			},
-			"limit": "1251 B"
+			"limit": "1241 B"
 		},
 		{
 			"name": "html: html_",

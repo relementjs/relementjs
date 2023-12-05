@@ -1,5 +1,27 @@
 # relementjs
 
+## 0.21.0
+
+### Minor Changes
+
+- minor:
+
+      + .on: Call the rmemo & enable updates from it's parents.
+      + .off: Disable updates from the rmemo's parents.
+
+  size-limit:
+
+      isomorphic browser: base: - 6 B
+      isomorphic browser: fragment: - 6 B
+      browser-only minimal: + 4 B
+      browser-only hydrate + helpers: + 7 B
+      browser-only hydrate + helpers + rmemo: + 8 B
+      browser-only hydrate + helpers + rmemo + ctx: + 2 B
+      isomorphic (base) browser helpers + hydrate + helpers + rmemo + ctx: + 8 B
+      server-only render doc + helpers + rmemo: + 3 B
+      isomorphic (base) server helpers + doc_html_ + helpers + rmemo + ctx: - 8 B
+      isomorphic (fragment) server helpers + doc_html_ + helpers + rmemo + ctx: - 10 B
+
 ## 0.20.4
 
 ### Patch Changes
