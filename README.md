@@ -33,8 +33,8 @@ relement__use(browser__base__relement)
 // import { server__base__relement } from 'relementjs/server'
 // relement__use(server__base__relement)
 div_(
-	a_({ href: 'https://github.com/relementjs/relementjs' },
-		'relementjs github page'))
+  a_({ href: 'https://github.com/relementjs/relementjs' },
+    'relementjs github page'))
 ```
 
 ## browser rendering
@@ -43,8 +43,8 @@ div_(
 import { tags } from 'relementjs/browser'
 const { a, div } = tags
 div(
-	a({ href: 'https://github.com/relementjs/relementjs' },
-		'relementjs github page'))
+  a({ href: 'https://github.com/relementjs/relementjs' },
+    'relementjs github page'))
 ```
 
 ## server rendering
@@ -53,6 +53,6 @@ div(
 import { tags } from 'relementjs/server'
 const { a, div } = tags
 div(
-	a({ href: 'https://github.com/relementjs/relementjs' },
-		'relementjs github page'))
+  a({ href: 'https://github.com/relementjs/relementjs' },
+    'relementjs github page'))
 ```
