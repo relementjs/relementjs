@@ -2,14 +2,14 @@ import { sleep } from 'ctx-core/function'
 import { memo_, memosig_, sig_, type sig_T } from 'ctx-core/rmemo'
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
-import { equal, ok } from 'uvu/assert'
+import { equal, ok, throws } from 'uvu/assert'
 import { prop_data__div_html, prop_data__div_o } from '../_test/index.js'
 import {
 	attach,
 	bind_,
 	browser__base__relement,
 	browser__fragment__relement,
-	fragment_,
+	fragment_, hy__bind,
 	hydrate,
 	raw_,
 	tags,
@@ -887,6 +887,24 @@ test('hydrate|0|keep dom', with_connected_dom(async connected_dom=>{
 	s._ = 1
 	await sleep(waitMsOnDomUpdates)
 	equal(connected_dom.innerHTML, '10')
+}))
+test('hy__bind', with_connected_dom(async connected_dom=>{
+	const el_a:Element[] = []
+	const fn0 = (el:Element)=>el_a.push(el)
+	const div0 = div({ 'hy-bind': 'fn0' })
+	const fn1 = (el:Element)=>el_a.push(el)
+	const div1 = div({ 'hy-bind': 'fn1' })
+	attach(connected_dom, div(), div0, div1, div())
+	hy__bind(document, { fn0, fn1 })
+	equal(el_a, [div0, div1])
+}))
+test('hy__bind|error', with_connected_dom(async connected_dom=>{
+	const el_a:Element[] = []
+	const div0 = div({ 'hy-bind': 'no-fn' })
+	const fn1 = (el:Element)=>el_a.push(el)
+	const div1 = div({ 'hy-bind': 'fn1' })
+	attach(connected_dom, div(), div0, div1, div())
+	throws(()=>hy__bind(document, { fn1 }), 'missing key: no-fn')
 }))
 test('gc|binding|basic', with_connected_dom(async connected_dom=>{
 	const counter = sig_(0)

@@ -9,9 +9,9 @@ relementjs includes rmemo as a reactive core & ctx-core for contexts...
 
 | use case                                   |   size    | imports                                  |
 |--------------------------------------------|:---------:|------------------------------------------|
-| browser-only minimal                       |   743 B   | tags                                     |
-| browser-only hydrate + helpers             |   802 B   | tags hydrate _ bind_                     |
-| **browser-only hydrate + helpers + rmemo** | **822 B** | **tags hydrate _ bind_ memo_ sig_**      |
+| browser-only minimal                       |   741 B   | tags                                     |
+| browser-only hydrate + helpers             |   799 B   | tags hydrate _ bind_                     |
+| **browser-only hydrate + helpers + rmemo** | **813 B** | **tags hydrate _ bind_ memo_ sig_**      |
 | server-only minimal                        |   498 B   | tags                                     |
 | **server-only render doc + helpers**       | **542 B** | **tags doc_html_ tagsNS _ bind_**        |
 | server-only render doc + helpers + rmemo   |   864 B   | tags doc_html_ tagsNS _ bind_ memo_ sig_ |

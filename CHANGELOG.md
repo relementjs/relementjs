@@ -1,5 +1,21 @@
 # relementjs
 
+## 0.22.0
+
+### Minor Changes
+
+- browser: + hy\_\_bind
+
+  size-limit:
+
+      isomorphic browser: fragment: + 10 B
+      browser-only minimal: - 2 B
+      browser-only hydrate + helpers: - 3 B
+      browser-only hydrate + helpers + rmemo: - 9 B
+      browser-only hydrate + helpers + rmemo + ctx: - 1 B
+      isomorphic (base) browser helpers + hydrate + helpers + rmemo + ctx: + 2 B
+      isomorphic (fragment) browser helpers + hydrate + helpers + rmemo + ctx: - 5 B
+
 ## 0.21.2
 
 ### Patch Changes

@@ -108,5 +108,14 @@ export function hydrate(dom, f) {
 		}
 	})()
 }
+export function hy__bind(doc, key_R_fn) {
+	let el_a = doc.querySelectorAll('[hy-bind]')
+	for (let el of el_a) {
+		let key = el.getAttribute('hy-bind')
+		let fn = key_R_fn[key]
+		if (!fn) throw new Error('missing key: ' + key)
+		fn(el)
+	}
+}
 export let browser__base__relement = { attach, bind_, tags, tagsNS, }
 export let browser__fragment__relement = { attach, bind_, tags, tagsNS, fragment_, raw_, }
