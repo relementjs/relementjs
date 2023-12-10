@@ -1,5 +1,22 @@
 # relementjs
 
+## 0.23.0
+
+### Minor Changes
+
+- globalThis\__be_: arguments match be\_
+
+  size-limit:
+
+      browser-only hydrate + helpers + rmemo + ctx: - 1 B
+      isomorphic (base) browser helpers + hydrate + helpers + rmemo + ctx: - 1 B
+      isomorphic (fragment) browser helpers + hydrate + helpers + rmemo + ctx: + 9 B
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@4.12.0
+
 ## 0.22.6
 
 ### Patch Changes
