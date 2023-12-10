@@ -1,5 +1,11 @@
 # relementjs
 
+## 0.22.1
+
+### Patch Changes
+
+- hy\_\_bind: key_R_fn argument: fix: allow functions to receive narrower type than Element
+
 ## 0.22.0
 
 ### Minor Changes
