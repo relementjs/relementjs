@@ -117,5 +117,4 @@ export function hy__bind(doc, key_R_fn) {
 		fn(el)
 	}
 }
-export let browser__base__relement = { attach, bind_, tags, tagsNS, }
-export let browser__fragment__relement = { attach, bind_, tags, tagsNS, fragment_, raw_, }
+export let browser__relement = { attach, bind_, tags, tagsNS, fragment_, raw_, }

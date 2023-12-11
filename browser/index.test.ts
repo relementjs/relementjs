@@ -4,17 +4,7 @@ import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal, ok, throws } from 'uvu/assert'
 import { prop_data__div_html, prop_data__div_o } from '../_test/index.js'
-import {
-	attach,
-	bind_,
-	browser__base__relement,
-	browser__fragment__relement,
-	fragment_, hy__bind,
-	hydrate,
-	raw_,
-	tags,
-	tagsNS
-} from './index.js'
+import { attach, bind_, browser__relement, fragment_, hy__bind, hydrate, raw_, tags, tagsNS } from './index.js'
 const skip_long = process.env.SKIP_LONG ? parseInt(process.env.SKIP_LONG) : false
 const skip_long_test = skip_long ? test.skip : test
 let jsdom:JSDOM, prev__window:Window, prev__document:Document, prev__Text:typeof Text, prev__Node:typeof Node
@@ -50,11 +40,8 @@ test.after(()=>{
 	globalThis.Text = prev__Text
 	globalThis.Node = prev__Node
 })
-test('browser__base__relement', ()=>{
-	equal(browser__base__relement, { attach, bind_, tags, tagsNS, })
-})
-test('browser__fragment__relement', ()=>{
-	equal(browser__fragment__relement, { attach, bind_, tags, tagsNS, fragment_, raw_, })
+test('browser__relement', ()=>{
+	equal(browser__relement, { attach, bind_, tags, tagsNS, fragment_, raw_, })
 })
 test('tags|basic', ()=>{
 	const dom = div(

@@ -1,9 +1,9 @@
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
-import { browser__base__relement } from '../browser/index.js'
+import { browser__relement } from '../browser/index.js'
 import { relement__use } from '../isomorphic/index.js'
-import { server__base__relement } from '../server/index.js'
+import { server__relement } from '../server/index.js'
 import { math_, mi_, mn_, mo_, mrow_, msup_ } from './index.js'
 let jsdom:JSDOM, prev__window:Window, prev__document:Document, prev__Text:typeof Text, prev__Node:typeof Node
 test.before(()=>{
@@ -21,7 +21,7 @@ test.after(()=>{
 	relement__use(undefined)
 })
 test('server|mathml', ()=>{
-	relement__use(server__base__relement)
+	relement__use(server__relement)
 	equal(
 		math_<'server'>(
 			msup_(
@@ -43,7 +43,7 @@ test('browser|mathml', ()=>{
 	globalThis.document = jsdom.window.document
 	globalThis.Text = jsdom.window.Text
 	globalThis.Node = jsdom.window.Node
-	relement__use(browser__base__relement)
+	relement__use(browser__relement)
 	equal(
 		math_<'browser'>(
 			msup_(

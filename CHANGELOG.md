@@ -1,5 +1,30 @@
 # relementjs
 
+## 0.26.0
+
+### Minor Changes
+
+- consolidate relement\_\_use browser/server object:
+
+      browser__fragment__relement→browser__relement
+      - browser__base__relement
+      server__fragment__relement→server__relement
+      - server__base__relement
+
+  size-limit:
+
+      isomorphic browser: - 6 B
+      browser-only minimal: + 1 B
+      browser-only hydrate + helpers: + 2 B
+      browser-only hydrate + helpers + rmemo: - 3 B
+      browser-only hydrate + helpers + rmemo + ctx: - 1 B
+      isomorphic browser helpers + hydrate + helpers + rmemo + ctx: - 1 B
+      server-only minimal: - 2 B
+      server-only render doc + helpers: + 1 B
+      server-only render doc + helpers + rmemo: - 1 B
+      server-only render doc + helpers + rmemo + ctx: + 1 B
+      isomorphic server helpers + doc_html_ + helpers + rmemo + ctx: + 9 B
+
 ## 0.25.0
 
 ### Minor Changes
@@ -538,7 +563,7 @@
       + fragment_
       + raw_
       browser__relement→browser__full__relement
-      + browser__base__relement
+      + browser__relement
       + browser__fragment__relement
       server__relement→browser__full__relement
       + server__base__relement

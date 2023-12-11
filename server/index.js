@@ -101,5 +101,4 @@ export const doc_html_ = (...args)=>{
 	tags.html(...args).buf__push(buf)
 	return buf.join('')
 }
-export let server__base__relement = { attach, bind_, tags, tagsNS }
-export let server__fragment__relement = { attach, bind_, tags, tagsNS, fragment_, raw_ }
+export let server__relement = { attach, bind_, tags, tagsNS, fragment_, raw_ }

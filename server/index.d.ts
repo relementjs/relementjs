@@ -61,7 +61,7 @@ export type server__Node_T = {
 	toString():string
 	addEventListener:unknown
 }
-export declare const server__base__relement:server__base__relement_T
+export declare const server__relement:server__base__relement_T
 export type server__base__relement_T = {
 	attach:server__attach_T
 	bind_:bind__T
@@ -69,10 +69,6 @@ export type server__base__relement_T = {
 	tagsNS<tags_env_T extends render__tags_env_T>(
 		namespaceURI:render__namespaceURI_T<tags_env_T>
 	):server__tags_T<tags_env_T>
-}
-export declare const server__fragment__relement:server__fragment__relement_T
-export type server__fragment__relement_T = server__base__relement_T&{
 	fragment_:server__fragment__T
 	raw_:server__raw__T
 }
-export type server__relement_T = server__base__relement_T&Partial<server__fragment__relement_T>

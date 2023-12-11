@@ -8,8 +8,7 @@ import {
 	doc_html_,
 	fragment_,
 	raw_,
-	server__base__relement,
-	server__fragment__relement,
+	server__relement,
 	tags,
 	tagsNS
 } from './index.js'
@@ -29,11 +28,8 @@ const {
 	title,
 	ul
 } = tags
-test('server__base__relement', ()=>{
-	equal(server__base__relement, { attach, bind_, tags, tagsNS, })
-})
-test('server__fragment__relement', ()=>{
-	equal(server__fragment__relement, { attach, bind_, tags, tagsNS, fragment_, raw_ })
+test('server__relement', ()=>{
+	equal(server__relement, { attach, bind_, tags, tagsNS, fragment_, raw_ })
 })
 test('tags', ()=>{
 	equal(
