@@ -1,5 +1,20 @@
 # relementjs
 
+## 0.25.0
+
+### Minor Changes
+
+- hy\_\_bind:
+
+      hy-bind attribute changed to hy__bind:
+      change error message
+
+  size-limit:
+
+      browser-only minimal: - 1 B
+      browser-only hydrate + helpers: - 5 B
+      browser-only hydrate + helpers + rmemo: + 3 B
+
 ## 0.24.2
 
 ### Patch Changes

@@ -109,11 +109,11 @@ export function hydrate(dom, f) {
 	})()
 }
 export function hy__bind(doc, key_R_fn) {
-	let el_a = doc.querySelectorAll('[hy-bind]')
+	let el_a = doc.querySelectorAll('[hy__bind]')
 	for (let el of el_a) {
-		let key = el.getAttribute('hy-bind')
+		let key = el.getAttribute('hy__bind')
 		let fn = key_R_fn[key]
-		if (!fn) throw new Error('missing key: ' + key)
+		if (!fn) throw new Error('no key: ' + key)
 		fn(el)
 	}
 }

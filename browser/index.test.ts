@@ -891,18 +891,18 @@ test('hydrate|0|keep dom', with_connected_dom(async connected_dom=>{
 test('hy__bind', with_connected_dom(async connected_dom=>{
 	const el_a:Element[] = []
 	const fn0 = (el:Element)=>el_a.push(el)
-	const div0 = div({ 'hy-bind': 'fn0' })
+	const div0 = div({ 'hy__bind': 'fn0' })
 	const fn1 = (el:Element)=>el_a.push(el)
-	const div1 = div({ 'hy-bind': 'fn1' })
+	const div1 = div({ 'hy__bind': 'fn1' })
 	attach(connected_dom, div(), div0, div1, div())
 	hy__bind(document, { fn0, fn1 })
 	equal(el_a, [div0, div1])
 }))
 test('hy__bind|error', with_connected_dom(async connected_dom=>{
 	const el_a:Element[] = []
-	const div0 = div({ 'hy-bind': 'no-fn' })
+	const div0 = div({ 'hy__bind': 'no-fn' })
 	const fn1 = (el:Element)=>el_a.push(el)
-	const div1 = div({ 'hy-bind': 'fn1' })
+	const div1 = div({ 'hy__bind': 'fn1' })
 	attach(connected_dom, div(), div0, div1, div())
 	throws(()=>hy__bind(document, { fn1 }), 'missing key: no-fn')
 }))

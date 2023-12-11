@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.24.2",
+	"version": "0.25.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -133,21 +133,21 @@
 			"import": {
 				"./browser": "{ tags }"
 			},
-			"limit": "741 B"
+			"limit": "740 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, bind_ }"
 			},
-			"limit": "799 B"
+			"limit": "794 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, bind_, memo_, sig_ }"
 			},
-			"limit": "813 B"
+			"limit": "816 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo + ctx",
