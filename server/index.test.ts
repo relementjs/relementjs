@@ -43,31 +43,29 @@ test('tags', ()=>{
 		'<div><p>👋Hello</p><ul><li>🗺️World</li><li><a href="https://github.com/relementjs/server/">🍦relement</a></li></ul></div>')
 })
 test('tags|undefined & null prop', ()=>{
-	equal('' + div({ id: undefined }), '<div></div>')
-	equal('' + div({ id: null }), '<div></div>')
+	equal('' + div({ id: undefined }), '<div/>')
+	equal('' + div({ id: null }), '<div/>')
 })
 test('tags|prop|data- props', ()=>{
 	equal('' + div({ 'data-foo': JSON.stringify(prop_data__div_o) }), prop_data__div_html)
 })
 test('elements without child', ()=>{
-	equal('' + br(), '<br>')
-	equal('' + hr({ class: 'large' }), '<hr class="large">')
-	// Children are ignored even when they are provided
-	equal('' + br(div('Line')), '<br>')
+	equal('' + br(), '<br/>')
+	equal('' + hr({ class: 'large' }), '<hr class="large"/>')
 })
 test('boolean prop', ()=>{
-	equal('' + input({ type: 'checkbox', checked: false }), '<input type="checkbox">')
-	equal('' + input({ type: 'checkbox', checked: true }), '<input type="checkbox" checked>')
-	equal('' + input({ checked: false }), '<input>')
-	equal('' + input({ checked: true }), '<input checked>')
+	equal('' + input({ type: 'checkbox', checked: false }), '<input type="checkbox"/>')
+	equal('' + input({ type: 'checkbox', checked: true }), '<input type="checkbox" checked/>')
+	equal('' + input({ checked: false }), '<input/>')
+	equal('' + input({ checked: true }), '<input checked/>')
 })
 test('escape', ()=>{
 	equal('' + p('<input>'), '<p>&lt;input&gt;</p>')
 	equal('' + div('a && b'), '<div>a &amp;&amp; b</div>')
 	equal('' + div('<input a && b>'), '<div>&lt;input a &amp;&amp; b&gt;</div>')
 })
-test('escapeAttr', ()=>{
-	equal('' + input({ value: '"text"' }), '<input value="&quot;text&quot;">')
+test('escape|attr', ()=>{
+	equal('' + input({ value: '"text"' }), '<input value="&quot;text&quot;"/>')
 })
 test('nested children', ()=>{
 	equal('' + ul([li('Item 1'), li('Item 2'), li('Item 3')]),
@@ -181,7 +179,7 @@ test('tagsNS: svg', ()=>{
 		path({ 'd': 'M 15 30 Q 25 40, 35 30', stroke: 'black', 'stroke-width': '2', fill: 'transparent' }),
 	)
 	equal('' + dom,
-		'<svg width="16px" viewbox="0 0 50 50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="2" fill="yellow"></circle><circle cx="16" cy="20" r="2" stroke="black" stroke-width="2" fill="black"></circle><circle cx="34" cy="20" r="2" stroke="black" stroke-width="2" fill="black"></circle><path d="M 15 30 Q 25 40, 35 30" stroke="black" stroke-width="2" fill="transparent"></path></svg>')
+		'<svg width="16px" viewbox="0 0 50 50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="2" fill="yellow"/><circle cx="16" cy="20" r="2" stroke="black" stroke-width="2" fill="black"/><circle cx="34" cy="20" r="2" stroke="black" stroke-width="2" fill="black"/><path d="M 15 30 Q 25 40, 35 30" stroke="black" stroke-width="2" fill="transparent"/></svg>')
 })
 test('tagsNS: math', ()=>{
 	const {
@@ -238,11 +236,11 @@ test('html_', ()=>{
 })
 // Test cases for examples used in the documentation. Having the tests to ensure the examples
 // are always correct.
-test('example: van-plate-server', ()=>{
+test('example: server', ()=>{
 	equal('' + a({ href: 'https://github.com/relementjs/server/' }, '🍦relement'),
 		`<a href="https://github.com/relementjs/server/">🍦relement</a>`)
 	equal('' + button({ onclick: 'alert("Hello")' }, 'Click'),
 		`<button onclick="alert(&quot;Hello&quot;)">Click</button>`)
-	equal('' + input({ type: 'text', value: 'value' }), `<input type="text" value="value">`)
+	equal('' + input({ type: 'text', value: 'value' }), `<input type="text" value="value"/>`)
 })
 test.run()

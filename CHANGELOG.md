@@ -1,5 +1,39 @@
 # relementjs
 
+## 0.27.0
+
+### Minor Changes
+
+- minor:
+
+      remove element without child logic: save bytes: the programmer is responsible for ensuring the following tags are empty:
+      	<input/>
+      	<meta/>
+      	<br/>
+      	<link/>
+      	<img/>
+      	<hr/>
+      	<area/>
+      	<base/>
+      	<col/>
+      	<param/>
+      	<wbr/>
+      	<track/>
+      	<source/>
+      	<embed/>
+      	<command/>
+      	<keygen/>
+      empty tags use void closing tag (/>)
+
+  size-limit:
+
+      isomorphic server: - 76 B
+      server-only minimal: - 73 B
+      server-only render doc + helpers: - 70 B
+      server-only render doc + helpers + rmemo: - 79 B
+      server-only render doc + helpers + rmemo + ctx: - 81 B
+      isomorphic server helpers + doc_html_ + helpers + rmemo + ctx: - 84 B
+
 ## 0.26.0
 
 ### Minor Changes
