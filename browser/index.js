@@ -22,7 +22,7 @@ export function attach(dom, ...children) {
 			typeof child_val === 'function'
 			&& memo_(child_val_memo=>{
 				let _child = dom__run(child_val, child)
-				if (child) child.replaceWith(_child)
+				child && child.replaceWith(_child)
 				child = _child
 				return child_val_memo
 			})()
@@ -68,7 +68,7 @@ export let tagsNS = ns=>new Proxy((name, ...a)=>{
 		let param__setter =
 			val=>
 				is_attr
-					? val != null // != ternary is a size optimization
+					? val != _undefined // != ternary is a size optimization
 						? dom.setAttribute(k, val)
 						: dom.removeAttribute(k, val) // unused 2nd argument is a size optimization
 					: dom[k] = val ?? '' // prop setter

@@ -1,5 +1,19 @@
 # relementjs
 
+## 0.27.1
+
+### Patch Changes
+
+- browser: size optimization: \_undefined instead of null
+
+  size-limit:
+
+      isomorphic browser: - 4 B
+      browser-only minimal: - 1 B
+      browser-only hydrate + helpers: - 3 B
+      browser-only hydrate + helpers + rmemo: + 3 B
+      browser-only hydrate + helpers + rmemo + ctx: - 2 B
+
 ## 0.27.0
 
 ### Minor Changes
