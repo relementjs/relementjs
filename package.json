@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.28.1",
+	"version": "0.29.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -70,7 +70,7 @@
 		"disable:test:coverage": "c8 pnpm test-unit"
 	},
 	"dependencies": {
-		"ctx-core": "^4.16.0"
+		"ctx-core": "^4.17.0"
 	},
 	"devDependencies": {
 		"@size-limit/preset-small-lib": "^11.0.1",
@@ -95,7 +95,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__relement }"
 			},
-			"limit": "987 B"
+			"limit": "983 B"
 		},
 		{
 			"name": "isomorphic server",
@@ -146,7 +146,7 @@
 				"": "{ relement__use, bind_, tags, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__relement, hydrate }"
 			},
-			"limit": "1176 B"
+			"limit": "1175 B"
 		},
 		{
 			"name": "server-only minimal",

@@ -1,5 +1,22 @@
 # relementjs
 
+## 0.29.0
+
+### Minor Changes
+
+- lock*memosi*\*: \_=: sets .lock = 1 to prevent the memo_def from running
+
+  size-limit:
+
+      isomorphic browser: - 4 B
+      isomorphic browser helpers + hydrate + helpers + rmemo + ctx: - 1 B
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@4.17.0
+
 ## 0.28.1
 
 ### Patch Changes
