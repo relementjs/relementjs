@@ -1,5 +1,27 @@
 # relementjs
 
+## 0.28.0
+
+### Minor Changes
+
+- minor:
+
+      + lock_memosig_
+      + be_lock_memsig_
+      + be_lock_memsig_T
+
+  size-limit:
+
+      isomorphic browser: + 3 B
+      browser-only hydrate + helpers: + 4 B
+      server-only render doc + helpers + rmemo: - 1 B
+      server-only render doc + helpers + rmemo + ctx: + 6 B
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@4.15.0
+
 ## 0.27.1
 
 ### Patch Changes
