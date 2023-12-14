@@ -1,5 +1,11 @@
 # relementjs
 
+## 0.29.2
+
+### Patch Changes
+
+- package.json: fix: links to https://github.com/relementjs/relementjs
+
 ## 0.29.1
 
 ### Patch Changes
