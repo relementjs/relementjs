@@ -1,5 +1,22 @@
 # relementjs
 
+## 0.31.0
+
+### Minor Changes
+
+- minor:
+
+      + ctx__clear
+      + ondelete_be_
+      + ondelete_be__val__new_T
+
+  size-limit:
+
+      browser-only hydrate + helpers + rmemo + ctx: + 12 B
+      isomorphic browser helpers + hydrate + helpers + rmemo + ctx: + 5 B
+      server-only render doc + helpers + rmemo + ctx: - 1 B
+      isomorphic server helpers + doc_html_ + helpers + rmemo + ctx: - 1 B
+
 ## 0.30.3
 
 ### Patch Changes
