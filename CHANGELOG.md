@@ -1,5 +1,13 @@
 # relementjs
 
+## 0.31.4
+
+### Patch Changes
+
+- rmemo: fix: imports
+- Updated dependencies
+  - ctx-core@5.2.3
+
 ## 0.31.3
 
 ### Patch Changes
