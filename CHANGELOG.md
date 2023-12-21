@@ -1,5 +1,17 @@
 # relementjs
 
+## 0.31.7
+
+### Patch Changes
+
+- size optimization
+
+  size-limit:
+
+      browser-only hydrate + helpers: - 1 B
+      browser-only hydrate + helpers + rmemo: - 4 B
+      browser-only hydrate + helpers + rmemo + ctx: - 11 B
+
 ## 0.31.6
 
 ### Patch Changes

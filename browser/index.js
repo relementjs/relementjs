@@ -43,7 +43,7 @@ export function bind_(f) {
 }
 export let tagsNS = ns=>new Proxy((name, ...a)=>{
 	let [params, ...c] =
-		// DOM elements are objects with different prototypes
+		// DOM elements are objects with a custom prototype
 		Object.getPrototypeOf(a[0] ?? 0) === Object.prototype
 			? a
 			: [{}, ...a]
@@ -104,7 +104,8 @@ export function hydrate(dom, f) {
 		} else if (dom !== _dom) {
 			dom.replaceWith(_dom)
 			dom = _dom
-			;(dom._m ||= []).push(memo)
+			dom._m ||= []
+			dom._m.push(memo)
 		}
 	})()
 }
