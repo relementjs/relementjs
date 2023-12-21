@@ -4,7 +4,6 @@
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
-		"ui",
 		"template",
 		"rendering",
 		"server-side rendering",
@@ -37,13 +36,13 @@
 		"*.d.ts",
 		"*.js",
 		"*.json",
-		"./astro",
-		"./browser",
-		"./html",
-		"./isomorphic",
-		"./mathml",
-		"./server",
-		"./svg"
+		"astro",
+		"browser",
+		"html",
+		"isomorphic",
+		"mathml",
+		"server",
+		"svg"
 	],
 	"types": "./index.d.ts",
 	"exports": {
