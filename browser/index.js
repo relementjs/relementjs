@@ -47,13 +47,13 @@ export let tagsNS = ns=>new Proxy((name, ...a)=>{
 		Object.getPrototypeOf(a[0] ?? 0) === Object.prototype
 			? a
 			: [{}, ...a]
-	// TODO: consider using ns as-is
-	// It would be ~2 B smaller to use ns as-is.
-	// undefined ns is represented as '' instead of 'undefined'
-	// Negligibly more efficient in the runtime performance & RAM
-	let el_ckey = (ns ?? '') + ',' + name
 	let dom = (
-		obj__cache[el_ckey] ??=
+		// inlined el_ckey
+		// TODO: consider using ns as-is
+		// It would be ~2 B smaller to use ns as-is.
+		// undefined ns is represented as '' instead of 'undefined'
+		// Negligibly more efficient in the runtime performance & RAM
+		obj__cache[(ns ?? '') + ',' + name] ??=
 			ns
 				? document.createElementNS(ns, name)
 				: document.createElement(name)
@@ -64,12 +64,13 @@ export let tagsNS = ns=>new Proxy((name, ...a)=>{
 			proto
 				? Object.getOwnPropertyDescriptor(proto, k) ?? k__PropertyDescriptor_(Object.getPrototypeOf(proto))
 				: _undefined
-		let attr_ckey = el_ckey + ',' + k
 		// TODO: why do private variable names affect bundle size?
 		// is_attr name size optimization
 		// obj__cache name size optimization
-		let is_attr = obj__cache[attr_ckey] ??=
-			!k__PropertyDescriptor_(Object.getPrototypeOf(dom))?.set
+		let is_attr =
+			// inlined el_ckey + ',' + k
+			obj__cache[(ns ?? '') + ',' + name + ',' + k] ??=
+				!k__PropertyDescriptor_(Object.getPrototypeOf(dom))?.set
 		let param__setter =
 			val=>
 				is_attr
