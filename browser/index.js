@@ -47,12 +47,17 @@ export let tagsNS = ns=>new Proxy((name, ...a)=>{
 		Object.getPrototypeOf(a[0] ?? 0) === Object.prototype
 			? a
 			: [{}, ...a]
+	// TODO: consider using ns as-is
+	// It would be ~2 B smaller to use ns as-is.
+	// undefined ns is represented as '' instead of 'undefined'
+	// Negligibly more efficient in the runtime performance & RAM
 	let el_ckey = (ns ?? '') + ',' + name
-	let proto_dom = obj__cache[el_ckey] ??=
-		ns
-			? document.createElementNS(ns, name)
-			: document.createElement(name)
-	let dom = proto_dom.cloneNode()
+	let dom = (
+		obj__cache[el_ckey] ??=
+			ns
+				? document.createElementNS(ns, name)
+				: document.createElement(name)
+	).cloneNode()
 	for (let k in params) {
 		let v = params[k]
 		let k__PropertyDescriptor_ = proto=>
