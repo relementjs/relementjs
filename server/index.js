@@ -6,15 +6,18 @@ const char_R_escape_char = {
 	'<': '&lt;',
 	'>': '&gt;',
 }
+const expand_tags = {
+	script: 1
+}
 export let server__element__proto = {
-	_rele: 1,
 	buf__push(buf) {
 		buf.push('<' + this.name + this.props_str)
+		if (expand_tags[this.name]) this.children.push('')
 		let plain_c
 		for (let c of this.children) {
 			plain_c ?? buf.push('>')
 			plain_c = plain_val_(c) ?? ''
-			plain_c._rele
+			plain_c.buf__push
 				? plain_c.buf__push(buf)
 				: buf.push(
 					('' + plain_c)
@@ -69,7 +72,7 @@ export let fragment_ = (...children)=>({
 	buf__push(buf) {
 		for (let c of children.flat(Infinity)) {
 			let plain_c = plain_val_(c) ?? ''
-			plain_c._rele
+			plain_c.buf__push
 				? plain_c.buf__push(buf)
 				: buf.push(
 					('' + plain_c)

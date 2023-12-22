@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.31.11",
+	"version": "0.32.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -102,7 +102,7 @@
 				"": "{ relement__use }",
 				"./server": "{ server__relement }"
 			},
-			"limit": "660 B"
+			"limit": "682 B"
 		},
 		{
 			"name": "isomorphic helpers",
@@ -152,28 +152,28 @@
 			"import": {
 				"./server": "{ tags }"
 			},
-			"limit": "423 B"
+			"limit": "437 B"
 		},
 		{
 			"name": "server-only render doc + helpers",
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, bind_, }"
 			},
-			"limit": "473 B"
+			"limit": "487 B"
 		},
 		{
 			"name": "server-only render doc + helpers + rmemo",
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, bind_, memo_, sig_ }"
 			},
-			"limit": "778 B"
+			"limit": "790 B"
 		},
 		{
 			"name": "server-only render doc + helpers + rmemo + ctx",
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, bind_, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "879 B"
+			"limit": "894 B"
 		},
 		{
 			"name": "isomorphic server helpers + doc_html_ + helpers + rmemo + ctx",
@@ -181,7 +181,7 @@
 				"": "{ relement__use, bind_, tags, memo_, sig_, be_, ctx_ }",
 				"./server": "{ server__relement, doc_html_ }"
 			},
-			"limit": "1111 B"
+			"limit": "1124 B"
 		},
 		{
 			"name": "html: html_",

@@ -1,5 +1,23 @@
 # relementjs
 
+## 0.32.0
+
+### Minor Changes
+
+- minor:
+
+      server: always expand <script></script> tag
+      server__element__proto: - ._rele
+
+  size-limit:
+
+      isomorphic server: + 22 B
+      server-only minimal: + 14 B
+      server-only render doc + helpers: + 14 B
+      server-only render doc + helpers + rmemo: + 12 B
+      server-only render doc + helpers + rmemo + ctx: + 15 B
+      isomorphic server helpers + doc_html_ + helpers + rmemo + ctx: + 13 B
+
 ## 0.31.11
 
 ### Patch Changes

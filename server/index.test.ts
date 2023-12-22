@@ -24,6 +24,7 @@ const {
 	li,
 	p,
 	pre,
+	script,
 	span,
 	title,
 	ul
@@ -45,6 +46,9 @@ test('tags', ()=>{
 test('tags|undefined & null prop', ()=>{
 	equal('' + div({ id: undefined }), '<div/>')
 	equal('' + div({ id: null }), '<div/>')
+})
+test('tags|script|expand', ()=>{
+	equal('' + script(), '<script></script>')
 })
 test('tags|prop|data- props', ()=>{
 	equal('' + div({ 'data-foo': JSON.stringify(prop_data__div_o) }), prop_data__div_html)
