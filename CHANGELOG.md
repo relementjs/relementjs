@@ -1,5 +1,13 @@
 # relementjs
 
+## 0.31.11
+
+### Patch Changes
+
+- rmemo\_\_wait: fix: prevent early GC of internal memo
+- Updated dependencies
+  - ctx-core@5.4.1
+
 ## 0.31.10
 
 ### Patch Changes
