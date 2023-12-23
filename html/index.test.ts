@@ -29,7 +29,7 @@ test.only('server|html_ head_ body_ div_ a_', ()=>{
 				div_({ id: 'div-id' },
 					a_({ href: 'https://github.com/relementjs/all' }, 'relementjs'))
 			)).toString(),
-		`<html><head/><body><div id="div-id"><a href="https://github.com/relementjs/all">relementjs</a></div></body></html>`
+		`<html><head></head><body><div id="div-id"><a href="https://github.com/relementjs/all">relementjs</a></div></body></html>`
 	)
 })
 test('browser|html_ head_ body_ div_ a_', ()=>{

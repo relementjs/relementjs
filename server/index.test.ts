@@ -44,8 +44,8 @@ test('tags', ()=>{
 		'<div><p>👋Hello</p><ul><li>🗺️World</li><li><a href="https://github.com/relementjs/server/">🍦relement</a></li></ul></div>')
 })
 test('tags|undefined & null prop', ()=>{
-	equal('' + div({ id: undefined }), '<div/>')
-	equal('' + div({ id: null }), '<div/>')
+	equal('' + div({ id: undefined }), '<div></div>')
+	equal('' + div({ id: null }), '<div></div>')
 })
 test('tags|script|expand', ()=>{
 	equal('' + script(), '<script></script>')
@@ -53,15 +53,20 @@ test('tags|script|expand', ()=>{
 test('tags|prop|data- props', ()=>{
 	equal('' + div({ 'data-foo': JSON.stringify(prop_data__div_o) }), prop_data__div_html)
 })
-test('elements without child', ()=>{
-	equal('' + br(), '<br/>')
-	equal('' + hr({ class: 'large' }), '<hr class="large"/>')
+test('tags|void', ()=>{
+	equal('' + br(), '<br>')
+	equal('' + hr({ class: 'large' }), '<hr class="large">')
+	// children are not rendered
+	// @ts-expect-error TS2554
+	equal('' + br(div('foo'), 'bar'), '<br>')
+	// @ts-expect-error TS2554
+	equal('' + hr({ class: 'large' }, div('foo'), 'bar'), '<hr class="large">')
 })
 test('boolean prop', ()=>{
-	equal('' + input({ type: 'checkbox', checked: false }), '<input type="checkbox"/>')
-	equal('' + input({ type: 'checkbox', checked: true }), '<input type="checkbox" checked/>')
-	equal('' + input({ checked: false }), '<input/>')
-	equal('' + input({ checked: true }), '<input checked/>')
+	equal('' + input({ type: 'checkbox', checked: false }), '<input type="checkbox">')
+	equal('' + input({ type: 'checkbox', checked: true }), '<input type="checkbox" checked>')
+	equal('' + input({ checked: false }), '<input>')
+	equal('' + input({ checked: true }), '<input checked>')
 })
 test('escape', ()=>{
 	equal('' + p('<input>'), '<p>&lt;input&gt;</p>')
@@ -69,7 +74,7 @@ test('escape', ()=>{
 	equal('' + div('<input a && b>'), '<div>&lt;input a &amp;&amp; b&gt;</div>')
 })
 test('escape|attr', ()=>{
-	equal('' + input({ value: '"text"' }), '<input value="&quot;text&quot;"/>')
+	equal('' + input({ value: '"text"' }), '<input value="&quot;text&quot;">')
 })
 test('nested children', ()=>{
 	equal('' + ul([li('Item 1'), li('Item 2'), li('Item 3')]),
@@ -160,10 +165,10 @@ test('onclick handler', ()=>{
 		const dom = div(button({ onclick: 'alert("Hello")' }, 'Click me'))
 		equal('' + dom, '<div><button onclick="alert(&quot;Hello&quot;)">Click me</button></div>')
 	}
-	// {
-	// 	const dom = div(button({ onClick: 'alert("Hello")' }, 'Click me'))
-	// 	equal('' + dom, '<div><button onclick="alert(&quot;Hello&quot;)">Click me</button></div>')
-	// }
+	{
+		const dom = div(button({ onClick: 'alert("Hello")' }, 'Click me'))
+		equal('' + dom, '<div><button onclick="alert(&quot;Hello&quot;)">Click me</button></div>')
+	}
 	{
 		// Function-valued onclick handler will be skipped
 		const dom = div(button({ onclick: ()=>alert('Hello') }, 'Click me'))
@@ -183,7 +188,7 @@ test('tagsNS: svg', ()=>{
 		path({ 'd': 'M 15 30 Q 25 40, 35 30', stroke: 'black', 'stroke-width': '2', fill: 'transparent' }),
 	)
 	equal('' + dom,
-		'<svg width="16px" viewbox="0 0 50 50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="2" fill="yellow"/><circle cx="16" cy="20" r="2" stroke="black" stroke-width="2" fill="black"/><circle cx="34" cy="20" r="2" stroke="black" stroke-width="2" fill="black"/><path d="M 15 30 Q 25 40, 35 30" stroke="black" stroke-width="2" fill="transparent"/></svg>')
+		'<svg width="16px" viewbox="0 0 50 50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="2" fill="yellow"></circle><circle cx="16" cy="20" r="2" stroke="black" stroke-width="2" fill="black"></circle><circle cx="34" cy="20" r="2" stroke="black" stroke-width="2" fill="black"></circle><path d="M 15 30 Q 25 40, 35 30" stroke="black" stroke-width="2" fill="transparent"></path></svg>')
 })
 test('tagsNS: math', ()=>{
 	const {
@@ -245,6 +250,6 @@ test('example: server', ()=>{
 		`<a href="https://github.com/relementjs/server/">🍦relement</a>`)
 	equal('' + button({ onclick: 'alert("Hello")' }, 'Click'),
 		`<button onclick="alert(&quot;Hello&quot;)">Click</button>`)
-	equal('' + input({ type: 'text', value: 'value' }), `<input type="text" value="value"/>`)
+	equal('' + input({ type: 'text', value: 'value' }), `<input type="text" value="value">`)
 })
 test.run()

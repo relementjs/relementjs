@@ -1,5 +1,21 @@
 # relementjs
 
+## 0.33.0
+
+### Minor Changes
+
+- support html void tags: all non-void tags have a closing tag
+- fix: various type errors
+
+  size-limit:
+
+      isomorphic server: + 34 B
+      server-only minimal: + 33 B
+      server-only render doc + helpers: + 30 B
+      server-only render doc + helpers + rmemo: + 37 B
+      server-only render doc + helpers + rmemo + ctx: + 37 B
+      isomorphic server helpers + doc_html_ + helpers + rmemo + ctx: + 36 B
+
 ## 0.32.0
 
 ### Minor Changes

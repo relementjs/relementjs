@@ -29,13 +29,18 @@ test('server|svg', ()=>{
 			circle_({ cx: '34', cy: '20', 'r': '2', stroke: 'black', 'stroke-width': '2', fill: 'black' }),
 			path_({ 'd': 'M 15 30 Q 25 40, 35 30', stroke: 'black', 'stroke-width': '2', fill: 'transparent' }),
 		).toString(),
-		'<svg width="16px" viewbox="0 0 50 50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="2" fill="yellow"/><circle cx="16" cy="20" r="2" stroke="black" stroke-width="2" fill="black"/><circle cx="34" cy="20" r="2" stroke="black" stroke-width="2" fill="black"/><path d="M 15 30 Q 25 40, 35 30" stroke="black" stroke-width="2" fill="transparent"/></svg>')
+		'<svg width="16px" viewbox="0 0 50 50">' +
+		'<circle cx="25" cy="25" r="20" stroke="black" stroke-width="2" fill="yellow"></circle>' +
+		'<circle cx="16" cy="20" r="2" stroke="black" stroke-width="2" fill="black"></circle>' +
+		'<circle cx="34" cy="20" r="2" stroke="black" stroke-width="2" fill="black"></circle>' +
+		'<path d="M 15 30 Q 25 40, 35 30" stroke="black" stroke-width="2" fill="transparent"></path>' +
+		'</svg>')
 })
 test('browser|svg ', ()=>{
 	jsdom = new JSDOM()
 	// @ts-expect-error TS2322
 	globalThis.window = jsdom.window
-	globalThis.document = jsdom.window.document
+	globalThis.document = jsdom.window.document,
 	globalThis.Text = jsdom.window.Text
 	globalThis.Node = jsdom.window.Node
 	relement__use(browser__relement)

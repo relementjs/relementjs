@@ -19,9 +19,13 @@ export const tags:server__tags_T<'html'>
 export declare function tagsNS<tags_env_T extends render__tags_env_T>(
 	namespaceURI:render__namespaceURI_T<tags_env_T>
 ):server__tags_T<tags_env_T>
+export type void_tags_T = 'area'|'base'|'br'|'col'|'embed'|'hr'|'img'|'input'|'link'|'meta'|'source'|'track'|'wbr'
 export type server__tags_T<tags_env_T extends render__tags_env_T = 'html'> =
 	(tags_env_T extends 'html'
-		? { [K in keyof HTMLElementTagNameMap]:server__tag_T<HTMLElementTagNameMap[K]> }
+		? { [K in keyof HTMLElementTagNameMap]:server__tag_T<
+			HTMLElementTagNameMap[K],
+			K extends void_tags_T ? true : false
+		> }
 		: tags_env_T extends 'svg'
 			? { [K in keyof SVGElementTagNameMap]:server__tag_T<SVGElementTagNameMap[K]> }
 			: tags_env_T extends 'mathml'
@@ -30,13 +34,18 @@ export type server__tags_T<tags_env_T extends render__tags_env_T = 'html'> =
 export type server__tagsNS_T<
 	tags_env_T extends render__tags_env_T = 'svg'
 > = (namespaceURI:render__namespaceURI_T<tags_env_T>)=>server__tags_T<tags_env_T>
-export type server__tag_T<Node> = (
+export type server__tag_T<Node, is_void_tag_T extends boolean = false> = (
 	// TODO: Can we narrow first argument?
-	// first?:(known_keys__render_props_T<Result>)|server__tags_dom_T,
 	first?:
-		|(known_keys__render_props_T<Node>&Record<string, render_props_val_OR_rmemo_T_OR_Fn>)
-		|server__tag__dom_T,
-	...rest:readonly server__tag__dom_T[]
+		is_void_tag_T extends false
+			? (
+				|(known_keys__render_props_T<Node>&Record<string, render_props_val_OR_rmemo_T_OR_Fn>)
+				|server__tag__dom_T
+				) : known_keys__render_props_T<Node>&Record<string, render_props_val_OR_rmemo_T_OR_Fn>,
+	...rest:(
+		is_void_tag_T extends false
+			? readonly server__tag__dom_T[]
+			: [])
 )=>server__Node_T
 export type server__tag__dom_T =
 	|server__tag__dom__val_T
@@ -61,8 +70,8 @@ export type server__Node_T = {
 	toString():string
 	addEventListener:unknown
 }
-export declare const server__relement:server__base__relement_T
-export type server__base__relement_T = {
+export declare const server__relement:server__relement_T
+export type server__relement_T = {
 	attach:server__attach_T
 	bind_:bind__T
 	tags:server__tags_T<'html'>

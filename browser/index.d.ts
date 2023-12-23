@@ -1,4 +1,3 @@
-/// <reference types="./index.d.ts" />
 // originally forked from https://github.com/vanjs-org/van/blob/main/src/van.d.ts
 import type { rmemo_T } from 'ctx-core/rmemo'
 import type {

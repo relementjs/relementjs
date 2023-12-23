@@ -1,8 +1,10 @@
 import { relement_env_T, tag_T } from '../isomorphic/index.js'
-type arg_a_T<env_T extends relement_env_T, tag_name_T> = Parameters<tag_T<env_T, MathMLElementTagNameMap[tag_name_T]>>
-type ret_T<env_T extends relement_env_T, tag_name_T> = ReturnType<tag_T<env_T, MathMLElementTagNameMap[tag_name_T]>>
+type arg_a_T<env_T extends relement_env_T, tag_name_T extends keyof MathMLElementTagNameMap> =
+	Parameters<tag_T<env_T, MathMLElementTagNameMap[tag_name_T]>>
+type ret_T<env_T extends relement_env_T, tag_name_T extends keyof MathMLElementTagNameMap> =
+	ReturnType<tag_T<env_T, MathMLElementTagNameMap[tag_name_T]>>
 export declare function annotation_<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'annotation'>):ret_T<env_T, 'annotation'>
-export declare function annotation_xml_<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'annotation_xml'>):ret_T<env_T, 'annotation_xml'>
+export declare function annotation_xml_<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'annotation-xml'>):ret_T<env_T, 'annotation-xml'>
 export declare function maction_<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'maction'>):ret_T<env_T, 'maction'>
 export declare function math_<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'math'>):ret_T<env_T, 'math'>
 export declare function merror_<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'merror'>):ret_T<env_T, 'merror'>

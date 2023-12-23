@@ -1,29 +1,48 @@
 /// <reference types="./index.d.ts" />
 // originally forked from https://github.com/vanjs-org/mini-van/blob/main/src/van-plate.js
 export * from 'ctx-core/rmemo'
+/**
+ * area, base, br, col, embed, hr, img, input, link, meta, source, track, wbr
+ * @see {@link https://html.spec.whatwg.org/multipage/syntax.html#void-elements}
+ */
+const void_tags = {
+	area: 1,
+	base: 1,
+	br: 1,
+	col: 1,
+	embed: 1,
+	hr: 1,
+	img: 1,
+	input: 1,
+	link: 1,
+	meta: 1,
+	source: 1,
+	track: 1,
+	wbr: 1,
+}
 const char_R_escape_char = {
 	'&': '&amp;',
 	'<': '&lt;',
 	'>': '&gt;',
 }
-const expand_tags = {
-	script: 1
-}
+/*
+ * HTML5 elements do not support self-closing tags
+ * TODO: Consider supporting self-closing tags for xml formats such as SVG & MathML
+ * @see {@link https://stackoverflow.com/questions/69913/why-dont-self-closing-script-elements-work}
+ */
 export let server__element__proto = {
 	buf__push(buf) {
-		buf.push('<' + this.name + this.props_str)
-		if (expand_tags[this.name]) this.children.push('')
-		let plain_c
-		for (let c of this.children) {
-			plain_c ?? buf.push('>')
-			plain_c = plain_val_(c) ?? ''
+		buf.push('<' + this.name + this.props_str + '>')
+		if (void_tags[this.name]) return
+		for (const c of this.children) {
+			let plain_c = plain_val_(c) ?? ''
 			plain_c.buf__push
 				? plain_c.buf__push(buf)
 				: buf.push(
 					('' + plain_c)
 						.replace(/[&<>]/g, tag=>char_R_escape_char[tag] || tag))
 		}
-		buf.push(plain_c != null ? '</' + this.name + '>' : '/>')
+		buf.push(`</${this.name}>`)
 	},
 	toString() {
 		let buf = []

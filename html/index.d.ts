@@ -1,8 +1,9 @@
 /// <reference lib="dom" />
-/// <reference types="./index.d.ts" />
 import type { relement_env_T, tag_T } from '../isomorphic/index.js'
-type arg_a_T<env_T extends relement_env_T, tag_name_T> = Parameters<tag_T<env_T, HTMLElementTagNameMap[tag_name_T]>>
-type ret_T<env_T extends relement_env_T, tag_name_T> = ReturnType<tag_T<env_T, HTMLElementTagNameMap[tag_name_T]>>
+type arg_a_T<env_T extends relement_env_T, tag_name_T extends keyof HTMLElementTagNameMap> =
+	Parameters<tag_T<env_T, HTMLElementTagNameMap[tag_name_T]>>
+type ret_T<env_T extends relement_env_T, tag_name_T extends keyof HTMLElementTagNameMap> =
+	ReturnType<tag_T<env_T, HTMLElementTagNameMap[tag_name_T]>>
 export declare function a_<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'a'>):ret_T<env_T, 'a'>
 export declare function abbr_<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'abbr'>):ret_T<env_T, 'abbr'>
 export declare function address_<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'address'>):ret_T<env_T, 'address'>
@@ -112,6 +113,6 @@ export declare function tr_<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T
 export declare function track_<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'track'>):ret_T<env_T, 'track'>
 export declare function u_<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'u'>):ret_T<env_T, 'u'>
 export declare function ul_<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'ul'>):ret_T<env_T, 'ul'>
-export declare function var__<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'var_'>):ret_T<env_T, 'var_'>
+export declare function var__<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'var'>):ret_T<env_T, 'var'>
 export declare function video_<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'video'>):ret_T<env_T, 'video'>
 export declare function wbr_<env_T extends relement_env_T>(...arg_a:arg_a_T<env_T, 'wbr'>):ret_T<env_T, 'wbr'>
