@@ -1,5 +1,27 @@
 # relementjs
 
+## 0.34.0
+
+### Minor Changes
+
+- minor:
+
+      + rmemo__subscribe
+      + subscribe
+
+  size-limit:
+
+      isomorphic browser: + 10 B
+      browser-only minimal: + 3 B
+      browser-only hydrate + helpers: + 1 B
+      browser-only hydrate + helpers + rmemo + ctx: - 1 B
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@5.5.0
+
 ## 0.33.0
 
 ### Minor Changes
