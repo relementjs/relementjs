@@ -66,7 +66,7 @@
 		"test:size": "size-limit",
 		"test:type": "check-dts",
 		"test:unit": "tsx node_modules/uvu/bin.js . '\\.test\\.(ts|js)$'",
-		"disable:test:coverage": "c8 pnpm test-unit"
+		"disable:test:coverage": "c8 pnpm test:unit"
 	},
 	"dependencies": {
 		"ctx-core": "^5.5.0"
