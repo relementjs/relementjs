@@ -16,7 +16,7 @@ relementjs includes rmemo as a reactive core & ctx-core for contexts...
 | **server-only render doc + helpers**       | **517 B** | **tags doc_html_ tagsNS _ bind_**        |
 | server-only render doc + helpers + rmemo   |   827 B   | tags doc_html_ tagsNS _ bind_ memo_ sig_ |
 | isomorphic browser                         |   981 B   | relement__use browser__relement    |
-| isomorphic server                          |   716 B   | relement__use server__base__relement     |
+| isomorphic server                          |   717 B   | relement__use server__base__relement     |
 | isomorphic html tag                        |   34 B    | html_                                    |
 
 Note that the bold use cases are roughly equivalent to what VanJS provides. The browser-only library is smaller than

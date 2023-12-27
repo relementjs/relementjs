@@ -1,5 +1,18 @@
 # relementjs
 
+## 0.35.0
+
+### Minor Changes
+
+- minor: ./isomorphic:
+
+      + for_
+      + switch_
+
+  size-limit:
+
+      isomorphic server: + 1 B
+
 ## 0.34.0
 
 ### Minor Changes

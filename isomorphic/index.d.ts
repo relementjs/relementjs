@@ -20,6 +20,8 @@ import type {
 } from '../server/index.js'
 export * from 'ctx-core/be'
 export * from 'ctx-core/rmemo'
+export * from './for/index.js'
+export * from './switch/index.js'
 export declare function relement__use(
 	render_api:browser__relement_T|server__relement_T|null|undefined
 ):void
