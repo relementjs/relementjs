@@ -20,7 +20,7 @@ test.after(()=>{
 	globalThis.Node = prev__Node
 	relement__use(undefined)
 })
-test.only('server|html_ head_ body_ div_ a_', ()=>{
+test('server|html_ head_ body_ div_ a_', ()=>{
 	relement__use(server__relement)
 	equal(
 		html_<'server'>(
