@@ -1,5 +1,20 @@
 # relementjs
 
+## 0.36.0
+
+### Minor Changes
+
+- minor: rmemo: + be
+
+  patch: be: arguments: fix: + config?:be_config_T<ns_T>
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@5.6.0
+
 ## 0.35.0
 
 ### Minor Changes
