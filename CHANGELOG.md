@@ -1,5 +1,17 @@
 # relementjs
 
+## 0.37.0
+
+### Minor Changes
+
+- rmemo\_\_wait: arguments: + error?:Error
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@5.7.0
+
 ## 0.36.1
 
 ### Patch Changes
