@@ -74,9 +74,9 @@
 	"devDependencies": {
 		"@size-limit/preset-small-lib": "^11.0.1",
 		"@types/jsdom": "^21.1.6",
-		"c8": "^8.0.1",
+		"c8": "^9.0.0",
 		"check-dts": "^0.7.2",
-		"jsdom": "^23.0.1",
+		"jsdom": "^23.1.0",
 		"size-limit": "^11.0.1",
 		"tsx": "^4.7.0",
 		"typescript": "next",
