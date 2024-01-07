@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.42.0",
+	"version": "0.43.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -69,7 +69,7 @@
 		"disable:test:coverage": "c8 pnpm test:unit"
 	},
 	"dependencies": {
-		"ctx-core": "^5.14.0"
+		"ctx-core": "^5.15.0"
 	},
 	"devDependencies": {
 		"@size-limit/preset-small-lib": "^11.0.1",
@@ -94,7 +94,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__relement }"
 			},
-			"limit": "973 B"
+			"limit": "974 B"
 		},
 		{
 			"name": "isomorphic server",
@@ -116,14 +116,14 @@
 			"import": {
 				"./browser": "{ tags }"
 			},
-			"limit": "729 B"
+			"limit": "733 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, bind_ }"
 			},
-			"limit": "787 B"
+			"limit": "783 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo",
@@ -137,7 +137,7 @@
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, bind_, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "914 B"
+			"limit": "911 B"
 		},
 		{
 			"name": "isomorphic browser helpers + hydrate + helpers + rmemo + ctx",
@@ -145,7 +145,7 @@
 				"": "{ relement__use, bind_, tags, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__relement, hydrate }"
 			},
-			"limit": "1135 B"
+			"limit": "1136 B"
 		},
 		{
 			"name": "server-only minimal",
@@ -166,14 +166,14 @@
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, bind_, memo_, sig_ }"
 			},
-			"limit": "829 B"
+			"limit": "831 B"
 		},
 		{
 			"name": "server-only render doc + helpers + rmemo + ctx",
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, bind_, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "931 B"
+			"limit": "935 B"
 		},
 		{
 			"name": "isomorphic server helpers + doc_html_ + helpers + rmemo + ctx",
@@ -181,7 +181,7 @@
 				"": "{ relement__use, bind_, tags, memo_, sig_, be_, ctx_ }",
 				"./server": "{ server__relement, doc_html_ }"
 			},
-			"limit": "1160 B"
+			"limit": "1162 B"
 		},
 		{
 			"name": "html: html_",

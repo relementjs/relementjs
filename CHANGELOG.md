@@ -1,5 +1,32 @@
 # relementjs
 
+## 0.43.0
+
+### Minor Changes
+
+- minor:
+
+      subscribers: + strong reference to return value: prevent GC
+      memo_T:
+      sig_T:
+      	+ b?:[unknown, memo_T<unknown>][]
+
+  size-limit:
+
+      isomorphic browser: + 1 B
+      browser-only minimal: + 4 B
+      browser-only hydrate + helpers: - 4 B
+      browser-only hydrate + helpers + rmemo + ctx: - 3 B
+      isomorphic browser helpers + hydrate + helpers + rmemo + ctx: + 1 B
+      server-only render doc + helpers + rmemo: + 2 B
+      server-only render doc + helpers + rmemo + ctx: + 4 B
+      isomorphic server helpers + doc_html_ + helpers + rmemo + ctx: + 2 B
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@5.15.0
+
 ## 0.42.0
 
 ### Minor Changes
