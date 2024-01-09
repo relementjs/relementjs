@@ -1,5 +1,13 @@
 # relementjs
 
+## 0.44.1
+
+### Patch Changes
+
+- lock*memosig*: .get: fix: return value
+- Updated dependencies
+  - ctx-core@5.16.1
+
 ## 0.44.0
 
 ### Minor Changes
@@ -1091,6 +1099,13 @@
 - be*memo_pair*: subscriber receives a memosig argument: allows memosig.\_ = val in subscriber
 - Updated dependencies
   - ctx-core@4.6.3
+
+  size-limit:
+
+      isomorphic browser: + 2 B
+      browser-only hydrate + helpers: + 1 B
+      browser-only hydrate + helpers + rmemo: + 2 B
+      server-only render doc + helpers + rmemo: + 3 B
 
 ## 0.9.0
 
