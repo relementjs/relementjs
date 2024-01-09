@@ -1,5 +1,42 @@
 # relementjs
 
+## 0.44.0
+
+### Minor Changes
+
+- minor:
+
+      memo_T:
+      sig_T:
+      	+ .add<add_val_T>(add_def:(sig:sig_T<val_T>, prev_val:add_val_T|undefined)=>add_val_T):memo_T<val_T>
+      memo_:
+      sig_:
+      memosig_:
+      lock_memosig_:
+      	arguments: - ...subscriber_a
+      rmemo__subscribe→rmemo__add
+
+  patch:
+
+      rmemo__add: fix: add_def is not called until memo argument is called
+
+  size-limit:
+
+      isomorphic browser: + 22 B
+      browser-only minimal: + 14 B
+      browser-only hydrate + helpers: + 27 B
+      browser-only hydrate + helpers + rmemo: + 19 B
+      browser-only hydrate + helpers + rmemo + ctx: + 23 B
+      isomorphic browser helpers + hydrate + helpers + rmemo + ctx: + 13 B
+      server-only render doc + helpers + rmemo: + 22 B
+      server-only render doc + helpers + rmemo + ctx: + 12 B
+      isomorphic server helpers + doc_html_ + helpers + rmemo + ctx: + 15 B
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@5.16.0
+
 ## 0.43.0
 
 ### Minor Changes

@@ -960,7 +960,7 @@ skip_long_test('gc|binding|conditional|long', with_connected_dom(async connected
 }))
 test('gc|memo_|basic', ()=>{
 	const history:unknown[] = []
-	const a:sig_T<number> = sig_(0, ()=>history.push(a()))
+	const a:sig_T<number> = sig_(0).add(()=>history.push(a()))
 	for (let i = 0; i < 100; ++i) a._++
 	equal(history.length, 101)
 	let count = 0
