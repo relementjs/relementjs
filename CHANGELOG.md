@@ -1,5 +1,19 @@
 # relementjs
 
+## 0.45.1
+
+### Patch Changes
+
+- rmemo\_\_add: fix: arguments match the .add method
+
+  size-limit:
+
+      browser-only hydrate + helpers + rmemo: + 3 B
+      server-only render doc + helpers + rmemo: - 1 B
+
+- Updated dependencies
+  - ctx-core@5.16.2
+
 ## 0.45.0
 
 ### Minor Changes

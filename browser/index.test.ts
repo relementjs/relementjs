@@ -152,7 +152,7 @@ test('tags|onclick|sig|disconnected', async ()=>{
 test('tags|prop|fn|rmemo deps|connected', with_connected_dom(async connected_dom=>{
 	const host$ = sig_('example.com')
 	const path$ = sig_('/hello')
-	const dom = a({ href: ()=>`https://${host$()}${path$()}` }, 'Test Link')
+	const dom = a({ href: memo_(()=>`https://${host$()}${path$()}`) }, 'Test Link')
 	attach(connected_dom, dom)
 	equal(dom.href, 'https://example.com/hello')
 	host$._ = 'github.com/ctx-core/rmemo'
@@ -161,12 +161,12 @@ test('tags|prop|fn|rmemo deps|connected', with_connected_dom(async connected_dom
 	equal(dom.href, 'https://github.com/ctx-core/rmemo/start')
 }))
 test('tags|prop|fn|rmemo deps|disconnected', async ()=>{
-	const host = sig_('example.com')
-	const path = sig_('/hello')
-	const dom = a({ href: ()=>`https://${host()}${path()}` }, 'Test Link')
+	const host$ = sig_('example.com')
+	const path$ = sig_('/hello')
+	const dom = a({ href: memo_(()=>`https://${host$()}${path$()}`) }, 'Test Link')
 	equal(dom.href, 'https://example.com/hello')
-	host._ = 'github.com/ctx-core/rmemo'
-	path._ = '/start'
+	host$._ = 'github.com/ctx-core/rmemo'
+	path$._ = '/start'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.href, 'https://github.com/ctx-core/rmemo/start')
 })

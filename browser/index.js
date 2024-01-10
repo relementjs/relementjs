@@ -1,5 +1,6 @@
 // originally forked from https://github.com/vanjs-org/van/blob/main/src/van.js
 // This file consistently uses `let` keyword instead of `const` for reducing the bundle size.
+// TODO: browser-lite non-reactive export?
 import { memo_ } from 'ctx-core/rmemo'
 export * from 'ctx-core/rmemo'
 // Global variables - aliasing some builtin symbols to reduce the bundle size.
