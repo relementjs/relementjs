@@ -9,14 +9,14 @@ relementjs includes rmemo as a reactive core & ctx-core for contexts...
 
 | use case                                   |   size    | imports                                  |
 |--------------------------------------------|:---------:|------------------------------------------|
-| browser-only minimal                       |   747 B   | tags                                     |
-| browser-only hydrate + helpers             |   811 B   | tags hydrate _ bind_                     |
-| **browser-only hydrate + helpers + rmemo** | **828 B** | **tags hydrate _ bind_ memo_ sig_**      |
-| server-only minimal                        |   470 B   | tags                                     |
-| **server-only render doc + helpers**       | **517 B** | **tags doc_html_ tagsNS _ bind_**        |
-| server-only render doc + helpers + rmemo   |   854 B   | tags doc_html_ tagsNS _ bind_ memo_ sig_ |
-| isomorphic browser                         |   998 B   | relement__use browser__relement    |
-| isomorphic server                          |   717 B   | relement__use server__base__relement     |
+| browser-only minimal                       |   743 B   | tags                                     |
+| browser-only hydrate + helpers             |   784 B   | tags hydrate _ bind_                     |
+| **browser-only hydrate + helpers + rmemo** | **808 B** | **tags hydrate _ bind_ memo_ sig_**      |
+| server-only minimal                        |   454 B   | tags                                     |
+| **server-only render doc + helpers**       | **497 B** | **tags doc_html_ tagsNS _ bind_**        |
+| server-only render doc + helpers + rmemo   |   835 B   | tags doc_html_ tagsNS _ bind_ memo_ sig_ |
+| isomorphic browser                         |   960 B   | relement__use browser__relement    |
+| isomorphic server                          |   682 B   | relement__use server__base__relement     |
 | isomorphic html tag                        |   34 B    | html_                                    |
 
 Note that the bold use cases are roughly equivalent to what VanJS provides. The browser-only library is smaller than

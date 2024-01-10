@@ -14,7 +14,6 @@ export * from 'ctx-core/rmemo'
 export { render_props_T, render_props_val_OR_rmemo_T_OR_Fn, render_props_val_T, render_primitive_T }
 export declare const attach:browser__attach_T
 export type browser__attach_T = (dom:Element, ...children:readonly browser__tag__dom_T[])=>Element
-export const bind_:bind__T
 export type browser__tag__dom__val_T = render_primitive_T|Node|null|undefined
 export declare const tags:browser__tags_T<'html'>
 export declare function tagsNS<tags_env_T extends render__tags_env_T>(
@@ -57,7 +56,6 @@ export declare function hy__bind<E extends Element>(
 export declare const browser__relement:browser__relement_T
 export type browser__relement_T = {
 	attach:browser__attach_T
-	bind_:bind__T
 	tags:browser__tags_T<'html'>
 	tagsNS:<tags_env_T extends render__tags_env_T>(
 		namespaceURI:render__namespaceURI_T<tags_env_T>

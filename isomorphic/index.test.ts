@@ -6,7 +6,6 @@ import { div_ } from '../html/index.js'
 import { server__relement } from '../server/index.js'
 import {
 	attach,
-	bind_,
 	fragment_,
 	mathml_tags,
 	mathml_tags_,
@@ -42,14 +41,12 @@ test.after(()=>{
 test('relement__use', ()=>{
 	relement__use(undefined)
 	equal(attach, undefined)
-	equal(bind_, undefined)
 	equal(tagsNS, undefined)
 	equal(tags, undefined)
 	equal(svg_tags, undefined)
 	equal(mathml_tags, undefined)
 	relement__use(browser__relement)
 	equal(attach, browser__relement.attach)
-	equal(bind_, browser__relement.bind_)
 	equal(tagsNS, browser__relement.tagsNS)
 	equal(tags, browser__relement.tags)
 	equal((<tags_T<'browser', 'svg'>>svg_tags).svg().outerHTML, '<svg></svg>')
@@ -64,7 +61,6 @@ test('relement__use', ()=>{
 		'<div>row0</div><div>row1</div><div>row2</div>')
 	relement__use(server__relement)
 	equal(attach, server__relement.attach)
-	equal(bind_, server__relement.bind_)
 	equal(tagsNS, server__relement.tagsNS)
 	equal(tags, server__relement.tags)
 	equal(svg_tags, server__relement.tagsNS('http://www.w3.org/2000/svg'))

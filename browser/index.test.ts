@@ -4,7 +4,7 @@ import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal, ok, throws } from 'uvu/assert'
 import { prop_data__div_html, prop_data__div_o } from '../_test/index.js'
-import { attach, bind_, browser__relement, fragment_, hy__bind, hydrate, raw_, tags, tagsNS } from './index.js'
+import { attach, browser__relement, fragment_, hy__bind, hydrate, raw_, tags, tagsNS } from './index.js'
 const skip_long = process.env.SKIP_LONG ? parseInt(process.env.SKIP_LONG) : false
 const skip_long_test = skip_long ? test.skip : test
 let jsdom:JSDOM, prev__window:Window, prev__document:Document, prev__Text:typeof Text, prev__Node:typeof Node
@@ -41,7 +41,7 @@ test.after(()=>{
 	globalThis.Node = prev__Node
 })
 test('browser__relement', ()=>{
-	equal(browser__relement, { attach, bind_, tags, tagsNS, fragment_, raw_, })
+	equal(browser__relement, { attach, tags, tagsNS, fragment_, raw_, })
 })
 test('tags|basic', ()=>{
 	const dom = div(
@@ -150,13 +150,13 @@ test('tags|onclick|sig|disconnected', async ()=>{
 	equal(dom.outerHTML, '<div><button></button><p>Button clicked!</p><div>Button clicked!</div></div>')
 })
 test('tags|prop|fn|rmemo deps|connected', with_connected_dom(async connected_dom=>{
-	const host = sig_('example.com')
-	const path = sig_('/hello')
-	const dom = a({ href: ()=>`https://${host()}${path()}` }, 'Test Link')
+	const host$ = sig_('example.com')
+	const path$ = sig_('/hello')
+	const dom = a({ href: ()=>`https://${host$()}${path$()}` }, 'Test Link')
 	attach(connected_dom, dom)
 	equal(dom.href, 'https://example.com/hello')
-	host._ = 'github.com/ctx-core/rmemo'
-	path._ = '/start'
+	host$._ = 'github.com/ctx-core/rmemo'
+	path$._ = '/start'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.href, 'https://github.com/ctx-core/rmemo/start')
 }))
@@ -259,7 +259,7 @@ test('tags|prop|fn|rmemo deps|error|disconnected', async ()=>{
 test('tags|onclick|rmemo deps|connected', with_connected_dom(async connected_dom=>{
 	const elementName = sig_<keyof HTMLElementTagNameMap|''>('p')
 	attach(connected_dom, button({
-		onclick: bind_(()=>{
+		onclick: memo_(()=>{
 			const name = elementName() as 'p'|'div'
 			return name ? ()=>attach(connected_dom, tags[name]('Button clicked!')) : null
 		}),
@@ -279,9 +279,11 @@ test('tags|onclick|rmemo deps|disconnected', async ()=>{
 	const dom = div()
 	const elementName = sig_('p')
 	attach(dom, button({
-		onclick: bind_(()=>{
-			const name = elementName() as 'p'|'div'
-			return name ? ()=>attach(dom, tags[name]('Button clicked!')) : null
+		onclick: memo_(()=>{
+			return ()=>{
+				const name = elementName() as 'p'|'div'
+				return name ? attach(dom, tags[name]('Button clicked!')) : null
+			}
 		}),
 	}))
 	dom.querySelector('button')!.click()

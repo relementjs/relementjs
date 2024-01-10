@@ -35,7 +35,6 @@ export type attach_T<env_T extends relement_env_T> =
 		: env_T extends 'server'
 			? server__attach_T
 			: browser__attach_T|server__attach_T
-export declare function bind_():bind__T
 export declare let tags:tags_T<'any'>
 export declare let svg_tags:tags_T<'any', 'svg'>
 export declare let mathml_tags:tags_T<'any', 'mathml'>

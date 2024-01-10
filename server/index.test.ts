@@ -4,7 +4,6 @@ import { equal } from 'uvu/assert'
 import { prop_data__div_html, prop_data__div_o } from '../_test/index.js'
 import {
 	attach,
-	bind_,
 	doc_html_,
 	fragment_,
 	raw_,
@@ -30,7 +29,7 @@ const {
 	ul
 } = tags
 test('server__relement', ()=>{
-	equal(server__relement, { attach, bind_, tags, tagsNS, fragment_, raw_ })
+	equal(server__relement, { attach, tags, tagsNS, fragment_, raw_ })
 })
 test('tags', ()=>{
 	equal(
@@ -218,13 +217,11 @@ test('reactive', ()=>{
 			'data-title': state3,
 			'data-text': ()=>`${'Prefix'} - ${'Suffix'}`,
 		}, state1, state3, state4),
-		button({ onclick: bind_(()=>state5() ? 'console.log("Hello")' : 'alert("Hello")') },
-			'Button1'
-		),
+		button({ onclick: memo_(()=>state5() ? 'console.log("Hello")' : 'alert("Hello")') },
+			'Button1'),
 		button({
-			onclick: bind_(
-				()=>state6() ? ()=>console.log('Hello') : ()=>alert('Hello')),
-			onhover: memo_(()=>(alert('Hover'), false)),
+			onclick: memo_(()=>(state6() ? ()=>console.log('Hello') : ()=>alert('Hello'))),
+			onhover: memo_(()=>()=>alert('Hover')),
 		},
 		'Button2'
 		),

@@ -6,7 +6,6 @@ export * from './switch/index.js'
 /** @type {browser__relement_T|server__relement_T} */
 export function relement__use(relement) {
 	attach = relement?.attach
-	bind_ = relement?.bind_
 	tagsNS = relement?.tagsNS
 	tags = relement?.tags
 	svg_tags = tagsNS?.('http://www.w3.org/2000/svg')
@@ -15,7 +14,6 @@ export function relement__use(relement) {
 	raw_ = relement?.raw_ || '*__fragment__relement'
 }
 export let attach
-export let bind_
 export let tagsNS
 export let tags
 export let svg_tags

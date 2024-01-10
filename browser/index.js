@@ -26,6 +26,12 @@ export function attach(dom, ...children) {
 				child = _child
 				return child_val_memo
 			})()
+		// child_val?.memo_?.(child_val_memo=>{
+		// 	let _child = dom__run(child_val, child)
+		// 	child && child.replaceWith(_child)
+		// 	child = _child
+		// 	return child_val_memo
+		// })()
 		if (!child_val_memo) {
 			child = child_val
 		} else if (child) {
@@ -36,10 +42,6 @@ export function attach(dom, ...children) {
 		}
 	}
 	return dom
-}
-export function bind_(f) {
-	f.b = 1
-	return f
 }
 export let tagsNS = ns=>new Proxy((name, ...a)=>{
 	let [params, ...c] =
@@ -80,13 +82,15 @@ export let tagsNS = ns=>new Proxy((name, ...a)=>{
 					: dom[k] = val ?? '' // prop setter
 		let setter_memo =
 			typeof v === 'function'
-			&& (v.memor || !k.startsWith('on') || v.b)
-			&& memo_(()=>dom__run(()=>param__setter(v(dom))))
+			&& (v.memor || !k.startsWith('on'))
+			&& memo_(()=>param__setter(v()))
+			// v?.memo_?.(()=>param__setter(v()))
 		if (setter_memo) {
 			(dom._m ||= []).push(setter_memo)
 			setter_memo()
 		} else {
 			param__setter(v)
+			// param__setter(typeof v === 'function' && !k.startsWith('on') ? v() : v)
 		}
 	}
 	return attach(dom, ...c)
@@ -114,6 +118,19 @@ export function hydrate(dom, f) {
 			dom._m.push(memo)
 		}
 	})()
+	// (f.memo_ ?? (f=>f()))(memo=>{
+	// 	let _dom = dom__run(f, dom)
+	// 	if (!_dom) {
+	// 		dom.remove()
+	// 	} else if (dom !== _dom) {
+	// 		dom.replaceWith(_dom)
+	// 		dom = _dom
+	// 		if (memo) {
+	// 			dom._m ||= []
+	// 			dom._m.push(memo)
+	// 		}
+	// 	}
+	// })
 }
 export function hy__bind(doc, key_R_fn) {
 	let el_a = doc.querySelectorAll('[hy__bind]')
@@ -124,4 +141,4 @@ export function hy__bind(doc, key_R_fn) {
 		fn(el)
 	}
 }
-export let browser__relement = { attach, bind_, tags, tagsNS, fragment_, raw_, }
+export let browser__relement = { attach, tags, tagsNS, fragment_, raw_, }

@@ -42,7 +42,7 @@ export let server__element__proto = {
 					('' + plain_c)
 						.replace(/[&<>]/g, tag=>char_R_escape_char[tag] || tag))
 		}
-		buf.push(`</${this.name}>`)
+		buf.push('</' + this.name + '>')
 	},
 	toString() {
 		let buf = []
@@ -50,17 +50,14 @@ export let server__element__proto = {
 		return buf.join('')
 	},
 }
-let plain_val_ = (v, k)=>{
-	return (
-		typeof v === 'function' && (v.memor || !k?.startsWith('on') || v._is_bind)
-			? v()
-			: v)
-}
+let plain_val_ = (v, k)=>(
+	typeof v === 'function' && (v.memor || !k?.startsWith('on'))
+		? v()
+		: v)
 export function attach(dom, ...children) {
 	dom.children.push(...children.flat(Infinity).filter(c=>c != null))
 	return dom
 }
-export let bind_ = f=>(f._is_bind = 1, f)
 export let tags = new Proxy((name, ...args)=>{
 	let [props, ...children] =
 		Object.getPrototypeOf(args[0] ?? 0) === Object.prototype
@@ -82,7 +79,7 @@ export let tags = new Proxy((name, ...args)=>{
 		__proto__: server__element__proto,
 		name,
 		props_str,
-		children: children.flat(Infinity).filter(c=>c != null)
+		children: children.flat(Infinity).filter(c=>c != null),
 	}
 }, { get: (tag, name)=>tag.bind(null, name) })
 export let tagsNS = ()=>tags
@@ -110,4 +107,4 @@ export let doc_html_ = (...args)=>{
 	tags.html(...args).buf__push(buf)
 	return buf.join('')
 }
-export let server__relement = { attach, bind_, tags, tagsNS, fragment_, raw_ }
+export let server__relement = { attach, tags, tagsNS, fragment_, raw_ }

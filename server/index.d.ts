@@ -14,7 +14,6 @@ export * from 'ctx-core/rmemo'
 export { render_props_T, render_props_val_OR_rmemo_T_OR_Fn, render_props_val_T, render_primitive_T }
 export const attach:server__attach_T
 export type server__attach_T = (dom:server__Node_T, ...children:readonly server__tag__dom_T[])=>server__Node_T
-export const bind_:bind__T
 export const tags:server__tags_T<'html'>
 export declare function tagsNS<tags_env_T extends render__tags_env_T>(
 	namespaceURI:render__namespaceURI_T<tags_env_T>
@@ -73,7 +72,6 @@ export type server__Node_T = {
 export declare const server__relement:server__relement_T
 export type server__relement_T = {
 	attach:server__attach_T
-	bind_:bind__T
 	tags:server__tags_T<'html'>
 	tagsNS<tags_env_T extends render__tags_env_T>(
 		namespaceURI:render__namespaceURI_T<tags_env_T>

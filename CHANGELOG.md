@@ -1,5 +1,27 @@
 # relementjs
 
+## 0.45.0
+
+### Minor Changes
+
+- - bind*: use memo* instead
+
+  size-limit:
+
+      isomorphic browser: - 38 B
+      isomorphic server: - 35 B
+      isomorphic helpers: - 9 B
+      browser-only minimal: - 4 B
+      browser-only hydrate + helpers: - 27 B
+      browser-only hydrate + helpers + rmemo: - 20 B
+      browser-only hydrate + helpers + rmemo + ctx: - 33 B
+      isomorphic browser helpers + hydrate + helpers + rmemo + ctx: - 30 B
+      server-only minimal: - 16 B
+      server-only render doc + helpers: - 20 B
+      server-only render doc + helpers + rmemo: - 19 B
+      server-only render doc + helpers + rmemo + ctx: - 23 B
+      isomorphic server helpers + doc_html_ + helpers + rmemo + ctx: - 43 B
+
 ## 0.44.1
 
 ### Patch Changes
@@ -1098,6 +1120,7 @@
 
 - be*memo_pair*: subscriber receives a memosig argument: allows memosig.\_ = val in subscriber
 - Updated dependencies
+
   - ctx-core@4.6.3
 
   size-limit:
