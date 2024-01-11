@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.45.1",
+	"version": "0.46.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -69,7 +69,7 @@
 		"disable:test:coverage": "c8 pnpm test:unit"
 	},
 	"dependencies": {
-		"ctx-core": "^5.16.2"
+		"ctx-core": "^5.17.0"
 	},
 	"devDependencies": {
 		"@size-limit/preset-small-lib": "^11.0.1",
@@ -94,7 +94,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__relement }"
 			},
-			"limit": "960 B"
+			"limit": "952 B"
 		},
 		{
 			"name": "isomorphic server",
@@ -102,7 +102,7 @@
 				"": "{ relement__use }",
 				"./server": "{ server__relement }"
 			},
-			"limit": "682 B"
+			"limit": "678 B"
 		},
 		{
 			"name": "isomorphic helpers",
@@ -116,28 +116,28 @@
 			"import": {
 				"./browser": "{ tags }"
 			},
-			"limit": "743 B"
+			"limit": "736 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate }"
 			},
-			"limit": "784 B"
+			"limit": "781 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, memo_, sig_ }"
 			},
-			"limit": "811 B"
+			"limit": "802 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo + ctx",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "901 B"
+			"limit": "911 B"
 		},
 		{
 			"name": "isomorphic browser helpers + hydrate + helpers + rmemo + ctx",
@@ -145,35 +145,35 @@
 				"": "{ relement__use, tags, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__relement, hydrate }"
 			},
-			"limit": "1119 B"
+			"limit": "1113 B"
 		},
 		{
 			"name": "server-only minimal",
 			"import": {
 				"./server": "{ tags }"
 			},
-			"limit": "454 B"
+			"limit": "453 B"
 		},
 		{
 			"name": "server-only render doc + helpers",
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, }"
 			},
-			"limit": "497 B"
+			"limit": "510 B"
 		},
 		{
 			"name": "server-only render doc + helpers + rmemo",
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, memo_, sig_ }"
 			},
-			"limit": "834 B"
+			"limit": "819 B"
 		},
 		{
 			"name": "server-only render doc + helpers + rmemo + ctx",
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "924 B"
+			"limit": "919 B"
 		},
 		{
 			"name": "isomorphic server helpers + doc_html_ + helpers + rmemo + ctx",
@@ -181,7 +181,7 @@
 				"": "{ relement__use, tags, memo_, sig_, be_, ctx_ }",
 				"./server": "{ server__relement, doc_html_ }"
 			},
-			"limit": "1134 B"
+			"limit": "1139 B"
 		},
 		{
 			"name": "html: html_",

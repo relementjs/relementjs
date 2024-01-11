@@ -1,5 +1,46 @@
 # relementjs
 
+## 0.46.0
+
+### Minor Changes
+
+- minor:
+
+      memo_:
+      	rename internals:
+      		.r→.s
+      		.memor→.t
+      		.f.S→.f.t
+      	+ .memo_: support limiting dependent library bundle sizes by not requiring the rmemo to be imported
+      	.add: no longer wraps rmemo_add_def argument with a memo_: user can return a memo from the rmemo_add_def function
+      + rmemo__off__add
+      rmemo__on: arguments: + off_fn?:(rmemo:rmemo_T<val_T>)=>unknown
+      rmemo__on:
+      rmemo__off:
+      	+ <val_T> generic type
+      - rmemo__add_T
+      rmemo_add_def_T: arguments: - old_val
+
+  size-limit:
+
+      isomorphic browser: - 8 B
+      isomorphic server: - 4 B
+      browser-only minimal: - 7 B
+      browser-only hydrate + helpers: - 3 B
+      browser-only hydrate + helpers + rmemo: - 9 B
+      browser-only hydrate + helpers + rmemo + ctx: + 10 B
+      isomorphic browser helpers + hydrate + helpers + rmemo + ctx: - 6 B
+      server-only minimal: - 1 B
+      server-only render doc + helpers: + 13 B
+      server-only render doc + helpers + rmemo: - 15 B
+      server-only render doc + helpers + rmemo + ctx: - 5 B
+      isomorphic server helpers + doc_html_ + helpers + rmemo + ctx: + 5 B
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@5.17.0
+
 ## 0.45.1
 
 ### Patch Changes

@@ -51,7 +51,7 @@ export let server__element__proto = {
 	},
 }
 let plain_val_ = (v, k)=>(
-	typeof v === 'function' && (v.memor || !k?.startsWith('on'))
+	typeof v === 'function' && (v.memo_ || !k?.startsWith('on'))
 		? v()
 		: v)
 export function attach(dom, ...children) {

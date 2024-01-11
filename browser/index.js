@@ -83,7 +83,7 @@ export let tagsNS = ns=>new Proxy((name, ...a)=>{
 					: dom[k] = val ?? '' // prop setter
 		let setter_memo =
 			typeof v === 'function'
-			&& (v.memor || !k.startsWith('on'))
+			&& (v.memo_ || !k.startsWith('on'))
 			&& memo_(()=>param__setter(v()))
 			// v?.memo_?.(()=>param__setter(v()))
 		if (setter_memo) {

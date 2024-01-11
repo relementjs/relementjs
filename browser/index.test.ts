@@ -171,12 +171,12 @@ test('tags|prop|fn|rmemo deps|disconnected', async ()=>{
 	equal(dom.href, 'https://github.com/ctx-core/rmemo/start')
 })
 test('tags|prop|fn|non-rmemo deps|connected', with_connected_dom(async connected_dom=>{
-	const host = sig_('example.com')
+	const host$ = sig_('example.com')
 	const path = '/hello'
-	const dom = a({ href: ()=>`https://${host()}${path}` }, 'Test Link')
+	const dom = a({ href: memo_(()=>`https://${host$()}${path}`) }, 'Test Link')
 	attach(connected_dom, dom)
 	equal(dom.href, 'https://example.com/hello')
-	host._ = 'github.com/ctx-core/rmemo'
+	host$._ = 'github.com/ctx-core/rmemo'
 	await sleep(waitMsOnDomUpdates)
 	equal(dom.href, 'https://github.com/ctx-core/rmemo/hello')
 }))
@@ -902,7 +902,7 @@ test('gc|binding|basic', with_connected_dom(async connected_dom=>{
 	await sleep(waitMsOnDomUpdates)
 	equal(connected_dom.innerHTML, '<span>Counter: 100</span>')
 	let count = 0
-	for (const rmr of counter.memor) {
+	for (const rmr of counter.t) {
 		if (rmr.deref()) count++
 	}
 	ok(count >= 1)
@@ -920,7 +920,7 @@ skip_long_test('gc|binding|nested|long', with_connected_dom(async connected_dom=
 	// Wait until GC kicks in
 	await sleep(1000)
 	let count = 0
-	for (const rmr of renderPre.memor) {
+	for (const rmr of renderPre.t) {
 		if (rmr.deref()) count++
 	}
 	ok(count >= 1)
@@ -943,7 +943,7 @@ skip_long_test('gc|binding|conditional|long', with_connected_dom(async connected
 	}
 	for (const s of allStates) {
 		let count = 0
-		for (const rmr of s.memor) {
+		for (const rmr of s.t) {
 			if (rmr.deref()) count++
 		}
 		ok(count >= 1)
@@ -953,7 +953,7 @@ skip_long_test('gc|binding|conditional|long', with_connected_dom(async connected
 	await sleep(1000)
 	for (const s of allStates) {
 		let count = 0
-		for (const rmr of s.memor) {
+		for (const rmr of s.t) {
 			if (rmr.deref()) count++
 		}
 		ok(count >= 1)
@@ -962,11 +962,11 @@ skip_long_test('gc|binding|conditional|long', with_connected_dom(async connected
 }))
 test('gc|memo_|basic', ()=>{
 	const history:unknown[] = []
-	const a:sig_T<number> = sig_(0).add(()=>history.push(a()))
+	const a:sig_T<number> = sig_(0).add(()=>memo_(()=>history.push(a())))
 	for (let i = 0; i < 100; ++i) a._++
 	equal(history.length, 101)
 	let count = 0
-	for (const rmr of a.memor) {
+	for (const rmr of a.t) {
 		if (rmr.deref()) count++
 	}
 	ok(count >= 1)
@@ -987,7 +987,7 @@ skip_long_test('gc|binding|derive inside|long', with_connected_dom(async connect
 	// Wait until GC kicks in
 	await sleep(1000)
 	let count = 0
-	for (const rmr of renderPre.memor) {
+	for (const rmr of renderPre.t) {
 		if (rmr.deref()) count++
 	}
 	ok(count >= 1)
@@ -1008,7 +1008,7 @@ skip_long_test('gc|derived|conditional|long', async ()=>{
 	}
 	for (const s of allStates) {
 		let count = 0
-		for (const rmr of s.memor) {
+		for (const rmr of s.t) {
 			if (rmr.deref()) count++
 		}
 		ok(count >= 1)
@@ -1018,7 +1018,7 @@ skip_long_test('gc|derived|conditional|long', async ()=>{
 	await sleep(1000)
 	for (const s of allStates) {
 		let count = 0
-		for (const rmr of s.memor) {
+		for (const rmr of s.t) {
 			if (rmr.deref()) count++
 		}
 		ok(count >= 1)
