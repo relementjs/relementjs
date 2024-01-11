@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.46.0",
+	"version": "0.46.1",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -69,7 +69,7 @@
 		"disable:test:coverage": "c8 pnpm test:unit"
 	},
 	"dependencies": {
-		"ctx-core": "^5.17.0"
+		"ctx-core": "^5.17.1"
 	},
 	"devDependencies": {
 		"@size-limit/preset-small-lib": "^11.0.1",
@@ -94,7 +94,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__relement }"
 			},
-			"limit": "952 B"
+			"limit": "957 B"
 		},
 		{
 			"name": "isomorphic server",
@@ -116,28 +116,28 @@
 			"import": {
 				"./browser": "{ tags }"
 			},
-			"limit": "736 B"
+			"limit": "742 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate }"
 			},
-			"limit": "781 B"
+			"limit": "782 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, memo_, sig_ }"
 			},
-			"limit": "802 B"
+			"limit": "801 B"
 		},
 		{
 			"name": "browser-only hydrate + helpers + rmemo + ctx",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "911 B"
+			"limit": "909 B"
 		},
 		{
 			"name": "isomorphic browser helpers + hydrate + helpers + rmemo + ctx",
@@ -145,7 +145,7 @@
 				"": "{ relement__use, tags, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__relement, hydrate }"
 			},
-			"limit": "1113 B"
+			"limit": "1122 B"
 		},
 		{
 			"name": "server-only minimal",
@@ -166,14 +166,14 @@
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, memo_, sig_ }"
 			},
-			"limit": "819 B"
+			"limit": "820 B"
 		},
 		{
 			"name": "server-only render doc + helpers + rmemo + ctx",
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "919 B"
+			"limit": "920 B"
 		},
 		{
 			"name": "isomorphic server helpers + doc_html_ + helpers + rmemo + ctx",
@@ -181,7 +181,7 @@
 				"": "{ relement__use, tags, memo_, sig_, be_, ctx_ }",
 				"./server": "{ server__relement, doc_html_ }"
 			},
-			"limit": "1139 B"
+			"limit": "1140 B"
 		},
 		{
 			"name": "html: html_",

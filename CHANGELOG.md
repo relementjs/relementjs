@@ -1,5 +1,26 @@
 # relementjs
 
+## 0.46.1
+
+### Patch Changes
+
+- memo\_: add: fix: error when return value is nullish
+
+  size-limit:
+
+      isomorphic browser: + 5 B
+      browser-only minimal: + 6 B
+      browser-only hydrate + helpers: + 1 B
+      browser-only hydrate + helpers + rmemo: - 1 B
+      browser-only hydrate + helpers + rmemo + ctx: - 2 B
+      isomorphic browser helpers + hydrate + helpers + rmemo + ctx: + 9 B
+      server-only render doc + helpers + rmemo: + 1 B
+      server-only render doc + helpers + rmemo + ctx: + 1 B
+      isomorphic server helpers + doc_html_ + helpers + rmemo + ctx: + 1 B
+
+- Updated dependencies
+  - ctx-core@5.17.1
+
 ## 0.46.0
 
 ### Minor Changes
