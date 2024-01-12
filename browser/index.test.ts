@@ -1,10 +1,23 @@
 import { sleep } from 'ctx-core/function'
-import { memo_, memosig_, sig_, type sig_T } from 'ctx-core/rmemo'
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal, ok, throws } from 'uvu/assert'
 import { prop_data__div_html, prop_data__div_o } from '../_test/index.js'
-import { attach, browser__relement, fragment_, hy__bind, hydrate, raw_, tags, tagsNS } from './index.js'
+import {
+	_,
+	attach,
+	browser__relement,
+	fragment_,
+	hy__bind,
+	hydrate,
+	memo_,
+	memosig_,
+	raw_,
+	sig_,
+	type sig_T,
+	tags,
+	tagsNS
+} from './index.js'
 const skip_long = process.env.SKIP_LONG ? parseInt(process.env.SKIP_LONG) : false
 const skip_long_test = skip_long ? test.skip : test
 let jsdom:JSDOM, prev__window:Window, prev__document:Document, prev__Text:typeof Text, prev__Node:typeof Node
@@ -183,7 +196,7 @@ test('tags|prop|fn|non-rmemo deps|connected', with_connected_dom(async connected
 test('tags|prop|fn|non-rmemo deps|disconnected', with_connected_dom(async connected_dom=>{
 	const host = sig_('example.com')
 	const path = '/hello'
-	const dom = a({ href: ()=>`https://${host()}${path}` }, 'Test Link')
+	const dom = a({ href: _(()=>`https://${host()}${path}`) }, 'Test Link')
 	attach(connected_dom, dom)
 	equal(dom.href, 'https://example.com/hello')
 	host._ = 'github.com/ctx-core/rmemo'
@@ -302,10 +315,9 @@ test('tags|attributes|data-|connected', with_connected_dom(async connected_dom=>
 	const dom = div({
 		'data-type': 'line',
 		'data-id': lineNum,
-		'data-line': ()=>`line=${lineNum()}`,
+		'data-line': _(()=>`line=${lineNum()}`),
 	},
-	'This is a test line',
-	)
+	'This is a test line')
 	attach(connected_dom, dom)
 	equal(dom.outerHTML, '<div data-type="line" data-id="1" data-line="line=1">This is a test line</div>')
 	lineNum._ = 3
@@ -317,7 +329,7 @@ test('tags|attributes|data-|disconnected', async ()=>{
 	const dom = div({
 		'data-type': 'line',
 		'data-id': lineNum,
-		'data-line': ()=>`line=${lineNum()}`,
+		'data-line': _(()=>`line=${lineNum()}`),
 	},
 	'This is a test line',
 	)
@@ -535,15 +547,14 @@ test('attach|fn|child|dynamic dom', with_connected_dom(async connected_dom=>{
 	const button1Text = sig_('Button 1')
 	const button2Text = sig_('Button 2')
 	const button3Text = sig_('Button 3')
-	const dom_ = ()=>
+	equal(attach(connected_dom, _(()=>
 		verticalPlacement()
 			? div(
 				div(button(button1Text)),
 				div(button(button2Text)),
-				div(button(button3Text)),
-			)
-			: div(button(button1Text), button(button2Text), button(button3Text),)
-	equal(attach(connected_dom, dom_), connected_dom)
+				div(button(button3Text)))
+			: div(button(button1Text), button(button2Text), button(button3Text)))),
+	connected_dom)
 	const dom = <Element>connected_dom.firstChild
 	equal(dom.outerHTML, '<div><button>Button 1</button><button>Button 2</button><button>Button 3</button></div>')
 	button2Text._ = 'Button 2: Extra'
@@ -569,10 +580,14 @@ test('attach|fn|child|fn|conditional', with_connected_dom(async connected_dom=>{
 	const button3 = sig_('Button 3')
 	const button4 = sig_('Button 4')
 	let numFuncCalled = 0
-	const domFunc = ()=>(++numFuncCalled, cond() ?
-		div(button(button1()), button(button2())) :
-		div(button(button3()), button(button4())))
-	equal(attach(connected_dom, domFunc), connected_dom)
+	equal(
+		attach(connected_dom,
+			_(()=>(
+				++numFuncCalled,
+				cond() ?
+					div(button(button1()), button(button2())) :
+					div(button(button3()), button(button4()))))),
+		connected_dom)
 	equal((<Element>connected_dom.firstChild).outerHTML, '<div><button>Button 1</button><button>Button 2</button></div>')
 	equal(numFuncCalled, 1)
 	button1._ = 'Button 1-1'
@@ -631,16 +646,16 @@ test('derive|child|state|dynamic', with_connected_dom(async connected_dom=>{
 		items:string[]
 		selectedIndex:number
 	}>
-	const domFunc = (dom?:Element)=>{
+	attach(connected_dom, _((dom?:Element)=>{
 		// If items$ aren't changed, we don't need to regenerate the entire dom
 		// dom_M_custom test fixture WeakMap is a use case pattern
 		// TODO: consider an implementation of previous value for rmemo
 		if (dom && items$() === _dom_M_custom.get(dom)?.items) {
 			const itemDoms = dom.childNodes
-			;(<Element>itemDoms[_dom_M_custom.get(dom)!.selectedIndex]).classList.remove('selected')
+				;(<Element>itemDoms[_dom_M_custom.get(dom)!.selectedIndex]).classList.remove('selected')
 			;(<Element>itemDoms[selectedIndex$()]).classList.add('selected')
-			_dom_M_custom.get(dom)!.selectedIndex = selectedIndex$()
-			return dom
+				_dom_M_custom.get(dom)!.selectedIndex = selectedIndex$()
+				return dom
 		}
 		dom = ul(
 			items$().map((item, i)=>li({ class: i === selectedIndex$() ? 'selected' : '' }, item))
@@ -650,8 +665,7 @@ test('derive|child|state|dynamic', with_connected_dom(async connected_dom=>{
 			selectedIndex: selectedIndex$(),
 		})
 		return dom
-	}
-	attach(connected_dom, domFunc)
+	}))
 	numItems$._ = 3
 	await sleep(waitMsOnDomUpdates)
 	equal((<Element>connected_dom.firstChild).outerHTML,
@@ -690,11 +704,11 @@ test('tags|child|dom|null|removes child', with_connected_dom(async connected_dom
 	const line4 = sig_('')
 	const line5 = sig_(null)
 	const dom = div(
-		()=>line1() === '' ? null : p(line1()),
-		()=>line2() === '' ? null : p(line2()),
+		_(()=>line1() === '' ? null : p(line1)),
+		_(()=>line2() === '' ? null : p(line2)),
 		p(line3),
 		// line4 won't appear in the DOM tree as its initial value is null
-		()=>line4() === '' ? null : p(line4()),
+		_(()=>line4() === '' ? null : p(line4)),
 		// line5 won't appear in the DOM tree as its initial value is null
 		p(line5),
 	)
@@ -725,11 +739,11 @@ test('tags|child|dom|undefined|removes child', with_connected_dom(async connecte
 	const line4 = sig_('')
 	const line5 = sig_(undefined)
 	const dom = div(
-		()=>line1() === '' ? null : p(line1()),
-		()=>line2() === '' ? null : p(line2()),
+		_(()=>line1() === '' ? null : p(line1)),
+		_(()=>line2() === '' ? null : p(line2)),
 		p(line3),
 		// line4 won't appear in the DOM tree as its initial value is null
-		()=>line4() === '' ? null : p(line4()),
+		_(()=>line4() === '' ? null : p(line4)),
 		// line5 won't appear in the DOM tree as its initial value is null
 		p(line5),
 	)
@@ -755,7 +769,11 @@ test('tags|child|dom|undefined|removes child', with_connected_dom(async connecte
 test('tags|child|dom|0|keeps child', with_connected_dom(async connected_dom=>{
 	const state1 = sig_(0)
 	const state2 = sig_(1)
-	const dom = div(state1, ()=>1 - state1(), state2, ()=>1 - state2())
+	const dom = div(
+		state1,
+		_(()=>1 - state1()),
+		state2,
+		_(()=>1 - state2()))
 	attach(connected_dom, dom)
 	equal(dom.outerHTML, '<div>0110</div>')
 	state1._ = 1
@@ -767,7 +785,7 @@ test('tags|child|primitive|dynamic', with_connected_dom(async connected_dom=>{
 	const a = sig_(1)
 	const b = sig_(2)
 	const deleted = sig_(false)
-	const dom = div(()=>deleted() ? null : a() + b())
+	const dom = div(_(()=>deleted() ? null : a() + b()))
 	equal(dom.outerHTML, '<div>3</div>')
 	attach(connected_dom, dom)
 	a._ = 6
@@ -788,7 +806,7 @@ test('tags|child|non-state deps', with_connected_dom(async connected_dom=>{
 	const part2 = sig_('🗺️World')
 	equal(
 		attach(connected_dom,
-			()=>`${part1}${part2()}`),
+			_(()=>`${part1}${part2()}`)),
 		connected_dom)
 	const dom = <Element>connected_dom.firstChild
 	equal(dom.textContent!, '👋Hello 🗺️World')
@@ -821,7 +839,7 @@ test('hydrate|normal', with_connected_dom(async connected_dom=>{
 	const Counter = (init:number)=>{
 		const counter = sig_(init)
 		return button({ 'data-counter': counter, onclick: ()=>++counter._ },
-			()=>`Count: ${counter()}`,
+			_(()=>`Count: ${counter()}`),
 		)
 	}
 	// Static DOM before hydration
@@ -846,7 +864,7 @@ test('hydrate|null|remove dom', with_connected_dom(async connected_dom=>{
 	attach(connected_dom, div())
 	const s = sig_(1)
 	hydrate(<HTMLElement>connected_dom.querySelector('div'),
-		()=>s() === 1 ? pre() : null)
+		_(()=>s() === 1 ? pre() : null))
 	equal(connected_dom.innerHTML, '<pre></pre>')
 	s._ = 2
 	await sleep(waitMsOnDomUpdates)
@@ -860,7 +878,8 @@ test('hydrate|undefined|remove dom', with_connected_dom(async connected_dom=>{
 	// Remove the DOM node after the state update
 	attach(connected_dom, div())
 	const s = sig_(1)
-	hydrate(<HTMLElement>connected_dom.querySelector('div'), ()=>s() === 1 ? pre() : undefined)
+	hydrate(<HTMLElement>connected_dom.querySelector('div'),
+		_(()=>s() === 1 ? pre() : undefined))
 	equal(connected_dom.innerHTML, '<pre></pre>')
 	s._ = 2
 	await sleep(waitMsOnDomUpdates)
@@ -870,8 +889,8 @@ test('hydrate|0|keep dom', with_connected_dom(async connected_dom=>{
 	attach(connected_dom, div(), div())
 	const s = sig_(0)
 	const [dom1, dom2] = connected_dom.querySelectorAll('div')
-	hydrate(dom1, ()=>s())
-	hydrate(dom2, ()=>1 - s())
+	hydrate(dom1, s)
+	hydrate(dom2, _(()=>1 - s()))
 	equal(connected_dom.innerHTML, '01')
 	s._ = 1
 	await sleep(waitMsOnDomUpdates)
@@ -897,7 +916,7 @@ test('hy__bind|error', with_connected_dom(async connected_dom=>{
 }))
 test('gc|binding|basic', with_connected_dom(async connected_dom=>{
 	const counter = sig_(0)
-	attach(connected_dom, ()=>span(`Counter: ${counter()}`))
+	attach(connected_dom, _(()=>span(`Counter: ${counter()}`)))
 	for (let i = 0; i < 100; ++i) ++counter._
 	await sleep(waitMsOnDomUpdates)
 	equal(connected_dom.innerHTML, '<span>Counter: 100</span>')
@@ -911,7 +930,8 @@ test('gc|binding|basic', with_connected_dom(async connected_dom=>{
 skip_long_test('gc|binding|nested|long', with_connected_dom(async connected_dom=>{
 	const renderPre = sig_(false)
 	const text = sig_('Text')
-	const dom = div(()=>(renderPre() ? pre : div)(()=>`--${text()}--`))
+	const dom = div(
+		_(()=>(renderPre() ? pre : div)(()=>`--${text()}--`)))
 	attach(connected_dom, dom)
 	for (let i = 0; i < 20; ++i) {
 		renderPre._ = !renderPre()
@@ -926,13 +946,14 @@ skip_long_test('gc|binding|nested|long', with_connected_dom(async connected_dom=
 	ok(count >= 1)
 	ok(count <= 3)
 }))
-skip_long_test('gc|binding|conditional|long', with_connected_dom(async connected_dom=>{
+// skip_long_test('gc|binding|conditional|long', with_connected_dom(async connected_dom=>{
+test('gc|binding|conditional|long', with_connected_dom(async connected_dom=>{
 	const cond = sig_(true)
 	const a = sig_(0)
 	const b = sig_(0)
 	const c = sig_(0)
 	const d = sig_(0)
-	const dom = div(()=>cond() ? a() + b() : c() + d())
+	const dom = div(_(()=>cond() ? a() + b() : c() + d()))
 	attach(connected_dom, dom)
 	const allStates = [cond, a, b, c, d]
 	for (let i = 0; i < 100; ++i) {
@@ -975,10 +996,10 @@ test('gc|memo_|basic', ()=>{
 skip_long_test('gc|binding|derive inside|long', with_connected_dom(async connected_dom=>{
 	const renderPre = sig_(false)
 	const prefix = sig_('Prefix')
-	const dom = div(()=>{
+	const dom = div(_(()=>{
 		const text = memo_(()=>`${prefix()} - Suffix`)
 		return (renderPre() ? pre : div)(()=>`--${text()}--`)
-	})
+	}))
 	attach(connected_dom, dom)
 	for (let i = 0; i < 20; ++i) {
 		renderPre._ = !renderPre()

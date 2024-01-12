@@ -1,7 +1,6 @@
 // originally forked from https://github.com/vanjs-org/van/blob/main/src/van.d.ts
 import type { rmemo_T } from 'ctx-core/rmemo'
 import type {
-	bind__T,
 	known_keys__render_props_T,
 	render__namespaceURI_T,
 	render__tags_env_T,
@@ -51,7 +50,7 @@ export declare function hydrate<T extends Node>(dom:T, f:(dom:T)=>T|null|undefin
 export type browser__hydrate_T<T extends Node> = (dom:T, f:(dom:T)=>T|null|undefined|render_primitive_T)=>void
 export declare function hy__bind<E extends Element>(
 	doc:{ querySelectorAll(selectors:string):NodeList },
-	key_R_fn: Record<string, (el:E)=>unknown>
+	key_R_fn:Record<string, (el:E)=>unknown>
 ):void
 export declare const browser__relement:browser__relement_T
 export type browser__relement_T = {

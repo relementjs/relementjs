@@ -1,7 +1,5 @@
 // originally forked from https://github.com/vanjs-org/van/blob/main/src/van.js
 // This file consistently uses `let` keyword instead of `const` for reducing the bundle size.
-// TODO: browser-lite non-reactive export?
-import { memo_ } from 'ctx-core/rmemo'
 export * from 'ctx-core/rmemo'
 // Global variables - aliasing some builtin symbols to reduce the bundle size.
 let _undefined
@@ -19,26 +17,19 @@ function dom__run(f, dom) {
 export function attach(dom, ...children) {
 	for (let child_val of children.flat(Infinity)) {
 		let child
-		let child_val_memo =
-			typeof child_val === 'function'
-			&& memo_(child_val_memo=>{
+		if (typeof child_val === 'function') {
+			(child_val.memo_ ?? (f=>f))(child_val_memo=>{
 				let _child = dom__run(child_val, child)
-				child && child.replaceWith(_child)
+				child?.replaceWith?.(_child)
 				child = _child
-				return child_val_memo
+				if (child) {
+					(child._m ||= []).push(child_val_memo)
+				}
 			})()
-		// child_val?.memo_?.(child_val_memo=>{
-		// 	let _child = dom__run(child_val, child)
-		// 	child && child.replaceWith(_child)
-		// 	child = _child
-		// 	return child_val_memo
-		// })()
-		if (!child_val_memo) {
+		} else {
 			child = child_val
-		} else if (child) {
-			(child._m ||= []).push(child_val_memo)
 		}
-		if (child != _undefined) {
+		if (child) {
 			dom.append(child)
 		}
 	}
@@ -68,30 +59,27 @@ export let tagsNS = ns=>new Proxy((name, ...a)=>{
 				? Object.getOwnPropertyDescriptor(proto, k) ?? k__PropertyDescriptor_(Object.getPrototypeOf(proto))
 				: _undefined
 		// TODO: why do private variable names affect bundle size?
-		// is_attr name size optimization
+		// attr name size optimization
 		// obj__cache name size optimization
-		let is_attr =
+		let attr =
 			// inlined el_ckey + ',' + k
 			obj__cache[(ns ?? '') + ',' + name + ',' + k] ??=
 				!k__PropertyDescriptor_(Object.getPrototypeOf(dom))?.set
-		let param__setter =
-			val=>
-				is_attr
+		let setter_memo = (v?.memo_ ?? (fn=>fn))(_setter_memo=>{
+			(val=>
+				attr
 					? val != _undefined // != ternary is a size optimization
 						? dom.setAttribute(k, val)
 						: dom.removeAttribute(k, val) // unused 2nd argument is a size optimization
-					: dom[k] = val ?? '' // prop setter
-		let setter_memo =
-			typeof v === 'function'
-			&& (v.memo_ || !k.startsWith('on'))
-			&& memo_(()=>param__setter(v()))
-			// v?.memo_?.(()=>param__setter(v()))
+					: dom[k] = val ?? ''
+			)(
+				typeof v === 'function' && !k.startsWith('on') || _setter_memo
+					? v()
+					: v)
+			return _setter_memo
+		})()
 		if (setter_memo) {
 			(dom._m ||= []).push(setter_memo)
-			setter_memo()
-		} else {
-			param__setter(v)
-			// param__setter(typeof v === 'function' && !k.startsWith('on') ? v() : v)
 		}
 	}
 	return attach(dom, ...c)
@@ -108,30 +96,18 @@ export let raw_ = html=>{
 	return fragment
 }
 export function hydrate(dom, f) {
-	memo_(memo=>{
+	(f.memo_ ?? (f=>f))(memo=>{
 		let _dom = dom__run(f, dom)
 		if (!_dom) {
 			dom.remove()
 		} else if (dom !== _dom) {
 			dom.replaceWith(_dom)
 			dom = _dom
-			dom._m ||= []
-			dom._m.push(memo)
+			if (memo) {
+				(_dom._m ||= []).push(memo)
+			}
 		}
 	})()
-	// (f.memo_ ?? (f=>f()))(memo=>{
-	// 	let _dom = dom__run(f, dom)
-	// 	if (!_dom) {
-	// 		dom.remove()
-	// 	} else if (dom !== _dom) {
-	// 		dom.replaceWith(_dom)
-	// 		dom = _dom
-	// 		if (memo) {
-	// 			dom._m ||= []
-	// 			dom._m.push(memo)
-	// 		}
-	// 	}
-	// })
 }
 export function hy__bind(doc, key_R_fn) {
 	let el_a = doc.querySelectorAll('[hy__bind]')

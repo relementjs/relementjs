@@ -1,7 +1,6 @@
 // originally forked from https://github.com/vanjs-org/mini-van/blob/main/src/van-plate.d.ts
 import type { memo_T } from 'ctx-core/rmemo'
 import type {
-	bind__T,
 	known_keys__render_props_T,
 	render__namespaceURI_T,
 	render__tags_env_T,

@@ -1,5 +1,38 @@
 # relementjs
 
+## 0.47.0
+
+### Minor Changes
+
+- minor:
+
+      + memo__bind:
+      	+ _
+      	+ bind
+
+- minor: enable usage without rmemo for smaller bundles:
+
+      + memo__bind:
+      	+ _
+      	+ bind
+
+  size-limit:
+
+      isomorphic browser: - 308 B
+      browser-only minimal: - 298 B
+      browser-only hydrate: - 291 B
+      browser-only hydrate + rmemo: + 17 B
+      browser-only hydrate + rmemo + ctx: + 11 B
+      isomorphic browser hydrate + rmemo + ctx: + 13 B
+      server-only render doc + rmemo: + 9 B
+      server-only render doc + rmemo + ctx: + 6 B
+      isomorphic server helpers + doc_html_ + rmemo + ctx: 10 B
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@5.18.0
+
 ## 0.46.1
 
 ### Patch Changes
