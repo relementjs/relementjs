@@ -457,6 +457,13 @@ test('raw_', ()=>{
 	equal(div(raw_(undefined)).innerHTML, '')
 	equal(div(raw_(null)).innerHTML, '')
 })
+test.only('raw_|memo', ()=>{
+	const html$ = sig_('<div>row 0</div><div>row 1</div><div>row 2</div>')
+	const _div = div(raw_(html$))
+	equal(_div.innerHTML, '<div>row 0</div><div>row 1</div><div>row 2</div>')
+	html$._ = '<div>row 0</div><div>row 1</div>'
+	equal(_div.innerHTML, '<div>row 0</div><div>row 1</div>')
+})
 test('attach|basic', ()=>{
 	const dom = ul()
 	equal(attach(dom, li('Item 1'), li('Item 2')), dom)

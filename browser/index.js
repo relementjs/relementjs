@@ -83,15 +83,29 @@ export let tagsNS = ns=>new Proxy((name, ...a)=>{
 		}
 	}
 	return attach(dom, ...c)
-}, { get: (tag, name)=>tag.bind(_undefined, name) })
+}, {
+	get: (tag, name)=>tag.bind(_undefined, name)
+})
 export let tags = tagsNS()
 export let fragment_ = (...children)=>attach(document.createDocumentFragment(), ...children)
 export let raw_ = html=>{
 	let div = tags.div()
-	div.innerHTML = html ?? ''
 	let fragment = document.createDocumentFragment()
-	while (div.firstChild) {
-		fragment.appendChild(div.firstChild)
+	;(html.memo_ ?? (f=>f))(()=>{
+		div.innerHTML = (typeof html === 'function' ? html(fragment) : html) ?? ''
+		console.debug('raw_|memo|debug|1', {
+			fragment,
+			'div.innerHTML': div.innerHTML
+		})
+		for (let c of fragment.children) {
+			console.debug(c)
+		}
+		fragment.c = Array.from(div.children)
+		fragment.replaceChildren(...div.children)
+	})()
+	console.debug('raw_|debug|1', { fragment, 'div.innerHTML': div.innerHTML })
+	for (let c of fragment.children) {
+		console.debug(c)
 	}
 	return fragment
 }
