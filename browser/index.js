@@ -86,27 +86,38 @@ export let tagsNS = ns=>new Proxy((name, ...a)=>{
 }, {
 	get: (tag, name)=>tag.bind(_undefined, name)
 })
+/** @type {browser__tags_T<'html'>} */
 export let tags = tagsNS()
 export let fragment_ = (...children)=>attach(document.createDocumentFragment(), ...children)
+/**
+ * Reactive raw elements
+ * @param {browser__tag__dom_T}html
+ * @returns {DocumentFragment}
+ * @private
+ */
 export let raw_ = html=>{
 	let div = tags.div()
 	let fragment = document.createDocumentFragment()
-	;(html.memo_ ?? (f=>f))(()=>{
+	;(html?.memo_ ?? (f=>f))(memo=>{
 		div.innerHTML = (typeof html === 'function' ? html(fragment) : html) ?? ''
-		console.debug('raw_|memo|debug|1', {
-			fragment,
-			'div.innerHTML': div.innerHTML
-		})
-		for (let c of fragment.children) {
-			console.debug(c)
-		}
-		fragment.c = Array.from(div.children)
 		fragment.replaceChildren(...div.children)
+		let c = [...fragment.children]
+		c.map(child=>child._m = [memo])
+		let prev_c = fragment.c
+		fragment.c = c
+		if (prev_c) {
+			let cur_child
+			for (let prev_child of prev_c) {
+				cur_child = fragment.firstChild
+				if (cur_child) {
+					prev_child.replaceWith(/** @type {Node} */cur_child)
+				} else {
+					prev_child.remove()
+				}
+			}
+			(cur_child ?? fragment.firstChild)?.after?.(...fragment.children)
+		}
 	})()
-	console.debug('raw_|debug|1', { fragment, 'div.innerHTML': div.innerHTML })
-	for (let c of fragment.children) {
-		console.debug(c)
-	}
 	return fragment
 }
 export function hydrate(dom, f) {

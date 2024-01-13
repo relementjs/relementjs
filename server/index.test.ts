@@ -123,6 +123,13 @@ test('raw_', ()=>{
 	equal('' + raw_(undefined), '')
 	equal('' + raw_(null), '')
 })
+test('raw_|memo', ()=>{
+	const html$ = sig_('<div>row 0</div><div>row 1</div><div>row 2</div>')
+	const raw = raw_(html$)
+	equal('' + raw, '<div>row 0</div><div>row 1</div><div>row 2</div>')
+	html$._ = '<div>row 0</div><div>row 1</div>'
+	equal('' + raw, '<div>row 0</div><div>row 1</div>')
+})
 test('attach|basic', ()=>{
 	const dom = ul()
 	equal(attach(dom, li('Item 1'), li('Item 2')), dom)

@@ -457,7 +457,7 @@ test('raw_', ()=>{
 	equal(div(raw_(undefined)).innerHTML, '')
 	equal(div(raw_(null)).innerHTML, '')
 })
-test.only('raw_|memo', ()=>{
+test('raw_|memo', ()=>{
 	const html$ = sig_('<div>row 0</div><div>row 1</div><div>row 2</div>')
 	const _div = div(raw_(html$))
 	equal(_div.innerHTML, '<div>row 0</div><div>row 1</div><div>row 2</div>')

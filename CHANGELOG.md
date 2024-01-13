@@ -1,5 +1,25 @@
 # relementjs
 
+## 0.48.0
+
+### Minor Changes
+
+- raw*: + support for reactivity using memo*
+
+  size-limit:
+
+      isomorphic browser: + 97 B
+      isomorphic server: + 8 B
+      browser-only minimal: + 2 B
+      browser-only hydrate: + 1 B
+      browser-only hydrate + rmemo: + 2 B
+      browser-only hydrate + rmemo + ctx: + 1 B
+      isomorphic browser hydrate + rmemo + ctx: + 79 B
+      server-only minimal: + 1 B
+      server-only render doc: - 17 B
+      server-only render doc + rmemo + ctx: + 11 B
+      isomorphic server helpers + doc_html_ + rmemo + ctx: + 5 B
+
 ## 0.47.0
 
 ### Minor Changes

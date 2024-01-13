@@ -79,7 +79,9 @@ export let tags = new Proxy((name, ...args)=>{
 		__proto__: server__element__proto,
 		name,
 		props_str,
-		children: children.flat(Infinity).filter(c=>c != null),
+		children:
+			children.flat(Infinity).filter(c=>
+				c != null),
 	}
 }, { get: (tag, name)=>tag.bind(null, name) })
 export let tagsNS = ()=>tags
@@ -99,7 +101,7 @@ export let fragment_ = (...children)=>({
 export let raw_ = html=>({
 	__proto__: server__element__proto,
 	buf__push(buf) {
-		buf.push(html)
+		buf.push(typeof html === 'function' ? html() : html)
 	},
 })
 export let doc_html_ = (...args)=>{
