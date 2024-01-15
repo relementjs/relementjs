@@ -1,4 +1,4 @@
-import type { rmemo_T } from 'ctx-core/all'
+import type { rmemo_T } from 'ctx-core/rmemo'
 export type render_primitive_T = string|number|boolean|bigint
 export type render_props_val_T = render_primitive_T|((e:unknown)=>void)|null
 export type render_props_val_OR_rmemo_T_OR_Fn = render_props_val_T|rmemo_T<render_props_val_T>|(()=>render_props_val_T)
