@@ -1,5 +1,29 @@
 # relementjs
 
+## 0.48.3
+
+### Patch Changes
+
+- patch:
+
+      hy__bind bundle size optimization
+      size-limit measurements:
+      	+ browser-only hy__bind
+      	+ browser-only hy__bind + rmemo
+      	+ browser-only hy__bind + rmemo + ctx
+      	+ isomorphic browser hy__bind + rmemo + ctx
+      	+ isomorphic browser + rmemo
+      	+ isomorphic server + rmemo
+
+  size-limit:
+
+      isomorphic browser: + 2 B
+      browser-only minimal: - 3 B
+      browser-only hydrate: - 2 B
+      browser-only hydrate + rmemo: - 2 B
+      browser-only hydrate + rmemo + ctx: - 4 B
+      isomorphic browser hydrate + rmemo + ctx: + 2 B
+
 ## 0.48.2
 
 ### Patch Changes
