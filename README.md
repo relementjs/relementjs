@@ -31,12 +31,19 @@ apps.
 
 The stack I'm working on includes:
 
-* ctx-core (no-dependency macro repo of various modules which includes ctx-core/be)
-* rmemo (reactive memo & signal library with Garbage Collection integration & graceful handling of async)
+* ctx-core
+  * no-dependency macro repo of various modules which includes ctx-core/be
+* rmemo
+  * reactive memo & signal library with Garbage Collection integration & graceful handling of async
 * relementjs
-* rebuildjs (esbuild-based isomorphic full-stack MPA library focused on middleware routing & clean server/browser 
-  separation)
-* relysjs (rebuildjs + Elysiajs full-stack app server)
+* rebuildjs
+  * esbuild-based isomorphic full-stack MPA library focused on:
+    * reactive build state
+    * namespaced (app, middleware, & route) contexts
+    * a file-based middleware routing api
+    * clean server/browser separation for small bundles
+* relysjs
+  * rebuildjs + Elysiajs full-stack app server
 
 Rather than promoting libraries with a few good isolated traits, I am creating an isomorphic stack that is optimal 
 for my development needs.
