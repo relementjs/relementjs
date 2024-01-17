@@ -1,5 +1,20 @@
 # relementjs
 
+## 0.49.0
+
+### Minor Changes
+
+- minor: make type generics more ergonomic:
+
+      ctx__be_T: <be_val_T, ns_T extends string = '', ctx_T extends Ctx = Ctx_wide_T<ns_T>>
+      ctx__get_T: <val_T, ns_T extends string = '', ctx_T extends Ctx = Ctx_wide_T<ns_T>>
+      ctx__set_T: <val_T, ns_T extends string = '', ctx_T extends Ctx = Ctx_wide_T<ns_T>>
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@5.22.0
+
 ## 0.48.14
 
 ### Patch Changes
