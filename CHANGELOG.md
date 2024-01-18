@@ -1,5 +1,28 @@
 # relementjs
 
+## 0.51.0
+
+### Minor Changes
+
+- minor:
+
+      + ns_be_
+      + id_be_
+      + ns_id_be_
+      be_: ns_T generic type specified: config:be_config_T is required
+      be_memo_pair_: config?:be_config_T<ns_T> argument: fix: generic type
+
+  size-limit:
+
+      isomorphic browser hydrate + rmemo + ctx: - 3 B
+      server-only render doc + rmemo + ctx: - 11 B
+      isomorphic server helpers + doc_html_ + rmemo + ctx: - 3 B
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@5.24.0
+
 ## 0.50.0
 
 ### Minor Changes
