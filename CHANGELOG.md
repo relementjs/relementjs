@@ -1,5 +1,22 @@
 # relementjs
 
+## 0.54.0
+
+### Minor Changes
+
+- - run*or_val*
+
+  size-limit:
+
+      browser-only hydrate + rmemo: + 10 B
+      browser-only hydrate + rmemo + ctx: - 3 B
+      isomorphic server helpers + doc_html_ + rmemo + ctx: + 3 B
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@5.28.0
+
 ## 0.53.7
 
 ### Patch Changes
