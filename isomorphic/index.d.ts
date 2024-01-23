@@ -1,4 +1,4 @@
-import type { bind__T, render__namespaceURI_T, render__tags_env_T } from '../any/index.js'
+import type { render__namespaceURI_T, render__tags_env_T } from '../any/index.js'
 import type {
 	browser__attach_T,
 	browser__fragment__T,

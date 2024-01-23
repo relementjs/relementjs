@@ -1,8 +1,8 @@
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
 import { div_ } from '../../html/index.js'
-import { relement__use } from '../index.js'
 import { server__relement } from '../../server/index.js'
+import { relement__use } from '../index.js'
 import { switch_ } from './index.js'
 test.after.each(()=>{
 	relement__use(null)

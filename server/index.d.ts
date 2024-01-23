@@ -20,10 +20,12 @@ export declare function tagsNS<tags_env_T extends render__tags_env_T>(
 export type void_tags_T = 'area'|'base'|'br'|'col'|'embed'|'hr'|'img'|'input'|'link'|'meta'|'source'|'track'|'wbr'
 export type server__tags_T<tags_env_T extends render__tags_env_T = 'html'> =
 	(tags_env_T extends 'html'
-		? { [K in keyof HTMLElementTagNameMap]:server__tag_T<
-			HTMLElementTagNameMap[K],
-			K extends void_tags_T ? true : false
-		> }
+		? {
+			[K in keyof HTMLElementTagNameMap]:server__tag_T<
+				HTMLElementTagNameMap[K],
+				K extends void_tags_T ? true : false
+			>
+		}
 		: tags_env_T extends 'svg'
 			? { [K in keyof SVGElementTagNameMap]:server__tag_T<SVGElementTagNameMap[K]> }
 			: tags_env_T extends 'mathml'

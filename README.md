@@ -20,13 +20,13 @@ relementjs scales large & small with tree-shakable modules for rendering, reacti
 | isomorphic server + rmemo        |    ✅     |  1013 B   | relement__use server__base__relement |
 | isomorphic html tag              |    ❌     |   34 B    | html_                                |
 
-relementjs was originally forked from VanJS. The bold use cases are roughly equivalent to what VanJS provides. The 
+relementjs was originally forked from VanJS. The bold use cases are roughly equivalent to what VanJS provides. The
 browser-only library is smaller than vanjs & the server-only library is smaller than mini-van-plate/van-plate.  
 relementjs exports rmemo for reactivity & ctx-core/be for contexts.
 
 ## TODO: More Documentation & Examples
 
-I have been busy creating a fast & scalable stack. The scalability is along the axes of small-large & simple-complex 
+I have been busy creating a fast & scalable stack. The scalability is along the axes of small-large & simple-complex
 apps.
 
 The stack I'm working on includes:
@@ -45,16 +45,16 @@ The stack I'm working on includes:
 * relysjs
   * rebuildjs + Elysiajs full-stack app server
 
-Rather than promoting libraries with a few good isolated traits, I am creating an isomorphic stack that is optimal 
+Rather than promoting libraries with a few good isolated traits, I am creating an isomorphic stack that is optimal
 for my development needs.
 These needs include simple light-weight integrations to complex web apps in multiple industries.
 
 I have to pay the bills with my work, but I am also perfecting these apis with real-world usage.
 There is still work to do but the approach is looking great.
 My biased perspective is that this is the best stack I have seen, because I'm making it for my needs.
-There is still some churn in some of the apis, so I'm not ready to write comprehensive documentation, promote these 
+There is still some churn in some of the apis, so I'm not ready to write comprehensive documentation, promote these
 libraries, & support a community until these changes shake out.
-Throughout my career, I have gone through much effort & pain with dependency upgrades having breaking api changes. 
+Throughout my career, I have gone through much effort & pain with dependency upgrades having breaking api changes.
 I do not want to subject a community of developers to this pain with these libraries.
 
 I will include links to open source apps when they are ready to show.

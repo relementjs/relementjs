@@ -659,10 +659,10 @@ test('derive|child|state|dynamic', with_connected_dom(async connected_dom=>{
 		// TODO: consider an implementation of previous value for rmemo
 		if (dom && items$() === _dom_M_custom.get(dom)?.items) {
 			const itemDoms = dom.childNodes
-				;(<Element>itemDoms[_dom_M_custom.get(dom)!.selectedIndex]).classList.remove('selected')
+			;(<Element>itemDoms[_dom_M_custom.get(dom)!.selectedIndex]).classList.remove('selected')
 			;(<Element>itemDoms[selectedIndex$()]).classList.add('selected')
-				_dom_M_custom.get(dom)!.selectedIndex = selectedIndex$()
-				return dom
+			_dom_M_custom.get(dom)!.selectedIndex = selectedIndex$()
+			return dom
 		}
 		dom = ul(
 			items$().map((item, i)=>li({ class: i === selectedIndex$() ? 'selected' : '' }, item))

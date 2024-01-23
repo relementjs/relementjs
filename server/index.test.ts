@@ -1,17 +1,7 @@
 import { test } from 'uvu'
 import { equal } from 'uvu/assert'
 import { prop_data__div_html, prop_data__div_o } from '../_test/index.js'
-import {
-	attach,
-	doc_html_,
-	fragment_,
-	memo_,
-	raw_,
-	server__relement,
-	sig_,
-	tags,
-	tagsNS
-} from './index.js'
+import { attach, doc_html_, fragment_, memo_, raw_, server__relement, sig_, tags, tagsNS } from './index.js'
 const {
 	a,
 	body,
