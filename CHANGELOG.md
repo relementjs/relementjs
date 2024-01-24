@@ -1,5 +1,11 @@
 # relementjs
 
+## 0.54.2
+
+### Patch Changes
+
+- ./browser: hy\_\_bind: key_R_fn argument: fix: type matching value functions with different Element types arguments
+
 ## 0.54.1
 
 ### Patch Changes

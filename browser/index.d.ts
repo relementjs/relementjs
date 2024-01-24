@@ -48,10 +48,11 @@ export declare const raw_:browser__raw__T
 export type browser__raw__T = (html:browser__tag__dom_T)=>DocumentFragment
 export declare function hydrate<T extends Node>(dom:T, f:(dom:T)=>T|null|undefined|render_primitive_T):void
 export type browser__hydrate_T<T extends Node> = (dom:T, f:(dom:T)=>T|null|undefined|render_primitive_T)=>void
-export declare function hy__bind<E extends Element>(
+export declare function hy__bind(
 	doc:{ querySelectorAll(selectors:string):NodeList },
-	key_R_fn:Record<string, (el:E)=>unknown>
+	key_R_fn:Record<string, hy__bind_fn_T<HTMLElementTagNameMap[keyof HTMLElementTagNameMap]|SVGElementTagNameMap[keyof SVGElementTagNameMap]|MathMLElementTagNameMap[keyof MathMLElementTagNameMap]>>
 ):void
+type hy__bind_fn_T<E> = E extends unknown ? (el:E)=>unknown : never
 export declare const browser__relement:browser__relement_T
 export type browser__relement_T = {
 	attach:browser__attach_T
