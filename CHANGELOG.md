@@ -1,5 +1,14 @@
 # relementjs
 
+## 0.57.2
+
+### Patch Changes
+
+- fix: widen argument tag**dom_T types: tag**dom_T<'any'>:
+
+      for_
+      switch_
+
 ## 0.57.1
 
 ### Patch Changes

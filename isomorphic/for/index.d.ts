@@ -8,5 +8,5 @@ export declare function for_<
 		item:each_T[number],
 		i:number,
 		a:each_T
-	)=>tag__dom_T<env_T>
+	)=>tag__dom_T<'any'>
 ):tag__dom_T<env_T>[]
