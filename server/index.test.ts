@@ -208,7 +208,10 @@ test('reactive', ()=>{
 	const state5 = sig_(false)
 	const state6 = memo_(()=>!state5())
 	const dom = div(
-		state1, span(state2), p(()=>`Prefix - ${state3()}`), ()=>`- Suffix`,
+		state1,
+		span(state2),
+		p(()=>
+			`Prefix - ${state3()}`), ()=>`- Suffix`,
 		p({
 			'data-index': state1,
 			'data-id': ()=>state2() + 2,

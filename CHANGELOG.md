@@ -1,5 +1,40 @@
 # relementjs
 
+## 0.55.0
+
+### Minor Changes
+
+- - memo\_\_bind_T<A extends unknown[], R, E = unknown>
+
+### Patch Changes
+
+- fix: isomorphic types:
+
+      ./html:
+      	arg_a_T: precise definition instead of Parameters<tag_T<env_T, HTMLElementTagNameMap<env_T>>>
+      	ret_T: precisen definition instead of ReturnType<tag_T<env_T, HTMLElementTagNameMap<env_T>>>
+      ./svg:
+      	arg_a_T: precise definition instead of Parameters<tag_T<env_T, SVGElementTagNameMap<env_T>>>
+      	ret_T: precisen definition instead of ReturnType<tag_T<env_T, SVGElementTagNameMap<env_T>>>
+      ./mathml:
+      	arg_a_T: precise definition instead of Parameters<tag_T<env_T, MathMLElementTagNameMap<env_T>>>
+      	ret_T: precisen definition instead of ReturnType<tag_T<env_T, MathMLElementTagNameMap<env_T>>>
+      ./browser:
+      	browser__tag__dom__val_T: union order
+      	browser__tag_T<Node>:
+      		|render_props_T|known_keys__render_props_T<Node>|browser__tag__dom_T:
+      			instead of: |render_props_T&known_keys__render_props_T<Node>|browser__tag__dom_T
+      	browser__tag__dom_T:
+      		+ |memo__bind_T<[], browser__tag__dom__val_T>|((dom?:browser__tag__dom__val_T)=>browser__tag__dom__val_T)
+      		- |unknown
+      ./server:
+      	server__tag__dom_T:
+      		+ |memo__bind_T<[], server__tag__dom__val_T>
+      		- |unknown
+
+- Updated dependencies
+  - ctx-core@5.30.0
+
 ## 0.54.3
 
 ### Patch Changes

@@ -856,7 +856,8 @@ test('hydrate|normal', with_connected_dom(async connected_dom=>{
 	await sleep(waitMsOnDomUpdates)
 	equal(connected_dom.innerHTML, '<button data-counter="5">Count: 5</button>')
 	hydrate(connected_dom.querySelector('button')!,
-		dom=>Counter(Number(dom.getAttribute('data-counter'))))
+		dom=>
+			Counter(Number(dom.getAttribute('data-counter'))))
 	// After hydration, the counter is reactive
 	connected_dom.querySelector('button')!.click()
 	await sleep(waitMsOnDomUpdates)

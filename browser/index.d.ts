@@ -1,5 +1,5 @@
 // originally forked from https://github.com/vanjs-org/van/blob/main/src/van.d.ts
-import type { rmemo_T } from 'ctx-core/rmemo'
+import type { memo__bind_T, rmemo_T } from 'ctx-core/rmemo'
 import type {
 	known_keys__render_props_T,
 	render__namespaceURI_T,
@@ -13,7 +13,11 @@ export * from 'ctx-core/rmemo'
 export { render_props_T, render_props_val_OR_rmemo_T_OR_Fn, render_props_val_T, render_primitive_T }
 export declare const attach:browser__attach_T
 export type browser__attach_T = (dom:Element, ...children:readonly browser__tag__dom_T[])=>Element
-export type browser__tag__dom__val_T = render_primitive_T|Node|null|undefined
+export type browser__tag__dom__val_T =
+	|Node
+	|render_primitive_T
+	|null
+	|undefined
 export declare const tags:browser__tags_T<'html'>
 export declare function tagsNS<tags_env_T extends render__tags_env_T>(
 	namespaceURI:render__namespaceURI_T<tags_env_T>
@@ -31,17 +35,20 @@ export type browser__tagsNS_T = <tags_env_T extends render__tags_env_T>(
 )=>browser__tags_T<tags_env_T>
 export type browser__tag_T<Node> = (
 	first?:
-		|render_props_T&known_keys__render_props_T<Node>
+		|render_props_T
+		|known_keys__render_props_T<Node>
 		|browser__tag__dom_T,
 	...rest:readonly browser__tag__dom_T[]
 )=>Node
 export type browser__tag__dom_T =
 	|browser__tag__dom__val_T
 	|rmemo_T<browser__tag__dom__val_T>
+	|memo__bind_T<[], browser__tag__dom__val_T>
 	|browser__tag__dom__bind_T
 	|readonly browser__tag__dom_T[]
-	|unknown // This is necessary for isomorphic compatability. TODO: is there a narrower type solution?
-export type browser__tag__dom__bind_T = ((dom?:Node)=>browser__tag__dom__val_T)|((dom?:Element)=>Element)
+export type browser__tag__dom__bind_T =
+	|((dom?:Node)=>browser__tag__dom__val_T)
+	|((dom?:Element)=>Element)
 export declare const fragment_:browser__fragment__T
 export type browser__fragment__T = (...children:readonly browser__tag__dom_T[])=>DocumentFragment
 export declare const raw_:browser__raw__T

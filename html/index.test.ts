@@ -46,7 +46,8 @@ test('browser|html_ head_ body_ div_ a_', ()=>{
 			body_(
 				div_({ id: 'div-id' },
 					a_({ href: 'https://github.com/relementjs/all' }, 'relementjs'))
-			)).outerHTML,
+			)
+		).outerHTML,
 		`<html><head></head><body><div id="div-id"><a href="https://github.com/relementjs/all">relementjs</a></div></body></html>`
 	)
 })

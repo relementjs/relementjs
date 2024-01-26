@@ -1,5 +1,5 @@
 // originally forked from https://github.com/vanjs-org/mini-van/blob/main/src/van-plate.d.ts
-import type { memo_T } from 'ctx-core/rmemo'
+import type { memo__bind_T, memo_T } from 'ctx-core/rmemo'
 import type {
 	known_keys__render_props_T,
 	render__namespaceURI_T,
@@ -38,10 +38,13 @@ export type server__tag_T<Node, is_void_tag_T extends boolean = false> = (
 	// TODO: Can we narrow first argument?
 	first?:
 		is_void_tag_T extends false
-			? (
-				|(known_keys__render_props_T<Node>&Record<string, render_props_val_OR_rmemo_T_OR_Fn>)
-				|server__tag__dom_T
-				) : known_keys__render_props_T<Node>&Record<string, render_props_val_OR_rmemo_T_OR_Fn>,
+			?
+			|known_keys__render_props_T<Node>
+			|Record<string, render_props_val_OR_rmemo_T_OR_Fn>
+			|server__tag__dom_T
+			:
+			|known_keys__render_props_T<Node>
+			|Record<string, render_props_val_OR_rmemo_T_OR_Fn>,
 	...rest:(
 		is_void_tag_T extends false
 			? readonly server__tag__dom_T[]
@@ -50,17 +53,25 @@ export type server__tag_T<Node, is_void_tag_T extends boolean = false> = (
 export type server__tag__dom_T =
 	|server__tag__dom__val_T
 	|memo_T<server__tag__dom__val_T>
+	|memo__bind_T<[], server__tag__dom__val_T>
 	|server__tag__dom__bind_T
 	|readonly server__tag__dom_T[]
-	|unknown // This is necessary for isomorphic compatability. TODO: is there a narrower type solution?
+export type server__tag__dom__bind_T =
+	((dom?:server__tag__dom__val_T)=>server__tag__dom__val_T)
 export declare const fragment_:server__fragment__T
 export type server__fragment__T = (...children:readonly server__tag__dom_T[])=>server__Node_T
 export declare const raw_:server__raw__T
 export type server__raw__T = (html:server__tag__dom_T)=>server__Node_T
 export const doc_html_:server__doc_html__T
-export type server__doc_html__T = (first?:render_props_T|server__tag__dom_T, ...rest:readonly server__tag__dom_T[])=>string
-export type server__tag__dom__bind_T = (dom:server__tag__dom__val_T)=>server__tag__dom__val_T
-export type server__tag__dom__val_T = render_primitive_T|server__Node_T|null|undefined
+export type server__doc_html__T = (
+	first?:render_props_T|server__tag__dom_T,
+	...rest:readonly server__tag__dom_T[]
+)=>string
+export type server__tag__dom__val_T =
+	|render_primitive_T
+	|server__Node_T
+	|null
+	|undefined
 export declare const server__element__proto:server__element__proto_T
 export type server__element__proto_T = {
 	buf__render(buf:string[]):void
@@ -68,7 +79,6 @@ export type server__element__proto_T = {
 }
 export type server__Node_T = {
 	toString():string
-	addEventListener:unknown
 }
 export declare const server__relement:server__relement_T
 export type server__relement_T = {
