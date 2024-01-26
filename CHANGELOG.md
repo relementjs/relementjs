@@ -1,5 +1,24 @@
 # relementjs
 
+## 0.56.0
+
+### Minor Changes
+
+- isomorphic types: default generic types:
+
+      attach<env_T extends relement_env_T = 'any'>
+      attach_T<env_T extends relement_env_T = 'any'>
+      tags_T<env_T extends relement_env_T = 'any', tags_env_T extends render__tags_env_T = 'html'>
+      tagsNS<env_T extends relement_env_T = 'any', tags_env_T extends render__tags_env_T = 'html'>
+      tag_T<env_T extends relement_env_T = 'any', Tag = Node>
+      Node_T<env_T extends relement_env_T = 'any', node_T extends Node = Node>
+      svg_tags_<env_T extends relement_env_T = 'any'>
+      mathml_tags_<env_T extends relement_env_T = 'any'>
+      fragment_<env_T extends relement_env_T = 'any'>
+      raw_<env_T extends relement_env_T = 'any'>
+      fragment_T<env_T extends relement_env_T = 'any'>
+      tag__dom_T<env_T extends relement_env_T = 'any'>
+
 ## 0.55.0
 
 ### Minor Changes
