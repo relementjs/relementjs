@@ -1,11 +1,16 @@
-import type { render__namespaceURI_T, render_primitive_T, render__tags_env_T } from '../any/index.js'
+import type {
+	known_keys__render_props_T,
+	render__namespaceURI_T,
+	render__tags_env_T,
+	render_primitive_T,
+	render_props_T
+} from '../any/index.js'
 import type {
 	browser__attach_T,
 	browser__fragment__T,
 	browser__raw__T,
 	browser__relement_T,
 	browser__tag__dom_T,
-	browser__tag_T,
 	browser__tags_T
 } from '../browser/index.js'
 import type {
@@ -15,7 +20,6 @@ import type {
 	server__raw__T,
 	server__relement_T,
 	server__tag__dom_T,
-	server__tag_T,
 	server__tags_T
 } from '../server/index.js'
 export * from 'ctx-core/be'
@@ -53,12 +57,11 @@ export declare function tagsNS<
 >(
 	namespaceURI:render__namespaceURI_T<tags_env_T>
 ):tags_T<env_T, tags_env_T>
-export type tag_T<env_T extends relement_env_T = 'any', Tag = Node> =
-	env_T extends 'browser'
-		? browser__tag_T<Tag>
-		: env_T extends 'server'
-			? server__tag_T<Tag>
-			: browser__tag_T<Tag>|server__tag_T<Tag>
+export type tag_T<env_T extends relement_env_T = 'any', node_T extends Node = Node> =
+	(...arg_a:	|[]
+		|[known_keys__render_props_T<node_T>|render_props_T, ...tag__dom_T<'any'>[]]
+		|tag__dom_T<'any'>[]
+	)=>Node_T<env_T, node_T>
 export type Node_T<env_T extends relement_env_T = 'any', node_T extends Node = Node> =
 	env_T extends 'browser'
 		? node_T

@@ -40,7 +40,7 @@ test('browser|svg ', ()=>{
 	jsdom = new JSDOM()
 	// @ts-expect-error TS2322
 	globalThis.window = jsdom.window
-	globalThis.document = jsdom.window.document,
+	globalThis.document = jsdom.window.document
 	globalThis.Text = jsdom.window.Text
 	globalThis.Node = jsdom.window.Node
 	relement__use(browser__relement)

@@ -1,5 +1,11 @@
 # relementjs
 
+## 0.56.1
+
+### Patch Changes
+
+- ./isomorphic: tag_T: fix: type: specific type instead of delegating to browser**tag_T,server**tag_T
+
 ## 0.56.0
 
 ### Minor Changes
