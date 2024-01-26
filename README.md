@@ -9,15 +9,15 @@ relementjs scales large & small with tree-shakable modules for rendering, reacti
 | browser-only minimal             |    ❌     |   443 B   | tags                                 |
 | browser-only hydrate             |    ❌     |   490 B   | tags hydrate                         |
 | browser-only hy__bind            |    ❌     |   512 B   | tags hy__bind                        |
-| **browser-only hydrate + rmemo** |    ✅     | **828 B** | **tags hydrate _ memo_ sig_**        |
+| **browser-only hydrate + rmemo** |    ✅     | **818 B** | **tags hydrate _ memo_ sig_**        |
 | browser-only hy__bind + rmemo    |    ✅     |   841 B   | tags hy__bind _ memo_ sig_           |
 | server-only minimal              |    ❌     |   454 B   | tags                                 |
 | **server-only render doc**       |    ❌     | **493 B** | **tags doc_html_ tagsNS**            |
-| server-only render doc + rmemo   |    ✅     |   829 B   | tags doc_html_ tagsNS _ memo_ sig_   |
+| server-only render doc + rmemo   |    ✅     |   828 B   | tags doc_html_ tagsNS _ memo_ sig_   |
 | isomorphic browser               |    ❌     |   748 B   | relement__use browser__relement      |
 | isomorphic browser + rmemo       |    ✅     |  1051 B   | relement__use browser__relement      |
 | isomorphic server                |    ❌     |   686 B   | relement__use server__base__relement |
-| isomorphic server + rmemo        |    ✅     |  1013 B   | relement__use server__base__relement |
+| isomorphic server + rmemo        |    ✅     |  1012 B   | relement__use server__base__relement |
 | isomorphic html tag              |    ❌     |   34 B    | html_                                |
 
 relementjs was originally forked from VanJS. The bold use cases are roughly equivalent to what VanJS provides. The

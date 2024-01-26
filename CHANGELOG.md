@@ -1,5 +1,25 @@
 # relementjs
 
+## 0.57.0
+
+### Minor Changes
+
+- - rmemo\_\_unset: delete rmemo.val
+
+  size-limit:
+
+      isomorphic browser + rmemo: + 8 B
+      isomorphic server + rmemo: - 1 B
+      browser-only hydrate + rmemo: - 10 B
+      server-only render doc + rmemo: - 1 B
+      isomorphic browser hydrate + rmemo + ctx: - 1 B
+      isomorphic server helpers + doc_html_ + rmemo + ctx: - 3 B
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@5.31.0
+
 ## 0.56.1
 
 ### Patch Changes

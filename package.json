@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.56.1",
+	"version": "0.57.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -71,7 +71,7 @@
 		"disable:test:coverage": "c8 pnpm test:unit"
 	},
 	"dependencies": {
-		"ctx-core": "^5.30.0"
+		"ctx-core": "^5.31.0"
 	},
 	"devDependencies": {
 		"@size-limit/preset-small-lib": "^11.0.2",
@@ -104,7 +104,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__relement, memo_, sig_ }"
 			},
-			"limit": "1061 B"
+			"limit": "1069 B"
 		},
 		{
 			"name": "isomorphic server",
@@ -120,7 +120,7 @@
 				"": "{ relement__use }",
 				"./server": "{ server__relement, memo_, sig_ }"
 			},
-			"limit": "1013 B"
+			"limit": "1012 B"
 		},
 		{
 			"name": "isomorphic helpers",
@@ -155,7 +155,7 @@
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, _, memo_, sig_ }"
 			},
-			"limit": "828 B"
+			"limit": "818 B"
 		},
 		{
 			"name": "browser-only hy__bind + rmemo",
@@ -184,7 +184,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__relement, hydrate }"
 			},
-			"limit": "1213 B"
+			"limit": "1212 B"
 		},
 		{
 			"name": "isomorphic browser hy__bind + rmemo + ctx",
@@ -213,7 +213,7 @@
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, _, memo_, sig_ }"
 			},
-			"limit": "829 B"
+			"limit": "828 B"
 		},
 		{
 			"name": "server-only render doc + rmemo + ctx",
@@ -228,7 +228,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./server": "{ server__relement, doc_html_ }"
 			},
-			"limit": "1155 B"
+			"limit": "1152 B"
 		},
 		{
 			"name": "html: html_",
