@@ -1,5 +1,19 @@
 # relementjs
 
+## 0.58.0
+
+### Minor Changes
+
+- Cancel: name: 'Cancel'
+- - promise\_\_cancel
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@5.33.0
+
 ## 0.57.6
 
 ### Patch Changes
