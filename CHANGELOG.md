@@ -1,5 +1,14 @@
 # relementjs
 
+## 0.57.4
+
+### Patch Changes
+
+- ./isomorphic: widen children types: ...children:
+
+      fragment_
+      raw_
+
 ## 0.57.3
 
 ### Patch Changes

@@ -70,13 +70,13 @@ export type Node_T<env_T extends relement_env_T = 'any', node_T extends Node = N
 			: node_T|server__Node_T
 export declare function svg_tags_<env_T extends relement_env_T = 'any'>():tags_T<env_T, 'svg'>
 export declare function mathml_tags_<env_T extends relement_env_T = 'any'>():tags_T<env_T, 'mathml'>
-export declare function fragment_<env_T extends relement_env_T = 'any'>(...children:tag__dom_T<env_T>[]):
+export declare function fragment_<env_T extends relement_env_T = 'any'>(...children:tag__dom_T<'any'>[]):
 	env_T extends 'browser'
 		? ReturnType<browser__fragment__T>
 		: env_T extends 'server'
 			? ReturnType<server__fragment__T>
 			: ReturnType<browser__fragment__T>|ReturnType<server__fragment__T>
-export declare function raw_<env_T extends relement_env_T = 'any'>(...children:tag__dom_T<env_T>[]):
+export declare function raw_<env_T extends relement_env_T = 'any'>(...children:tag__dom_T<'any'>[]):
 	env_T extends 'browser'
 		? ReturnType<browser__raw__T>
 		: env_T extends 'server'
