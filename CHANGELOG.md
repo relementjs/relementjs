@@ -1,5 +1,24 @@
 # relementjs
 
+## 0.59.0
+
+### Minor Changes
+
+- - ctx\_\_get
+
+  size-limit:
+
+      browser-only hydrate + rmemo + ctx: + 9 B
+      browser-only hy__bind + rmemo + ctx: - 1 B
+      isomorphic browser hy__bind + rmemo + ctx: + 7 B
+      isomorphic server helpers + doc_html_ + rmemo + ctx: + 3 B
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@5.35.0
+
 ## 0.58.1
 
 ### Patch Changes

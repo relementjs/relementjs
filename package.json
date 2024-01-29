@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.58.1",
+	"version": "0.59.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -71,7 +71,7 @@
 		"disable:test:coverage": "c8 pnpm test:unit"
 	},
 	"dependencies": {
-		"ctx-core": "^5.34.0"
+		"ctx-core": "^5.35.0"
 	},
 	"devDependencies": {
 		"@size-limit/preset-small-lib": "^11.0.2",
@@ -169,14 +169,14 @@
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, _, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "920 B"
+			"limit": "929 B"
 		},
 		{
 			"name": "browser-only hy__bind + rmemo + ctx",
 			"import": {
 				"./browser": "{ tags, tagsNS, hy__bind, _, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "939 B"
+			"limit": "938 B"
 		},
 		{
 			"name": "isomorphic browser hydrate + rmemo + ctx",
@@ -192,7 +192,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__relement, hy__bind }"
 			},
-			"limit": "1242 B"
+			"limit": "1249 B"
 		},
 		{
 			"name": "server-only minimal",
@@ -228,7 +228,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./server": "{ server__relement, doc_html_ }"
 			},
-			"limit": "1152 B"
+			"limit": "1155 B"
 		},
 		{
 			"name": "html: html_",
