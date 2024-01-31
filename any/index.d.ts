@@ -6,7 +6,7 @@ export type tag_primitive_T =
 	|bigint
 export type tag_props_val_T =
 	|tag_primitive_T
-	|((e:unknown)=>void)
+	|((e:never)=>unknown)
 	|null
 	|undefined
 export type tag_props_val_OR_rmemo_T_OR_Fn =
