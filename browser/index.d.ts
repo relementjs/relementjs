@@ -11,7 +11,7 @@ import type {
 export * from 'ctx-core/rmemo'
 export { tag_props_val_OR_rmemo_T_OR_Fn, tag_props_val_T, tag_primitive_T }
 export declare const attach:browser__attach_T
-export type browser__attach_T = (dom:Element, ...children:readonly browser__tag__dom_T[])=>Element
+export type browser__attach_T = (dom:Element, ...children:readonly browser__tag_dom_T[])=>Element
 export type browser__tag__dom__val_T =
 	|Node
 	|tag_primitive_T
@@ -35,22 +35,22 @@ export type browser__tagsNS_T = <tags_env_T extends tag_env_T>(
 export type browser__tag_T<Node> = (
 	first?:
 		|tag_props_T<Node>
-		|browser__tag__dom_T,
-	...rest:readonly browser__tag__dom_T[]
+		|browser__tag_dom_T,
+	...rest:readonly browser__tag_dom_T[]
 )=>Node
-export type browser__tag__dom_T =
+export type browser__tag_dom_T =
 	|browser__tag__dom__val_T
 	|rmemo_T<browser__tag__dom__val_T>
 	|memo__bind_T<[], browser__tag__dom__val_T>
 	|browser__tag__dom__bind_T
-	|readonly browser__tag__dom_T[]
+	|readonly browser__tag_dom_T[]
 export type browser__tag__dom__bind_T =
 	|((dom?:Node)=>browser__tag__dom__val_T)
 	|((dom?:Element)=>Element)
 export declare const fragment_:browser__fragment__T
-export type browser__fragment__T = (...children:readonly browser__tag__dom_T[])=>DocumentFragment
+export type browser__fragment__T = (...children:readonly browser__tag_dom_T[])=>DocumentFragment
 export declare const raw_:browser__raw__T
-export type browser__raw__T = (html:browser__tag__dom_T)=>DocumentFragment
+export type browser__raw__T = (html:browser__tag_dom_T)=>DocumentFragment
 export declare function hydrate<T extends Node>(dom:T, f:(dom:T)=>T|null|undefined|tag_primitive_T):void
 export type browser__hydrate_T<T extends Node> = (dom:T, f:(dom:T)=>T|null|undefined|tag_primitive_T)=>void
 export declare function hy__bind(

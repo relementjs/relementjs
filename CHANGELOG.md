@@ -1,5 +1,15 @@
 # relementjs
 
+## 0.61.0
+
+### Minor Changes
+
+- minor:
+
+      tag__dom_T->tag_dom_T
+      browser__tag__dom_T→browser__tag_dom_T
+      server__tag__dom_T→server__tag_dom_T
+
 ## 0.60.2
 
 ### Patch Changes

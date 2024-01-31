@@ -9,7 +9,7 @@ import type {
 	browser__fragment__T,
 	browser__raw__T,
 	browser__relement_T,
-	browser__tag__dom_T,
+	browser__tag_dom_T,
 	browser__tags_T
 } from '../browser/index.js'
 import type {
@@ -18,7 +18,7 @@ import type {
 	server__Node_T,
 	server__raw__T,
 	server__relement_T,
-	server__tag__dom_T,
+	server__tag_dom_T,
 	server__tags_T
 } from '../server/index.js'
 export * from 'ctx-core/be'
@@ -58,8 +58,8 @@ export declare function tagsNS<
 ):tags_T<env_T, tags_env_T>
 export type tag_T<env_T extends relement_env_T = 'any', node_T extends Node = Node> =
 	(...arg_a:	|[]
-		|[tag_props_T<node_T>, ...tag__dom_T<'any'>[]]
-		|tag__dom_T<'any'>[]
+		|[tag_props_T<node_T>, ...tag_dom_T<'any'>[]]
+		|tag_dom_T<'any'>[]
 	)=>Node_T<env_T, node_T>
 export type Node_T<env_T extends relement_env_T = 'any', node_T extends Node = Node> =
 	env_T extends 'browser'
@@ -69,13 +69,13 @@ export type Node_T<env_T extends relement_env_T = 'any', node_T extends Node = N
 			: node_T|server__Node_T
 export declare function svg_tags_<env_T extends relement_env_T = 'any'>():tags_T<env_T, 'svg'>
 export declare function mathml_tags_<env_T extends relement_env_T = 'any'>():tags_T<env_T, 'mathml'>
-export declare function fragment_<env_T extends relement_env_T = 'any'>(...children:tag__dom_T<'any'>[]):
+export declare function fragment_<env_T extends relement_env_T = 'any'>(...children:tag_dom_T<'any'>[]):
 	env_T extends 'browser'
 		? ReturnType<browser__fragment__T>
 		: env_T extends 'server'
 			? ReturnType<server__fragment__T>
 			: ReturnType<browser__fragment__T>|ReturnType<server__fragment__T>
-export declare function raw_<env_T extends relement_env_T = 'any'>(...children:tag__dom_T<'any'>[]):
+export declare function raw_<env_T extends relement_env_T = 'any'>(...children:tag_dom_T<'any'>[]):
 	env_T extends 'browser'
 		? ReturnType<browser__raw__T>
 		: env_T extends 'server'
@@ -87,12 +87,12 @@ export type fragment_T<env_T extends relement_env_T = 'any'> =
 		: env_T extends 'server'
 			? server__Node_T
 			: DocumentFragment|server__Node_T
-export type tag__dom_T<env_T extends relement_env_T = 'any'> =
-	(browser__tag__dom_T|server__tag__dom_T)
+export type tag_dom_T<env_T extends relement_env_T = 'any'> =
+	(browser__tag_dom_T|server__tag_dom_T)
 	&(tag_primitive_T|(
 	env_T extends 'browser'
-		? browser__tag__dom_T
+		? browser__tag_dom_T
 		: env_T extends 'server'
-			? server__tag__dom_T
-			: browser__tag__dom_T|server__tag__dom_T
+			? server__tag_dom_T
+			: browser__tag_dom_T|server__tag_dom_T
 	))

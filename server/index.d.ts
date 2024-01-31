@@ -11,7 +11,7 @@ import type {
 export * from 'ctx-core/rmemo'
 export { tag_props_val_OR_rmemo_T_OR_Fn, tag_props_val_T, tag_primitive_T }
 export const attach:server__attach_T
-export type server__attach_T = (dom:server__Node_T, ...children:readonly server__tag__dom_T[])=>server__Node_T
+export type server__attach_T = (dom:server__Node_T, ...children:readonly server__tag_dom_T[])=>server__Node_T
 export const tags:server__tags_T<'html'>
 export declare function tagsNS<tags_env_T extends tag_env_T>(
 	namespaceURI:tag_namespaceURI_T<tags_env_T>
@@ -45,34 +45,34 @@ export type server__tag_T<Node, is_void_tag_T extends boolean = false> = (
 	first?:
 		is_void_tag_T extends false
 			? |tag_props_T<Node>
-				|server__tag__dom_T
+				|server__tag_dom_T
 			: tag_props_T<Node>,
 	...rest:(
 		is_void_tag_T extends false
-			? readonly server__tag__dom_T[]
+			? readonly server__tag_dom_T[]
 			: [])
 )=>server__Node_T
 // @formatter:on
-export type server__tag__dom_T =
+export type server__tag_dom_T =
 	|server__tag__dom__val_T
 	|memo_T<server__tag__dom__val_T>
 	|memo__bind_T<[], server__tag__dom__val_T>
 	|server__tag__dom__bind_T
-	|readonly server__tag__dom_T[]
+	|readonly server__tag_dom_T[]
 export type server__tag__dom__bind_T =
 	((dom?:server__tag__dom__val_T)=>server__tag__dom__val_T)
 export declare const fragment_:server__fragment__T
 export type server__fragment__T = (
-	...children:readonly server__tag__dom_T[]
+	...children:readonly server__tag_dom_T[]
 )=>server__Node_T
 export declare const raw_:server__raw__T
-export type server__raw__T = (html:server__tag__dom_T)=>server__Node_T
+export type server__raw__T = (html:server__tag_dom_T)=>server__Node_T
 export const doc_html_:server__doc_html__T
 export type server__doc_html__T = (
 	first?:
 		|tag_props_T<HTMLHtmlElement>
-		|server__tag__dom_T,
-	...rest:readonly server__tag__dom_T[]
+		|server__tag_dom_T,
+	...rest:readonly server__tag_dom_T[]
 )=>string
 export type server__tag__dom__val_T =
 	|tag_primitive_T
