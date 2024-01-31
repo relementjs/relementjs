@@ -1,9 +1,9 @@
 /// <reference lib="dom" />
-import type { known_keys__render_props_T, render_props_T } from '../any/index.js'
+import type { tag_props_T } from '../any/index.js'
 import type { Node_T, relement_env_T, tag__dom_T } from '../isomorphic/index.js'
 type arg_a_T<tag_name_T extends keyof HTMLElementTagNameMap> =
 	|[]
-	|[known_keys__render_props_T<HTMLElementTagNameMap[tag_name_T]>|render_props_T, ...tag__dom_T<'any'>[]]
+	|[tag_props_T<HTMLElementTagNameMap[tag_name_T]>, ...tag__dom_T<'any'>[]]
 	|tag__dom_T<'any'>[]
 type ret_T<env_T extends relement_env_T, tag_name_T extends keyof HTMLElementTagNameMap> =
 	Node_T<env_T, HTMLElementTagNameMap[tag_name_T]>

@@ -1,9 +1,8 @@
 import type {
-	known_keys__render_props_T,
-	render__namespaceURI_T,
-	render__tags_env_T,
-	render_primitive_T,
-	render_props_T
+	tag_props_T,
+	tag_namespaceURI_T,
+	tag_env_T,
+	tag_primitive_T,
 } from '../any/index.js'
 import type {
 	browser__attach_T,
@@ -44,7 +43,7 @@ export declare let svg_tags:tags_T<'any', 'svg'>
 export declare let mathml_tags:tags_T<'any', 'mathml'>
 export type tags_T<
 	env_T extends relement_env_T = 'any',
-	tags_env_T extends render__tags_env_T = 'html'
+	tags_env_T extends tag_env_T = 'html'
 > =
 	env_T extends 'browser'
 		? browser__tags_T<tags_env_T>
@@ -53,13 +52,13 @@ export type tags_T<
 			: browser__tags_T<tags_env_T>|server__tags_T<tags_env_T>
 export declare function tagsNS<
 	env_T extends relement_env_T = 'any',
-	tags_env_T extends render__tags_env_T = 'html'
+	tags_env_T extends tag_env_T = 'html'
 >(
-	namespaceURI:render__namespaceURI_T<tags_env_T>
+	namespaceURI:tag_namespaceURI_T<tags_env_T>
 ):tags_T<env_T, tags_env_T>
 export type tag_T<env_T extends relement_env_T = 'any', node_T extends Node = Node> =
 	(...arg_a:	|[]
-		|[known_keys__render_props_T<node_T>|render_props_T, ...tag__dom_T<'any'>[]]
+		|[tag_props_T<node_T>, ...tag__dom_T<'any'>[]]
 		|tag__dom_T<'any'>[]
 	)=>Node_T<env_T, node_T>
 export type Node_T<env_T extends relement_env_T = 'any', node_T extends Node = Node> =
@@ -90,7 +89,7 @@ export type fragment_T<env_T extends relement_env_T = 'any'> =
 			: DocumentFragment|server__Node_T
 export type tag__dom_T<env_T extends relement_env_T = 'any'> =
 	(browser__tag__dom_T|server__tag__dom_T)
-	&(render_primitive_T|(
+	&(tag_primitive_T|(
 	env_T extends 'browser'
 		? browser__tag__dom_T
 		: env_T extends 'server'

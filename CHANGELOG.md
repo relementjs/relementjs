@@ -1,5 +1,28 @@
 # relementjs
 
+## 0.60.0
+
+### Minor Changes
+
+- minor:
+
+      ./any:
+      	render_primitive_T→tag_primitive_T
+      	render_props_val_T→tag_props_val_T
+      	render_props_val_OR_rmemo_T_OR_Fn→tag_props_val_OR_rmemo_T_OR_Fn
+      	render_props_T→tag_props_T:
+      		<Element = unknown>:
+      			unknown extends ElementType
+      				? Record<string, tag_props_val_OR_rmemo_T_OR_Fn>
+      				: |Partial<{ [K in keyof ElementType]:tag_props_val_OR_rmemo_T_OR_Fn }>
+      					|Record<string, tag_props_val_OR_rmemo_T_OR_Fn>
+      		render__tags_env_T→tag_env_T
+      		render__namespaceURI_T→tag_namespaceURI_T
+      ./server: server__doc_html__T: fix:
+      	first?:
+      		|tag_props_T<HTMLHtmlElement>
+      		|server__tag__dom_T,
+
 ## 0.59.1
 
 ### Patch Changes

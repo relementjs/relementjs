@@ -104,6 +104,11 @@ export let raw_ = html=>({
 		buf.push(typeof html === 'function' ? html() : html)
 	},
 })
+/**
+ * @param {Parameters<server__doc_html__T>}args
+ * @returns {string}
+ * @private
+ */
 export let doc_html_ = (...args)=>{
 	let buf = ['<!DOCTYPE html>']
 	tags.html(...args).buf__push(buf)
