@@ -5,7 +5,7 @@ export * from 'ctx-core/rmemo'
  * area, base, br, col, embed, hr, img, input, link, meta, source, track, wbr
  * @see {@link https://html.spec.whatwg.org/multipage/syntax.html#void-elements}
  */
-const void_tags = {
+const html_void_tags = {
 	area: 1,
 	base: 1,
 	br: 1,
@@ -31,9 +31,10 @@ const char_R_escape_char = {
  * @see {@link https://stackoverflow.com/questions/69913/why-dont-self-closing-script-elements-work}
  */
 export let server__element__proto = {
+	void_tags: {},
 	buf__push(buf) {
 		buf.push('<' + this.name + this.props_str + '>')
-		if (void_tags[this.name]) return
+		if (this.void_tags[this.name]) return
 		for (const c of this.children) {
 			let plain_c = plain_val_(c) ?? ''
 			plain_c.buf__push
@@ -58,7 +59,7 @@ export function attach(dom, ...children) {
 	dom.children.push(...children.flat(Infinity).filter(c=>c != null))
 	return dom
 }
-export let tags = new Proxy((name, ...args)=>{
+export let tagsNS = ns=>new Proxy((name, ...args)=>{
 	let [props, ...children] =
 		Object.getPrototypeOf(args[0] ?? 0) === Object.prototype
 			? args
@@ -77,6 +78,7 @@ export let tags = new Proxy((name, ...args)=>{
 	}
 	return {
 		__proto__: server__element__proto,
+		void_tags: ns ? {} : html_void_tags,
 		name,
 		props_str,
 		children:
@@ -84,7 +86,7 @@ export let tags = new Proxy((name, ...args)=>{
 				c != null),
 	}
 }, { get: (tag, name)=>tag.bind(null, name) })
-export let tagsNS = ()=>tags
+export let tags = tagsNS()
 export let fragment_ = (...children)=>({
 	__proto__: server__element__proto,
 	buf__push(buf) {

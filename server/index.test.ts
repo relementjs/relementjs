@@ -172,7 +172,40 @@ test('onclick handler', ()=>{
 		equal('' + dom, '<div><button>Click me</button></div>')
 	}
 })
-test('tagsNS: svg', ()=>{
+test('tags|rss', ()=>{
+	const {
+		rss,
+		channel,
+		title,
+		description,
+		link,
+		item,
+		guid,
+		pubDate,
+		author,
+	} = tagsNS<'any'>('http://backend.userland.com/rss2')
+	const dom = fragment_([
+		raw_('<?xml version="1.0" encoding="UTF-8"?>'),
+		rss({ version: '2.0' }, [
+			channel([
+				title('Blog Title'),
+				description('Blog Description'),
+				link('https://my-blog.com'),
+				item([
+					title('First Post'),
+					link('https://my-blog.com/first-post'),
+					guid({ isPermaLink: 'true' }, 'https://my-blog.com/first-post'),
+					pubDate('Mon Dec 04 2023 03:12:00 GMT'),
+					author('John Doe'),
+				])
+			])
+		])
+	])
+	equal(
+		'' + dom,
+		'<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Blog Title</title><description>Blog Description</description><link>https://my-blog.com</link><item><title>First Post</title><link>https://my-blog.com/first-post</link><guid ispermalink="true">https://my-blog.com/first-post</guid><pubDate>Mon Dec 04 2023 03:12:00 GMT</pubDate><author>John Doe</author></item></channel></rss>')
+})
+test('tagsNS|svg', ()=>{
 	const {
 		circle,
 		path,
@@ -187,7 +220,7 @@ test('tagsNS: svg', ()=>{
 	equal('' + dom,
 		'<svg width="16px" viewbox="0 0 50 50"><circle cx="25" cy="25" r="20" stroke="black" stroke-width="2" fill="yellow"></circle><circle cx="16" cy="20" r="2" stroke="black" stroke-width="2" fill="black"></circle><circle cx="34" cy="20" r="2" stroke="black" stroke-width="2" fill="black"></circle><path d="M 15 30 Q 25 40, 35 30" stroke="black" stroke-width="2" fill="transparent"></path></svg>')
 })
-test('tagsNS: math', ()=>{
+test('tagsNS|math', ()=>{
 	const {
 		math,
 		mi,

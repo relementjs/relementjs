@@ -63,8 +63,7 @@ test('relement__use', ()=>{
 	equal(attach, server__relement.attach)
 	equal(tagsNS, server__relement.tagsNS)
 	equal(tags, server__relement.tags)
-	equal(svg_tags, server__relement.tagsNS('http://www.w3.org/2000/svg'))
-	equal(mathml_tags, server__relement.tagsNS('http://www.w3.org/1998/Math/MathML'))
+	equal(tagsNS, server__relement.tagsNS)
 	equal(
 		fragment_<'server'>(div_('row0'), div_('row1'), div_('row2')).toString(),
 		'<div>row0</div><div>row1</div><div>row2</div>')

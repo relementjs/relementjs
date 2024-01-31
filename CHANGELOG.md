@@ -1,5 +1,25 @@
 # relementjs
 
+## 0.61.2
+
+### Patch Changes
+
+- ./server: fix: no void tags for non-html outputs:
+
+      tags = tagsNS()
+      tagsNS: void_tags: ns ? {} : html_void_tags
+      void_tags→html_void_tags
+
+  size-limit:
+
+      isomorphic server: + 26 B
+      isomorphic server + rmemo: + 30 B
+      server-only minimal: + 30 B
+      server-only render doc: + 25 B
+      server-only render doc + rmemo: + 28 B
+      server-only render doc + rmemo + ctx: + 32 B
+      isomorphic server helpers + doc_html_ + rmemo + ctx: + 30 B
+
 ## 0.61.1
 
 ### Patch Changes
