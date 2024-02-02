@@ -20,7 +20,11 @@ import {
 } from './index.js'
 const skip_long = process.env.SKIP_LONG ? parseInt(process.env.SKIP_LONG) : false
 const skip_long_test = skip_long ? test.skip : test
-let jsdom:JSDOM, prev__window:Window, prev__document:Document, prev__Text:typeof Text, prev__Node:typeof Node
+let jsdom:JSDOM
+let prev__window:Window
+let prev__document:Document
+let prev__Text:typeof Text
+let prev__Node:typeof Node
 const waitMsOnDomUpdates = 5
 const dom_M_custom = new WeakMap<Node, never>
 const {
@@ -111,7 +115,7 @@ test('tags|null prop value', ()=>{
 	const dom = button({ onclick: null })
 	ok(dom.onclick === null)
 })
-test('tags|prop|data-', ()=>{
+test('tags|prop|data-*', ()=>{
 	const dom = tags.section()
 	dom.innerHTML = prop_data__div_html
 	equal(JSON.parse((dom.firstChild! as HTMLDivElement).dataset.foo!), prop_data__div_o)

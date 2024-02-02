@@ -1,9 +1,4 @@
-import type {
-	tag_props_T,
-	tag_namespaceURI_T,
-	tag_env_T,
-	tag_primitive_T,
-} from '../any/index.js'
+import type { tag_env_T, tag_namespaceURI_T, tag_primitive_T, tag_props_T, } from '../any/index.js'
 import type {
 	browser__attach_T,
 	browser__fragment__T,
@@ -24,6 +19,7 @@ import type {
 export * from 'ctx-core/be'
 export * from 'ctx-core/rmemo'
 export * from './for/index.js'
+export * from './list/index.js'
 export * from './switch/index.js'
 export declare function relement__use(
 	render_api:browser__relement_T|server__relement_T|null|undefined

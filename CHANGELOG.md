@@ -1,5 +1,27 @@
 # relementjs
 
+## 0.62.0
+
+### Minor Changes
+
+- minor: ./isomorphic: + item*list*: reactive list rendering & reording
+
+      ./browser: attach: only add memo into _child._m when the child changes
+
+  size-limit:
+
+      isomorphic browser: - 4 B
+      + isomorphic browser + rmemo + item_list_: 1226 B
+      browser-only minimal: + 8 B
+      browser-only hydrate: + 3 B
+      browser-only hy__bind: + 7 B
+      browser-only hydrate + rmemo: + 5 B
+      browser-only hy__bind + rmemo: + 3 B
+      browser-only hydrate + rmemo + ctx: - 3 B
+      browser-only hy__bind + rmemo + ctx: + 15 B
+      isomorphic browser hydrate + rmemo + ctx: + 7 B
+      isomorphic browser hy__bind + rmemo + ctx: + 1 B
+
 ## 0.61.6
 
 ### Patch Changes

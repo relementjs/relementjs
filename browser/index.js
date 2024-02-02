@@ -21,10 +21,10 @@ export function attach(dom, ...children) {
 			(child_val.memo_ ?? (f=>f))(child_val_memo=>{
 				let _child = dom__run(child_val, child)
 				child?.replaceWith?.(_child)
-				child = _child
-				if (child) {
-					(child._m ||= []).push(child_val_memo)
+				if (_child && child !== _child) {
+					(_child._m ||= []).push(child_val_memo)
 				}
+				child = _child
 			})()
 		} else {
 			child = child_val
