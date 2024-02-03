@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.62.0",
+	"version": "0.63.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -71,7 +71,7 @@
 		"disable:test:coverage": "c8 pnpm test:unit"
 	},
 	"dependencies": {
-		"ctx-core": "^5.36.4"
+		"ctx-core": "^5.37.0"
 	},
 	"devDependencies": {
 		"@size-limit/preset-small-lib": "^11.0.2",
@@ -96,7 +96,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__relement }"
 			},
-			"limit": "744 B"
+			"limit": "728 B"
 		},
 		{
 			"name": "isomorphic browser + rmemo",
@@ -104,7 +104,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__relement, memo_, sig_ }"
 			},
-			"limit": "1069 B"
+			"limit": "1058 B"
 		},
 		{
 			"name": "isomorphic browser + rmemo + item_list_",
@@ -113,7 +113,7 @@
 				"./browser": "{ browser__relement, memo_, sig_ }",
 				"./isomorphic": "{ item_list_ }"
 			},
-			"limit": "1226 B"
+			"limit": "1224 B"
 		},
 		{
 			"name": "isomorphic server",
@@ -129,7 +129,7 @@
 				"": "{ relement__use }",
 				"./server": "{ server__relement, memo_, sig_ }"
 			},
-			"limit": "1042 B"
+			"limit": "1064 B"
 		},
 		{
 			"name": "isomorphic helpers",
@@ -143,49 +143,49 @@
 			"import": {
 				"./browser": "{ tags }"
 			},
-			"limit": "451 B"
+			"limit": "429 B"
 		},
 		{
 			"name": "browser-only hydrate",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate }"
 			},
-			"limit": "493 B"
+			"limit": "470 B"
 		},
 		{
 			"name": "browser-only hy__bind",
 			"import": {
 				"./browser": "{ tags, tagsNS, hy__bind }"
 			},
-			"limit": "519 B"
+			"limit": "501 B"
 		},
 		{
 			"name": "browser-only hydrate + rmemo",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, _, memo_, sig_ }"
 			},
-			"limit": "823 B"
+			"limit": "816 B"
 		},
 		{
 			"name": "browser-only hy__bind + rmemo",
 			"import": {
 				"./browser": "{ tags, tagsNS, hy__bind, _, memo_, sig_ }"
 			},
-			"limit": "844 B"
+			"limit": "849 B"
 		},
 		{
 			"name": "browser-only hydrate + rmemo + ctx",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, _, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "926 B"
+			"limit": "917 B"
 		},
 		{
 			"name": "browser-only hy__bind + rmemo + ctx",
 			"import": {
 				"./browser": "{ tags, tagsNS, hy__bind, _, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "953 B"
+			"limit": "946 B"
 		},
 		{
 			"name": "isomorphic browser hydrate + rmemo + ctx",
@@ -193,7 +193,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__relement, hydrate }"
 			},
-			"limit": "1219 B"
+			"limit": "1212 B"
 		},
 		{
 			"name": "isomorphic browser hy__bind + rmemo + ctx",
@@ -201,7 +201,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__relement, hy__bind }"
 			},
-			"limit": "1250 B"
+			"limit": "1235 B"
 		},
 		{
 			"name": "server-only minimal",
@@ -222,14 +222,14 @@
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, _, memo_, sig_ }"
 			},
-			"limit": "856 B"
+			"limit": "878 B"
 		},
 		{
 			"name": "server-only render doc + rmemo + ctx",
 			"import": {
 				"./server": "{ tags, tagsNS, doc_html_, _, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "958 B"
+			"limit": "982 B"
 		},
 		{
 			"name": "isomorphic server helpers + doc_html_ + rmemo + ctx",
@@ -237,7 +237,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./server": "{ server__relement, doc_html_ }"
 			},
-			"limit": "1185 B"
+			"limit": "1200 B"
 		},
 		{
 			"name": "html: html_",

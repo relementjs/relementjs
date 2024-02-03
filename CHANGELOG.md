@@ -1,5 +1,46 @@
 # relementjs
 
+## 0.63.0
+
+### Minor Changes
+
+- minor:
+
+      state is stored in globalThis.rmemo: fix: issue when multiple instances of rmemo is in the codebase: bundles
+      rmemo__wait: fix: Garbage Collection prematurely collecting memo
+      rmemo_f_T:
+      	readonly l:number
+      	readonly s:rmemo_T<unknown>[]
+      	readonly t:rmemo_T<unknown>[]
+      size optimizations
+
+  size-limit:
+
+      isomorphic browser: - 16 B
+      isomorphic browser + rmemo: - 11 B
+      isomorphic browser + rmemo + item_list_: - 2 B
+      isomorphic server + rmemo: + 22 B
+      browser-only minimal: - 22 B
+      browser-only hydrate: - 23 B
+      browser-only hy__bind: - 18 B
+      browser-only hydrate + rmemo: - 7 B
+      browser-only hy__bind + rmemo: + 5 B
+      browser-only hydrate + rmemo + ctx: - 9 B
+      browser-only hy__bind + rmemo + ctx: - 7 B
+      isomorphic browser hydrate + rmemo + ctx: - 7 B
+      isomorphic browser hy__bind + rmemo + ctx: - 15 B
+      server-only render doc + rmemo: + 22 B
+      server-only render doc + rmemo + ctx: + 24 B
+      isomorphic server helpers + doc_html_ + rmemo + ctx: + 15 B
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@5.37.0
+
 ## 0.62.0
 
 ### Minor Changes
@@ -11,7 +52,7 @@
   size-limit:
 
       isomorphic browser: - 4 B
-      + isomorphic browser + rmemo + item_list_: 1226 B
+      + isomorphic browser + rmemo + item_list_: 1224 B
       browser-only minimal: + 8 B
       browser-only hydrate: + 3 B
       browser-only hy__bind: + 7 B
