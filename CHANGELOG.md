@@ -1,5 +1,16 @@
 # relementjs
 
+## 0.64.0
+
+### Minor Changes
+
+- - calling: calls & returns argument function
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@5.38.0
+
 ## 0.63.0
 
 ### Minor Changes
