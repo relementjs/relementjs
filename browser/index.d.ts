@@ -1,10 +1,10 @@
 // originally forked from https://github.com/vanjs-org/van/blob/main/src/van.d.ts
 import type { memo__bind_T, rmemo_T } from 'ctx-core/rmemo'
 import type {
-	tag_props_T,
-	tag_namespaceURI_T,
 	tag_env_T,
+	tag_namespaceURI_T,
 	tag_primitive_T,
+	tag_props_T,
 	tag_props_val_OR_rmemo_T_OR_Fn,
 	tag_props_val_T
 } from '../any/index.js'

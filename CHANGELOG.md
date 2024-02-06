@@ -1,5 +1,11 @@
 # relementjs
 
+## 0.64.2
+
+### Patch Changes
+
+- optimize imports
+
 ## 0.64.1
 
 ### Patch Changes
