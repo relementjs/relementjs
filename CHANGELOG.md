@@ -1,5 +1,26 @@
 # relementjs
 
+## 0.68.0
+
+### Minor Changes
+
+- minor: + ./browser/hy: hy\_\_bind: supports smaller bundles with limited tree-shaking:
+
+      + ./browser/hy: + hy__bind
+
+  size-limit:
+
+      isomorphic browser: + 3 B
+      isomorphic browser + rmemo: - 5 B
+      isomorphic browser + rmemo + item_list_: + 4 B
+      browser-only hy__bind: - 7 B
+      + hy__bind: 107 B
+      browser-only minimal: + 17 B
+      browser-only hy__bind + rmemo: + 4 B
+      browser-only hydrate + rmemo + ctx: + 13 B
+      browser-only hy__bind + rmemo + ctx: + 3 B
+      isomorphic browser hy__bind + rmemo + ctx: + 1 B
+
 ## 0.67.0
 
 ### Minor Changes

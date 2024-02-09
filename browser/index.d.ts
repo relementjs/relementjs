@@ -9,6 +9,7 @@ import type {
 	tag_props_val_T
 } from '../any/index.js'
 export * from 'ctx-core/rmemo'
+export * from './hy/index.js'
 export { tag_props_val_OR_rmemo_T_OR_Fn, tag_props_val_T, tag_primitive_T }
 export declare const attach:browser__attach_T
 export type browser__attach_T = (dom:Element, ...children:readonly browser__tag_dom_T[])=>Element
@@ -53,11 +54,6 @@ export declare const raw_:browser__raw__T
 export type browser__raw__T = (html:browser__tag_dom_T)=>DocumentFragment
 export declare function hydrate<T extends Node>(dom:T, f:(dom:T)=>T|null|undefined|tag_primitive_T):void
 export type browser__hydrate_T<T extends Node> = (dom:T, f:(dom:T)=>T|null|undefined|tag_primitive_T)=>void
-export declare function hy__bind(
-	doc:{ querySelectorAll(selectors:string):NodeList },
-	key_R_fn:Record<string, hy__bind_fn_T<HTMLElementTagNameMap[keyof HTMLElementTagNameMap]|SVGElementTagNameMap[keyof SVGElementTagNameMap]|MathMLElementTagNameMap[keyof MathMLElementTagNameMap]>>
-):void
-type hy__bind_fn_T<E> = E extends unknown ? (el:E)=>unknown : never
 export declare const browser__relement:browser__relement_T
 export type browser__relement_T = {
 	attach:browser__attach_T

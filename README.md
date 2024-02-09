@@ -6,15 +6,16 @@ relementjs scales large & small with tree-shakable modules for rendering, reacti
 
 | use case                         | reactive |   size    | imports                              |
 |----------------------------------|:--------:|:---------:|--------------------------------------|
-| browser-only minimal             |    ❌     |   429 B   | tags                                 |
+| browser-only minimal             |    ❌     |   446 B   | tags                                 |
 | browser-only hydrate             |    ❌     |   470 B   | tags hydrate                         |
-| browser-only hy__bind            |    ❌     |   501 B   | tags hy__bind                        |
+| browser-only hy__bind            |    ❌     |   494 B   | tags hy__bind                        |
+| hy__bind only                    |    ❌     |   107 B   | hy__bind                             |
 | **browser-only hydrate + rmemo** |    ✅     | **816 B** | **tags hydrate _ memo_ sig_**        |
-| browser-only hy__bind + rmemo    |    ✅     |   849 B   | tags hy__bind _ memo_ sig_           |
+| browser-only hy__bind + rmemo    |    ✅     |   853 B   | tags hy__bind _ memo_ sig_           |
 | server-only minimal              |    ❌     |   454 B   | tags                                 |
 | **server-only render doc**       |    ❌     | **470 B** | **tags doc_html_ tagsNS**            |
 | server-only render doc + rmemo   |    ✅     |   828 B   | tags doc_html_ tagsNS _ memo_ sig_   |
-| isomorphic browser               |    ❌     |   663 B   | relement__use browser__relement      |
+| isomorphic browser               |    ❌     |   666 B   | relement__use browser__relement      |
 | isomorphic browser + rmemo       |    ✅     |  1051 B   | relement__use browser__relement      |
 | isomorphic server                |    ❌     |   686 B   | relement__use server__base__relement |
 | isomorphic server + rmemo        |    ✅     |  1012 B   | relement__use server__base__relement |
@@ -65,20 +66,34 @@ If you would like to learn more, please feel free to
 ## isomorphic rendering
 
 ```ts
-import { relement__use } from 'relementjs'
-import { browser__relement } from 'relementjs/browser'
-import { a_, div_ } from 'relementjs/html'
-relement__use(browser__relement)
+import {
+	relement__use
+} from 'relementjs'
+import {
+	browser__relement
+} from 'relementjs/browser'
+import {
+	a_,
+	div_
+} from 'relementjs/html'
+relement__use(
+	browser__relement)
 div_(
-	a_({ href: 'https://github.com/relementjs/relementjs' },
+	a_(
+		{ href: 'https://github.com/relementjs/relementjs' },
 		'relementjs github page'))
 ```
 
 ## browser rendering
 
 ```ts
-import { tags } from 'relementjs/browser'
-const { a, div } = tags
+import {
+	tags
+} from 'relementjs/browser'
+const {
+	a,
+	div
+} = tags
 div(
 	a({ href: 'https://github.com/relementjs/relementjs' },
 		'relementjs github page'))
@@ -87,8 +102,13 @@ div(
 ## server rendering
 
 ```ts
-import { tags } from 'relementjs/server'
-const { a, div } = tags
+import {
+	tags
+} from 'relementjs/server'
+const {
+	a,
+	div
+} = tags
 div(
 	a({ href: 'https://github.com/relementjs/relementjs' },
 		'relementjs github page'))

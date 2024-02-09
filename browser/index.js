@@ -1,6 +1,7 @@
 // originally forked from https://github.com/vanjs-org/van/blob/main/src/van.js
 // This file consistently uses `let` keyword instead of `const` for reducing the bundle size.
 export * from 'ctx-core/rmemo'
+export * from './hy/index.js'
 // Global variables - aliasing some builtin symbols to reduce the bundle size.
 let _undefined
 let I = f=>f
@@ -124,16 +125,5 @@ export function hydrate(dom, f) {
 			console.error(e)
 		}
 	})()
-}
-/**
- * @param {Element}doc
- * @param {Record<string, (el:Node)=>unknown}key_R_fn
- */
-export function hy__bind(doc, key_R_fn) {
-	for (let el of doc.querySelectorAll('[hy__bind]')) {
-		doc = el.getAttribute('hy__bind')
-		if (!key_R_fn[doc]) throw Error('no key: ' + doc)
-		key_R_fn[doc](el)
-	}
 }
 export let browser__relement = { attach, tags, tagsNS, fragment_, raw_, }

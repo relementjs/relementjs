@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.67.0",
+	"version": "0.68.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -51,6 +51,7 @@
 		"./any": "./any/index.js",
 		"./astro": "./astro/Relement.astro",
 		"./browser": "./browser/index.js",
+		"./browser/hy": "./browser/hy/index.js",
 		"./html": "./html/index.js",
 		"./isomorphic": "./isomorphic/index.js",
 		"./mathml": "./mathml/index.js",
@@ -96,7 +97,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__relement }"
 			},
-			"limit": "663 B"
+			"limit": "666 B"
 		},
 		{
 			"name": "isomorphic browser + rmemo",
@@ -104,7 +105,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__relement, memo_, sig_ }"
 			},
-			"limit": "1006 B"
+			"limit": "1001 B"
 		},
 		{
 			"name": "isomorphic browser + rmemo + item_list_",
@@ -113,7 +114,7 @@
 				"./browser": "{ browser__relement, memo_, sig_ }",
 				"./isomorphic": "{ item_list_ }"
 			},
-			"limit": "1162 B"
+			"limit": "1166 B"
 		},
 		{
 			"name": "isomorphic server",
@@ -143,7 +144,7 @@
 			"import": {
 				"./browser": "{ tags }"
 			},
-			"limit": "429 B"
+			"limit": "446 B"
 		},
 		{
 			"name": "browser-only hydrate",
@@ -157,7 +158,14 @@
 			"import": {
 				"./browser": "{ tags, tagsNS, hy__bind }"
 			},
-			"limit": "501 B"
+			"limit": "494 B"
+		},
+		{
+			"name": "hy__bind only",
+			"import": {
+				"./browser/hy": "{ hy__bind }"
+			},
+			"limit": "107 B"
 		},
 		{
 			"name": "browser-only hydrate + rmemo",
@@ -171,21 +179,21 @@
 			"import": {
 				"./browser": "{ tags, tagsNS, hy__bind, _, memo_, sig_ }"
 			},
-			"limit": "849 B"
+			"limit": "853 B"
 		},
 		{
 			"name": "browser-only hydrate + rmemo + ctx",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, _, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "917 B"
+			"limit": "930 B"
 		},
 		{
 			"name": "browser-only hy__bind + rmemo + ctx",
 			"import": {
 				"./browser": "{ tags, tagsNS, hy__bind, _, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "946 B"
+			"limit": "949 B"
 		},
 		{
 			"name": "isomorphic browser hydrate + rmemo + ctx",
@@ -201,7 +209,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__relement, hy__bind }"
 			},
-			"limit": "1177 B"
+			"limit": "1178 B"
 		},
 		{
 			"name": "server-only minimal",
