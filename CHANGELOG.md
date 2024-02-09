@@ -1,5 +1,16 @@
 # relementjs
 
+## 0.66.0
+
+### Minor Changes
+
+- wide_ctx_T<ns_union_T extends string = ''>: default ns_union_T to ''
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@6.1.0
+
 ## 0.65.0
 
 ### Minor Changes
