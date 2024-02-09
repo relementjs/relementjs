@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.66.0",
+	"version": "0.67.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -96,7 +96,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__relement }"
 			},
-			"limit": "728 B"
+			"limit": "663 B"
 		},
 		{
 			"name": "isomorphic browser + rmemo",
@@ -104,7 +104,7 @@
 				"": "{ relement__use }",
 				"./browser": "{ browser__relement, memo_, sig_ }"
 			},
-			"limit": "1058 B"
+			"limit": "1006 B"
 		},
 		{
 			"name": "isomorphic browser + rmemo + item_list_",
@@ -113,7 +113,7 @@
 				"./browser": "{ browser__relement, memo_, sig_ }",
 				"./isomorphic": "{ item_list_ }"
 			},
-			"limit": "1224 B"
+			"limit": "1162 B"
 		},
 		{
 			"name": "isomorphic server",
@@ -121,7 +121,7 @@
 				"": "{ relement__use }",
 				"./server": "{ server__relement }"
 			},
-			"limit": "712 B"
+			"limit": "642 B"
 		},
 		{
 			"name": "isomorphic server + rmemo",
@@ -129,14 +129,14 @@
 				"": "{ relement__use }",
 				"./server": "{ server__relement, memo_, sig_ }"
 			},
-			"limit": "1064 B"
+			"limit": "996 B"
 		},
 		{
 			"name": "isomorphic helpers",
 			"import": {
 				"": "{ relement__use, attach, tags, tagsNS }"
 			},
-			"limit": "136 B"
+			"limit": "69 B"
 		},
 		{
 			"name": "browser-only minimal",
@@ -193,7 +193,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__relement, hydrate }"
 			},
-			"limit": "1212 B"
+			"limit": "1152 B"
 		},
 		{
 			"name": "isomorphic browser hy__bind + rmemo + ctx",
@@ -201,7 +201,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__relement, hy__bind }"
 			},
-			"limit": "1235 B"
+			"limit": "1177 B"
 		},
 		{
 			"name": "server-only minimal",
@@ -237,7 +237,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./server": "{ server__relement, doc_html_ }"
 			},
-			"limit": "1200 B"
+			"limit": "1140 B"
 		},
 		{
 			"name": "html: html_",
@@ -251,14 +251,14 @@
 			"import": {
 				"./mathml": "{ math_ }"
 			},
-			"limit": "34 B"
+			"limit": "83 B"
 		},
 		{
 			"name": "svg: svg_",
 			"import": {
 				"./svg": "{ svg_ }"
 			},
-			"limit": "33 B"
+			"limit": "77 B"
 		}
 	]
 }

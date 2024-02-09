@@ -35,8 +35,6 @@ export type attach_T<env_T extends relement_env_T = 'any'> =
 			? server__attach_T
 			: browser__attach_T|server__attach_T
 export declare let tags:tags_T<'any'>
-export declare let svg_tags:tags_T<'any', 'svg'>
-export declare let mathml_tags:tags_T<'any', 'mathml'>
 export type tags_T<
 	env_T extends relement_env_T = 'any',
 	tags_env_T extends tag_env_T = 'html'
@@ -53,7 +51,7 @@ export declare function tagsNS<
 	namespaceURI:tag_namespaceURI_T<tags_env_T>
 ):tags_T<env_T, tags_env_T>
 export type tag_T<env_T extends relement_env_T = 'any', node_T extends Node = Node> =
-	(...arg_a:	|[]
+	(...arg_a:|[]
 		|[tag_props_T<node_T>, ...tag_dom_T<'any'>[]]
 		|tag_dom_T<'any'>[]
 	)=>Node_T<env_T, node_T>
@@ -63,8 +61,6 @@ export type Node_T<env_T extends relement_env_T = 'any', node_T extends Node = N
 		: env_T extends 'server'
 			? server__Node_T
 			: node_T|server__Node_T
-export declare function svg_tags_<env_T extends relement_env_T = 'any'>():tags_T<env_T, 'svg'>
-export declare function mathml_tags_<env_T extends relement_env_T = 'any'>():tags_T<env_T, 'mathml'>
 export declare function fragment_<env_T extends relement_env_T = 'any'>(...children:tag_dom_T<'any'>[]):
 	env_T extends 'browser'
 		? ReturnType<browser__fragment__T>
@@ -83,12 +79,16 @@ export type fragment_T<env_T extends relement_env_T = 'any'> =
 		: env_T extends 'server'
 			? server__Node_T
 			: DocumentFragment|server__Node_T
+// @formatter:off
 export type tag_dom_T<env_T extends relement_env_T = 'any'> =
-	(browser__tag_dom_T|server__tag_dom_T)
-	&(tag_primitive_T|(
-	env_T extends 'browser'
-		? browser__tag_dom_T
-		: env_T extends 'server'
-			? server__tag_dom_T
-			: browser__tag_dom_T|server__tag_dom_T
-	))
+	&(
+		|browser__tag_dom_T
+		|server__tag_dom_T)
+	&(
+		|tag_primitive_T
+		|env_T extends 'browser'
+			? browser__tag_dom_T
+			: env_T extends 'server'
+				? server__tag_dom_T
+				: browser__tag_dom_T|server__tag_dom_T)
+// @formatter:on

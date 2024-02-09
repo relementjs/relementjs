@@ -1,5 +1,33 @@
 # relementjs
 
+## 0.67.0
+
+### Minor Changes
+
+- minor: isomorphic tags: encapsulate svg*tags* in ./svg export & mathml*tags* in ./mathml export:
+
+      ./isomorphic:
+      	- mathml_tags
+      	- mathml_tags_
+      	- svg_tags
+      	- svg_tags_
+      ./mathml: + mathml_tags_
+      ./svg: + svg_tags_
+
+  size-limit:
+
+      isomorphic browser: - 65 B
+      isomorphic browser + rmemo: - 52 B
+      isomorphic browser + rmemo + item_list_: - 62 B
+      isomorphic server: - 70 B
+      isomorphic server + rmemo: - 68 B
+      isomorphic helpers: - 67 B
+      isomorphic browser hydrate + rmemo + ctx: - 60 B
+      isomorphic browser hy__bind + rmemo + ctx: - 58 B
+      isomorphic server helpers + doc_html_ + rmemo + ctx: - 60 B
+      mathml: math_: + 49 B
+      svg: svg_: + 44 B
+
 ## 0.66.0
 
 ### Minor Changes
@@ -108,7 +136,7 @@
   size-limit:
 
       isomorphic browser: - 4 B
-      + isomorphic browser + rmemo + item_list_: 1224 B
+      + isomorphic browser + rmemo + item_list_: 1112 B
       browser-only minimal: + 8 B
       browser-only hydrate: + 3 B
       browser-only hy__bind: + 7 B

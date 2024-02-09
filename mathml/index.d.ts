@@ -1,11 +1,12 @@
 import type { tag_props_T } from '../any/index.js'
-import { type Node_T, relement_env_T, type tag_dom_T } from '../isomorphic/index.js'
+import type { Node_T, relement_env_T, tag_dom_T, tags_T } from '../isomorphic/index.js'
 type arg_a_T<tag_name_T extends keyof MathMLElementTagNameMap> =
 	|[]
 	|[tag_props_T<MathMLElementTagNameMap[tag_name_T]>, ...tag_dom_T<'any'>[]]
 	|tag_dom_T<'any'>[]
 type ret_T<env_T extends relement_env_T, tag_name_T extends keyof MathMLElementTagNameMap> =
 	Node_T<env_T, MathMLElementTagNameMap[tag_name_T]>
+export declare function mathml_tags_<env_T extends relement_env_T = 'any'>():tags_T<env_T, 'mathml'>
 export declare function annotation_<env_T extends relement_env_T>(...arg_a:arg_a_T<'annotation'>):ret_T<env_T, 'annotation'>
 export declare function annotation_xml_<env_T extends relement_env_T>(...arg_a:arg_a_T<'annotation-xml'>):ret_T<env_T, 'annotation-xml'>
 export declare function maction_<env_T extends relement_env_T>(...arg_a:arg_a_T<'maction'>):ret_T<env_T, 'maction'>

@@ -3,16 +3,14 @@ import { test } from 'uvu'
 import { equal } from 'uvu/assert'
 import { browser__relement } from '../browser/index.js'
 import { div_ } from '../html/index.js'
+import { mathml_tags_ } from '../mathml/index.js'
 import { server__relement } from '../server/index.js'
+import { svg_tags_ } from '../svg/index.js'
 import {
 	attach,
 	fragment_,
-	mathml_tags,
-	mathml_tags_,
 	raw_,
 	relement__use,
-	svg_tags,
-	svg_tags_,
 	tags,
 	type tags_T,
 	tagsNS
@@ -43,15 +41,11 @@ test('relement__use', ()=>{
 	equal(attach, undefined)
 	equal(tagsNS, undefined)
 	equal(tags, undefined)
-	equal(svg_tags, undefined)
-	equal(mathml_tags, undefined)
 	relement__use(browser__relement)
 	equal(attach, browser__relement.attach)
 	equal(tagsNS, browser__relement.tagsNS)
 	equal(tags, browser__relement.tags)
-	equal((<tags_T<'browser', 'svg'>>svg_tags).svg().outerHTML, '<svg></svg>')
 	equal(svg_tags_<'browser'>().svg().outerHTML, '<svg></svg>')
-	equal((<tags_T<'browser', 'mathml'>>mathml_tags).math().outerHTML, '<math></math>')
 	equal(mathml_tags_<'browser'>().math().outerHTML, '<math></math>')
 	equal(
 		div_<'browser'>(fragment_(div_('row0'), div_('row1'), div_('row2'))).innerHTML,

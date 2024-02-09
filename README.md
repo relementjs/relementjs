@@ -14,7 +14,7 @@ relementjs scales large & small with tree-shakable modules for rendering, reacti
 | server-only minimal              |    ❌     |   454 B   | tags                                 |
 | **server-only render doc**       |    ❌     | **470 B** | **tags doc_html_ tagsNS**            |
 | server-only render doc + rmemo   |    ✅     |   828 B   | tags doc_html_ tagsNS _ memo_ sig_   |
-| isomorphic browser               |    ❌     |   728 B   | relement__use browser__relement      |
+| isomorphic browser               |    ❌     |   663 B   | relement__use browser__relement      |
 | isomorphic browser + rmemo       |    ✅     |  1051 B   | relement__use browser__relement      |
 | isomorphic server                |    ❌     |   686 B   | relement__use server__base__relement |
 | isomorphic server + rmemo        |    ✅     |  1012 B   | relement__use server__base__relement |
