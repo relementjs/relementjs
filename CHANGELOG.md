@@ -1,5 +1,18 @@
 # relementjs
 
+## 0.71.1
+
+### Patch Changes
+
+- ./browser/hy: ∋ hyop: verify_single_hyop,verify_multi_hyop: fix: implementation
+
+  size-limit:
+
+      single_hyop only: - 1 B
+      browser-only single_hyop + rmemo: - 3 B
+      browser-only single_hyop + rmemo + ctx: - 2 B
+      isomorphic browser single_hyop + rmemo + ctx: - 4 B
+
 ## 0.71.0
 
 ### Minor Changes

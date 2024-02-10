@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.71.0",
+	"version": "0.71.1",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -64,7 +64,6 @@
 		"clean": ":",
 		"exec": "$@",
 		"prepublishOnly": "pnpm clean && pnpm build && pnpm test",
-		"size-limit": "^11.0.0",
 		"test": "pnpm run /^test:/",
 		"test:size": "size-limit",
 		"test:type": "check-dts",
@@ -72,7 +71,8 @@
 		"disable:test:coverage": "c8 pnpm test:unit"
 	},
 	"dependencies": {
-		"ctx-core": "^6.1.2"
+		"ctx-core": "^6.1.2",
+		"hyop": "^0.1.0"
 	},
 	"devDependencies": {
 		"@size-limit/preset-small-lib": "^11.0.2",
@@ -165,7 +165,7 @@
 			"import": {
 				"./browser/hy": "{ single_hyop }"
 			},
-			"limit": "62 B"
+			"limit": "61 B"
 		},
 		{
 			"name": "multi_hyop only",
@@ -186,7 +186,7 @@
 			"import": {
 				"./browser": "{ tags, tagsNS, single_hyop, _, memo_, sig_ }"
 			},
-			"limit": "821 B"
+			"limit": "818 B"
 		},
 		{
 			"name": "browser-only hydrate + rmemo + ctx",
@@ -200,7 +200,7 @@
 			"import": {
 				"./browser": "{ tags, tagsNS, single_hyop, _, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "915 B"
+			"limit": "913 B"
 		},
 		{
 			"name": "isomorphic browser hydrate + rmemo + ctx",
@@ -216,7 +216,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__relement, single_hyop }"
 			},
-			"limit": "1155 B"
+			"limit": "1151 B"
 		},
 		{
 			"name": "server-only minimal",
