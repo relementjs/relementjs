@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.68.1",
+	"version": "0.69.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -154,18 +154,18 @@
 			"limit": "470 B"
 		},
 		{
-			"name": "browser-only hy__bind",
+			"name": "browser-only hy_op",
 			"import": {
-				"./browser": "{ tags, tagsNS, hy__bind }"
+				"./browser": "{ tags, tagsNS, hy_op }"
 			},
-			"limit": "494 B"
+			"limit": "490 B"
 		},
 		{
-			"name": "hy__bind only",
+			"name": "hy_op only",
 			"import": {
-				"./browser/hy": "{ hy__bind }"
+				"./browser/hy": "{ hy_op }"
 			},
-			"limit": "107 B"
+			"limit": "85 B"
 		},
 		{
 			"name": "browser-only hydrate + rmemo",
@@ -175,11 +175,11 @@
 			"limit": "816 B"
 		},
 		{
-			"name": "browser-only hy__bind + rmemo",
+			"name": "browser-only hy_op + rmemo",
 			"import": {
-				"./browser": "{ tags, tagsNS, hy__bind, _, memo_, sig_ }"
+				"./browser": "{ tags, tagsNS, hy_op, _, memo_, sig_ }"
 			},
-			"limit": "853 B"
+			"limit": "842 B"
 		},
 		{
 			"name": "browser-only hydrate + rmemo + ctx",
@@ -189,11 +189,11 @@
 			"limit": "930 B"
 		},
 		{
-			"name": "browser-only hy__bind + rmemo + ctx",
+			"name": "browser-only hy_op + rmemo + ctx",
 			"import": {
-				"./browser": "{ tags, tagsNS, hy__bind, _, memo_, sig_, be_, ctx_ }"
+				"./browser": "{ tags, tagsNS, hy_op, _, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "949 B"
+			"limit": "947 B"
 		},
 		{
 			"name": "isomorphic browser hydrate + rmemo + ctx",
@@ -204,12 +204,12 @@
 			"limit": "1152 B"
 		},
 		{
-			"name": "isomorphic browser hy__bind + rmemo + ctx",
+			"name": "isomorphic browser hy_op + rmemo + ctx",
 			"import": {
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
-				"./browser": "{ browser__relement, hy__bind }"
+				"./browser": "{ browser__relement, hy_op }"
 			},
-			"limit": "1178 B"
+			"limit": "1168 B"
 		},
 		{
 			"name": "server-only minimal",

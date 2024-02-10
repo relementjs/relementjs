@@ -1,5 +1,19 @@
 # relementjs
 
+## 0.69.0
+
+### Minor Changes
+
+- ./browser,./browser/hy: hy\_\_bind→hy_op
+
+  size-limit:
+
+      browser-only hy_op: - 4 B
+      hy_op only: - 22 B
+      browser-only hy_op + rmemo: - 11 B
+      browser-only hy_op + rmemo + ctx: - 2 B
+      isomorphic browser hy_op + rmemo + ctx: - 10 B
+
 ## 0.68.1
 
 ### Patch Changes

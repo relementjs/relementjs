@@ -1,4 +1,4 @@
-export declare function hy__bind(
+export declare function hy_op(
 	doc:{ querySelectorAll(selectors:string):NodeList },
 	key_R_fn:Record<string, hy__bind_fn_T<HTMLElementTagNameMap[keyof HTMLElementTagNameMap]|SVGElementTagNameMap[keyof SVGElementTagNameMap]|MathMLElementTagNameMap[keyof MathMLElementTagNameMap]>>
 ):void
