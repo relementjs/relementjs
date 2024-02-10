@@ -1,5 +1,19 @@
 # relementjs
 
+## 0.70.0
+
+### Minor Changes
+
+- ./browser,./browser/hy: + hy_op\_\_verify_all_used:
+
+  size-limit:
+
+      browser-only hy_op: + 1 B
+      hy_op only: - 1 B
+      browser-only hy_op + rmemo: - 6 B
+      browser-only hy_op + rmemo + ctx: + 1 B
+      isomorphic browser hy_op + rmemo + ctx: + 7 B
+
 ## 0.69.1
 
 ### Patch Changes
