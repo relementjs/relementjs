@@ -1,5 +1,22 @@
 # relementjs
 
+## 0.71.0
+
+### Minor Changes
+
+- minor: rename the hy_op attribute to hyop
+
+      hy_op→single_hyop
+      + multi_hyop
+      [hy_op]→[hyop]
+
+  size-limit:
+
+      single_hyop only: - 2 B
+      + multi_hyop only: 81 B
+      browser-only single_hyop + rmemo: + 2 B
+      browser-only single_hyop + rmemo + ctx: - 1 B
+
 ## 0.70.1
 
 ### Patch Changes

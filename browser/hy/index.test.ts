@@ -1,7 +1,7 @@
 import { JSDOM } from 'jsdom'
 import { test } from 'uvu'
 import { equal, throws } from 'uvu/assert'
-import { attach, hy_op, tags } from '../index.js'
+import { attach, multi_hyop, single_hyop, tags } from '../index.js'
 let jsdom:JSDOM
 let prev__window:Window
 let prev__document:Document
@@ -27,23 +27,39 @@ test.after(()=>{
 	globalThis.Text = prev__Text
 	globalThis.Node = prev__Node
 })
-test('hy_op', with_connected_dom(async connected_dom=>{
-	const el_a:Element[] = []
-	const fn0 = (el:Element)=>el_a.push(el)
-	const div0 = div({ 'hy_op': 'fn0' })
-	const fn1 = (el:Element)=>el_a.push(el)
-	const div1 = div({ 'hy_op': 'fn1' })
+test('single_hyop', with_connected_dom(async connected_dom=>{
+	const el_a:[string, Element][] = []
+	const fn0 = (el:Element)=>el_a.push(['fn0', el])
+	const div0 = div({ 'hyop': 'fn0' })
+	const fn1 = (el:Element)=>el_a.push(['fn1', el])
+	const div1 = div({ 'hyop': 'fn1' })
 	attach(connected_dom, div(), div0, div1, div())
-	hy_op(document, { fn0, fn1 })
-	equal(el_a, [div0, div1])
+	single_hyop(document, { fn0, fn1 })
+	equal(el_a, [['fn0', div0], ['fn1', div1]])
 }))
-test('hy_op|error', with_connected_dom(async connected_dom=>{
-	const el_a:Element[] = []
-	const div0 = div({ 'hy_op': 'no-fn' })
-	const fn1 = (el:Element)=>el_a.push(el)
-	const div1 = div({ 'hy_op': 'fn1' })
+test('single_hyop|error', with_connected_dom(async connected_dom=>{
+	const el_a:[string, Element][] = []
+	const div0 = div({ 'hyop': 'no-fn' })
+	const fn1 = (el:Element)=>el_a.push(['fn1', el])
+	const div1 = div({ 'hyop': 'fn1' })
 	attach(connected_dom, div(), div0, div1, div())
-	throws(()=>hy_op(document, { fn1 }), 'missing key: no-fn')
+	throws(()=>single_hyop(document, { fn1 }), 'missing key: no-fn')
+}))
+test('multi_hyop', with_connected_dom(async connected_dom=>{
+	const el_a:[string, Element][] = []
+	const fn0 = (el:Element)=>el_a.push(['fn0', el])
+	const fn1 = (el:Element)=>el_a.push(['fn1', el])
+	const div0 = div({ 'hyop': 'fn0 fn1' })
+	attach(connected_dom, div(), div0, div())
+	multi_hyop(document, { fn0, fn1 })
+	equal(el_a, [['fn0', div0], ['fn1', div0]])
+}))
+test('multi_hyop|error', with_connected_dom(async connected_dom=>{
+	const el_a:[string, Element][] = []
+	const fn1 = (el:Element)=>el_a.push(['fn1', el])
+	const div0 = div({ 'hyop': 'no-fn fn1' })
+	attach(connected_dom, div(), div0, div())
+	throws(()=>multi_hyop(document, { fn1 }), 'missing key: no-fn')
 }))
 test.run()
 function with_connected_dom(func:(dom:Element)=>void|Promise<void>) {

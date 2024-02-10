@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.70.1",
+	"version": "0.71.0",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -154,18 +154,25 @@
 			"limit": "470 B"
 		},
 		{
-			"name": "browser-only hy_op",
+			"name": "browser-only single_hyop",
 			"import": {
-				"./browser": "{ tags, tagsNS, hy_op }"
+				"./browser": "{ tags, tagsNS, single_hyop }"
 			},
 			"limit": "472 B"
 		},
 		{
-			"name": "hy_op only",
+			"name": "single_hyop only",
 			"import": {
-				"./browser/hy": "{ hy_op }"
+				"./browser/hy": "{ single_hyop }"
 			},
-			"limit": "64 B"
+			"limit": "62 B"
+		},
+		{
+			"name": "multi_hyop only",
+			"import": {
+				"./browser/hy": "{ multi_hyop }"
+			},
+			"limit": "81 B"
 		},
 		{
 			"name": "browser-only hydrate + rmemo",
@@ -175,11 +182,11 @@
 			"limit": "816 B"
 		},
 		{
-			"name": "browser-only hy_op + rmemo",
+			"name": "browser-only single_hyop + rmemo",
 			"import": {
-				"./browser": "{ tags, tagsNS, hy_op, _, memo_, sig_ }"
+				"./browser": "{ tags, tagsNS, single_hyop, _, memo_, sig_ }"
 			},
-			"limit": "819 B"
+			"limit": "821 B"
 		},
 		{
 			"name": "browser-only hydrate + rmemo + ctx",
@@ -189,11 +196,11 @@
 			"limit": "930 B"
 		},
 		{
-			"name": "browser-only hy_op + rmemo + ctx",
+			"name": "browser-only single_hyop + rmemo + ctx",
 			"import": {
-				"./browser": "{ tags, tagsNS, hy_op, _, memo_, sig_, be_, ctx_ }"
+				"./browser": "{ tags, tagsNS, single_hyop, _, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "916 B"
+			"limit": "915 B"
 		},
 		{
 			"name": "isomorphic browser hydrate + rmemo + ctx",
@@ -204,10 +211,10 @@
 			"limit": "1152 B"
 		},
 		{
-			"name": "isomorphic browser hy_op + rmemo + ctx",
+			"name": "isomorphic browser single_hyop + rmemo + ctx",
 			"import": {
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
-				"./browser": "{ browser__relement, hy_op }"
+				"./browser": "{ browser__relement, single_hyop }"
 			},
 			"limit": "1155 B"
 		},
