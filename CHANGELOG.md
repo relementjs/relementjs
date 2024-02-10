@@ -1,5 +1,21 @@
 # relementjs
 
+## 0.70.1
+
+### Patch Changes
+
+- hy_op\_\_verify_all_used→verify_hy_op
+
+  fix: type definition of verify_hy_op
+
+  size-limit:
+
+      browser-only hy_op: - 19 B
+      hy_op only: - 20 B
+      browser-only hy_op + rmemo: - 17 B
+      browser-only hy_op + rmemo + ctx: - 32 B
+      isomorphic browser hy_op + rmemo + ctx: - 20 B
+
 ## 0.70.0
 
 ### Minor Changes
@@ -1597,7 +1613,7 @@ size-limit:
       server-only render doc + helpers: - 70 B
       server-only render doc + helpers + rmemo: - 79 B
       server-only render doc + helpers + rmemo + ctx: - 81 B
-      isomorphic server helpers + doc_html_ + helpers + rmemo + ctx: - 84 B
+      isomorphic server helpers + doc_html_ + helpers + rmemo + ctx: - 64 B
 
 ## 0.26.0
 

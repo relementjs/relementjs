@@ -8,10 +8,10 @@ relementjs scales large & small with tree-shakable modules for rendering, reacti
 |----------------------------------|:--------:|:---------:|--------------------------------------|
 | browser-only minimal             |    ❌     |   446 B   | tags                                 |
 | browser-only hydrate             |    ❌     |   470 B   | tags hydrate                         |
-| browser-only hy_op            |    ❌     |   491 B   | tags hy_op                        |
-| hy_op only                    |    ❌     |   84 B   | hy_op                             |
+| browser-only hy_op            |    ❌     |   472 B   | tags hy_op                        |
+| hy_op only                    |    ❌     |   64 B   | hy_op                             |
 | **browser-only hydrate + rmemo** |    ✅     | **816 B** | **tags hydrate _ memo_ sig_**        |
-| browser-only hy_op + rmemo    |    ✅     |   836 B   | tags hy_op _ memo_ sig_           |
+| browser-only hy_op + rmemo    |    ✅     |   819 B   | tags hy_op _ memo_ sig_           |
 | server-only minimal              |    ❌     |   454 B   | tags                                 |
 | **server-only render doc**       |    ❌     | **470 B** | **tags doc_html_ tagsNS**            |
 | server-only render doc + rmemo   |    ✅     |   828 B   | tags doc_html_ tagsNS _ memo_ sig_   |

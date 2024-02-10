@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.70.0",
+	"version": "0.70.1",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -158,14 +158,14 @@
 			"import": {
 				"./browser": "{ tags, tagsNS, hy_op }"
 			},
-			"limit": "491 B"
+			"limit": "472 B"
 		},
 		{
 			"name": "hy_op only",
 			"import": {
 				"./browser/hy": "{ hy_op }"
 			},
-			"limit": "84 B"
+			"limit": "64 B"
 		},
 		{
 			"name": "browser-only hydrate + rmemo",
@@ -179,7 +179,7 @@
 			"import": {
 				"./browser": "{ tags, tagsNS, hy_op, _, memo_, sig_ }"
 			},
-			"limit": "836 B"
+			"limit": "819 B"
 		},
 		{
 			"name": "browser-only hydrate + rmemo + ctx",
@@ -193,7 +193,7 @@
 			"import": {
 				"./browser": "{ tags, tagsNS, hy_op, _, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "948 B"
+			"limit": "916 B"
 		},
 		{
 			"name": "isomorphic browser hydrate + rmemo + ctx",
@@ -209,7 +209,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__relement, hy_op }"
 			},
-			"limit": "1175 B"
+			"limit": "1155 B"
 		},
 		{
 			"name": "server-only minimal",
