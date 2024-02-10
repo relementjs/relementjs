@@ -1,5 +1,11 @@
 # relementjs
 
+## 0.71.2
+
+### Patch Changes
+
+- hyop: ^0.1.0 -> ^0.1.1
+
 ## 0.71.1
 
 ### Patch Changes
