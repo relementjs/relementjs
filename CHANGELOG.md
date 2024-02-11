@@ -1,10 +1,17 @@
 # relementjs
 
+## 0.71.7
+
+### Patch Changes
+
+- hyop: ^0.2.0 -> ^0.2.1
+
 ## 0.71.6
 
 ### Patch Changes
 
 - Updated dependencies
+
   - hyop@0.2.0
 
   size-limit:
