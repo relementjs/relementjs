@@ -1,5 +1,16 @@
 # relementjs
 
+## 0.71.6
+
+### Patch Changes
+
+- Updated dependencies
+  - hyop@0.2.0
+
+  size-limit:
+
+      browser-only single_hyop: - 1 B
+
 ## 0.71.5
 
 ### Patch Changes

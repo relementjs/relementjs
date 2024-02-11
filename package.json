@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.71.5",
+	"version": "0.71.6",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -72,7 +72,7 @@
 	},
 	"dependencies": {
 		"ctx-core": "^6.1.2",
-		"hyop": "^0.1.4"
+		"hyop": "^0.2.0"
 	},
 	"devDependencies": {
 		"@size-limit/preset-small-lib": "^11.0.2",
@@ -158,7 +158,7 @@
 			"import": {
 				"./browser": "{ tags, tagsNS, single_hyop }"
 			},
-			"limit": "472 B"
+			"limit": "471 B"
 		},
 		{
 			"name": "single_hyop only",
