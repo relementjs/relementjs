@@ -1,11 +1,18 @@
 # relementjs
 
+## 0.73.2
+
+### Patch Changes
+
+- ctx-core: ^6.4.1 -> ^6.4.2
+
 ## 0.73.1
 
 ### Patch Changes
 
 - ctx-core: ^6.3.0 -> ^6.4.0
 - Updated dependencies
+
   - ctx-core@6.4.1
 
   size-limit:
