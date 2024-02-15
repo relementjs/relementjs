@@ -1,5 +1,19 @@
 # relementjs
 
+## 0.73.1
+
+### Patch Changes
+
+- ctx-core: ^6.3.0 -> ^6.4.0
+- Updated dependencies
+  - ctx-core@6.4.1
+
+  size-limit:
+
+      browser-only hydrate + rmemo + ctx: - 10 B
+      browser-only single_hyop + rmemo + ctx: + 6 B
+      server-only render doc + rmemo + ctx: + 4 B
+
 ## 0.73.0
 
 ### Minor Changes
