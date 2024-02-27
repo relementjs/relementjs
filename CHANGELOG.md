@@ -1,5 +1,20 @@
 # relementjs
 
+## 0.74.0
+
+### Minor Changes
+
+- minor:
+
+      + hyop: aliased by single_hyop,singleHyop
+      + verify_hyop: aliased by verify_single_hyop,verifySingleHyop
+      verify_hyop,verify_multi_hyop: unused hyop: console.warn instead of throw Error: fix: conditionally rendered elements which have a hyop
+
+### Patch Changes
+
+- Updated dependencies
+  - hyop@0.3.0
+
 ## 0.73.7
 
 ### Patch Changes
