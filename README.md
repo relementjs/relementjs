@@ -20,7 +20,7 @@ Isomorphic ui rendering & state management on the browser & server. The smallest
 | isomorphic server + rmemo        |    ✅     |  1012 B   | relement__use server__base__relement |
 | isomorphic html tag              |    ❌     |   34 B    | html_                                |
 
-relementjs was originally forked from VanJS. The bold use cases are roughly equivalent to what VanJS provides. The browser-only library is smaller than vanjs & the server-only library is smaller than mini-van-plate/van-plate. relementjs exports rmemo for reactivity & ctx-core/be for contexts.
+relementjs started as a fork from VanJS. The bold use cases have rough equivalence to what VanJS provides. The browser export is smaller than VanJS. The server export is smaller than mini-van-plate/van-plate. relementjs exports [rmemo](https://github.com/ctx-core/rmemo) for reactivity & [ctx-core/be](https://github.com/ctx-core/be) for contexts.
 
 ## isomorphic rendering
 
