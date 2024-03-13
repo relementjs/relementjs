@@ -1,5 +1,17 @@
 # relementjs
 
+## 0.74.6
+
+### Patch Changes
+
+- size-limit: ^11.0.3 -> ^11.1.0
+- @size-limit/preset-small-lib: ^11.0.3 -> ^11.1.0
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@6.5.6
+  - hyop@0.3.1
+
 ## 0.74.5
 
 ### Patch Changes
