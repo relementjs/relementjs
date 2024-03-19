@@ -1,5 +1,16 @@
 # relementjs
 
+## 0.75.0
+
+### Minor Changes
+
+- wide_ctx_T: widen type: fix incorrect type errors: - ctx_T&
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@6.6.0
+
 ## 0.74.10
 
 ### Patch Changes
