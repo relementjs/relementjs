@@ -1,5 +1,14 @@
 # relementjs
 
+## 0.75.1
+
+### Patch Changes
+
+- package.json: author: url,email
+- Updated dependencies
+  - ctx-core@6.6.1
+  - hyop@0.3.3
+
 ## 0.75.0
 
 ### Minor Changes

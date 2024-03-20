@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.75.0",
+	"version": "0.75.1",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -30,7 +30,11 @@
 		"url": "https://github.com/relementjs/relementjs.git"
 	},
 	"license": "Apache-2.0",
-	"author": "Brian Takita",
+	"author": {
+		"name": "Brian Takita",
+		"url": "https://briantakita.me",
+		"email": "info+relementjs@briantakita.me"
+	},
 	"type": "module",
 	"files": [
 		"*.d.ts",
@@ -71,8 +75,8 @@
 		"disable:test:coverage": "c8 pnpm test:unit"
 	},
 	"dependencies": {
-		"ctx-core": "^6.6.0",
-		"hyop": "^0.3.2"
+		"ctx-core": "^6.6.1",
+		"hyop": "^0.3.3"
 	},
 	"devDependencies": {
 		"@size-limit/preset-small-lib": "^11.1.1",
