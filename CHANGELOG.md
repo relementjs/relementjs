@@ -1,5 +1,13 @@
 # relementjs
 
+## 0.75.4
+
+### Patch Changes
+
+- verify_hyop,verify_multi_hyop: missing hyop error: fix: hyop in error message
+- Updated dependencies
+  - hyop@0.3.5
+
 ## 0.75.3
 
 ### Patch Changes
