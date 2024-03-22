@@ -1,5 +1,13 @@
 # relementjs
 
+## 0.75.3
+
+### Patch Changes
+
+- verify_hyop,verify_multi_hyop: error message: object with hyop key
+- Updated dependencies
+  - hyop@0.3.4
+
 ## 0.75.2
 
 ### Patch Changes
