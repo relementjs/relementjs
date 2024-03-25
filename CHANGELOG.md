@@ -1,5 +1,32 @@
 # relementjs
 
+## 0.76.0
+
+### Minor Changes
+
+- globalThis.**rmemo** stores global rmemo state: fix: name collision with globalThis.rmemo: was used as a dom Element id
+- globalThis.**rmemo** stores global rmemo state: fix: name collision with globalThis.rmemo: was used as a dom Element id
+
+  size-limit:
+
+      isomorphic browser + rmemo: - 12 B
+      isomorphic browser + rmemo + item_list_: + 2 B
+      isomorphic server + rmemo: + 7 B
+      browser-only hydrate + rmemo: + 8 B
+      browser-only single_hyop + rmemo: + 3 B
+      browser-only hydrate + rmemo + ctx: + 4 B
+      browser-only single_hyop + rmemo + ctx: + 3 B
+      isomorphic browser hydrate + rmemo + ctx: + 3 B
+      isomorphic browser single_hyop + rmemo + ctx: + 4 B
+      server-only render doc + rmemo: + 2 B
+      server-only render doc + rmemo + ctx: + 2 B
+      isomorphic server helpers + doc_html_ + rmemo + ctx: + 4 B
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@6.7.0
+
 ## 0.75.5
 
 ### Patch Changes
