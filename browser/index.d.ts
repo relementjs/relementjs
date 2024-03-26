@@ -5,12 +5,12 @@ import type {
 	tag_namespaceURI_T,
 	tag_primitive_T,
 	tag_props_T,
-	tag_props_val_OR_rmemo_T_OR_Fn,
+	tag_props_val_OR_rmemo_T_OR_fn_T,
 	tag_props_val_T
 } from '../any/index.js'
 export * from 'ctx-core/rmemo'
 export * from './hy/index.js'
-export { tag_props_val_OR_rmemo_T_OR_Fn, tag_props_val_T, tag_primitive_T }
+export { tag_props_val_OR_rmemo_T_OR_fn_T, tag_props_val_T, tag_primitive_T }
 export declare const attach:browser__attach_T
 export type browser__attach_T = (dom:Element, ...children:readonly browser__tag_dom_T[])=>Element
 export type browser__tag__dom__val_T =

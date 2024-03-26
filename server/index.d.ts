@@ -5,11 +5,11 @@ import type {
 	tag_namespaceURI_T,
 	tag_primitive_T,
 	tag_props_T,
-	tag_props_val_OR_rmemo_T_OR_Fn,
+	tag_props_val_OR_rmemo_T_OR_fn_T,
 	tag_props_val_T
 } from '../any/index.js'
 export * from 'ctx-core/rmemo'
-export { tag_props_val_OR_rmemo_T_OR_Fn, tag_props_val_T, tag_primitive_T }
+export { tag_props_val_OR_rmemo_T_OR_fn_T, tag_props_val_T, tag_primitive_T }
 export const attach:server__attach_T
 export type server__attach_T = (dom:server__Node_T, ...children:readonly server__tag_dom_T[])=>server__Node_T
 export const tags:server__tags_T<'html'>

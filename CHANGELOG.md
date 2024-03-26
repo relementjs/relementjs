@@ -1,5 +1,11 @@
 # relementjs
 
+## 0.77.0
+
+### Minor Changes
+
+- tag_props_val_OR_rmemo_T_OR_Fn→tag_props_val_OR_rmemo_T_OR_fn_T
+
 ## 0.76.0
 
 ### Minor Changes

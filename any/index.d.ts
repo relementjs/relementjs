@@ -9,7 +9,7 @@ export type tag_props_val_T =
 	|((e:never)=>unknown)
 	|null
 	|undefined
-export type tag_props_val_OR_rmemo_T_OR_Fn =
+export type tag_props_val_OR_rmemo_T_OR_fn_T =
 	|tag_props_val_T
 	|rmemo_T<tag_props_val_T>
 	|(()=>tag_props_val_T)
@@ -17,10 +17,10 @@ export type bind__T = (f:()=>tag_props_val_T)=>()=>tag_props_val_T
 // @formatter:off
 export type tag_props_T<ElementType = unknown> = (
 	unknown extends ElementType
-		? Record<string, tag_props_val_OR_rmemo_T_OR_Fn>
-		: |Partial<{ [K in keyof ElementType]:tag_props_val_OR_rmemo_T_OR_Fn }>
-			|Record<string, tag_props_val_OR_rmemo_T_OR_Fn>
-)&{ class?:tag_props_val_OR_rmemo_T_OR_Fn }
+		? Record<string, tag_props_val_OR_rmemo_T_OR_fn_T>
+		: |Partial<{ [K in keyof ElementType]:tag_props_val_OR_rmemo_T_OR_fn_T }>
+			|Record<string, tag_props_val_OR_rmemo_T_OR_fn_T>
+)&{ class?:tag_props_val_OR_rmemo_T_OR_fn_T }
 // @formatter:on
 export type tag_env_T = 'any'|'html'|'svg'|'mathml'
 export type tag_namespaceURI_T<tags_env_T extends tag_env_T> =
