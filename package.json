@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.77.3",
+	"version": "0.77.4",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -75,7 +75,7 @@
 		"disable:test:coverage": "c8 pnpm test:unit"
 	},
 	"dependencies": {
-		"ctx-core": "^6.8.1",
+		"ctx-core": "^6.8.2",
 		"hyop": "^0.3.6"
 	},
 	"devDependencies": {
@@ -182,28 +182,28 @@
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, _, memo_, sig_ }"
 			},
-			"limit": "815 B"
+			"limit": "824 B"
 		},
 		{
 			"name": "browser-only single_hyop + rmemo",
 			"import": {
 				"./browser": "{ tags, tagsNS, single_hyop, _, memo_, sig_ }"
 			},
-			"limit": "813 B"
+			"limit": "821 B"
 		},
 		{
 			"name": "browser-only hydrate + rmemo + ctx",
 			"import": {
 				"./browser": "{ tags, tagsNS, hydrate, _, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "920 B"
+			"limit": "924 B"
 		},
 		{
 			"name": "browser-only single_hyop + rmemo + ctx",
 			"import": {
 				"./browser": "{ tags, tagsNS, single_hyop, _, memo_, sig_, be_, ctx_ }"
 			},
-			"limit": "917 B"
+			"limit": "922 B"
 		},
 		{
 			"name": "isomorphic browser hydrate + rmemo + ctx",
@@ -211,7 +211,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__relement, hydrate }"
 			},
-			"limit": "1145 B"
+			"limit": "1149 B"
 		},
 		{
 			"name": "isomorphic browser single_hyop + rmemo + ctx",
@@ -219,7 +219,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./browser": "{ browser__relement, single_hyop }"
 			},
-			"limit": "1146 B"
+			"limit": "1153 B"
 		},
 		{
 			"name": "server-only minimal",
@@ -255,7 +255,7 @@
 				"": "{ relement__use, tags, _, memo_, sig_, be_, ctx_ }",
 				"./server": "{ server__relement, doc_html_ }"
 			},
-			"limit": "1143 B"
+			"limit": "1144 B"
 		},
 		{
 			"name": "html: html_",

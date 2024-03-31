@@ -1,5 +1,24 @@
 # relementjs
 
+## 0.77.4
+
+### Patch Changes
+
+- revert over aggressize size optimization: fix: breaking changes
+
+  size-limit:
+
+      browser-only hydrate + rmemo: + 9 B
+      browser-only single_hyop + rmemo: + 8 B
+      browser-only hydrate + rmemo + ctx: + 4 B
+      browser-only single_hyop + rmemo + ctx: + 5 B
+      isomorphic browser hydrate + rmemo + ctx: + 4 B
+      isomorphic browser single_hyop + rmemo + ctx: + 7 B
+      isomorphic server helpers + doc_html_ + rmemo + ctx: 1 B
+
+- Updated dependencies
+  - ctx-core@6.8.2
+
 ## 0.77.3
 
 ### Patch Changes
