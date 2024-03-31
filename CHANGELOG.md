@@ -1,5 +1,13 @@
 # relementjs
 
+## 0.77.5
+
+### Patch Changes
+
+- memo_T,sig_T: fix: internal state types
+- Updated dependencies
+  - ctx-core@6.8.3
+
 ## 0.77.4
 
 ### Patch Changes
