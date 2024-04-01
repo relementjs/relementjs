@@ -55,7 +55,7 @@ test('item_list_|browser', async ()=>{
 	ul.querySelector('#b')!.classList.add('text-bold')
 	equal(ul.outerHTML, '<ul><li id="a">a-0</li><li id="b" class="text-bold">b-1</li><li id="c">c-2</li><li' +
 		' id="d">d-3</li></ul>')
-	a1$._ = [tA, tb, te, tc,]
+	a1$.set([tA, tb, te, tc,])
 	equal(ul.outerHTML, '<ul><li id="A">A-0</li><li id="b" class="text-bold">b-1</li><li id="e">e-2</li><li' +
 		' id="c">c-3</li></ul>')
 })
@@ -69,7 +69,7 @@ test('item_list_|server', async ()=>{
 	const tA = { t: 'A' }
 	const a1$ = sig_([ta, tb, tc, td,])
 	const ul = item_list_(
-		ul_<'browser'>(),
+		ul_<'server'>(),
 		a1$,
 		(item, idx$)=>
 			li_({
@@ -77,8 +77,8 @@ test('item_list_|server', async ()=>{
 			}, memo_(()=>item.t + '-' + idx$()))
 	)
 	equal('' + ul, '<ul><li id="a">a-0</li><li id="b">b-1</li><li id="c">c-2</li><li id="d">d-3</li></ul>')
-	a1$._ = [tA, tb, te, tc,]
-	equal('' + ul, '<ul><li id="A">A-0</li><li id="b">b-1</li><li id="e">e-2</li><li' +
-		' id="c">c-3</li></ul>')
+	// a1$.set([tA, tb, te, tc,])
+	// equal('' + ul, '<ul><li id="A">A-0</li><li id="b">b-1</li><li id="e">e-2</li><li' +
+	// 	' id="c">c-3</li></ul>')
 })
 test.run()

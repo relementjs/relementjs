@@ -6,15 +6,7 @@ import { div_ } from '../html/index.js'
 import { mathml_tags_ } from '../mathml/index.js'
 import { server__relement } from '../server/index.js'
 import { svg_tags_ } from '../svg/index.js'
-import {
-	attach,
-	fragment_,
-	raw_,
-	relement__use,
-	tags,
-	type tags_T,
-	tagsNS
-} from './index.js'
+import { attach, fragment_, raw_, relement__use, tags, tagsNS } from './index.js'
 let jsdom:JSDOM, prev__window:Window, prev__document:Document, prev__Text:typeof Text, prev__Node:typeof Node
 test.before(()=>{
 	jsdom = new JSDOM()

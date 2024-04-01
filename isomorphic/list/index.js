@@ -18,20 +18,20 @@ export function item_list_(root, item_a1_, node_) {
 			for (let item of item_a1_()) {
 				let state = item_M_state$.get(item) ?? {}
 				let i = state.i ?? sig_(0)
-				i._ = idx
+				i.set(idx)
 				let n = state.n ?? node_(item, i)
 				let t = _slot$_a[idx] ??= sig_(_undefined)
 				t.i = idx
 				if (state.t && state.t.i > idx && t !== state.t) {
-					state.t._ = _undefined
+					state.t.set(_undefined)
 				}
-				t._ = n
+				t.set(n)
 				item_M_state$.set(item, { i, n, t })
 				idx++
 			}
 			attach(root, _slot$_a.slice(slot$_a.length))
 			for (let t of _slot$_a.slice(idx)) {
-				t._ = _undefined
+				t.set(_undefined)
 			}
 			slot$_a = _slot$_a.slice(0, idx)
 			return loop$

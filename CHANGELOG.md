@@ -1,5 +1,73 @@
 # relementjs
 
+## 0.78.0
+
+### Minor Changes
+
+- minor:
+
+      memo_: more efficient instantiation: + ∋ memo__run: replaces instantiated .f function with closure scope
+      ._ getter removed:
+      	memo_
+      	sig_
+      	memosig_
+      	lock_memosig_
+      ._ = setter renamed to .set():
+      	sig_
+      	memosig_
+      	lock_memosig_
+      arguments: + add_def_a1?:rmemo_add_def_T<val_T, E>[]:
+      	memo_
+      	sig_
+      	memosig_
+      	lock_memosig_
+      	.memo_
+      arguments: + add_def_a1?:be_rmemo_add_def_T<val_T, ns_T, E, ctx_T>[]:
+      	be_memo_pair_
+      	ns_be_memo_pair_
+      	id_be_memo_pair_
+      	ns_id_be_memo_pair_
+      	be_sig_triple_
+      	ns_be_sig_triple_
+      	id_be_sig_triple_
+      	ns_id_be_sig_triple_
+      	be_memosig_triple_
+      	ns_be_memosig_triple_
+      	id_be_memosig_triple_
+      	ns_id_be_memosig_triple_
+      	be_lock_memosig_triple_
+      	ns_be_lock_memosig_triple_
+      	id_be_lock_memosig_triple_
+      	ns_id_be_lock_memosig_triple_
+      - .add:
+      	be_memo_pair_T
+      	be_sig_triple_T
+      	be_memosig_triple_T
+      	be_lock_memosig_triple_T
+      + ns_ondelete_be_
+      + id_ondelete_be_
+      + ns_id_ondelete_be_
+
+  size-limit:
+
+      isomorphic browser + rmemo: - 13 B
+      isomorphic browser + rmemo + item_list_: - 32 B
+      isomorphic server + rmemo: - 16 B
+      browser-only hydrate + rmemo: - 23 B
+      browser-only single_hyop + rmemo: - 25 B
+      browser-only hydrate + rmemo + ctx: - 26 B
+      browser-only single_hyop + rmemo + ctx: - 27 B
+      isomorphic browser hydrate + rmemo + ctx: - 24 B
+      isomorphic browser single_hyop + rmemo + ctx: - 28 B
+      server-only render doc + rmemo: - 11 B
+      server-only render doc + rmemo + ctx: - 22 B
+      isomorphic server helpers + doc_html_ + rmemo + ctx: - 23 B
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@6.9.0
+
 ## 0.77.5
 
 ### Patch Changes
