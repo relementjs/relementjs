@@ -1,5 +1,13 @@
 # relementjs
 
+## 0.78.4
+
+### Patch Changes
+
+- memo_T: private prop types: readonly unknown types for cleaner typescript messages
+- Updated dependencies
+  - ctx-core@7.0.2
+
 ## 0.78.3
 
 ### Patch Changes
