@@ -1,5 +1,21 @@
 # relementjs
 
+## 0.80.0
+
+### Minor Changes
+
+- - ref\_\_bind
+
+  size-limit:
+
+      isomorphic browser single_hyop + rmemo + ctx: - 1 B
+      server-only render doc + rmemo: - 2 B
+
+### Patch Changes
+
+- Updated dependencies
+  - ctx-core@7.2.0
+
 ## 0.79.5
 
 ### Patch Changes
