@@ -1,5 +1,12 @@
 # relementjs
 
+## 0.80.4
+
+### Patch Changes
+
+- ctx-core: ^7.2.3 -> ^7.2.4
+- hyop: ^0.3.7 -> ^0.3.8
+
 ## 0.80.3
 
 ### Patch Changes
