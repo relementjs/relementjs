@@ -1,5 +1,11 @@
 # relementjs
 
+## 0.80.9
+
+### Patch Changes
+
+- ctx-core: ^7.2.8 -> ^7.2.9
+
 ## 0.80.8
 
 ### Patch Changes
