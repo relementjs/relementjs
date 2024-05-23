@@ -85,7 +85,7 @@
 		"check-dts": "^0.8.0",
 		"jsdom": "^24.0.0",
 		"size-limit": "^11.1.4",
-		"tsx": "^4.10.5",
+		"tsx": "^4.11.0",
 		"typescript": "next",
 		"uvu": "^0.5.6"
 	},
