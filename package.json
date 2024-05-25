@@ -1,6 +1,6 @@
 {
 	"name": "relementjs",
-	"version": "0.80.10",
+	"version": "0.80.11",
 	"description": "reactive elements...browser & server rendering...tiny, fast, scales large, scales small",
 	"keywords": [
 		"ui",
@@ -75,8 +75,8 @@
 		"disable:test:coverage": "c8 pnpm test:unit"
 	},
 	"dependencies": {
-		"ctx-core": "^7.2.10",
-		"hyop": "^0.3.11"
+		"ctx-core": "^7.2.11",
+		"hyop": "^0.3.12"
 	},
 	"devDependencies": {
 		"@size-limit/preset-small-lib": "^11.1.4",
