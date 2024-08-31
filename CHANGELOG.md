@@ -1,5 +1,16 @@
 # relementjs
 
+## 0.80.30
+
+### Patch Changes
+
+- jsdom: ^24.1.1 -> ^25.0.0
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@7.2.31
+  - hyop@0.3.15
+
 ## 0.80.29
 
 ### Patch Changes
