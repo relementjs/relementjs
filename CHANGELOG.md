@@ -1,5 +1,31 @@
 # relementjs
 
+## 0.80.32
+
+### Patch Changes
+
+- c8: ^10.1.3 -> ^11.0.0
+- size-limit: ^11.2.0 -> ^12.0.0
+- @types/jsdom: ^21.1.7 -> ^28.0.0
+- check-dts: ^0.8.2 -> ^0.9.0
+- tsx: ^4.20.6 -> ^4.21.0
+- jsdom: ^25.0.1 -> ^28.1.0
+- @size-limit/preset-small-lib: ^11.2.0 -> ^12.0.0
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - ctx-core@7.2.33
+  - hyop@0.3.16
+
 ## 0.80.31
 
 ### Patch Changes
@@ -624,7 +650,6 @@
 
 - ctx-core: ^6.3.0 -> ^6.4.0
 - Updated dependencies
-
   - ctx-core@6.4.1
 
   size-limit:
@@ -712,7 +737,6 @@
 ### Patch Changes
 
 - Updated dependencies
-
   - hyop@0.2.0
 
   size-limit:
@@ -2883,7 +2907,6 @@ size-limit:
 
 - be*memo_pair*: subscriber receives a memosig argument: allows memosig.\_ = val in subscriber
 - Updated dependencies
-
   - ctx-core@4.6.3
 
   size-limit:
