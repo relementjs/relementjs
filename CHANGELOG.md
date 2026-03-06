@@ -1,5 +1,14 @@
 # relementjs
 
+## 0.80.33
+
+### Patch Changes
+
+- chore: migrate scripts from pnpm to bun
+- Updated dependencies
+  - ctx-core@7.2.34
+  - hyop@0.3.17
+
 ## 0.80.32
 
 ### Patch Changes
